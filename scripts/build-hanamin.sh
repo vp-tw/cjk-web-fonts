@@ -17,7 +17,7 @@ for source_name in HanaMinA HanaMinB; do
   mkdir -p "$output_dir"
   find "$output_dir" -type f -delete
 
-  docker run --rm \
+  docker run --rm --platform linux/amd64 \
     --env SOURCE_DATE_EPOCH=1504224000 \
     --volume "$repo_root:/workspace" \
     --workdir /workspace \
@@ -34,7 +34,7 @@ printf '%s\n' \
   '@import url("./HanaMinB/HanaMin.css");' \
   > "$font_dir/dist/index.css"
 
-docker run --rm \
+docker run --rm --platform linux/amd64 \
   --entrypoint python \
   --volume "$repo_root:/workspace" \
   --workdir /workspace \
