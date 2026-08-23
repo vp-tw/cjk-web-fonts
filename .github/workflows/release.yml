@@ -44,23 +44,29 @@ jobs:
       - name: Verify npm and jsDelivr publication
         if: steps.changesets.outputs.published == 'true'
         env:
-          PACKAGE_NAME: "@vp-tw/cjk-web-fonts-jigmo"
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
-          version=""
-          for attempt in $(seq 1 20); do
-            version="$(npm view "$PACKAGE_NAME" version 2>/dev/null || true)"
-            if [ -n "$version" ]; then
-              break
+          echo "$PUBLISHED_PACKAGES" | jq -c '.[]' | while read -r package; do
+            name="$(echo "$package" | jq -r '.name')"
+            version="$(echo "$package" | jq -r '.version')"
+            for attempt in $(seq 1 20); do
+              if [ "$(npm view "$name" version 2>/dev/null || true)" = "$version" ]; then
+                break
+              fi
+              sleep 15
+            done
+            test "$(npm view "$name" version)" = "$version"
+            url="https://cdn.jsdelivr.net/npm/${name}@${version}/dist/index.css"
+            curl --fail --silent --show-error "https://purge.jsdelivr.net/npm/${name}@${version}/dist/index.css"
+            available=false
+            for attempt in $(seq 1 20); do
+              if curl --fail --silent --show-error --head "$url"; then
+                available=true
+                break
+              fi
+              sleep 15
+            done
+            if [ "$available" != true ]; then
+              exit 1
             fi
-            sleep 15
           done
-          test -n "$version"
-          url="https://cdn.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
-          curl --fail --silent --show-error "https://purge.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
-          for attempt in $(seq 1 20); do
-            if curl --fail --silent --show-error --head "$url"; then
-              exit 0
-            fi
-            sleep 15
-          done
-          exit 1
