@@ -46,13 +46,21 @@ jobs:
         env:
           PACKAGE_NAME: "@vp-tw/cjk-web-fonts-jigmo"
         run: |
-          version="$(npm view "$PACKAGE_NAME" version)"
+          version=""
+          for attempt in $(seq 1 20); do
+            version="$(npm view "$PACKAGE_NAME" version 2>/dev/null || true)"
+            if [ -n "$version" ]; then
+              break
+            fi
+            sleep 15
+          done
+          test -n "$version"
           url="https://cdn.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
           curl --fail --silent --show-error "https://purge.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
-          for attempt in 1 2 3 4 5; do
+          for attempt in $(seq 1 20); do
             if curl --fail --silent --show-error --head "$url"; then
               exit 0
             fi
-            sleep $((attempt * 10))
+            sleep 15
           done
           exit 1
