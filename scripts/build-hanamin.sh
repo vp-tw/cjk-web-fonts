@@ -19,6 +19,7 @@ for source_name in HanaMinA HanaMinB; do
 
   docker run --rm --platform linux/amd64 \
     --env SOURCE_DATE_EPOCH=1504224000 \
+    --env PYTHONHASHSEED=0 \
     --volume "$repo_root:/workspace" \
     --workdir /workspace \
     "$image" \

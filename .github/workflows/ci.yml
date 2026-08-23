@@ -49,3 +49,9 @@ jobs:
         run: ./scripts/build-hanamin.sh
       - name: Check generated files
         run: git diff --exit-code
+      - name: Preserve Hanamin drift for diagnosis
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: hanamin-generated-drift
+          path: packages/hanamin/dist/HanaMinA/HanaMin.Supplemental-Symbols-and-Pictographs.woff2
