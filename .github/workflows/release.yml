@@ -1,0 +1,56 @@
+name: Changesets release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.23.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.7.0
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pnpm install --frozen-lockfile
+      - uses: changesets/action@v1
+        id: changesets
+        with:
+          version: pnpm changeset version
+          publish: pnpm release:publish
+          title: "chore: release packages"
+          commit: "chore: release packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Verify npm and jsDelivr publication
+        if: steps.changesets.outputs.published == 'true'
+        env:
+          PACKAGE_NAME: "@vp-tw/cjk-web-fonts-jigmo"
+        run: |
+          version="$(npm view "$PACKAGE_NAME" version)"
+          url="https://cdn.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
+          curl --fail --silent --show-error "https://purge.jsdelivr.net/npm/${PACKAGE_NAME}@${version}/dist/index.css"
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent --show-error --head "$url"; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+          exit 1

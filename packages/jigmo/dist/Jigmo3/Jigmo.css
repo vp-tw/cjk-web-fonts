@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.Basic-Latin.woff2) format("woff2");
+  unicode-range: U+20-7E;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Symbols-and-Punctuation.woff2) format("woff2");
+  unicode-range: U+3000;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs.woff2) format("woff2");
+  unicode-range: U+4E00;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-G-001.woff2) format("woff2");
+  unicode-range: U+30000-303FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-G-002.woff2) format("woff2");
+  unicode-range: U+30400-307FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-G-003.woff2) format("woff2");
+  unicode-range: U+30800-30BFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-G-004.woff2) format("woff2");
+  unicode-range: U+30C00-30FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-G-005.woff2) format("woff2");
+  unicode-range: U+31000-3134A;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-H-001.woff2) format("woff2");
+  unicode-range: U+31350-3174F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-H-002.woff2) format("woff2");
+  unicode-range: U+31750-31B4F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-H-003.woff2) format("woff2");
+  unicode-range: U+31B50-31F4F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-H-004.woff2) format("woff2");
+  unicode-range: U+31F50-3234F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-H-005.woff2) format("woff2");
+  unicode-range: U+32350-323AF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-J-001.woff2) format("woff2");
+  unicode-range: U+323B0-327AF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-J-002.woff2) format("woff2");
+  unicode-range: U+327B0-32BAF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-J-003.woff2) format("woff2");
+  unicode-range: U+32BB0-32FAF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-J-004.woff2) format("woff2");
+  unicode-range: U+32FB0-333AF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.CJK-Unified-Ideographs-Extension-J-005.woff2) format("woff2");
+  unicode-range: U+333B0-33479;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo3 Regular"), local("Jigmo3"), url(Jigmo.Supplementary-Private-Use-Area-B.woff2) format("woff2");
+  unicode-range: U+100000-100002;
+}

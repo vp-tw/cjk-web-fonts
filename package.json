@@ -1,0 +1,24 @@
+{
+  "name": "cjk-web-fonts-workspace",
+  "private": true,
+  "scripts": {
+    "build": "pnpm build:jigmo",
+    "build:jigmo": "./scripts/build-jigmo.sh",
+    "check": "pnpm lint && pnpm format",
+    "changeset": "changeset",
+    "format": "oxfmt --check .changeset .github package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
+    "format:write": "oxfmt .changeset .github package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
+    "lint": "oxlint --no-error-on-unmatched-pattern .",
+    "release:publish": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.1",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0"
+  },
+  "engines": {
+    "node": ">=26.7.0"
+  },
+  "packageManager": "pnpm@11.23.0"
+}

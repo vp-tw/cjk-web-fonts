@@ -1,0 +1,648 @@
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Basic-Latin.woff2) format("woff2");
+  unicode-range: U+20-7E;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Jamo.woff2) format("woff2");
+  unicode-range: U+1100-115E, U+1161-11FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Radicals-Supplement.woff2) format("woff2");
+  unicode-range: U+2E80-2E99, U+2E9B-2EF3;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Kangxi-Radicals.woff2) format("woff2");
+  unicode-range: U+2F00-2FD5;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Ideographic-Description-Characters.woff2) format("woff2");
+  unicode-range: U+2FF0-2FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Symbols-and-Punctuation.woff2) format("woff2");
+  unicode-range: U+3000-3002, U+3005-3007, U+3021-302F, U+3031-3035, U+3037-303B, U+303E;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hiragana.woff2) format("woff2");
+  unicode-range: U+3041-3096, U+3099-309F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Katakana.woff2) format("woff2");
+  unicode-range: U+30A0-30FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Bopomofo.woff2) format("woff2");
+  unicode-range: U+3105-312F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Compatibility-Jamo.woff2) format("woff2");
+  unicode-range: U+3131-3163, U+3165-318E;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Kanbun.woff2) format("woff2");
+  unicode-range: U+3190-319F;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Bopomofo-Extended.woff2) format("woff2");
+  unicode-range: U+31A0-31BF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Strokes.woff2) format("woff2");
+  unicode-range: U+31C0-31E5, U+31EF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Katakana-Phonetic-Extensions.woff2) format("woff2");
+  unicode-range: U+31F0-31FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Enclosed-CJK-Letters-and-Months.woff2) format("woff2");
+  unicode-range: U+3200-321E, U+3220-3247, U+3260-327E, U+3280-32B0, U+32C0-32CB, U+32D0-32FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Compatibility.woff2) format("woff2");
+  unicode-range: U+3300-3370, U+337B-337F, U+33E0-33FE;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-001.woff2) format("woff2");
+  unicode-range: U+3400-37FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-002.woff2) format("woff2");
+  unicode-range: U+3800-3BFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-003.woff2) format("woff2");
+  unicode-range: U+3C00-3FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-004.woff2) format("woff2");
+  unicode-range: U+4000-43FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-005.woff2) format("woff2");
+  unicode-range: U+4400-47FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-006.woff2) format("woff2");
+  unicode-range: U+4800-4BFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-A-007.woff2) format("woff2");
+  unicode-range: U+4C00-4DBF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-001.woff2) format("woff2");
+  unicode-range: U+4E00-51FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-002.woff2) format("woff2");
+  unicode-range: U+5200-55FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-003.woff2) format("woff2");
+  unicode-range: U+5600-59FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-004.woff2) format("woff2");
+  unicode-range: U+5A00-5DFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-005.woff2) format("woff2");
+  unicode-range: U+5E00-61FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-006.woff2) format("woff2");
+  unicode-range: U+6200-65FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-007.woff2) format("woff2");
+  unicode-range: U+6600-69FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-008.woff2) format("woff2");
+  unicode-range: U+6A00-6DFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-009.woff2) format("woff2");
+  unicode-range: U+6E00-71FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-010.woff2) format("woff2");
+  unicode-range: U+7200-75FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-011.woff2) format("woff2");
+  unicode-range: U+7600-79FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-012.woff2) format("woff2");
+  unicode-range: U+7A00-7DFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-013.woff2) format("woff2");
+  unicode-range: U+7E00-81FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-014.woff2) format("woff2");
+  unicode-range: U+8200-85FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-015.woff2) format("woff2");
+  unicode-range: U+8600-89FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-016.woff2) format("woff2");
+  unicode-range: U+8A00-8DFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-017.woff2) format("woff2");
+  unicode-range: U+8E00-91FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-018.woff2) format("woff2");
+  unicode-range: U+9200-95FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-019.woff2) format("woff2");
+  unicode-range: U+9600-99FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-020.woff2) format("woff2");
+  unicode-range: U+9A00-9DFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-021.woff2) format("woff2");
+  unicode-range: U+9E00-9FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Jamo-Extended-A.woff2) format("woff2");
+  unicode-range: U+A960-A97C;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-001.woff2) format("woff2");
+  unicode-range: U+AC00-AFFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-002.woff2) format("woff2");
+  unicode-range: U+B000-B3FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-003.woff2) format("woff2");
+  unicode-range: U+B400-B7FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-004.woff2) format("woff2");
+  unicode-range: U+B800-BBFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-005.woff2) format("woff2");
+  unicode-range: U+BC00-BFFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-006.woff2) format("woff2");
+  unicode-range: U+C000-C3FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-007.woff2) format("woff2");
+  unicode-range: U+C400-C7FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-008.woff2) format("woff2");
+  unicode-range: U+C800-CBFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-009.woff2) format("woff2");
+  unicode-range: U+CC00-CFFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-010.woff2) format("woff2");
+  unicode-range: U+D000-D3FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Syllables-011.woff2) format("woff2");
+  unicode-range: U+D400-D7A3;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Hangul-Jamo-Extended-B.woff2) format("woff2");
+  unicode-range: U+D7B0-D7C6, U+D7CB-D7FB;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Compatibility-Ideographs.woff2) format("woff2");
+  unicode-range: U+F900-FA6D, U+FA70-FAD9;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Vertical-Forms.woff2) format("woff2");
+  unicode-range: U+FE11-FE12;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Small-Form-Variants.woff2) format("woff2");
+  unicode-range: U+FE51;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Halfwidth-and-Fullwidth-Forms.woff2) format("woff2");
+  unicode-range: U+FF61, U+FF64-FF9F, U+FFA1-FFBE, U+FFC2-FFC7, U+FFCA-FFCF, U+FFD2-FFD7, U+FFDA-FFDC;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Ideographic-Symbols-and-Punctuation.woff2) format("woff2");
+  unicode-range: U+16FF2-16FF3;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Kana-Extended-B.woff2) format("woff2");
+  unicode-range: U+1AFF0-1AFF3, U+1AFF5-1AFFB, U+1AFFD-1AFFE;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Kana-Supplement.woff2) format("woff2");
+  unicode-range: U+1B000-1B0FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Kana-Extended-A.woff2) format("woff2");
+  unicode-range: U+1B100-1B122;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Small-Kana-Extension.woff2) format("woff2");
+  unicode-range: U+1B132, U+1B150-1B152, U+1B155, U+1B164-1B167;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Counting-Rod-Numerals.woff2) format("woff2");
+  unicode-range: U+1D372-1D376;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Mahjong-Tiles.woff2) format("woff2");
+  unicode-range: U+1F000-1F02B;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Enclosed-Ideographic-Supplement.woff2) format("woff2");
+  unicode-range: U+1F200-1F202, U+1F210-1F23B, U+1F240-1F248, U+1F250-1F251, U+1F260-1F265;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Chess-Symbols.woff2) format("woff2");
+  unicode-range: U+1FA60-1FA6D;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.CJK-Unified-Ideographs-Extension-B.woff2) format("woff2");
+  unicode-range: U+20000;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-001.woff2) format("woff2");
+  unicode-range: U+100000-1003FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-002.woff2) format("woff2");
+  unicode-range: U+100400-1007FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-003.woff2) format("woff2");
+  unicode-range: U+100800-100BFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-004.woff2) format("woff2");
+  unicode-range: U+100C00-100FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-005.woff2) format("woff2");
+  unicode-range: U+101000-1013FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-006.woff2) format("woff2");
+  unicode-range: U+101400-1017FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-007.woff2) format("woff2");
+  unicode-range: U+101800-101BFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-008.woff2) format("woff2");
+  unicode-range: U+101C00-101FFF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-009.woff2) format("woff2");
+  unicode-range: U+102000-1023FF;
+}
+@font-face {
+  font-family: "Jigmo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Jigmo Regular"), local("Jigmo"), url(Jigmo.Supplementary-Private-Use-Area-B-010.woff2) format("woff2");
+  unicode-range: U+102400-1024E3;
+}

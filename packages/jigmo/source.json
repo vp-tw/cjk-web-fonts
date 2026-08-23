@@ -1,0 +1,17 @@
+{
+  "name": "Jigmo",
+  "version": "2025-09-12",
+  "url": "https://kamichikoichi.github.io/jigmo/Jigmo-20250912.zip",
+  "archive": "Jigmo-20250912.zip",
+  "bytes": 35559738,
+  "sha256": "5744c7386d129475d87607ca66d043c8793c65448adeaedc921b6931890e5d0b",
+  "license": "CC0-1.0",
+  "files": [
+    "Jigmo.ttf",
+    "Jigmo2.ttf",
+    "Jigmo3.ttf",
+    "LICENSE.txt",
+    "README.txt",
+    "THANKS.txt"
+  ]
+}
