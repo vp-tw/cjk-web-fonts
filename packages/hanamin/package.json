@@ -1,0 +1,53 @@
+{
+  "name": "@vp-tw/cjk-web-fonts-hanamin",
+  "version": "0.0.0",
+  "description": "Hanamin CJK webfont subsets with IVD coverage.",
+  "keywords": [
+    "cjk",
+    "font",
+    "glyphwiki",
+    "hanamin",
+    "hanazono",
+    "ivs",
+    "unicode-range",
+    "webfont",
+    "woff2"
+  ],
+  "homepage": "https://github.com/vp-tw/cjk-web-fonts/tree/main/packages/hanamin",
+  "bugs": {
+    "url": "https://github.com/vp-tw/cjk-web-fonts/issues"
+  },
+  "license": "MIT AND OFL-1.1",
+  "author": {
+    "name": "Koichi Kamichi",
+    "url": "https://glyphwiki.org/hanazono/"
+  },
+  "contributors": [
+    {
+      "name": "GlyphWiki contributors",
+      "url": "https://glyphwiki.org/"
+    },
+    {
+      "name": "ViPro",
+      "email": "VdustR@gmail.com",
+      "url": "https://vdustr.dev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vp-tw/cjk-web-fonts.git",
+    "directory": "packages/hanamin"
+  },
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSE.font.txt",
+    "NOTICE.md",
+    "source.json"
+  ],
+  "main": "dist/index.css",
+  "publishConfig": {
+    "access": "public"
+  }
+}

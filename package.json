@@ -2,7 +2,8 @@
   "name": "cjk-web-fonts-workspace",
   "private": true,
   "scripts": {
-    "build": "pnpm build:jigmo",
+    "build": "pnpm build:jigmo && pnpm build:hanamin",
+    "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
     "check": "pnpm lint && pnpm format",
     "changeset": "changeset",
