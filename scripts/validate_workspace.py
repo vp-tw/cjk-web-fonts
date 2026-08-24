@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "fonts.json"
+SIZE_POLICY_PATH = ROOT / "package-size-policy.json"
 PACKAGE_PREFIX = "@vp-tw/cjk-web-fonts-"
 
 
@@ -17,6 +18,9 @@ def fail(message: str) -> None:
 
 def main() -> None:
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    from audit_package_sizes import validate_policy
+
+    validate_policy(json.loads(SIZE_POLICY_PATH.read_text(encoding="utf-8")))
     fonts = registry.get("fonts")
     if not isinstance(fonts, list) or not fonts:
         fail("fonts.json must contain a non-empty fonts array")
@@ -145,6 +149,8 @@ def main() -> None:
     ):
         if required_command not in root_check:
             fail(f"package.json check must run {required_command}")
+    if root_scripts.get("audit:packages") != "python3 scripts/audit_package_sizes.py":
+        fail("package.json audit:packages must run the repository package audit")
 
     if not (ROOT / "AGENTS.md").is_file():
         fail("AGENTS.md must document workspace invariants for coding agents")
@@ -155,6 +161,7 @@ def main() -> None:
     release_workflow = (ROOT / ".github/workflows/release.yml").read_text(
         encoding="utf-8"
     )
+    ci_workflow = (ROOT / ".github/workflows/ci.yml").read_text(encoding="utf-8")
     forbidden_release_commands = [
         "pnpm build",
         *[font["buildScript"] for font in fonts],
@@ -167,6 +174,16 @@ def main() -> None:
     for command in forbidden_release_commands:
         if command in release_workflow:
             fail(f"release workflow must not rebuild fonts: found {command}")
+    if "pnpm audit:packages" not in release_workflow:
+        fail("release workflow must audit package delivery sizes before publishing")
+    if release_workflow.index("pnpm audit:packages") > release_workflow.index(
+        "changesets/action"
+    ):
+        fail("release workflow must audit package sizes before Changesets")
+    if "python3 scripts/audit_package_sizes.py" not in ci_workflow:
+        fail("CI must audit every publishable package")
+    if "python3 scripts/audit_package_sizes.py \"${{ matrix.font.id }}\"" not in ci_workflow:
+        fail("CI must audit each affected package after rebuilding it")
 
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
     for font_id in seen_ids:

@@ -12,10 +12,11 @@
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
+    "audit:packages": "python3 scripts/audit_package_sizes.py",
     "check": "pnpm validate:workspace && pnpm site:data:check && pnpm test && pnpm lint && pnpm format && pnpm site:check",
     "changeset": "changeset",
-    "format": "oxfmt --check .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
-    "format:write": "oxfmt .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
+    "format": "oxfmt --check .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package-size-policy.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
+    "format:write": "oxfmt .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package-size-policy.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
     "lint": "oxlint --no-error-on-unmatched-pattern .",
     "release:publish": "changeset publish",
     "release:version": "changeset version && pnpm site:data",
@@ -26,7 +27,7 @@
     "site:dev": "pnpm site:data && astro dev",
     "site:preview": "astro preview",
     "test": "pnpm test:workspace-tools && vitest run",
-    "test:workspace-tools": "python3 scripts/test_ci_selection.py",
+    "test:workspace-tools": "python3 scripts/test_ci_selection.py && python3 scripts/test_package_sizes.py",
     "validate:workspace": "python3 scripts/validate_workspace.py"
   },
   "devDependencies": {

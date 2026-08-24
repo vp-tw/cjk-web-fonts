@@ -21,8 +21,6 @@ WEIGHTS = {
     "ExtraBold": 800,
     "Heavy": 900,
 }
-MAX_FILE_BYTES = 20_000_000
-MAX_PACKAGE_BYTES = 140_000_000
 
 
 def inspect_font(path: Path) -> set[int]:
@@ -103,7 +101,6 @@ def main() -> None:
     print(f"WOFF2 bytes: {total_bytes}")
     print(f"largest WOFF2 bytes: {largest_bytes}")
     failed |= variant_count != expected_variants
-    failed |= largest_bytes > MAX_FILE_BYTES or total_bytes > MAX_PACKAGE_BYTES
     if failed:
         raise SystemExit("Wêlai Glow Sans TC audit failed")
 
