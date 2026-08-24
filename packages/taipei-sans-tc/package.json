@@ -1,0 +1,47 @@
+{
+  "name": "@vp-tw/cjk-web-fonts-taipei-sans-tc",
+  "version": "0.0.0",
+  "description": "Taipei Sans TC webfont subsets in light, regular, and bold weights.",
+  "keywords": [
+    "cjk",
+    "font",
+    "taipei",
+    "traditional-chinese",
+    "unicode-range",
+    "webfont",
+    "woff2"
+  ],
+  "homepage": "https://github.com/vp-tw/cjk-web-fonts/tree/main/packages/taipei-sans-tc",
+  "bugs": {
+    "url": "https://github.com/vp-tw/cjk-web-fonts/issues"
+  },
+  "license": "MIT AND OFL-1.1",
+  "author": {
+    "name": "Department of Information Technology, Taipei City Government",
+    "url": "https://sites.google.com/view/jtfoundry/zh-tw/downloads"
+  },
+  "contributors": [
+    {
+      "name": "ViPro",
+      "email": "VdustR@gmail.com",
+      "url": "https://vdustr.dev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vp-tw/cjk-web-fonts.git",
+    "directory": "packages/taipei-sans-tc"
+  },
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSE.font.txt",
+    "NOTICE.md",
+    "source.json"
+  ],
+  "main": "dist/index.css",
+  "publishConfig": {
+    "access": "public"
+  }
+}

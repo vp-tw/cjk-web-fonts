@@ -1,0 +1,26 @@
+{
+  "name": "Taipei Sans TC Beta",
+  "version": "1.000",
+  "commit": "24ca88e96d1e842558df3ad6fad71993c07754c4",
+  "license": "OFL-1.1",
+  "downloads": [
+    {
+      "name": "TaipeiSansTCBeta-Light.ttf",
+      "url": "https://media.githubusercontent.com/media/vp-tw/taipei-sans-tc/24ca88e96d1e842558df3ad6fad71993c07754c4/packages/core/src/TaipeiSansTCBeta-Light.ttf",
+      "bytes": 20279264,
+      "sha256": "d69a9ea6a77f694c3a1a1fb766c764aa74cb3e2c4c69f1b532edf98b3f2bb662"
+    },
+    {
+      "name": "TaipeiSansTCBeta-Regular.ttf",
+      "url": "https://media.githubusercontent.com/media/vp-tw/taipei-sans-tc/24ca88e96d1e842558df3ad6fad71993c07754c4/packages/core/src/TaipeiSansTCBeta-Regular.ttf",
+      "bytes": 20659344,
+      "sha256": "8cc967e1e428c552701c461e8169e6ae76c7a23694ea1a6a786d6746adec53c4"
+    },
+    {
+      "name": "TaipeiSansTCBeta-Bold.ttf",
+      "url": "https://raw.githubusercontent.com/vp-tw/taipei-sans-tc/24ca88e96d1e842558df3ad6fad71993c07754c4/packages/core/src/TaipeiSansTCBeta-Bold.ttf",
+      "bytes": 21737516,
+      "sha256": "5249d3bdda9c9f4c62840e804b4d2530b7f4dfab6d68fb508c120b0e7e600419"
+    }
+  ]
+}

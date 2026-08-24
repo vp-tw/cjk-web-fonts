@@ -44,8 +44,9 @@ jobs:
       - name: Verify npm and jsDelivr publication
         if: steps.changesets.outputs.published == 'true'
         env:
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
         run: |
+          test "$(echo "$PUBLISHED_PACKAGES" | jq 'length')" -gt 0
           echo "$PUBLISHED_PACKAGES" | jq -c '.[]' | while read -r package; do
             name="$(echo "$package" | jq -r '.name')"
             version="$(echo "$package" | jq -r '.version')"

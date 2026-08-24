@@ -19,6 +19,11 @@ def main() -> None:
     output_dir = Path(sys.argv[2]).resolve()
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    if "downloads" in manifest:
+        fetch_files(manifest, output_dir)
+        return
+
     archive_path = output_dir / manifest["archive"]
 
     if not archive_path.exists():
@@ -56,6 +61,45 @@ def main() -> None:
         archive.extractall(extract_dir)
 
     print(f"verified {manifest['name']} {manifest['version']} ({digest})")
+
+
+def fetch_files(manifest: dict[str, object], output_dir: Path) -> None:
+    extract_dir = output_dir / "source"
+    extract_dir.mkdir(exist_ok=True)
+    downloads = manifest["downloads"]
+    if not isinstance(downloads, list):
+        raise SystemExit("downloads must be an array")
+
+    for item in downloads:
+        if not isinstance(item, dict):
+            raise SystemExit("each download must be an object")
+        name = str(item["name"])
+        target_path = extract_dir / name
+        if not target_path.exists():
+            request = urllib.request.Request(
+                str(item["url"]),
+                headers={"User-Agent": "VdustR/cjk-web-fonts source fetcher"},
+            )
+            with urllib.request.urlopen(request) as response, target_path.open("wb") as target:
+                shutil.copyfileobj(response, target)
+
+        digest = hashlib.sha256(target_path.read_bytes()).hexdigest()
+        expected_digest = str(item["sha256"])
+        if digest != expected_digest:
+            target_path.unlink(missing_ok=True)
+            raise SystemExit(
+                f"SHA-256 mismatch for {name}: expected {expected_digest}, got {digest}"
+            )
+
+        expected_bytes = int(item["bytes"])
+        if target_path.stat().st_size != expected_bytes:
+            raise SystemExit(
+                f"size mismatch for {name}: expected {expected_bytes}, "
+                f"got {target_path.stat().st_size}"
+            )
+        print(f"verified {name} ({digest})")
+
+    print(f"verified {manifest['name']} {manifest['version']}")
 
 
 if __name__ == "__main__":

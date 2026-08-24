@@ -6,17 +6,17 @@ jsDelivr's GitHub endpoint.
 
 ## Fonts
 
-| Font                                  | Version    | License | Stylesheet                     |
-| ------------------------------------- | ---------- | ------- | ------------------------------ |
-| [Jigmo](packages/jigmo/README.md)     | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`   |
-| [Hanamin](packages/hanamin/README.md) | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin` |
+| Font                                                | Version    | License | Package                               |
+| --------------------------------------------------- | ---------- | ------- | ------------------------------------- |
+| [Jigmo](packages/jigmo/README.md)                   | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`          |
+| [Hanamin](packages/hanamin/README.md)               | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`        |
+| [Taipei Sans TC](packages/taipei-sans-tc/README.md) | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc` |
 
 ## Planned fonts
 
 The next packages are planned in this order:
 
-1. `@vp-tw/cjk-web-fonts-taipei-sans-tc`
-2. `@vp-tw/cjk-web-fonts-fusion-pixel-font`
+1. `@vp-tw/cjk-web-fonts-fusion-pixel-font`
 
 Fusion Pixel Font needs a package-shape review before implementation because
 upstream publishes 8px, 10px, and 12px fonts in monospaced and proportional
@@ -57,8 +57,10 @@ Requirements:
 ```sh
 ./scripts/build-jigmo.sh
 ./scripts/build-hanamin.sh
+./scripts/build-taipei-sans-tc.sh
 python3 scripts/audit_jigmo.py
 python3 scripts/audit_hanamin.py
+python3 scripts/audit_taipei_sans_tc.py
 ```
 
 The build uses the versioned `vdustr/font-splitter:0.2.2` image. The audit fails

@@ -25,6 +25,8 @@ importers:
 
   packages/jigmo: {}
 
+  packages/taipei-sans-tc: {}
+
 packages:
 
   '@changesets/apply-release-plan@8.0.0':
