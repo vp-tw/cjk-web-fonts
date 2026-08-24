@@ -10,6 +10,8 @@ const assetBase = base.endsWith("/") ? base : `${base}/`;
 const brandAsset = (filename: string) => `${assetBase}brand/${filename}`;
 const canonicalUrl = new URL(base, Astro.site);
 const ogImageUrl = new URL(brandAsset("og-image.png"), Astro.site);
+const ogImageAlt =
+  "CJK Web Fonts poster with the 字, あ, and 한 brand mark, repository name, and website URL.";
 ---
 
 <!doctype html>
@@ -26,11 +28,12 @@ const ogImageUrl = new URL(brandAsset("og-image.png"), Astro.site);
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="CJK web fonts, ready to use." />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CJK Web Fonts" />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href={`${assetBase}favicon.ico`} sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href={brandAsset("favicon-32.png")} />
