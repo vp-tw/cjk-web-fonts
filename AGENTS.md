@@ -43,3 +43,25 @@ needed.
 
 Repository-authored files use MIT. Font software and generated subsets retain
 their upstream licenses. Packages contain no JavaScript runtime.
+
+## Catalog website
+
+The GitHub Pages site uses Astro for static content and a Svelte island for the
+interactive catalog. `fonts.json` also owns public descriptions, sources,
+licenses, variants, CSS entry points, and coverage inputs.
+
+Read `PRODUCT.md` and `DESIGN.md` before changing the catalog interface.
+`.impeccable/design.json` is the machine-readable design contract. Keep all
+three synchronized when a reviewed design decision changes.
+
+`pnpm site:data` generates `site/generated/fonts.json` from package metadata and
+published CSS `unicode-range` descriptors. Never edit the generated file by
+hand. `pnpm site:data:check` rejects stale output, and `pnpm check` includes the
+generator check, unit tests, Astro diagnostics, Oxlint, and Oxfmt.
+
+Use `pnpm site:dev` for local development, `pnpm site:build` for the production
+static build, and `pnpm site:preview` to inspect that build under the GitHub
+Pages base path. Coverage checks run locally in a Web Worker; pasted text is not
+sent to a server. Unicode variation selectors are reported separately because
+the browser index currently validates base code points while the package audits
+remain authoritative for variation sequences.

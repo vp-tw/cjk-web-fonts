@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-24T00:00:00+08:00",
+  "title": "Design System: CJK Web Fonts",
+  "extensions": {
+    "colorMeta": {
+      "specification-paper": {
+        "role": "neutral",
+        "displayName": "Specification Paper",
+        "canonical": "#e7e3d8",
+        "tonalRamp": [
+          "#25241f",
+          "#48473f",
+          "#6d6a60",
+          "#918e83",
+          "#b4b0a5",
+          "#d0ccc1",
+          "#e7e3d8",
+          "#f8f6f0"
+        ]
+      },
+      "raised-paper": {
+        "role": "neutral",
+        "displayName": "Raised Paper",
+        "canonical": "#f1eee6",
+        "tonalRamp": [
+          "#282722",
+          "#4c4a43",
+          "#716f66",
+          "#96938a",
+          "#bbb8ae",
+          "#d8d5cc",
+          "#f1eee6",
+          "#fbfaf6"
+        ]
+      },
+      "registration-ink": {
+        "role": "neutral",
+        "displayName": "Registration Ink",
+        "canonical": "#171816",
+        "tonalRamp": [
+          "#171816",
+          "#383a36",
+          "#5b5e58",
+          "#7f827b",
+          "#a4a7a0",
+          "#c6c9c2",
+          "#e4e7e0",
+          "#f4f6f1"
+        ]
+      },
+      "secondary-ink": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#60655f",
+        "tonalRamp": [
+          "#1d211d",
+          "#3d423d",
+          "#60655f",
+          "#838982",
+          "#a7aca5",
+          "#c8ccc6",
+          "#e5e8e2",
+          "#f5f7f3"
+        ]
+      },
+      "hairline-rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "#9a9c94",
+        "tonalRamp": [
+          "#22231f",
+          "#42433d",
+          "#64665f",
+          "#7f817a",
+          "#9a9c94",
+          "#babcb5",
+          "#d9dbd4",
+          "#f3f4ef"
+        ]
+      },
+      "proof-red": {
+        "role": "primary",
+        "displayName": "Proof Red",
+        "canonical": "#c84125",
+        "tonalRamp": [
+          "#3b1109",
+          "#681e10",
+          "#962d19",
+          "#c84125",
+          "#db684e",
+          "#e99480",
+          "#f2c0b2",
+          "#fbe9e3"
+        ]
+      },
+      "reversed-paper": {
+        "role": "neutral",
+        "displayName": "Reversed Paper",
+        "canonical": "#fff8ef",
+        "tonalRamp": [
+          "#2a2520",
+          "#50483f",
+          "#776d61",
+          "#9e9284",
+          "#c4b8aa",
+          "#e1d7cc",
+          "#fff8ef",
+          "#fffdf9"
+        ]
+      },
+      "verified-green": {
+        "role": "semantic",
+        "displayName": "Verified Green",
+        "canonical": "#1e6650",
+        "tonalRamp": [
+          "#09271e",
+          "#104331",
+          "#1e6650",
+          "#3d8870",
+          "#68a994",
+          "#95c7b6",
+          "#c5e2d8",
+          "#ecf6f2"
+        ]
+      },
+      "missing-red": {
+        "role": "semantic",
+        "displayName": "Missing Red",
+        "canonical": "#a63224",
+        "tonalRamp": [
+          "#360d08",
+          "#601a12",
+          "#83271c",
+          "#a63224",
+          "#ca5949",
+          "#df887b",
+          "#edb8af",
+          "#fae8e4"
+        ]
+      },
+      "focus-blue": {
+        "role": "semantic",
+        "displayName": "Focus Blue",
+        "canonical": "#0b69a3",
+        "tonalRamp": [
+          "#062339",
+          "#073f63",
+          "#0b5b8e",
+          "#0b69a3",
+          "#388bb8",
+          "#70aecf",
+          "#add2e5",
+          "#e6f3f9"
+        ]
+      },
+      "selection-rose": {
+        "role": "semantic",
+        "displayName": "Selection Rose",
+        "canonical": "#d6a89d",
+        "tonalRamp": [
+          "#35201c",
+          "#5a3c35",
+          "#7f5a51",
+          "#a47d72",
+          "#c19a90",
+          "#d6a89d",
+          "#ead0c9",
+          "#faefec"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Task Display", "purpose": "Primary task statement only." },
+      "body": { "displayName": "Interface Body", "purpose": "Instructions and explanatory copy." },
+      "label": {
+        "displayName": "Specification Label",
+        "purpose": "Controls, facts, and status annotations."
+      },
+      "code": { "displayName": "Package Code", "purpose": "Package identifiers and embed markup." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "proof-color",
+        "value": "180ms ease-out",
+        "purpose": "Foreground and paper-color changes inside live specimens."
+      }
+    ],
+    "breakpoints": [
+      { "name": "workbench-stack", "value": "900px" },
+      { "name": "single-column", "value": "600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square, paper-toned search and selection field.",
+      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"名稱、套件或特徵\" aria-label=\"搜尋字型\">",
+      "css": ".ds-input { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; font: 400 1rem/1.5 sans-serif; } .ds-input:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+    },
+    {
+      "name": "Theme Segments",
+      "kind": "custom",
+      "refersTo": "segment-selected",
+      "description": "A shared ruled group with a reversed selected state.",
+      "html": "<div class=\"ds-segments\" role=\"group\" aria-label=\"介面模式\"><button>亮色</button><button class=\"is-active\">暗色</button><button>系統</button></div>",
+      "css": ".ds-segments { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--rule, #9a9c94); } .ds-segments button { min-height: 38px; border: 0; border-right: 1px solid var(--rule, #9a9c94); border-radius: 0; background: transparent; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-segments button:last-child { border-right: 0; } .ds-segments .is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-segments button:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: -3px; }"
+    },
+    {
+      "name": "Coverage Status",
+      "kind": "chip",
+      "description": "Literal coverage evidence inside a one-pixel semantic rule.",
+      "html": "<span class=\"ds-status\">沒有缺字</span>",
+      "css": ".ds-status { display: inline-block; padding: .35rem .5rem; border: 1px solid currentColor; border-radius: 0; color: var(--success, #1e6650); font: 400 .75rem/1.4 sans-serif; }"
+    },
+    {
+      "name": "Embed Action",
+      "kind": "button",
+      "refersTo": "embed-action",
+      "description": "High-contrast copy action attached directly to embed markup.",
+      "html": "<button class=\"ds-embed-action\" type=\"button\">複製 embed</button>",
+      "css": ".ds-embed-action { min-width: 110px; min-height: 42px; border: 0; border-left: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--ink, #171816); color: var(--paper, #e7e3d8); font: 400 .8rem/1.4 sans-serif; } .ds-embed-action:hover { background: var(--accent, #c84125); color: var(--accent-ink, #fff8ef); } .ds-embed-action:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+    },
+    {
+      "name": "Font Specimen",
+      "kind": "card",
+      "description": "A full-width ruled specimen with attached package metadata.",
+      "html": "<article class=\"ds-specimen\"><header><h3>Taipei Sans TC</h3><code>@vp-tw/cjk-web-fonts-taipei-sans-tc@0.0.1</code></header><div class=\"ds-proof\">臺北下雨了</div></article>",
+      "css": ".ds-specimen { border-top: 1px solid var(--ink, #171816); border-bottom: 1px solid var(--ink, #171816); background: var(--paper, #e7e3d8); color: var(--ink, #171816); } .ds-specimen header { padding: 1rem 3vw; } .ds-specimen h3 { margin: 0; font: 500 1.35rem/1.3 sans-serif; } .ds-specimen code { color: var(--muted, #60655f); font: 400 .72rem/1.4 ui-monospace, monospace; } .ds-proof { min-height: 140px; padding: clamp(1rem, 3vw, 3rem); font-size: clamp(2rem, 6vw, 5rem); line-height: 1.35; overflow-wrap: anywhere; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Standards Manual",
+    "overview": "CJK Web Fonts feels like an international typographic standards manual opened on a press-room desk. The interface is calm, exact, and visibly maintained. Warm specification paper, registration ink, numbered controls, and hairline rules give each decision a traceable place without competing with the type specimens. The product is an operating surface, not a promotional page. Editable text and calibrated controls lead; package, coverage, license, source, and CDN facts remain attached to the specimen they describe. The visual system avoids decorative print effects that do not support a task.",
+    "keyCharacteristics": [
+      "Warm paper fields with high-contrast ink and sparse proof-red emphasis.",
+      "Square controls, continuous rules, and measured typographic spacing.",
+      "Large live specimens paired with compact technical metadata.",
+      "Explicit states and literal labels instead of ornamental marks.",
+      "Package and delivery relationships remain visibly traceable."
+    ],
+    "rules": [
+      {
+        "name": "The One Proof Ink Rule",
+        "body": "Proof Red is the only general accent. Do not introduce additional decorative accent colors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Status Is Evidence Rule",
+        "body": "Green and Missing Red communicate verified coverage states only; never use them as general decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Specimen Owns the Typeface Rule",
+        "body": "Interface typography stays neutral. Catalog fonts appear in live specimen regions, never in navigation or controls.",
+        "section": "typography"
+      },
+      {
+        "name": "The Data Stays Compact Rule",
+        "body": "Technical metadata may be small, but must retain readable contrast, explicit units, and complete package identifiers.",
+        "section": "typography"
+      },
+      {
+        "name": "The Task Before the Catalog Rule",
+        "body": "On every viewport, visitors encounter editable proof text and essential controls before the result list.",
+        "section": "layout"
+      },
+      {
+        "name": "The Printed Plane Rule",
+        "body": "Do not use drop shadows, glass effects, bevels, or simulated paper texture. A region earns separation through structure and tone.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Instrument Rule",
+        "body": "Keep operational fields and containers square. Circular geometry is reserved for the swap control or a semantically circular mark.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep the user's text, controls, coverage result, package version, and embed code in one traceable workflow.",
+      "Do use one-pixel rules and paper-tone shifts to establish hierarchy.",
+      "Do preserve visible focus, explicit status labels, and WCAG 2.2 AA contrast.",
+      "Do model new weights and variants as data attached to the same specimen structure.",
+      "Do write interface copy as short task labels or verifiable facts."
+    ],
+    "donts": [
+      "Don't turn specimens into rounded cards, tiles, or a generic dashboard grid.",
+      "Don't add shadows, gradients, fake ink, grain, crop marks, or registration decoration without an operational purpose.",
+      "Don't use catalog typefaces for interface chrome.",
+      "Don't detach license, source, version, or CDN information from the font it describes.",
+      "Don't fabricate availability, performance, popularity, or legal claims."
+    ]
+  }
+}

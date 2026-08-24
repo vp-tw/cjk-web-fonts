@@ -10,25 +10,181 @@
       "id": "jigmo",
       "label": "Jigmo",
       "buildScript": "scripts/build-jigmo.sh",
-      "auditScript": "scripts/audit_jigmo.py"
+      "auditScript": "scripts/audit_jigmo.py",
+      "site": {
+        "description": "Unicode 17.0 and Ideographic Variation Database coverage for rare and historic CJK forms.",
+        "license": "CC0 1.0",
+        "sourceUrl": "https://kamichikoichi.github.io/jigmo/",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/index.css",
+            "coverageCss": [
+              "dist/Jigmo/Jigmo.css",
+              "dist/Jigmo2/Jigmo.css",
+              "dist/Jigmo3/Jigmo.css"
+            ],
+            "families": ["Jigmo"],
+            "weight": 400
+          }
+        ]
+      }
     },
     {
       "id": "hanamin",
       "label": "Hanamin",
       "buildScript": "scripts/build-hanamin.sh",
-      "auditScript": "scripts/audit_hanamin.py"
+      "auditScript": "scripts/audit_hanamin.py",
+      "site": {
+        "description": "The Hanazono Mincho family for broad CJK unified ideograph and variation-sequence coverage.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://glyphwiki.org/hanazono/",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/index.css",
+            "coverageCss": ["dist/HanaMinA/HanaMin.css", "dist/HanaMinB/HanaMin.css"],
+            "families": ["HanaMin"],
+            "weight": 400
+          }
+        ]
+      }
     },
     {
       "id": "taipei-sans-tc",
       "label": "Taipei Sans TC",
       "buildScript": "scripts/build-taipei-sans-tc.sh",
-      "auditScript": "scripts/audit_taipei_sans_tc.py"
+      "auditScript": "scripts/audit_taipei_sans_tc.py",
+      "site": {
+        "description": "A contemporary Traditional Chinese sans serif in light, regular, and bold weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://sites.google.com/view/jtfoundry/zh-tw/downloads",
+        "variants": [
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Taipei-Sans-TC.css",
+            "coverageCss": ["dist/Light/Taipei-Sans-TC.css"],
+            "families": ["Taipei Sans TC"],
+            "weight": 300
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Taipei-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Taipei-Sans-TC.css"],
+            "families": ["Taipei Sans TC"],
+            "weight": 400
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Taipei-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Taipei-Sans-TC.css"],
+            "families": ["Taipei Sans TC"],
+            "weight": 700
+          }
+        ]
+      }
     },
     {
       "id": "fusion-pixel-font",
       "label": "Fusion Pixel Font",
       "buildScript": "scripts/build-fusion-pixel-font.sh",
-      "auditScript": "scripts/audit_fusion_pixel_font.py"
+      "auditScript": "scripts/audit_fusion_pixel_font.py",
+      "site": {
+        "description": "Pan-CJK pixel fonts in three pixel sizes, proportional and monospaced spacing, and five language forms.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/TakWolf/fusion-pixel-font",
+        "variants": [
+          {
+            "id": "8px-monospaced",
+            "label": "8px Monospaced",
+            "css": "dist/8px/monospaced/index.css",
+            "coverageGlob": "dist/8px/monospaced/*/*.css",
+            "families": [
+              "Fusion Pixel 8px Monospaced Traditional Chinese",
+              "Fusion Pixel 8px Monospaced Simplified Chinese",
+              "Fusion Pixel 8px Monospaced Japanese",
+              "Fusion Pixel 8px Monospaced Korean",
+              "Fusion Pixel 8px Monospaced Latin"
+            ],
+            "weight": 400
+          },
+          {
+            "id": "8px-proportional",
+            "label": "8px Proportional",
+            "css": "dist/8px/proportional/index.css",
+            "coverageGlob": "dist/8px/proportional/*/*.css",
+            "families": [
+              "Fusion Pixel 8px Proportional Traditional Chinese",
+              "Fusion Pixel 8px Proportional Simplified Chinese",
+              "Fusion Pixel 8px Proportional Japanese",
+              "Fusion Pixel 8px Proportional Korean",
+              "Fusion Pixel 8px Proportional Latin"
+            ],
+            "weight": 400
+          },
+          {
+            "id": "10px-monospaced",
+            "label": "10px Monospaced",
+            "css": "dist/10px/monospaced/index.css",
+            "coverageGlob": "dist/10px/monospaced/*/*.css",
+            "families": [
+              "Fusion Pixel 10px Monospaced Traditional Chinese",
+              "Fusion Pixel 10px Monospaced Simplified Chinese",
+              "Fusion Pixel 10px Monospaced Japanese",
+              "Fusion Pixel 10px Monospaced Korean",
+              "Fusion Pixel 10px Monospaced Latin"
+            ],
+            "weight": 400
+          },
+          {
+            "id": "10px-proportional",
+            "label": "10px Proportional",
+            "css": "dist/10px/proportional/index.css",
+            "coverageGlob": "dist/10px/proportional/*/*.css",
+            "families": [
+              "Fusion Pixel 10px Proportional Traditional Chinese",
+              "Fusion Pixel 10px Proportional Simplified Chinese",
+              "Fusion Pixel 10px Proportional Japanese",
+              "Fusion Pixel 10px Proportional Korean",
+              "Fusion Pixel 10px Proportional Latin"
+            ],
+            "weight": 400
+          },
+          {
+            "id": "12px-monospaced",
+            "label": "12px Monospaced",
+            "css": "dist/12px/monospaced/index.css",
+            "coverageGlob": "dist/12px/monospaced/*/*.css",
+            "families": [
+              "Fusion Pixel 12px Monospaced Traditional Chinese",
+              "Fusion Pixel 12px Monospaced Simplified Chinese",
+              "Fusion Pixel 12px Monospaced Japanese",
+              "Fusion Pixel 12px Monospaced Korean",
+              "Fusion Pixel 12px Monospaced Latin"
+            ],
+            "weight": 400
+          },
+          {
+            "id": "12px-proportional",
+            "label": "12px Proportional",
+            "css": "dist/12px/proportional/index.css",
+            "coverageGlob": "dist/12px/proportional/*/*.css",
+            "families": [
+              "Fusion Pixel 12px Proportional Traditional Chinese",
+              "Fusion Pixel 12px Proportional Simplified Chinese",
+              "Fusion Pixel 12px Proportional Japanese",
+              "Fusion Pixel 12px Proportional Korean",
+              "Fusion Pixel 12px Proportional Latin"
+            ],
+            "weight": 400
+          }
+        ]
+      }
     }
   ]
 }

@@ -7,20 +7,33 @@
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
-    "check": "pnpm validate:workspace && pnpm test:workspace-tools && pnpm lint && pnpm format",
+    "check": "pnpm validate:workspace && pnpm site:data:check && pnpm test && pnpm lint && pnpm format && pnpm site:check",
     "changeset": "changeset",
-    "format": "oxfmt --check .changeset .github AGENTS.md fonts.json package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
-    "format:write": "oxfmt .changeset .github AGENTS.md fonts.json package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
+    "format": "oxfmt --check .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
+    "format:write": "oxfmt .changeset .github .impeccable/*.json AGENTS.md DESIGN.md PRODUCT.md astro.config.mjs fonts.json package.json pnpm-workspace.yaml site scripts/*.mjs tsconfig.json packages/*/package.json packages/*/README.md README.md",
     "lint": "oxlint --no-error-on-unmatched-pattern .",
     "release:publish": "changeset publish",
+    "site:build": "pnpm site:data:check && astro build",
+    "site:check": "astro check",
+    "site:data": "node scripts/generate_site_data.mjs",
+    "site:data:check": "node scripts/generate_site_data.mjs --check",
+    "site:dev": "pnpm site:data && astro dev",
+    "site:preview": "astro preview",
+    "test": "pnpm test:workspace-tools && vitest run",
     "test:workspace-tools": "python3 scripts/test_ci_selection.py",
     "validate:workspace": "python3 scripts/validate_workspace.py"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/svelte": "9.0.1",
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.1",
+    "astro": "7.2.4",
     "oxfmt": "^0.64.0",
-    "oxlint": "^1.79.0"
+    "oxlint": "^1.79.0",
+    "svelte": "5.56.10",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
   },
   "engines": {
     "node": ">=26.7.0"
