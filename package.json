@@ -7,12 +7,14 @@
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
-    "check": "pnpm lint && pnpm format",
+    "check": "pnpm validate:workspace && pnpm test:workspace-tools && pnpm lint && pnpm format",
     "changeset": "changeset",
-    "format": "oxfmt --check .changeset .github package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
-    "format:write": "oxfmt .changeset .github package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
+    "format": "oxfmt --check .changeset .github AGENTS.md fonts.json package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
+    "format:write": "oxfmt .changeset .github AGENTS.md fonts.json package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
     "lint": "oxlint --no-error-on-unmatched-pattern .",
-    "release:publish": "pnpm build && changeset publish"
+    "release:publish": "changeset publish",
+    "test:workspace-tools": "python3 scripts/test_ci_selection.py",
+    "validate:workspace": "python3 scripts/validate_workspace.py"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.0",

@@ -60,9 +60,27 @@ The build uses the versioned `vdustr/font-splitter:0.2.2` image. The audit fails
 if ordinary cmap codepoints, format 14 variation sequences, CSS coverage, file
 count, or conservative CDN size limits do not match the source fonts.
 
+`fonts.json` is the package registry used by CI and workspace validation. Run
+the same checks locally with:
+
+```sh
+pnpm validate:workspace
+pnpm test:workspace-tools
+pnpm check
+```
+
+Pull requests rebuild only fonts affected by source manifests, generated files,
+or their build and audit scripts. Changes to shared build inputs rebuild every
+font. The `Full font rebuild` workflow provides a manual uncached audit of the
+entire repository.
+
 ## Release policy
 
 Changesets versions and publishes each font package independently. Do not use an
 unpinned jsDelivr URL in production. A release must pass CI and a jsDelivr smoke
 test for the exact npm version before existing font repositories redirect users
 here.
+
+Generated `dist` files are committed and verified in pull requests. Releases
+publish those reviewed files directly; the release workflow must not rebuild
+fonts.
