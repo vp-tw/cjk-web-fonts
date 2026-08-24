@@ -6,21 +6,12 @@ jsDelivr's GitHub endpoint.
 
 ## Fonts
 
-| Font                                                | Version    | License | Package                               |
-| --------------------------------------------------- | ---------- | ------- | ------------------------------------- |
-| [Jigmo](packages/jigmo/README.md)                   | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`          |
-| [Hanamin](packages/hanamin/README.md)               | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`        |
-| [Taipei Sans TC](packages/taipei-sans-tc/README.md) | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc` |
-
-## Planned fonts
-
-The next packages are planned in this order:
-
-1. `@vp-tw/cjk-web-fonts-fusion-pixel-font`
-
-Fusion Pixel Font needs a package-shape review before implementation because
-upstream publishes 8px, 10px, and 12px fonts in monospaced and proportional
-variants. Its font software is OFL-1.1; upstream build tooling is MIT licensed.
+| Font                                                      | Version    | License | Package                                  |
+| --------------------------------------------------------- | ---------- | ------- | ---------------------------------------- |
+| [Jigmo](packages/jigmo/README.md)                         | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`             |
+| [Hanamin](packages/hanamin/README.md)                     | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`           |
+| [Taipei Sans TC](packages/taipei-sans-tc/README.md)       | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc`    |
+| [Fusion Pixel Font](packages/fusion-pixel-font/README.md) | 2026.08.11 | OFL-1.1 | `@vp-tw/cjk-web-fonts-fusion-pixel-font` |
 
 The workspace may later add a GitHub Pages live preview and font search site.
 That site is intentionally outside the initial package release.
@@ -58,9 +49,11 @@ Requirements:
 ./scripts/build-jigmo.sh
 ./scripts/build-hanamin.sh
 ./scripts/build-taipei-sans-tc.sh
+./scripts/build-fusion-pixel-font.sh
 python3 scripts/audit_jigmo.py
 python3 scripts/audit_hanamin.py
 python3 scripts/audit_taipei_sans_tc.py
+python3 scripts/audit_fusion_pixel_font.py
 ```
 
 The build uses the versioned `vdustr/font-splitter:0.2.2` image. The audit fails
