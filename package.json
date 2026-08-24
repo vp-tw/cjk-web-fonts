@@ -2,9 +2,10 @@
   "name": "cjk-web-fonts-workspace",
   "private": true,
   "scripts": {
-    "build": "pnpm build:jigmo && pnpm build:hanamin",
+    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc",
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
+    "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
     "check": "pnpm lint && pnpm format",
     "changeset": "changeset",
     "format": "oxfmt --check .changeset .github package.json pnpm-workspace.yaml packages/*/package.json packages/*/README.md README.md",
