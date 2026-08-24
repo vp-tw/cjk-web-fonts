@@ -160,8 +160,13 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 
 ### Navigation
 
-- **Style:** A ruled header with the approved CJK brand mark, compact wordmark, edition label, and literal text links. Render the raster mark at 40px inside a 44px Specification Paper field so its registration-ink details remain visible in every color mode. Resize or convert the approved asset only; do not redraw, recolor, or add effects.
+- **Style:** A ruled header with the approved CJK brand mark, compact wordmark, official tagline, and literal text links. Render the raster mark at 40px inside a 44px Specification Paper field so its registration-ink details remain visible in every color mode. Resize or convert the approved asset only; do not redraw, recolor, or add effects.
 - **State:** Links use the global underline and keyboard-focus treatment. On narrow screens, the task link remains visible while the external repository link may be hidden.
+
+### Social Preview
+
+- **Style:** The approved Open Graph raster uses a warm Specification Paper field, oversized neutral sans typography, one Proof Red rule, the CJK brand mark, and compact repository metadata. It carries the official tagline verbatim.
+- **Asset:** Keep the generated source alongside the 1200×630 delivery image. The delivery image may be resized only; do not redraw, recolor, sharpen, or add effects.
 
 ### Inputs / Fields
 

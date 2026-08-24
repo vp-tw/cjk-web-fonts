@@ -1,6 +1,7 @@
 {
   "name": "cjk-web-fonts-workspace",
   "private": true,
+  "description": "CJK web fonts, ready to use.",
   "scripts": {
     "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font && pnpm build:glow-sans-tc-compressed && pnpm build:glow-sans-tc-condensed && pnpm build:glow-sans-tc-normal && pnpm build:glow-sans-tc-extended && pnpm build:glow-sans-tc-wide",
     "build:fusion-pixel-font": "./scripts/build-fusion-pixel-font.sh",
