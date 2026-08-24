@@ -84,3 +84,19 @@ here.
 Generated `dist` files are committed and verified in pull requests. Releases
 publish those reviewed files directly; the release workflow must not rebuild
 fonts.
+
+## Catalog website
+
+The Astro and Svelte GitHub Pages site provides searchable live specimens,
+long-text Unicode coverage filtering, variant controls, preview colors and
+sizes, light/dark/system appearance, and exact-version embed code for jsDelivr,
+UNPKG, and Statically.
+
+```sh
+pnpm site:data
+pnpm site:dev
+pnpm site:build
+```
+
+Catalog metadata lives in `fonts.json`. `site/generated/fonts.json` is generated
+from package metadata and published CSS coverage; do not edit it directly.

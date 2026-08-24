@@ -78,6 +78,39 @@ def main() -> None:
         if root_scripts.get(f"build:{font_id}") != build_command:
             fail(f"package.json build:{font_id} must be {build_command}")
 
+        site = font.get("site")
+        if not isinstance(site, dict):
+            fail(f"{font_id}.site must contain catalog metadata")
+        for field in ("description", "license", "sourceUrl"):
+            if not isinstance(site.get(field), str) or not site[field]:
+                fail(f"{font_id}.site.{field} must be a non-empty string")
+        variants = site.get("variants")
+        if not isinstance(variants, list) or not variants:
+            fail(f"{font_id}.site.variants must be a non-empty array")
+        variant_ids: set[str] = set()
+        for variant in variants:
+            variant_id = variant.get("id")
+            if not isinstance(variant_id, str) or not variant_id:
+                fail(f"{font_id} has a variant without an id")
+            if variant_id in variant_ids:
+                fail(f"{font_id} has duplicate variant id {variant_id}")
+            variant_ids.add(variant_id)
+            css_path = variant.get("css")
+            if not isinstance(css_path, str) or not (package_dir / css_path).is_file():
+                fail(f"{font_id}.{variant_id} CSS does not exist: {css_path!r}")
+            coverage_css = variant.get("coverageCss")
+            coverage_glob = variant.get("coverageGlob")
+            if bool(coverage_css) == bool(coverage_glob):
+                fail(
+                    f"{font_id}.{variant_id} needs exactly one coverageCss or coverageGlob"
+                )
+            if coverage_css and any(
+                not (package_dir / path).is_file() for path in coverage_css
+            ):
+                fail(f"{font_id}.{variant_id} coverageCss contains a missing file")
+            if coverage_glob and not list(package_dir.glob(coverage_glob)):
+                fail(f"{font_id}.{variant_id} coverageGlob matches no files")
+
     actual_package_dirs = {
         path.parent.name for path in (ROOT / "packages").glob("*/package.json")
     }
@@ -96,13 +129,18 @@ def main() -> None:
     root_check = root_scripts.get("check", "")
     for required_command in (
         "pnpm validate:workspace",
-        "pnpm test:workspace-tools",
+        "pnpm test",
+        "pnpm site:data:check",
+        "pnpm site:check",
     ):
         if required_command not in root_check:
             fail(f"package.json check must run {required_command}")
 
     if not (ROOT / "AGENTS.md").is_file():
         fail("AGENTS.md must document workspace invariants for coding agents")
+    for design_file in ("PRODUCT.md", "DESIGN.md", ".impeccable/design.json"):
+        if not (ROOT / design_file).is_file():
+            fail(f"{design_file} must preserve the catalog design contract")
 
     release_workflow = (ROOT / ".github/workflows/release.yml").read_text(
         encoding="utf-8"
