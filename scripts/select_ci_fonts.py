@@ -35,7 +35,12 @@ def select_fonts(
         font_id = font["id"]
         package_source = f"packages/{font_id}/source.json"
         package_dist_prefix = f"packages/{font_id}/dist/"
-        inputs = {font["buildScript"], font["auditScript"], package_source}
+        inputs = {
+            font["buildScript"],
+            font["auditScript"],
+            package_source,
+            *font.get("buildInputs", []),
+        }
         affected = (
             build_all
             or bool(paths & inputs)

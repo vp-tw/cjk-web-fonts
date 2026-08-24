@@ -272,6 +272,7 @@
             style:--preview-size={`${fontSize}px`}
             style:font-weight={variant.weight}
             style:font-style={variant.style}
+            style:font-stretch={variant.stretch}
             style:color={foreground}
             style:background={background}
           >

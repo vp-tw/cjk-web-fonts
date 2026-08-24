@@ -6,15 +6,17 @@ jsDelivr's GitHub endpoint.
 
 ## Fonts
 
-| Font                                                      | Version    | License | Package                                  |
-| --------------------------------------------------------- | ---------- | ------- | ---------------------------------------- |
-| [Jigmo](packages/jigmo/README.md)                         | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`             |
-| [Hanamin](packages/hanamin/README.md)                     | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`           |
-| [Taipei Sans TC](packages/taipei-sans-tc/README.md)       | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc`    |
-| [Fusion Pixel Font](packages/fusion-pixel-font/README.md) | 2026.08.11 | OFL-1.1 | `@vp-tw/cjk-web-fonts-fusion-pixel-font` |
-
-The workspace may later add a GitHub Pages live preview and font search site.
-That site is intentionally outside the initial package release.
+| Font                                                                        | Version    | License | Package                                        |
+| --------------------------------------------------------------------------- | ---------- | ------- | ---------------------------------------------- |
+| [Jigmo](packages/jigmo/README.md)                                           | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`                   |
+| [Hanamin](packages/hanamin/README.md)                                       | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`                 |
+| [Taipei Sans TC](packages/taipei-sans-tc/README.md)                         | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc`          |
+| [Fusion Pixel Font](packages/fusion-pixel-font/README.md)                   | 2026.08.11 | OFL-1.1 | `@vp-tw/cjk-web-fonts-fusion-pixel-font`       |
+| [Wêlai Glow Sans TC Compressed](packages/glow-sans-tc-compressed/README.md) | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-compressed` |
+| [Wêlai Glow Sans TC Condensed](packages/glow-sans-tc-condensed/README.md)   | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-condensed`  |
+| [Wêlai Glow Sans TC Normal](packages/glow-sans-tc-normal/README.md)         | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-normal`     |
+| [Wêlai Glow Sans TC Extended](packages/glow-sans-tc-extended/README.md)     | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-extended`   |
+| [Wêlai Glow Sans TC Wide](packages/glow-sans-tc-wide/README.md)             | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-wide`       |
 
 ## Usage
 
@@ -50,11 +52,17 @@ Requirements:
 ./scripts/build-hanamin.sh
 ./scripts/build-taipei-sans-tc.sh
 ./scripts/build-fusion-pixel-font.sh
+./scripts/build-glow-sans-tc-normal.sh
 python3 scripts/audit_jigmo.py
 python3 scripts/audit_hanamin.py
 python3 scripts/audit_taipei_sans_tc.py
 python3 scripts/audit_fusion_pixel_font.py
 ```
+
+Glow Sans builds four weights concurrently. Set `FONT_BUILD_CONCURRENCY` to a
+positive integer to match the available CPU and memory when needed.
+For a concurrent rebuild of all five width packages on an 8-core workstation,
+use `FONT_BUILD_CONCURRENCY=2`.
 
 The build uses the versioned `vdustr/font-splitter:0.2.2` image. The audit fails
 if ordinary cmap codepoints, format 14 variation sequences, CSS coverage, file
@@ -70,9 +78,13 @@ pnpm check
 ```
 
 Pull requests rebuild only fonts affected by source manifests, generated files,
-or their build and audit scripts. Changes to shared build inputs rebuild every
-font. The `Full font rebuild` workflow provides a manual uncached audit of the
-entire repository.
+or their build and audit scripts. A font entry can declare `buildInputs` for a
+helper shared by related packages; changing that helper selects only those
+packages. Changes to `commonBuildInputs` rebuild every font. The
+registry file itself contains catalog and orchestration metadata, so changing
+`fonts.json` alone does not rebuild generated font artifacts. The
+`Full font rebuild` workflow provides a manual uncached audit of the entire
+repository.
 
 ## Release policy
 

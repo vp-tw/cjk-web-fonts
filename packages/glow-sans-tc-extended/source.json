@@ -1,0 +1,26 @@
+{
+  "name": "Wêlai Glow Sans TC Extended",
+  "version": "0.93",
+  "commit": "715f35148a9e023568839b9740908fe1feccbd19",
+  "license": "OFL-1.1",
+  "archives": [
+    {
+      "archive": "GlowSansTC-Extended-v0.93.zip",
+      "directory": "Extended",
+      "url": "https://github.com/welai/glow-sans/releases/download/v0.93/GlowSansTC-Extended-v0.93.zip",
+      "bytes": 67141950,
+      "sha256": "a1e4745dc320c948875aa38f435886b0c54ab24a4410d3fdba719a854e9b491f",
+      "files": [
+        "GlowSansTC-Extended-Bold.otf",
+        "GlowSansTC-Extended-Book.otf",
+        "GlowSansTC-Extended-ExtraBold.otf",
+        "GlowSansTC-Extended-ExtraLight.otf",
+        "GlowSansTC-Extended-Heavy.otf",
+        "GlowSansTC-Extended-Light.otf",
+        "GlowSansTC-Extended-Medium.otf",
+        "GlowSansTC-Extended-Regular.otf",
+        "GlowSansTC-Extended-Thin.otf"
+      ]
+    }
+  ]
+}

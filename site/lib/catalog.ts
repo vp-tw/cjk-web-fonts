@@ -15,6 +15,7 @@ export interface FontVariant {
   families: string[];
   weight: number;
   style: string;
+  stretch: string;
   cssPath: string;
   urls: Record<string, string>;
   coverage: Range[];
