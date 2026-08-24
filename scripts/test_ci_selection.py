@@ -21,6 +21,10 @@ class SelectionTest(unittest.TestCase):
     def test_common_input_selects_every_font(self) -> None:
         self.assertEqual(selected_ids({"scripts/fetch_source.py"}), ALL_FONT_IDS)
 
+    def test_size_policy_does_not_trigger_expensive_rebuilds(self) -> None:
+        self.assertEqual(selected_ids({"package-size-policy.json"}), [])
+        self.assertEqual(selected_ids({"scripts/audit_package_sizes.py"}), [])
+
     def test_source_manifest_selects_one_font(self) -> None:
         self.assertEqual(
             selected_ids({"packages/hanamin/source.json"}),

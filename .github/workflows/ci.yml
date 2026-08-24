@@ -27,6 +27,20 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
 
+  package-delivery:
+    name: Package delivery limits
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26.7.0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Audit every publishable package
+        run: python3 scripts/audit_package_sizes.py
+
   changes:
     name: Select affected fonts
     runs-on: ubuntu-latest
@@ -46,7 +60,7 @@ jobs:
 
   build:
     name: Build ${{ matrix.font.label }}
-    needs: [quality, changes]
+    needs: [quality, package-delivery, changes]
     if: needs.changes.outputs.count != '0'
     strategy:
       fail-fast: false
@@ -64,6 +78,8 @@ jobs:
         run: "$BUILD_COMMAND"
       - name: Check generated files
         run: git diff --exit-code
+      - name: Audit package delivery size
+        run: python3 scripts/audit_package_sizes.py "${{ matrix.font.id }}"
       - name: Preserve Hanamin drift for diagnosis
         if: failure() && matrix.font.id == 'hanamin'
         uses: actions/upload-artifact@v7

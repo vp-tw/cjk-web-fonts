@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "budgets": {
+    "maxTarballBytes": 140000000,
+    "maxUnpackedBytes": 140000000,
+    "maxFileBytes": 20000000
+  },
+  "providers": [
+    {
+      "id": "jsdelivr-npm",
+      "label": "jsDelivr npm CDN",
+      "maxPackageBytes": 150000000,
+      "maxFileBytes": null,
+      "source": "https://github.com/jsdelivr/jsdelivr#restrictions",
+      "checkedOn": "2026-08-24",
+      "notes": "The public restriction is 150 MB per package. Its documented 20 MB single-file limit is explicitly scoped to the GitHub endpoint, so it is not treated as an npm endpoint limit."
+    },
+    {
+      "id": "unpkg",
+      "label": "UNPKG",
+      "maxPackageBytes": null,
+      "maxFileBytes": null,
+      "source": "https://github.com/unpkg/unpkg",
+      "checkedOn": "2026-08-24",
+      "notes": "No numeric package or file limit is published in the official usage documentation."
+    },
+    {
+      "id": "statically-npm",
+      "label": "Statically npm CDN",
+      "maxPackageBytes": null,
+      "maxFileBytes": null,
+      "source": "https://statically.io/docs/using-static-cdn/npm/",
+      "checkedOn": "2026-08-24",
+      "notes": "No numeric package or file limit is published in the official npm CDN documentation."
+    }
+  ]
+}

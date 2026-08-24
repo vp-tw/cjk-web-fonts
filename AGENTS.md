@@ -20,6 +20,27 @@ Run `pnpm validate:workspace` after changing this structure. The validator
 rejects unregistered packages, missing scripts, incomplete README entries, root
 build drift, and release commands that rebuild fonts.
 
+## Package delivery limits
+
+`package-size-policy.json` is the source of truth for CDN evidence and repository
+budgets. `pnpm audit:packages` measures the actual npm tarball, unpacked package,
+and largest published file through `npm pack --dry-run --json`. Do not estimate
+package size from `dist` or WOFF2 totals.
+
+Every CI run audits all publishable packages, including package metadata-only
+changes, without rebuilding fonts. CI also audits each affected package after
+rebuilding it. The release workflow audits all packages before Changesets can
+publish. Do not add the policy or generic audit to `commonBuildInputs`: a size
+rule change must run the fast package audit without triggering every expensive
+font build. Do not add a package-specific size constant or bypass. A provider
+without a published numeric limit remains `null`; do not turn an assumption
+into a limit.
+
+When any budget fails, split the family by a stable user-facing delivery
+dimension before publishing. A policy exception requires explicit maintainer
+approval, a reason, and an expiry date; the current schema intentionally has no
+exception mechanism.
+
 ## Build and release boundary
 
 Generated `dist` files are committed. A feature PR must rebuild every affected
@@ -43,7 +64,7 @@ needed.
 3. Add the matching root `build:<id>` command and append it to root `build`.
 4. Add the package to the root README and create a Changeset.
 5. Run `pnpm validate:workspace`, `pnpm check`, and the font build twice.
-6. Confirm the second build produces no Git diff.
+6. Run `pnpm audit:packages -- <id>` and confirm the second build produces no Git diff.
 
 Repository-authored files use MIT. Font software and generated subsets retain
 their upstream licenses. Packages contain no JavaScript runtime.
