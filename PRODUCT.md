@@ -54,9 +54,10 @@ copy CSS for a web project.
 
 ## Brand Commitments
 
-The product name is CJK Web Fonts. The site must communicate professional,
-dependable stewardship. Its design may draw from high-craft printing and type
-industries, while keeping the fonts themselves central.
+The product name is CJK Web Fonts. Its tagline is “CJK web fonts, ready to
+use.” The site must communicate professional, dependable stewardship. Its
+design may draw from high-craft printing and type industries, while keeping the
+fonts themselves central.
 
 The official mark combines the glyphs `字`, `あ`, and `한` in registration ink
 and proof red. Use the approved raster asset without redrawing or recoloring it.

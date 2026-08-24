@@ -282,6 +282,11 @@
         "name": "The Approved Brand Mark Rule",
         "body": "Use the approved raster mark made from 字, あ, and 한 without redrawing, recoloring, or adding effects. Render it at 40px inside a 44px Specification Paper field when the surrounding surface could hide its registration-ink details.",
         "section": "components"
+      },
+      {
+        "name": "The Social Preview Rule",
+        "body": "Use the approved Open Graph raster with the official tagline verbatim. Keep its generated source alongside the 1200 by 630 delivery image, and resize only without redrawing, recoloring, sharpening, or adding effects.",
+        "section": "components"
       }
     ],
     "dos": [

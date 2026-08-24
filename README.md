@@ -1,7 +1,9 @@
 # CJK Web Fonts
 
-Versioned CJK webfont subsets built with
-[font-splitter](https://github.com/VdustR/font-splitter) and served through
+CJK web fonts, ready to use.
+
+This monorepo builds versioned CJK web font subsets with
+[font-splitter](https://github.com/VdustR/font-splitter) and serves them through
 jsDelivr's GitHub endpoint.
 
 ## Fonts
