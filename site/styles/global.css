@@ -116,10 +116,32 @@ input[type="radio"] {
 
 .wordmark {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.8rem;
   font-weight: 700;
   text-decoration: none;
+}
+
+.brand-mark-frame {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  background: #e7e3d8;
+}
+
+.brand-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.wordmark-copy {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
 }
 
 .wordmark small {
@@ -151,6 +173,10 @@ input[type="radio"] {
   }
 
   .site-header nav a:last-child {
+    display: none;
+  }
+
+  .wordmark-copy small {
     display: none;
   }
 
