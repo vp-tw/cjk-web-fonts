@@ -28,10 +28,10 @@
       "id": "statically-npm",
       "label": "Statically npm CDN",
       "maxPackageBytes": null,
-      "maxFileBytes": null,
-      "source": "https://statically.io/docs/using-static-cdn/npm/",
+      "maxFileBytes": 25000000,
+      "source": "https://github.com/staticallyio/statically#limitations",
       "checkedOn": "2026-08-24",
-      "notes": "No numeric package or file limit is published in the official npm CDN documentation."
+      "notes": "The public limitation is 25 MB per file across the CDN. No numeric package limit is published."
     }
   ]
 }

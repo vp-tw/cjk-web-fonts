@@ -38,10 +38,27 @@ class PackageSizeTest(unittest.TestCase):
                 "checkedOn": "2026-08-24",
                 "notes": "fixture",
                 "maxPackageBytes": 140,
-                "maxFileBytes": None,
+                "maxFileBytes": 25,
             }],
         }
         with self.assertRaisesRegex(ValueError, "leave headroom"):
+            validate_policy(policy)
+
+    def test_policy_requires_file_headroom(self) -> None:
+        policy = {
+            "schemaVersion": 1,
+            "budgets": self.budgets,
+            "providers": [{
+                "id": "cdn",
+                "label": "CDN",
+                "source": "https://example.com",
+                "checkedOn": "2026-08-24",
+                "notes": "fixture",
+                "maxPackageBytes": 150,
+                "maxFileBytes": 20,
+            }],
+        }
+        with self.assertRaisesRegex(ValueError, "file budget must leave headroom"):
             validate_policy(policy)
 
 
