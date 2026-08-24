@@ -81,12 +81,12 @@ pnpm check
 `pnpm audit:packages` inspects the exact files and sizes reported by
 `npm pack --dry-run --json`. The versioned policy in
 `package-size-policy.json` keeps the tarball below jsDelivr's documented default
-150 MB package limit with repository headroom, and also caps unpacked size and
-individual published files. Providers without official numeric limits remain
-listed as unknown rather than receiving assumed limits. Every CI run audits all
-package metadata and current artifacts without rebuilding fonts. Affected
-packages are audited again after their generated files are rebuilt, and the
-release workflow audits every package before publishing.
+150 MB package limit with repository headroom. Its 20 MB file budget also stays
+below Statically's documented 25 MB file limit. Providers without official
+numeric limits remain listed as unknown rather than receiving assumed limits.
+Every CI run audits all package metadata and current artifacts without rebuilding
+fonts. Affected packages are audited again after their generated files are
+rebuilt, and the release workflow audits every package before publishing.
 
 Pull requests rebuild only fonts affected by source manifests, generated files,
 or their build and audit scripts. A font entry can declare `buildInputs` for a

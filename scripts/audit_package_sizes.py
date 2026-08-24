@@ -89,6 +89,7 @@ def validate_policy(policy: dict[str, Any]) -> dict[str, int]:
     if not isinstance(providers, list) or not providers:
         raise ValueError("package size policy must list CDN providers")
     known_package_limits: list[int] = []
+    known_file_limits: list[int] = []
     seen_ids: set[str] = set()
     for provider in providers:
         if not isinstance(provider, dict):
@@ -114,11 +115,17 @@ def validate_policy(policy: dict[str, Any]) -> dict[str, int]:
                 raise ValueError(f"{provider_id}.{field} must be null or a positive integer")
         if provider.get("maxPackageBytes") is not None:
             known_package_limits.append(provider["maxPackageBytes"])
+        if provider.get("maxFileBytes") is not None:
+            known_file_limits.append(provider["maxFileBytes"])
 
     if not known_package_limits:
         raise ValueError("at least one provider must have a verified package limit")
     if budgets["maxTarballBytes"] >= min(known_package_limits):
         raise ValueError("tarball budget must leave headroom below the tightest provider limit")
+    if not known_file_limits:
+        raise ValueError("at least one provider must have a verified file limit")
+    if budgets["maxFileBytes"] >= min(known_file_limits):
+        raise ValueError("file budget must leave headroom below the tightest provider limit")
     return budgets
 
 
@@ -164,7 +171,7 @@ def main() -> None:
         )
         raise SystemExit(1)
 
-    limiting = min(
+    limiting_package_provider = min(
         (
             provider
             for provider in policy["providers"]
@@ -172,10 +179,22 @@ def main() -> None:
         ),
         key=lambda provider: provider["maxPackageBytes"],
     )
+    limiting_file_provider = min(
+        (
+            provider
+            for provider in policy["providers"]
+            if provider["maxFileBytes"]
+        ),
+        key=lambda provider: provider["maxFileBytes"],
+    )
     print(
         f"audited {len(selected)} package(s); repository tarball budget "
         f"{human_bytes(budgets['maxTarballBytes'])} is below "
-        f"{limiting['label']} limit {human_bytes(limiting['maxPackageBytes'])}"
+        f"{limiting_package_provider['label']} limit "
+        f"{human_bytes(limiting_package_provider['maxPackageBytes'])}; "
+        f"file budget {human_bytes(budgets['maxFileBytes'])} is below "
+        f"{limiting_file_provider['label']} limit "
+        f"{human_bytes(limiting_file_provider['maxFileBytes'])}"
     )
 
 
