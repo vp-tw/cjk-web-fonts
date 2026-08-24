@@ -58,6 +58,11 @@ The product name is CJK Web Fonts. The site must communicate professional,
 dependable stewardship. Its design may draw from high-craft printing and type
 industries, while keeping the fonts themselves central.
 
+The official mark combines the glyphs `字`, `あ`, and `한` in registration ink
+and proof red. Use the approved raster asset without redrawing or recoloring it.
+Place it on Specification Paper when the surrounding surface would hide its
+black details.
+
 ## Evidence on Hand
 
 - `fonts.json` is the package registry.

@@ -7,6 +7,8 @@ import "../styles/global.css";
 const description =
   "Search, test, and embed versioned CJK web fonts with exact Unicode coverage information.";
 const base = import.meta.env.BASE_URL;
+const assetBase = base.endsWith("/") ? base : `${base}/`;
+const brandAsset = (filename: string) => `${assetBase}brand/${filename}`;
 ---
 
 <!doctype html>
@@ -17,6 +19,10 @@ const base = import.meta.env.BASE_URL;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#e7e3d8" />
     <link rel="canonical" href={new URL(base, Astro.site)} />
+    <link rel="icon" href={`${assetBase}favicon.ico`} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={brandAsset("favicon-32.png")} />
+    <link rel="icon" type="image/png" sizes="16x16" href={brandAsset("favicon-16.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={brandAsset("apple-touch-icon.png")} />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@vp-tw/cjk-web-fonts-taipei-sans-tc@0.0.1/dist/Regular/Taipei-Sans-TC.css"
@@ -44,8 +50,13 @@ const base = import.meta.env.BASE_URL;
     -->
     <header class="site-header">
       <a class="wordmark" href={base}>
-        CJK Web Fonts
-        <small>VP–TW / OPEN TYPE</small>
+        <span class="brand-mark-frame" aria-hidden="true">
+          <img class="brand-mark" src={brandAsset("logo-64.png")} alt="" width="40" height="40" />
+        </span>
+        <span class="wordmark-copy">
+          CJK Web Fonts
+          <small>VP–TW / OPEN TYPE</small>
+        </span>
       </a>
       <nav aria-label="主要導覽">
         <a href="#proof-title">開始檢查</a>
