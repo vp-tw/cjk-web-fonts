@@ -1,10 +1,5 @@
 {
-  "commonBuildInputs": [
-    ".github/workflows/ci.yml",
-    "fonts.json",
-    "LICENSE",
-    "scripts/fetch_source.py"
-  ],
+  "commonBuildInputs": [".github/workflows/ci.yml", "LICENSE", "scripts/fetch_source.py"],
   "fonts": [
     {
       "id": "jigmo",
@@ -182,6 +177,472 @@
               "Fusion Pixel 12px Proportional Latin"
             ],
             "weight": 400
+          }
+        ]
+      }
+    },
+    {
+      "id": "glow-sans-tc-compressed",
+      "label": "Wêlai Glow Sans TC Compressed",
+      "buildScript": "scripts/build-glow-sans-tc-compressed.sh",
+      "auditScript": "scripts/audit_glow_sans_tc.py",
+      "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
+      "site": {
+        "description": "Wêlai Glow Sans Traditional Chinese in the compressed width and 8 weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/welai/glow-sans",
+        "variants": [
+          {
+            "id": "thin",
+            "label": "Thin",
+            "css": "dist/Thin/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Thin/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 100,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "extra-light",
+            "label": "Extra Light",
+            "css": "dist/ExtraLight/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraLight/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 200,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Light/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 300,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 400,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "book",
+            "label": "Book",
+            "css": "dist/Book/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Book/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 500,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Medium/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Medium/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 600,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 700,
+            "stretch": "extra-condensed"
+          },
+          {
+            "id": "extra-bold",
+            "label": "Extra Bold",
+            "css": "dist/ExtraBold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraBold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 800,
+            "stretch": "extra-condensed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glow-sans-tc-condensed",
+      "label": "Wêlai Glow Sans TC Condensed",
+      "buildScript": "scripts/build-glow-sans-tc-condensed.sh",
+      "auditScript": "scripts/audit_glow_sans_tc.py",
+      "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
+      "site": {
+        "description": "Wêlai Glow Sans Traditional Chinese in the condensed width and 9 weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/welai/glow-sans",
+        "variants": [
+          {
+            "id": "thin",
+            "label": "Thin",
+            "css": "dist/Thin/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Thin/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 100,
+            "stretch": "condensed"
+          },
+          {
+            "id": "extra-light",
+            "label": "Extra Light",
+            "css": "dist/ExtraLight/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraLight/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 200,
+            "stretch": "condensed"
+          },
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Light/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 300,
+            "stretch": "condensed"
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 400,
+            "stretch": "condensed"
+          },
+          {
+            "id": "book",
+            "label": "Book",
+            "css": "dist/Book/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Book/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 500,
+            "stretch": "condensed"
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Medium/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Medium/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 600,
+            "stretch": "condensed"
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 700,
+            "stretch": "condensed"
+          },
+          {
+            "id": "extra-bold",
+            "label": "Extra Bold",
+            "css": "dist/ExtraBold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraBold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 800,
+            "stretch": "condensed"
+          },
+          {
+            "id": "heavy",
+            "label": "Heavy",
+            "css": "dist/Heavy/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Heavy/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 900,
+            "stretch": "condensed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glow-sans-tc-normal",
+      "label": "Wêlai Glow Sans TC Normal",
+      "buildScript": "scripts/build-glow-sans-tc-normal.sh",
+      "auditScript": "scripts/audit_glow_sans_tc.py",
+      "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
+      "site": {
+        "description": "Wêlai Glow Sans Traditional Chinese in the normal width and 9 weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/welai/glow-sans",
+        "variants": [
+          {
+            "id": "thin",
+            "label": "Thin",
+            "css": "dist/Thin/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Thin/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 100,
+            "stretch": "normal"
+          },
+          {
+            "id": "extra-light",
+            "label": "Extra Light",
+            "css": "dist/ExtraLight/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraLight/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 200,
+            "stretch": "normal"
+          },
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Light/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 300,
+            "stretch": "normal"
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 400,
+            "stretch": "normal"
+          },
+          {
+            "id": "book",
+            "label": "Book",
+            "css": "dist/Book/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Book/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 500,
+            "stretch": "normal"
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Medium/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Medium/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 600,
+            "stretch": "normal"
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 700,
+            "stretch": "normal"
+          },
+          {
+            "id": "extra-bold",
+            "label": "Extra Bold",
+            "css": "dist/ExtraBold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraBold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 800,
+            "stretch": "normal"
+          },
+          {
+            "id": "heavy",
+            "label": "Heavy",
+            "css": "dist/Heavy/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Heavy/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 900,
+            "stretch": "normal"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glow-sans-tc-extended",
+      "label": "Wêlai Glow Sans TC Extended",
+      "buildScript": "scripts/build-glow-sans-tc-extended.sh",
+      "auditScript": "scripts/audit_glow_sans_tc.py",
+      "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
+      "site": {
+        "description": "Wêlai Glow Sans Traditional Chinese in the extended width and 9 weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/welai/glow-sans",
+        "variants": [
+          {
+            "id": "thin",
+            "label": "Thin",
+            "css": "dist/Thin/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Thin/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 100,
+            "stretch": "expanded"
+          },
+          {
+            "id": "extra-light",
+            "label": "Extra Light",
+            "css": "dist/ExtraLight/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraLight/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 200,
+            "stretch": "expanded"
+          },
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Light/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 300,
+            "stretch": "expanded"
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 400,
+            "stretch": "expanded"
+          },
+          {
+            "id": "book",
+            "label": "Book",
+            "css": "dist/Book/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Book/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 500,
+            "stretch": "expanded"
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Medium/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Medium/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 600,
+            "stretch": "expanded"
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 700,
+            "stretch": "expanded"
+          },
+          {
+            "id": "extra-bold",
+            "label": "Extra Bold",
+            "css": "dist/ExtraBold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraBold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 800,
+            "stretch": "expanded"
+          },
+          {
+            "id": "heavy",
+            "label": "Heavy",
+            "css": "dist/Heavy/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Heavy/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 900,
+            "stretch": "expanded"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glow-sans-tc-wide",
+      "label": "Wêlai Glow Sans TC Wide",
+      "buildScript": "scripts/build-glow-sans-tc-wide.sh",
+      "auditScript": "scripts/audit_glow_sans_tc.py",
+      "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
+      "site": {
+        "description": "Wêlai Glow Sans Traditional Chinese in the wide width and 9 weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/welai/glow-sans",
+        "variants": [
+          {
+            "id": "thin",
+            "label": "Thin",
+            "css": "dist/Thin/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Thin/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 100,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "extra-light",
+            "label": "Extra Light",
+            "css": "dist/ExtraLight/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraLight/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 200,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Light/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Light/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 300,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Regular/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 400,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "book",
+            "label": "Book",
+            "css": "dist/Book/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Book/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 500,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Medium/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Medium/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 600,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "bold",
+            "label": "Bold",
+            "css": "dist/Bold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Bold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 700,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "extra-bold",
+            "label": "Extra Bold",
+            "css": "dist/ExtraBold/Glow-Sans-TC.css",
+            "coverageCss": ["dist/ExtraBold/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 800,
+            "stretch": "extra-expanded"
+          },
+          {
+            "id": "heavy",
+            "label": "Heavy",
+            "css": "dist/Heavy/Glow-Sans-TC.css",
+            "coverageCss": ["dist/Heavy/Glow-Sans-TC.css"],
+            "families": ["Glow Sans TC"],
+            "weight": 900,
+            "stretch": "extra-expanded"
           }
         ]
       }

@@ -73,6 +73,13 @@ def main() -> None:
             if not os.access(script_path, os.X_OK):
                 fail(f"{relative_path} must be executable")
 
+        build_inputs = font.get("buildInputs", [])
+        if not isinstance(build_inputs, list):
+            fail(f"{font_id}.buildInputs must be an array")
+        for relative_path in build_inputs:
+            if not isinstance(relative_path, str) or not (ROOT / relative_path).is_file():
+                fail(f"{font_id}.buildInputs contains a missing file: {relative_path!r}")
+
         build_command = f"./{font['buildScript']}"
         expected_build_commands.append(f"pnpm build:{font_id}")
         if root_scripts.get(f"build:{font_id}") != build_command:
@@ -110,6 +117,9 @@ def main() -> None:
                 fail(f"{font_id}.{variant_id} coverageCss contains a missing file")
             if coverage_glob and not list(package_dir.glob(coverage_glob)):
                 fail(f"{font_id}.{variant_id} coverageGlob matches no files")
+            stretch = variant.get("stretch", "normal")
+            if not isinstance(stretch, str) or not stretch:
+                fail(f"{font_id}.{variant_id} stretch must be a non-empty string")
 
     actual_package_dirs = {
         path.parent.name for path in (ROOT / "packages").glob("*/package.json")
@@ -145,7 +155,15 @@ def main() -> None:
     release_workflow = (ROOT / ".github/workflows/release.yml").read_text(
         encoding="utf-8"
     )
-    forbidden_release_commands = ["pnpm build", *[font["buildScript"] for font in fonts]]
+    forbidden_release_commands = [
+        "pnpm build",
+        *[font["buildScript"] for font in fonts],
+        *[
+            path
+            for font in fonts
+            for path in font.get("buildInputs", [])
+        ],
+    ]
     for command in forbidden_release_commands:
         if command in release_workflow:
             fail(f"release workflow must not rebuild fonts: found {command}")

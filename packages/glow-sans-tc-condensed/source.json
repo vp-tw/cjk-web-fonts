@@ -1,0 +1,26 @@
+{
+  "name": "Wêlai Glow Sans TC Condensed",
+  "version": "0.93",
+  "commit": "715f35148a9e023568839b9740908fe1feccbd19",
+  "license": "OFL-1.1",
+  "archives": [
+    {
+      "archive": "GlowSansTC-Condensed-v0.93.zip",
+      "directory": "Condensed",
+      "url": "https://github.com/welai/glow-sans/releases/download/v0.93/GlowSansTC-Condensed-v0.93.zip",
+      "bytes": 65044324,
+      "sha256": "3ebe0b46abecd7a0f8d6232dd310205c38ab3d30ab624bdba18fae591bfd5d50",
+      "files": [
+        "GlowSansTC-Condensed-Bold.otf",
+        "GlowSansTC-Condensed-Book.otf",
+        "GlowSansTC-Condensed-ExtraBold.otf",
+        "GlowSansTC-Condensed-ExtraLight.otf",
+        "GlowSansTC-Condensed-Heavy.otf",
+        "GlowSansTC-Condensed-Light.otf",
+        "GlowSansTC-Condensed-Medium.otf",
+        "GlowSansTC-Condensed-Regular.otf",
+        "GlowSansTC-Condensed-Thin.otf"
+      ]
+    }
+  ]
+}

@@ -41,6 +41,16 @@ importers:
 
   packages/fusion-pixel-font: {}
 
+  packages/glow-sans-tc-compressed: {}
+
+  packages/glow-sans-tc-condensed: {}
+
+  packages/glow-sans-tc-extended: {}
+
+  packages/glow-sans-tc-normal: {}
+
+  packages/glow-sans-tc-wide: {}
+
   packages/hanamin: {}
 
   packages/jigmo: {}

@@ -12,6 +12,10 @@ Each font entry owns:
 - one audit script
 - the corresponding root `build:<id>` command
 
+Related packages may declare `buildInputs` for shared helpers. The CI selector
+must include those paths so a helper change rebuilds every dependent package
+without rebuilding unrelated fonts.
+
 Run `pnpm validate:workspace` after changing this structure. The validator
 rejects unregistered packages, missing scripts, incomplete README entries, root
 build drift, and release commands that rebuild fonts.
@@ -43,6 +47,18 @@ needed.
 
 Repository-authored files use MIT. Font software and generated subsets retain
 their upstream licenses. Packages contain no JavaScript runtime.
+
+Split a large static family by a stable delivery dimension such as width when a
+single npm package would approach the package audit budget. Keep every upstream
+variant represented in `fonts.json`, preserve CSS weight and stretch metadata,
+and set each unpublished package manifest to `0.0.0`. Add a patch changeset so
+the first published version is `0.0.1`.
+
+Multi-variant builds should use bounded parallelism. The Glow Sans helper builds
+four variants at a time by default; set `FONT_BUILD_CONCURRENCY` to a positive
+integer only when runner resources require a different limit. Use
+`FONT_BUILD_CONCURRENCY=2` when all five width packages are built concurrently
+on an 8-core workstation.
 
 ## Catalog website
 

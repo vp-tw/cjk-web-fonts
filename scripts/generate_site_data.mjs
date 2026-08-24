@@ -108,6 +108,7 @@ const fonts = registry.fonts.map((font) => {
         families: variant.families,
         weight: variant.weight,
         style: variant.style ?? "normal",
+        stretch: variant.stretch ?? "normal",
         cssPath: variant.css,
         urls,
         coverage,

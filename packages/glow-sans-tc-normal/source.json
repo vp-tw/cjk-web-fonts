@@ -1,0 +1,26 @@
+{
+  "name": "Wêlai Glow Sans TC Normal",
+  "version": "0.93",
+  "commit": "715f35148a9e023568839b9740908fe1feccbd19",
+  "license": "OFL-1.1",
+  "archives": [
+    {
+      "archive": "GlowSansTC-Normal-v0.93.zip",
+      "directory": "Normal",
+      "url": "https://github.com/welai/glow-sans/releases/download/v0.93/GlowSansTC-Normal-v0.93.zip",
+      "bytes": 66115439,
+      "sha256": "16e8a28001ab1b29887dbf636fb3623e413178c4b2fcb82604a66bb9d1806547",
+      "files": [
+        "GlowSansTC-Normal-Bold.otf",
+        "GlowSansTC-Normal-Book.otf",
+        "GlowSansTC-Normal-ExtraBold.otf",
+        "GlowSansTC-Normal-ExtraLight.otf",
+        "GlowSansTC-Normal-Heavy.otf",
+        "GlowSansTC-Normal-Light.otf",
+        "GlowSansTC-Normal-Medium.otf",
+        "GlowSansTC-Normal-Regular.otf",
+        "GlowSansTC-Normal-Thin.otf"
+      ]
+    }
+  ]
+}

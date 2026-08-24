@@ -39,6 +39,17 @@ class SelectionTest(unittest.TestCase):
             ["taipei-sans-tc"],
         )
 
+    def test_shared_glow_sans_build_input_selects_all_widths(self) -> None:
+        expected = [
+            "glow-sans-tc-compressed",
+            "glow-sans-tc-condensed",
+            "glow-sans-tc-normal",
+            "glow-sans-tc-extended",
+            "glow-sans-tc-wide",
+        ]
+        self.assertEqual(selected_ids({"scripts/build-glow-sans-tc-width.sh"}), expected)
+        self.assertEqual(selected_ids({"licenses/glow-sans-OFL.txt"}), expected)
+
     def test_version_and_changelog_only_select_no_fonts(self) -> None:
         self.assertEqual(
             selected_ids(
@@ -49,6 +60,9 @@ class SelectionTest(unittest.TestCase):
             ),
             [],
         )
+
+    def test_registry_metadata_only_selects_no_fonts(self) -> None:
+        self.assertEqual(selected_ids({"fonts.json"}), [])
 
     def test_unrelated_docs_select_no_fonts(self) -> None:
         self.assertEqual(selected_ids({"README.md"}), [])

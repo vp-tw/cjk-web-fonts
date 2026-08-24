@@ -1,0 +1,25 @@
+{
+  "name": "Wêlai Glow Sans TC Compressed",
+  "version": "0.93",
+  "commit": "715f35148a9e023568839b9740908fe1feccbd19",
+  "license": "OFL-1.1",
+  "archives": [
+    {
+      "archive": "GlowSansTC-Compressed-v0.93.zip",
+      "directory": "Compressed",
+      "url": "https://github.com/welai/glow-sans/releases/download/v0.93/GlowSansTC-Compressed-v0.93.zip",
+      "bytes": 57432315,
+      "sha256": "e5598b8fc3bc39432cbb063d3060f4b532e2050a1b3d9db86b49c1fbd8992459",
+      "files": [
+        "GlowSansTC-Compressed-Bold.otf",
+        "GlowSansTC-Compressed-Book.otf",
+        "GlowSansTC-Compressed-ExtraBold.otf",
+        "GlowSansTC-Compressed-ExtraLight.otf",
+        "GlowSansTC-Compressed-Light.otf",
+        "GlowSansTC-Compressed-Medium.otf",
+        "GlowSansTC-Compressed-Regular.otf",
+        "GlowSansTC-Compressed-Thin.otf"
+      ]
+    }
+  ]
+}
