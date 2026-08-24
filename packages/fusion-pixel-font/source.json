@@ -1,0 +1,55 @@
+{
+  "name": "Fusion Pixel Font",
+  "version": "2026.08.11",
+  "license": "OFL-1.1",
+  "archives": [
+    {
+      "directory": "8px/monospaced",
+      "archive": "fusion-pixel-font-8px-monospaced-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-8px-monospaced-otf.woff2-v2026.08.11.zip",
+      "bytes": 1788141,
+      "sha256": "cd48e0263b1124af35bae4b3f779f4c010607d948271ae6a2c059473108e87a0",
+      "files": ["OFL.txt", "LICENSES/boutique-bitmap-7x7/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "LICENSES/misaki/misaki.txt", "LICENSES/miseki-bitmap/LICENSE.txt", "fusion-pixel-8px-monospaced-latin.otf.woff2", "fusion-pixel-8px-monospaced-zh_hans.otf.woff2", "fusion-pixel-8px-monospaced-zh_hant.otf.woff2", "fusion-pixel-8px-monospaced-ja.otf.woff2", "fusion-pixel-8px-monospaced-ko.otf.woff2"]
+    },
+    {
+      "directory": "8px/proportional",
+      "archive": "fusion-pixel-font-8px-proportional-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-8px-proportional-otf.woff2-v2026.08.11.zip",
+      "bytes": 1790153,
+      "sha256": "27509d492aded915ebfb3637fb947d677fbb8049dd6457237807cbda622fc14a",
+      "files": ["OFL.txt", "LICENSES/boutique-bitmap-7x7/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "LICENSES/misaki/misaki.txt", "LICENSES/miseki-bitmap/LICENSE.txt", "fusion-pixel-8px-proportional-latin.otf.woff2", "fusion-pixel-8px-proportional-zh_hans.otf.woff2", "fusion-pixel-8px-proportional-zh_hant.otf.woff2", "fusion-pixel-8px-proportional-ja.otf.woff2", "fusion-pixel-8px-proportional-ko.otf.woff2"]
+    },
+    {
+      "directory": "10px/monospaced",
+      "archive": "fusion-pixel-font-10px-monospaced-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-10px-monospaced-otf.woff2-v2026.08.11.zip",
+      "bytes": 2023152,
+      "sha256": "a227b16ded99a27919464da2a278aa7e9e5ff5c5138c98db21f82f7a20cca9ff",
+      "files": ["OFL.txt", "LICENSES/ark-pixel/OFL.txt", "LICENSES/boutique-bitmap-9x9/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "fusion-pixel-10px-monospaced-latin.otf.woff2", "fusion-pixel-10px-monospaced-zh_hans.otf.woff2", "fusion-pixel-10px-monospaced-zh_hant.otf.woff2", "fusion-pixel-10px-monospaced-ja.otf.woff2", "fusion-pixel-10px-monospaced-ko.otf.woff2"]
+    },
+    {
+      "directory": "10px/proportional",
+      "archive": "fusion-pixel-font-10px-proportional-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-10px-proportional-otf.woff2-v2026.08.11.zip",
+      "bytes": 2034496,
+      "sha256": "5bb15c49f9f64ce338d2c1efdc5d74045133b66974eb67f2f34815ecf5c2c0b2",
+      "files": ["OFL.txt", "LICENSES/ark-pixel/OFL.txt", "LICENSES/boutique-bitmap-9x9/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "fusion-pixel-10px-proportional-latin.otf.woff2", "fusion-pixel-10px-proportional-zh_hans.otf.woff2", "fusion-pixel-10px-proportional-zh_hant.otf.woff2", "fusion-pixel-10px-proportional-ja.otf.woff2", "fusion-pixel-10px-proportional-ko.otf.woff2"]
+    },
+    {
+      "directory": "12px/monospaced",
+      "archive": "fusion-pixel-font-12px-monospaced-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-12px-monospaced-otf.woff2-v2026.08.11.zip",
+      "bytes": 3353696,
+      "sha256": "a63a7cde3d943d0ad22bf67c5318b3fa00bf4e53562eecdb075c91ee3a531d7a",
+      "files": ["OFL.txt", "LICENSES/ark-pixel/OFL.txt", "LICENSES/cubic-11/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "fusion-pixel-12px-monospaced-latin.otf.woff2", "fusion-pixel-12px-monospaced-zh_hans.otf.woff2", "fusion-pixel-12px-monospaced-zh_hant.otf.woff2", "fusion-pixel-12px-monospaced-ja.otf.woff2", "fusion-pixel-12px-monospaced-ko.otf.woff2"]
+    },
+    {
+      "directory": "12px/proportional",
+      "archive": "fusion-pixel-font-12px-proportional-otf.woff2-v2026.08.11.zip",
+      "url": "https://github.com/TakWolf/fusion-pixel-font/releases/download/2026.08.11/fusion-pixel-font-12px-proportional-otf.woff2-v2026.08.11.zip",
+      "bytes": 3344628,
+      "sha256": "8aa9e68b8a4aaaae84a77f7af2cc6601f432da0af98f7d9675ad77f631e63db4",
+      "files": ["OFL.txt", "LICENSES/ark-pixel/OFL.txt", "LICENSES/cubic-11/OFL.txt", "LICENSES/galmuri/LICENSE.txt", "fusion-pixel-12px-proportional-latin.otf.woff2", "fusion-pixel-12px-proportional-zh_hans.otf.woff2", "fusion-pixel-12px-proportional-zh_hant.otf.woff2", "fusion-pixel-12px-proportional-ja.otf.woff2", "fusion-pixel-12px-proportional-ko.otf.woff2"]
+    }
+  ]
+}

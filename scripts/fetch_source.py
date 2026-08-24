@@ -20,6 +20,10 @@ def main() -> None:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    if "archives" in manifest:
+        fetch_archives(manifest, output_dir)
+        return
+
     if "downloads" in manifest:
         fetch_files(manifest, output_dir)
         return
@@ -98,6 +102,57 @@ def fetch_files(manifest: dict[str, object], output_dir: Path) -> None:
                 f"got {target_path.stat().st_size}"
             )
         print(f"verified {name} ({digest})")
+
+    print(f"verified {manifest['name']} {manifest['version']}")
+
+
+def fetch_archives(manifest: dict[str, object], output_dir: Path) -> None:
+    archives = manifest["archives"]
+    if not isinstance(archives, list):
+        raise SystemExit("archives must be an array")
+
+    extract_root = output_dir / "source"
+    extract_root.mkdir(exist_ok=True)
+    for item in archives:
+        if not isinstance(item, dict):
+            raise SystemExit("each archive must be an object")
+        archive_name = str(item["archive"])
+        archive_path = output_dir / archive_name
+        if not archive_path.exists():
+            request = urllib.request.Request(
+                str(item["url"]),
+                headers={"User-Agent": "VdustR/cjk-web-fonts source fetcher"},
+            )
+            with urllib.request.urlopen(request) as response, archive_path.open("wb") as target:
+                shutil.copyfileobj(response, target)
+
+        digest = hashlib.sha256(archive_path.read_bytes()).hexdigest()
+        expected_digest = str(item["sha256"])
+        if digest != expected_digest:
+            archive_path.unlink(missing_ok=True)
+            raise SystemExit(
+                f"SHA-256 mismatch for {archive_name}: "
+                f"expected {expected_digest}, got {digest}"
+            )
+        expected_bytes = int(item["bytes"])
+        if archive_path.stat().st_size != expected_bytes:
+            raise SystemExit(
+                f"size mismatch for {archive_name}: expected {expected_bytes}, "
+                f"got {archive_path.stat().st_size}"
+            )
+
+        with zipfile.ZipFile(archive_path) as archive:
+            names = set(archive.namelist())
+            expected = set(item["files"])
+            if names != expected:
+                raise SystemExit(
+                    f"archive members differ for {archive_name}: "
+                    f"missing={sorted(expected - names)}, extra={sorted(names - expected)}"
+                )
+            target_dir = extract_root / str(item["directory"])
+            target_dir.mkdir(parents=True, exist_ok=True)
+            archive.extractall(target_dir)
+        print(f"verified {archive_name} ({digest})")
 
     print(f"verified {manifest['name']} {manifest['version']}")
 

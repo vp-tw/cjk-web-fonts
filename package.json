@@ -2,7 +2,8 @@
   "name": "cjk-web-fonts-workspace",
   "private": true,
   "scripts": {
-    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc",
+    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font",
+    "build:fusion-pixel-font": "./scripts/build-fusion-pixel-font.sh",
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
