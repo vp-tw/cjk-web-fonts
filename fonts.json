@@ -1,0 +1,34 @@
+{
+  "commonBuildInputs": [
+    ".github/workflows/ci.yml",
+    "fonts.json",
+    "LICENSE",
+    "scripts/fetch_source.py"
+  ],
+  "fonts": [
+    {
+      "id": "jigmo",
+      "label": "Jigmo",
+      "buildScript": "scripts/build-jigmo.sh",
+      "auditScript": "scripts/audit_jigmo.py"
+    },
+    {
+      "id": "hanamin",
+      "label": "Hanamin",
+      "buildScript": "scripts/build-hanamin.sh",
+      "auditScript": "scripts/audit_hanamin.py"
+    },
+    {
+      "id": "taipei-sans-tc",
+      "label": "Taipei Sans TC",
+      "buildScript": "scripts/build-taipei-sans-tc.sh",
+      "auditScript": "scripts/audit_taipei_sans_tc.py"
+    },
+    {
+      "id": "fusion-pixel-font",
+      "label": "Fusion Pixel Font",
+      "buildScript": "scripts/build-fusion-pixel-font.sh",
+      "auditScript": "scripts/audit_fusion_pixel_font.py"
+    }
+  ]
+}

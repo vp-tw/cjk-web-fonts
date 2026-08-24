@@ -9,7 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  jigmo:
+  quality:
+    name: Quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -25,73 +26,47 @@ jobs:
           python-version: "3.13"
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - name: Build Jigmo
-        run: ./scripts/build-jigmo.sh
-      - name: Check generated files
-        run: git diff --exit-code
-  hanamin:
+
+  changes:
+    name: Select affected fonts
+    runs-on: ubuntu-latest
+    outputs:
+      fonts: ${{ steps.select.outputs.fonts }}
+      count: ${{ steps.select.outputs.count }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Select fonts
+        id: select
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python3 scripts/select_ci_fonts.py --base "$BASE_SHA" --head "$HEAD_SHA" --github-output >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build ${{ matrix.font.label }}
+    needs: [quality, changes]
+    if: needs.changes.outputs.count != '0'
+    strategy:
+      fail-fast: false
+      matrix:
+        font: ${{ fromJSON(needs.changes.outputs.fonts) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 11.23.0
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 26.7.0
-          cache: pnpm
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm check
-      - name: Build Hanamin
-        run: ./scripts/build-hanamin.sh
+      - name: Build and audit ${{ matrix.font.label }}
+        env:
+          BUILD_COMMAND: ${{ matrix.font.command }}
+        run: "$BUILD_COMMAND"
       - name: Check generated files
         run: git diff --exit-code
       - name: Preserve Hanamin drift for diagnosis
-        if: failure()
+        if: failure() && matrix.font.id == 'hanamin'
         uses: actions/upload-artifact@v7
         with:
           name: hanamin-generated-drift
           path: packages/hanamin/dist/HanaMinA/HanaMin.Supplemental-Symbols-and-Pictographs.woff2
-  taipei-sans-tc:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 11.23.0
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 26.7.0
-          cache: pnpm
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.13"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm check
-      - name: Build Taipei Sans TC
-        run: ./scripts/build-taipei-sans-tc.sh
-      - name: Check generated files
-        run: git diff --exit-code
-  fusion-pixel-font:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 11.23.0
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 26.7.0
-          cache: pnpm
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.13"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm check
-      - name: Build Fusion Pixel Font
-        run: ./scripts/build-fusion-pixel-font.sh
-      - name: Check generated files
-        run: git diff --exit-code
