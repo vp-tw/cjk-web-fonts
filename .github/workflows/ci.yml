@@ -26,6 +26,7 @@ jobs:
           python-version: "3.13"
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - run: pnpm site:build
 
   package-delivery:
     name: Package delivery limits
