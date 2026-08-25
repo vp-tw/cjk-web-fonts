@@ -63,17 +63,19 @@
     localStorage.setItem("cjk-theme", theme);
   }
 
-  $: visibleFonts = fonts.filter((font) => {
+  $: queryMatchingFonts = fonts.filter((font) => {
     const needle = committedQuery.trim().toLocaleLowerCase();
-    const matchesQuery =
+    return (
       !needle ||
       `${font.label} ${font.description} ${font.packageName}`
         .toLocaleLowerCase()
-        .includes(needle);
-    const matchesCoverage =
-      !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0);
-    return matchesQuery && matchesCoverage;
+        .includes(needle)
+    );
   });
+  $: visibleFonts = queryMatchingFonts.filter(
+    (font) =>
+      !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0),
+  );
   $: if (mounted) {
     for (const fontId of visibleSpecimenIds) {
       const font = fonts.find((candidate) => candidate.id === fontId);
@@ -110,14 +112,11 @@
   function observeSpecimen(node: HTMLElement, fontId: string) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const isMostlyVisible = entry.intersectionRatio >= 0.5;
-        if (isMostlyVisible === visibleSpecimenIds.has(fontId)) return;
-        const next = new Set(visibleSpecimenIds);
-        if (isMostlyVisible) next.add(fontId);
-        else next.delete(fontId);
-        visibleSpecimenIds = next;
+        if (!entry.isIntersecting || visibleSpecimenIds.has(fontId)) return;
+        visibleSpecimenIds = new Set(visibleSpecimenIds).add(fontId);
+        observer.disconnect();
       },
-      { threshold: 0.5 },
+      { rootMargin: "-25% 0px -25% 0px" },
     );
     observer.observe(node);
     return { destroy: () => observer.disconnect() };
@@ -347,9 +346,12 @@
         </article>
       {:else}
         <div class="empty-state">
-          {#if committedQuery.trim()}
+          {#if committedQuery.trim() && queryMatchingFonts.length === 0}
             <h3>找不到符合搜尋條件的字型</h3>
             <p>請改用字型名稱、套件名稱或其他特徵搜尋。</p>
+          {:else if coveragePending}
+            <h3>正在檢查字型涵蓋範圍</h3>
+            <p>完成後會顯示沒有缺字的字型。</p>
           {:else if onlyComplete}
             <h3>沒有字型涵蓋全部文字</h3>
             <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>

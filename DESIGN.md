@@ -187,7 +187,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Font Specimens
 
 - **Style:** Each font is a full-width ruled section, not a card. Its header keeps name, exact package version, coverage state, and variant selection together.
-- **Behavior:** The input remains responsive while preview and coverage updates settle after a short pause. A specimen loads its stylesheet and renders the current proof after most of the section enters the viewport; offscreen specimens retain their measured space. The live specimen preserves line breaks, wraps long strings anywhere, and responds to the shared size and color controls. License and source links remain attached below it.
+- **Behavior:** The input remains responsive while preview and coverage updates settle after a short pause. A specimen loads its stylesheet and renders the current proof when it intersects the viewport's central band; activation remains stable after that point. Offscreen specimens retain their measured space. The live specimen preserves line breaks, wraps long strings anywhere, and scrolls internally when long content reaches 60vh (up to 720px). It responds to the shared size and color controls. License and source links remain attached below it.
 
 ### Embed Rows
 

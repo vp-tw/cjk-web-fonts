@@ -120,7 +120,7 @@ Catalog text fields keep their native value outside Svelte's reactive graph.
 Debounce search and proof commits, load the coverage index inside the Web Worker
 instead of cloning it on the main thread, and identify every request so stale
 Worker responses cannot replace newer results. Render proof text and load font
-stylesheets only for specimens that are mostly visible, and retain
+stylesheets only for specimens that intersect the viewport's central band, and retain
 `content-visibility` containment. Do not bind each keystroke directly to all
 specimen nodes or send the coverage index through `postMessage`.
 
