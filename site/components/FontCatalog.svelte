@@ -1,16 +1,18 @@
 <script lang="ts">
+  import { debounce } from "es-toolkit";
   import { onMount } from "svelte";
 
-  import type { Cdn, FontRecord, FontVariant } from "../lib/catalog";
+  import type { CatalogFontRecord, CatalogFontVariant, Cdn } from "../lib/catalog";
   import { formatCodePoint } from "../lib/coverage";
+  import type { CoverageResponse } from "../workers/coverage.worker";
 
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
-  export let fonts: FontRecord[];
+  export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
 
   const defaultText = "臺北下雨了，𠮷野家門口有人等公車。\nCheck names, addresses, and long-form copy here.";
-  let previewText = defaultText;
-  let query = "";
+  let committedPreviewText = defaultText;
+  let committedQuery = "";
   let fontSize = 72;
   let foreground = "#171816";
   let background = "#e7e3d8";
@@ -27,8 +29,10 @@
   let missing: Record<string, number[]> = {};
   let coveragePending = true;
   let copied = "";
+  let visibleSpecimenIds = new Set<string>();
+  let loadedSpecimenIds = new Set<string>();
   let worker: Worker | undefined;
-  let timer: ReturnType<typeof setTimeout> | undefined;
+  let latestCoverageRequestId = 0;
   let mounted = false;
 
   const variationSelectorPattern = /[\uFE00-\uFE0F\u{E0100}-\u{E01EF}]/u;
@@ -42,12 +46,17 @@
     worker = new Worker(new URL("../workers/coverage.worker.ts", import.meta.url), {
       type: "module",
     });
-    worker.onmessage = (event: MessageEvent<Record<string, number[]>>) => {
-      missing = event.data;
+    worker.onmessage = (event: MessageEvent<CoverageResponse>) => {
+      if (event.data.requestId !== latestCoverageRequestId) return;
+      missing = event.data.results;
       coveragePending = false;
     };
-    scheduleCoverage(previewText);
-    return () => worker?.terminate();
+    requestCoverage(committedPreviewText);
+    return () => {
+      commitPreviewText.cancel();
+      commitQuery.cancel();
+      worker?.terminate();
+    };
   });
 
   $: if (mounted) {
@@ -55,37 +64,80 @@
     localStorage.setItem("cjk-theme", theme);
   }
 
-  $: if (mounted) scheduleCoverage(previewText);
-  $: visibleFonts = fonts.filter((font) => {
-    const needle = query.trim().toLocaleLowerCase();
-    const matchesQuery =
+  $: queryMatchingFonts = fonts.filter((font) => {
+    const needle = committedQuery.trim().toLocaleLowerCase();
+    return (
       !needle ||
       `${font.label} ${font.description} ${font.packageName}`
         .toLocaleLowerCase()
-        .includes(needle);
-    const matchesCoverage =
-      !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0);
-    return matchesQuery && matchesCoverage;
+        .includes(needle)
+    );
   });
+  $: visibleFonts = queryMatchingFonts.filter(
+    (font) =>
+      !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0),
+  );
   $: if (mounted) {
-    for (const font of visibleFonts) ensureStylesheet(variantFor(font).urls[selectedCdn]);
+    for (const fontId of loadedSpecimenIds) {
+      const font = fonts.find((candidate) => candidate.id === fontId);
+      if (font && visibleFonts.includes(font)) {
+        ensureStylesheet(variantFor(font).urls[selectedCdn]);
+      }
+    }
   }
 
-  function scheduleCoverage(text: string) {
+  const commitPreviewText = debounce((text: string) => {
+    committedPreviewText = text;
+    requestCoverage(text);
+  }, 400);
+
+  const commitQuery = debounce((value: string) => {
+    committedQuery = value;
+  }, 250);
+
+  function handlePreviewInput(event: Event) {
+    commitPreviewText((event.currentTarget as HTMLTextAreaElement).value);
+  }
+
+  function handleQueryInput(event: Event) {
+    commitQuery((event.currentTarget as HTMLInputElement).value);
+  }
+
+  function requestCoverage(text: string) {
     if (!worker) return;
     coveragePending = true;
-    clearTimeout(timer);
-    timer = setTimeout(
-      () =>
-        worker?.postMessage({
-          fonts: JSON.parse(JSON.stringify(fonts)),
-          text,
-        }),
-      120,
-    );
+    latestCoverageRequestId += 1;
+    worker.postMessage({ type: "match", requestId: latestCoverageRequestId, text });
   }
 
-  function variantFor(font: FontRecord): FontVariant {
+  function observeSpecimen(node: HTMLElement, fontId: string) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting !== visibleSpecimenIds.has(fontId)) {
+          const visible = new Set(visibleSpecimenIds);
+          if (entry.isIntersecting) visible.add(fontId);
+          else visible.delete(fontId);
+          visibleSpecimenIds = visible;
+        }
+        if (entry.isIntersecting && !loadedSpecimenIds.has(fontId)) {
+          loadedSpecimenIds = new Set(loadedSpecimenIds).add(fontId);
+        }
+      },
+      { rootMargin: "-25% 0px -25% 0px" },
+    );
+    observer.observe(node);
+    return {
+      destroy: () => {
+        observer.disconnect();
+        if (!visibleSpecimenIds.has(fontId)) return;
+        const visible = new Set(visibleSpecimenIds);
+        visible.delete(fontId);
+        visibleSpecimenIds = visible;
+      },
+    };
+  }
+
+  function variantFor(font: CatalogFontRecord): CatalogFontVariant {
     return (
       font.variants.find((variant) => variant.id === selectedVariants[font.id]) ??
       font.variants[0]
@@ -101,16 +153,16 @@
     document.head.append(link);
   }
 
-  function familyStack(variant: FontVariant): string {
+  function familyStack(variant: CatalogFontVariant): string {
     return `${variant.families.map((family) => `"${family}"`).join(", ")}, sans-serif`;
   }
 
-  function embedCode(font: FontRecord, cdnId: string): string {
+  function embedCode(font: CatalogFontRecord, cdnId: string): string {
     const variant = variantFor(font);
     return `<link rel="stylesheet" href="${variant.urls[cdnId]}">`;
   }
 
-  async function copyEmbed(font: FontRecord) {
+  async function copyEmbed(font: CatalogFontRecord) {
     const code = embedCode(font, selectedCdn);
     try {
       await navigator.clipboard.writeText(code);
@@ -151,7 +203,8 @@
     <label class="proof-label" for="master-proof">要檢查的文字</label>
     <textarea
       id="master-proof"
-      bind:value={previewText}
+      value={defaultText}
+      on:input={handlePreviewInput}
       class="master-proof"
       aria-label="要檢查的文字"
       placeholder="貼上標題、姓名、地址或整篇文章"
@@ -160,7 +213,7 @@
       style:background={background}
     ></textarea>
 
-    {#if variationSelectorPattern.test(previewText)}
+    {#if variationSelectorPattern.test(committedPreviewText)}
       <p class="coverage-notice">
         內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。
       </p>
@@ -171,7 +224,7 @@
     <div class="rail-index" aria-hidden="true">SPEC / 001</div>
     <label class="search-control">
       <span>搜尋字型</span>
-      <input bind:value={query} type="search" placeholder="名稱、套件或特徵" />
+      <input on:input={handleQueryInput} type="search" placeholder="名稱、套件或特徵" />
     </label>
 
     <fieldset class="theme-control">
@@ -237,7 +290,7 @@
       {#each visibleFonts as font (font.id)}
         {@const variant = variantFor(font)}
         {@const missingPoints = missing[font.id] ?? []}
-        <article class="font-specimen">
+        <article class="font-specimen" use:observeSpecimen={font.id}>
           <header>
             <div>
               <h3>{font.label}</h3>
@@ -268,6 +321,9 @@
 
           <div
             class="live-specimen"
+            role="region"
+            aria-label={`${font.label} 字型預覽`}
+            tabindex="0"
             style:font-family={familyStack(variant)}
             style:--preview-size={`${fontSize}px`}
             style:font-weight={variant.weight}
@@ -276,7 +332,7 @@
             style:color={foreground}
             style:background={background}
           >
-            {previewText || "開始輸入文字"}
+            {visibleSpecimenIds.has(font.id) ? committedPreviewText || "開始輸入文字" : ""}
           </div>
 
           {#if !coveragePending && missingPoints.length > 0}
@@ -308,8 +364,18 @@
         </article>
       {:else}
         <div class="empty-state">
-          <h3>沒有字型涵蓋全部文字</h3>
-          <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>
+          {#if committedQuery.trim() && queryMatchingFonts.length === 0}
+            <h3>找不到符合搜尋條件的字型</h3>
+            <p>請改用字型名稱、套件名稱或其他特徵搜尋。</p>
+          {:else if coveragePending}
+            <h3>正在檢查字型涵蓋範圍</h3>
+            <p>完成後會顯示沒有缺字的字型。</p>
+          {:else if onlyComplete}
+            <h3>沒有字型涵蓋全部文字</h3>
+            <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>
+          {:else}
+            <h3>目前沒有可用字型</h3>
+          {/if}
         </div>
       {/each}
     </div>

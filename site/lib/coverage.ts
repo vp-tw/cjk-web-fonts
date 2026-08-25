@@ -32,8 +32,19 @@ export function rangeContains(ranges: Range[], point: number): boolean {
 
 export function missingForFont(font: FontRecord, text: string): number[] {
   const required = uniqueRequiredCodePoints(text);
+  return missingRequiredCodePoints(font, required);
+}
+
+export function missingRequiredCodePoints(font: FontRecord, required: number[]): number[] {
   return required.filter(
     (point) => !font.variants.some((variant) => rangeContains(variant.coverage, point)),
+  );
+}
+
+export function missingForFonts(fonts: FontRecord[], text: string): Record<string, number[]> {
+  const required = uniqueRequiredCodePoints(text);
+  return Object.fromEntries(
+    fonts.map((font) => [font.id, missingRequiredCodePoints(font, required)]),
   );
 }
 

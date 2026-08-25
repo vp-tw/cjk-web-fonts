@@ -1,9 +1,19 @@
-import { missingForFont } from "../lib/coverage";
+import catalog from "../generated/fonts.json";
+import { missingForFonts } from "../lib/coverage";
 import type { FontRecord } from "../lib/catalog";
 
-self.onmessage = (event: MessageEvent<{ fonts: FontRecord[]; text: string }>) => {
-  const results = Object.fromEntries(
-    event.data.fonts.map((font) => [font.id, missingForFont(font, event.data.text)]),
-  );
-  self.postMessage(results);
+type CoverageRequest = { requestId: number; text: string };
+
+export type CoverageResponse = {
+  requestId: number;
+  results: Record<string, number[]>;
+};
+
+const fonts = catalog.fonts as unknown as FontRecord[];
+
+self.onmessage = (event: MessageEvent<CoverageRequest>) => {
+  self.postMessage({
+    requestId: event.data.requestId,
+    results: missingForFonts(fonts, event.data.text),
+  } satisfies CoverageResponse);
 };

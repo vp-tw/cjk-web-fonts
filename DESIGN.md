@@ -15,18 +15,18 @@ colors:
   selection-rose: "#d6a89d"
 typography:
   display:
-    fontFamily: '"Taipei Sans TC", "Noto Sans TC", sans-serif'
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     fontSize: "clamp(2.4rem, 5vw, 5.4rem)"
     fontWeight: 400
     lineHeight: 0.98
     letterSpacing: "-0.04em"
   body:
-    fontFamily: '"Taipei Sans TC", "Noto Sans TC", sans-serif'
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: '"Taipei Sans TC", "Noto Sans TC", sans-serif'
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     fontSize: "0.72rem"
     fontWeight: 400
     lineHeight: 1.4
@@ -116,11 +116,11 @@ Dark mode reverses the material relationship with charcoal paper, warm white ink
 
 ## Typography
 
-**Display Font:** Taipei Sans TC (with Noto Sans TC and generic sans-serif fallbacks)
-**Body Font:** Taipei Sans TC (with Noto Sans TC and generic sans-serif fallbacks)
+**Display Font:** The operating-system UI sans stack
+**Body Font:** The operating-system UI sans stack
 **Label/Mono Font:** The interface sans for labels; the system monospace stack for package names, code, and character counts.
 
-**Character:** One neutral CJK sans gives the interface institutional clarity. Scale, spacing, case, and numeric alignment create hierarchy; font switching is reserved for the user-selected specimens.
+**Character:** The local UI sans keeps the interface neutral and responsive without loading a catalog font into every control. Scale, spacing, case, and numeric alignment create hierarchy; downloaded font switching is reserved for visible user-selected specimens.
 
 ### Hierarchy
 
@@ -187,7 +187,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Font Specimens
 
 - **Style:** Each font is a full-width ruled section, not a card. Its header keeps name, exact package version, coverage state, and variant selection together.
-- **Behavior:** The live specimen preserves line breaks, wraps long strings anywhere, and responds to the shared size and color controls. License and source links remain attached below it.
+- **Behavior:** The input remains responsive while preview and coverage updates settle after a short pause. A specimen loads its stylesheet once after intersecting the viewport's central band, while proof DOM updates remain limited to specimens currently in that band. Offscreen specimens retain their measured space. The live specimen preserves line breaks, wraps long strings anywhere, and scrolls internally when long content reaches 60vh (up to 720px). The named region is keyboard-focusable so its overflow remains accessible. It responds to the shared size and color controls. License and source links remain attached below it.
 
 ### Embed Rows
 
