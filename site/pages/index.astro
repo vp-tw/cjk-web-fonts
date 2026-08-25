@@ -1,5 +1,6 @@
 ---
 import FontCatalog from "../components/FontCatalog.svelte";
+import PwaUpdatePrompt from "../components/PwaUpdatePrompt.svelte";
 import { cdns, fonts } from "../lib/catalog";
 import "../styles/catalog.css";
 import "../styles/global.css";
@@ -21,6 +22,9 @@ const ogImageAlt =
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#e7e3d8" />
+    <meta name="application-name" content="CJK Web Fonts" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="CJK Web Fonts" />
     <meta property="og:description" content={description} />
@@ -39,6 +43,7 @@ const ogImageAlt =
     <link rel="icon" type="image/png" sizes="32x32" href={brandAsset("favicon-32.png")} />
     <link rel="icon" type="image/png" sizes="16x16" href={brandAsset("favicon-16.png")} />
     <link rel="apple-touch-icon" sizes="180x180" href={brandAsset("apple-touch-icon.png")} />
+    <link rel="manifest" href={`${assetBase}manifest.webmanifest`} />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@vp-tw/cjk-web-fonts-taipei-sans-tc@0.0.1/dist/Regular/Taipei-Sans-TC.css"
@@ -88,5 +93,7 @@ const ogImageAlt =
       <span>CJK Web Fonts is maintained by VP–TW. Font licenses follow their upstream projects.</span>
       <a href="https://github.com/vp-tw/cjk-web-fonts">Source and package documentation</a>
     </footer>
+
+    <PwaUpdatePrompt client:only="svelte" />
   </body>
 </html>

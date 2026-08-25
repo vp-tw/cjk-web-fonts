@@ -194,6 +194,13 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 - **Style:** Copyable code occupies the fluid cell; a high-contrast action occupies a fixed-width cell.
 - **State:** Hover changes the action to Proof Red. Keyboard focus uses Focus Blue. On small screens, the action moves below the code and reaches a 44px minimum height.
 
+### PWA Update Notice
+
+- **Style:** A fixed, ruled specification slip with a vertical `REV / 002` or `LOCAL / 001` index, literal status copy, and attached actions. It uses the existing paper, ink, and Proof Red roles without shadow or rounded corners.
+- **Behavior:** A downloaded update stays waiting until the visitor chooses `立即更新`. `稍後` dismisses the notice without blocking the page. Activation reloads once. An update-activation failure replaces the action with `再試一次` and an assertive status message.
+- **Responsive:** The notice sits at the lower right on wide screens. At 600px and below it becomes a full-width bottom sheet with 44px minimum actions and no side or bottom border.
+- **Accessibility:** The notice is a polite live status by default and an assertive alert on failure. Every action has a visible keyboard focus state, and entry motion is disabled when reduced motion is requested.
+
 ## Do's and Don'ts
 
 ### Do:

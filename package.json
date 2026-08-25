@@ -21,7 +21,7 @@
     "lint": "oxlint --no-error-on-unmatched-pattern .",
     "release:publish": "changeset publish",
     "release:version": "changeset version && pnpm site:data",
-    "site:build": "pnpm site:data:check && astro build",
+    "site:build": "pnpm site:data:check && astro build && node scripts/build_pwa.mjs",
     "site:check": "astro check",
     "site:data": "node scripts/generate_site_data.mjs",
     "site:data:check": "node scripts/generate_site_data.mjs --check",
@@ -41,7 +41,8 @@
     "oxlint": "^1.79.0",
     "svelte": "5.56.10",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.11",
+    "workbox-build": "^7.4.1"
   },
   "engines": {
     "node": ">=26.7.0"

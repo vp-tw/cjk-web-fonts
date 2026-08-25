@@ -47,6 +47,10 @@ copy CSS for a web project.
   package's CSS and font assets without rewriting the package.
 - Preserve static, indexable font content while hydrating only interactive
   controls.
+- Keep the interface available after a successful visit. Cache font CSS and
+  WOFF2 assets after use instead of downloading the complete catalog.
+- Tell visitors when an update is ready, let them defer it, and reload only
+  after they choose to update.
 - Model weights and variants as data even when a current font has only one.
 - Deploy as a static GitHub Pages site under the repository base path.
 - Treat package files and upstream license information as authoritative. Do not
