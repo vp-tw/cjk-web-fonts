@@ -102,3 +102,16 @@ Pages base path. Coverage checks run locally in a Web Worker; pasted text is not
 sent to a server. Unicode variation selectors are reported separately because
 the browser index currently validates base code points while the package audits
 remain authoritative for variation sequences.
+
+`pnpm site:build` also runs `scripts/build_pwa.mjs`. The build must precache the
+GitHub Pages navigation fallback and fails on Workbox warnings so an oversized
+app shell cannot silently lose offline support. Keep the manifest, Astro base,
+service worker scope, and navigation fallback at `/cjk-web-fonts/`.
+
+The service worker precaches the app shell only. It caches CDN font CSS and
+WOFF2 files after use; do not precache complete font packages. Updates must wait
+for the visitor to choose `立即更新`, then activate and reload once. In local
+development, use `?pwa-prompt=update`, `?pwa-prompt=offline`, or
+`?pwa-prompt=error` to review prompt states. Before changing the update flow,
+verify it against two consecutive production builds and test a controlled
+offline reload.
