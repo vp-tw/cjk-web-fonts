@@ -41,7 +41,8 @@ copy CSS for a web project.
 ## Capabilities and Constraints
 
 - Search and preview the complete catalog.
-- Change preview text, font size, foreground color, and background color.
+- Edit shared preview text directly in any specimen, then change its font size,
+  foreground color, and background color.
 - Select light, dark, or system appearance independently from preview colors.
 - Show version-pinned embed code for every verified CDN that can serve the npm
   package's CSS and font assets without rewriting the package.

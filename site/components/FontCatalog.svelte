@@ -11,7 +11,7 @@
   export let cdns: Cdn[];
 
   const defaultText = "臺北下雨了，𠮷野家門口有人等公車。\nCheck names, addresses, and long-form copy here.";
-  let committedPreviewText = defaultText;
+  let previewText = defaultText;
   let committedQuery = "";
   let fontSize = 72;
   let foreground = "#171816";
@@ -31,6 +31,7 @@
   let copied = "";
   let visibleSpecimenIds = new Set<string>();
   let loadedSpecimenIds = new Set<string>();
+  const specimenNodes = new Map<string, HTMLTextAreaElement>();
   let worker: Worker | undefined;
   let latestCoverageRequestId = 0;
   let mounted = false;
@@ -51,9 +52,9 @@
       missing = event.data.results;
       coveragePending = false;
     };
-    requestCoverage(committedPreviewText);
+    requestCoverage(previewText);
     return () => {
-      commitPreviewText.cancel();
+      commitCoverage.cancel();
       commitQuery.cancel();
       worker?.terminate();
     };
@@ -86,8 +87,7 @@
     }
   }
 
-  const commitPreviewText = debounce((text: string) => {
-    committedPreviewText = text;
+  const commitCoverage = debounce((text: string) => {
     requestCoverage(text);
   }, 400);
 
@@ -96,7 +96,22 @@
   }, 250);
 
   function handlePreviewInput(event: Event) {
-    commitPreviewText((event.currentTarget as HTMLTextAreaElement).value);
+    const source = event.currentTarget as HTMLTextAreaElement;
+    previewText = source.value;
+    for (const fontId of visibleSpecimenIds) {
+      const specimen = specimenNodes.get(fontId);
+      if (specimen && specimen !== source && specimen.value !== previewText) {
+        specimen.value = previewText;
+      }
+    }
+    coveragePending = true;
+    latestCoverageRequestId += 1;
+    commitCoverage(previewText);
+  }
+
+  function handlePreviewFocus(event: FocusEvent) {
+    const specimen = event.currentTarget as HTMLTextAreaElement;
+    if (specimen.value !== previewText) specimen.value = previewText;
   }
 
   function handleQueryInput(event: Event) {
@@ -110,25 +125,49 @@
     worker.postMessage({ type: "match", requestId: latestCoverageRequestId, text });
   }
 
-  function observeSpecimen(node: HTMLElement, fontId: string) {
-    const observer = new IntersectionObserver(
+  function observeSpecimen(node: HTMLTextAreaElement, fontId: string) {
+    specimenNodes.set(fontId, node);
+    node.value = previewText;
+
+    const syncObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting !== visibleSpecimenIds.has(fontId)) {
-          const visible = new Set(visibleSpecimenIds);
-          if (entry.isIntersecting) visible.add(fontId);
-          else visible.delete(fontId);
-          visibleSpecimenIds = visible;
+        const visible = new Set(visibleSpecimenIds);
+        if (entry.isIntersecting) {
+          visible.add(fontId);
+          if (node.value !== previewText) node.value = previewText;
+        } else {
+          visible.delete(fontId);
         }
-        if (entry.isIntersecting && !loadedSpecimenIds.has(fontId)) {
-          loadedSpecimenIds = new Set(loadedSpecimenIds).add(fontId);
-        }
+        visibleSpecimenIds = visible;
       },
-      { rootMargin: "-25% 0px -25% 0px" },
+      { rootMargin: "200px 0px" },
     );
-    observer.observe(node);
+    let loadObserver: IntersectionObserver;
+    const observeForPreload = () => {
+      if (loadedSpecimenIds.has(fontId)) return;
+      loadObserver?.disconnect();
+      const preloadDistance = document.documentElement.clientHeight;
+      loadObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !loadedSpecimenIds.has(fontId)) {
+            loadedSpecimenIds = new Set(loadedSpecimenIds).add(fontId);
+            loadObserver.disconnect();
+            window.removeEventListener("resize", observeForPreload);
+          }
+        },
+        { rootMargin: `${preloadDistance}px 0px` },
+      );
+      loadObserver.observe(node);
+    };
+    syncObserver.observe(node);
+    observeForPreload();
+    window.addEventListener("resize", observeForPreload);
     return {
       destroy: () => {
-        observer.disconnect();
+        syncObserver.disconnect();
+        loadObserver.disconnect();
+        window.removeEventListener("resize", observeForPreload);
+        specimenNodes.delete(fontId);
         if (!visibleSpecimenIds.has(fontId)) return;
         const visible = new Set(visibleSpecimenIds);
         visible.delete(fontId);
@@ -188,40 +227,20 @@
 </script>
 
 <section class="workbench" aria-labelledby="proof-title">
-  <div class="proof-area">
-    <div class="proof-heading">
-      <div>
-        <h1 id="proof-title">輸入文字，找出沒有缺字的字型</h1>
-        <p>檢查會在你的瀏覽器中執行，輸入內容不會上傳。</p>
-      </div>
-      <div class="result-count" aria-live="polite">
-        <strong>{visibleFonts.length}</strong>
-        <span>/ {fonts.length} 字型</span>
-      </div>
+  <div class="catalog-intro">
+    <div>
+      <span class="catalog-index" aria-hidden="true">PROOF / LIVE</span>
+      <h1 id="proof-title">直接在字型上輸入</h1>
+      <p>編輯任一預覽，文字會同步到其他字型。缺字檢查只在瀏覽器中執行。</p>
     </div>
-
-    <label class="proof-label" for="master-proof">要檢查的文字</label>
-    <textarea
-      id="master-proof"
-      value={defaultText}
-      on:input={handlePreviewInput}
-      class="master-proof"
-      aria-label="要檢查的文字"
-      placeholder="貼上標題、姓名、地址或整篇文章"
-      spellcheck="false"
-      style:color={foreground}
-      style:background={background}
-    ></textarea>
-
-    {#if variationSelectorPattern.test(committedPreviewText)}
-      <p class="coverage-notice">
-        內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。
-      </p>
-    {/if}
+    <div class="result-count" aria-live="polite">
+      <strong>{visibleFonts.length}</strong>
+      <span>/ {fonts.length} 字型</span>
+    </div>
   </div>
 
   <div class="control-rail">
-    <div class="rail-index" aria-hidden="true">SPEC / 001</div>
+    <div class="rail-index" aria-hidden="true">CTRL / 001</div>
     <label class="search-control">
       <span>搜尋字型</span>
       <input on:input={handleQueryInput} type="search" placeholder="名稱、套件或特徵" />
@@ -274,8 +293,13 @@
   </div>
 
   <div class="catalog-area" id="catalog">
+    {#if variationSelectorPattern.test(previewText)}
+      <p class="coverage-notice">
+        內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。
+      </p>
+    {/if}
     <div class="catalog-head">
-      <p>可用字型</p>
+      <p>字型預覽</p>
       <label>
         CDN
         <select bind:value={selectedCdn}>
@@ -290,7 +314,7 @@
       {#each visibleFonts as font (font.id)}
         {@const variant = variantFor(font)}
         {@const missingPoints = missing[font.id] ?? []}
-        <article class="font-specimen" use:observeSpecimen={font.id}>
+        <article class="font-specimen">
           <header>
             <div>
               <h3>{font.label}</h3>
@@ -319,11 +343,15 @@
             </div>
           </header>
 
-          <div
+          <textarea
             class="live-specimen"
-            role="region"
-            aria-label={`${font.label} 字型預覽`}
-            tabindex="0"
+            aria-label={`${font.label} 預覽文字；輸入會同步至其他字型`}
+            placeholder="在這裡輸入預覽文字"
+            spellcheck="false"
+            value={defaultText}
+            use:observeSpecimen={font.id}
+            on:input={handlePreviewInput}
+            on:focus={handlePreviewFocus}
             style:font-family={familyStack(variant)}
             style:--preview-size={`${fontSize}px`}
             style:font-weight={variant.weight}
@@ -331,9 +359,7 @@
             style:font-stretch={variant.stretch}
             style:color={foreground}
             style:background={background}
-          >
-            {visibleSpecimenIds.has(font.id) ? committedPreviewText || "開始輸入文字" : ""}
-          </div>
+          ></textarea>
 
           {#if !coveragePending && missingPoints.length > 0}
             <div class="missing-list" aria-label="缺少的字元">
