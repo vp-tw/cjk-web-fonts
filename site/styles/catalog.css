@@ -340,6 +340,11 @@
     background-color 180ms ease-out;
 }
 
+.font-specimen {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
 .missing-list {
   display: flex;
   flex-wrap: wrap;

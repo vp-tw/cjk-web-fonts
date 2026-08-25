@@ -37,6 +37,7 @@
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.1",
     "astro": "7.2.4",
+    "es-toolkit": "^1.51.0",
     "oxfmt": "^0.64.0",
     "oxlint": "^1.79.0",
     "svelte": "5.56.10",

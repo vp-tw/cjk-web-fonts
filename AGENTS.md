@@ -115,3 +115,21 @@ development, use `?pwa-prompt=update`, `?pwa-prompt=offline`, or
 `?pwa-prompt=error` to review prompt states. Before changing the update flow,
 verify it against two consecutive production builds and test a controlled
 offline reload.
+
+Catalog text fields keep their native value outside Svelte's reactive graph.
+Debounce search and proof commits, load the coverage index inside the Web Worker
+instead of cloning it on the main thread, and identify every request so stale
+Worker responses cannot replace newer results. Render proof text and load font
+stylesheets only for specimens that are mostly visible, and retain
+`content-visibility` containment. Do not bind each keystroke directly to all
+specimen nodes or send the coverage index through `postMessage`.
+
+Measure input regressions against a production build, not the development
+server. In Chrome DevTools, record five scripted `input` events at 16 ms
+intervals for `#master-proof` and the font search field, then wait for the final
+debounced result. Report event-dispatch duration, inter-event gaps, long tasks,
+and the final rendered value or result count. Clear the local service worker and
+cache before comparing builds. Treat an event dispatch or inter-event gap above
+50 ms during the five-event burst as a regression. Long tasks after the burst
+must be reported separately because CJK font shaping and font downloads vary by
+machine and cache state.

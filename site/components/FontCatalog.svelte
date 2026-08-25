@@ -1,16 +1,18 @@
 <script lang="ts">
+  import { debounce } from "es-toolkit";
   import { onMount } from "svelte";
 
   import type { Cdn, FontRecord, FontVariant } from "../lib/catalog";
   import { formatCodePoint } from "../lib/coverage";
+  import type { CoverageResponse } from "../workers/coverage.worker";
 
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let fonts: FontRecord[];
   export let cdns: Cdn[];
 
   const defaultText = "臺北下雨了，𠮷野家門口有人等公車。\nCheck names, addresses, and long-form copy here.";
-  let previewText = defaultText;
-  let query = "";
+  let committedPreviewText = defaultText;
+  let committedQuery = "";
   let fontSize = 72;
   let foreground = "#171816";
   let background = "#e7e3d8";
@@ -27,8 +29,9 @@
   let missing: Record<string, number[]> = {};
   let coveragePending = true;
   let copied = "";
+  let visibleSpecimenIds = new Set<string>();
   let worker: Worker | undefined;
-  let timer: ReturnType<typeof setTimeout> | undefined;
+  let latestCoverageRequestId = 0;
   let mounted = false;
 
   const variationSelectorPattern = /[\uFE00-\uFE0F\u{E0100}-\u{E01EF}]/u;
@@ -42,12 +45,17 @@
     worker = new Worker(new URL("../workers/coverage.worker.ts", import.meta.url), {
       type: "module",
     });
-    worker.onmessage = (event: MessageEvent<Record<string, number[]>>) => {
-      missing = event.data;
+    worker.onmessage = (event: MessageEvent<CoverageResponse>) => {
+      if (event.data.requestId !== latestCoverageRequestId) return;
+      missing = event.data.results;
       coveragePending = false;
     };
-    scheduleCoverage(previewText);
-    return () => worker?.terminate();
+    requestCoverage(committedPreviewText);
+    return () => {
+      commitPreviewText.cancel();
+      commitQuery.cancel();
+      worker?.terminate();
+    };
   });
 
   $: if (mounted) {
@@ -55,9 +63,8 @@
     localStorage.setItem("cjk-theme", theme);
   }
 
-  $: if (mounted) scheduleCoverage(previewText);
   $: visibleFonts = fonts.filter((font) => {
-    const needle = query.trim().toLocaleLowerCase();
+    const needle = committedQuery.trim().toLocaleLowerCase();
     const matchesQuery =
       !needle ||
       `${font.label} ${font.description} ${font.packageName}`
@@ -68,21 +75,51 @@
     return matchesQuery && matchesCoverage;
   });
   $: if (mounted) {
-    for (const font of visibleFonts) ensureStylesheet(variantFor(font).urls[selectedCdn]);
+    for (const fontId of visibleSpecimenIds) {
+      const font = fonts.find((candidate) => candidate.id === fontId);
+      if (font && visibleFonts.includes(font)) {
+        ensureStylesheet(variantFor(font).urls[selectedCdn]);
+      }
+    }
   }
 
-  function scheduleCoverage(text: string) {
+  const commitPreviewText = debounce((text: string) => {
+    committedPreviewText = text;
+    requestCoverage(text);
+  }, 180);
+
+  const commitQuery = debounce((value: string) => {
+    committedQuery = value;
+  }, 120);
+
+  function handlePreviewInput(event: Event) {
+    commitPreviewText((event.currentTarget as HTMLTextAreaElement).value);
+  }
+
+  function handleQueryInput(event: Event) {
+    commitQuery((event.currentTarget as HTMLInputElement).value);
+  }
+
+  function requestCoverage(text: string) {
     if (!worker) return;
     coveragePending = true;
-    clearTimeout(timer);
-    timer = setTimeout(
-      () =>
-        worker?.postMessage({
-          fonts: JSON.parse(JSON.stringify(fonts)),
-          text,
-        }),
-      120,
+    latestCoverageRequestId += 1;
+    worker.postMessage({ type: "match", requestId: latestCoverageRequestId, text });
+  }
+
+  function observeSpecimen(node: HTMLElement, fontId: string) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting === visibleSpecimenIds.has(fontId)) return;
+        const next = new Set(visibleSpecimenIds);
+        if (entry.isIntersecting) next.add(fontId);
+        else next.delete(fontId);
+        visibleSpecimenIds = next;
+      },
+      { threshold: 0.5 },
     );
+    observer.observe(node);
+    return { destroy: () => observer.disconnect() };
   }
 
   function variantFor(font: FontRecord): FontVariant {
@@ -151,7 +188,8 @@
     <label class="proof-label" for="master-proof">要檢查的文字</label>
     <textarea
       id="master-proof"
-      bind:value={previewText}
+      value={defaultText}
+      on:input={handlePreviewInput}
       class="master-proof"
       aria-label="要檢查的文字"
       placeholder="貼上標題、姓名、地址或整篇文章"
@@ -160,7 +198,7 @@
       style:background={background}
     ></textarea>
 
-    {#if variationSelectorPattern.test(previewText)}
+    {#if variationSelectorPattern.test(committedPreviewText)}
       <p class="coverage-notice">
         內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。
       </p>
@@ -171,7 +209,7 @@
     <div class="rail-index" aria-hidden="true">SPEC / 001</div>
     <label class="search-control">
       <span>搜尋字型</span>
-      <input bind:value={query} type="search" placeholder="名稱、套件或特徵" />
+      <input on:input={handleQueryInput} type="search" placeholder="名稱、套件或特徵" />
     </label>
 
     <fieldset class="theme-control">
@@ -237,7 +275,7 @@
       {#each visibleFonts as font (font.id)}
         {@const variant = variantFor(font)}
         {@const missingPoints = missing[font.id] ?? []}
-        <article class="font-specimen">
+        <article class="font-specimen" use:observeSpecimen={font.id}>
           <header>
             <div>
               <h3>{font.label}</h3>
@@ -276,7 +314,7 @@
             style:color={foreground}
             style:background={background}
           >
-            {previewText || "開始輸入文字"}
+            {visibleSpecimenIds.has(font.id) ? committedPreviewText || "開始輸入文字" : ""}
           </div>
 
           {#if !coveragePending && missingPoints.length > 0}
