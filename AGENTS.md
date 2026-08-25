@@ -125,11 +125,12 @@ stylesheets only for specimens that are mostly visible, and retain
 specimen nodes or send the coverage index through `postMessage`.
 
 Measure input regressions against a production build, not the development
-server. In Chrome DevTools, record five scripted `input` events at 16 ms
-intervals for `#master-proof` and the font search field, then wait for the final
-debounced result. Report event-dispatch duration, inter-event gaps, long tasks,
-and the final rendered value or result count. Clear the local service worker and
-cache before comparing builds. Treat an event dispatch or inter-event gap above
-50 ms during the five-event burst as a regression. Long tasks after the burst
-must be reported separately because CJK font shaping and font downloads vary by
-machine and cache state.
+server. In Chrome DevTools, test `#master-proof` and the font search field with
+two five-event sequences: a 16 ms burst and a settled sequence whose interval
+is longer than the field's debounce. Wait for the final rendered value, coverage
+state, or result count. Report event-dispatch duration, inter-event gaps,
+settle latency, and long tasks for both sequences. Clear the local service
+worker and cache before comparing builds. Treat an event dispatch, inter-event
+gap, or main-thread settle task above 50 ms as a regression. Report font download
+and shaping work separately with its cache state and the affected visible
+specimen.

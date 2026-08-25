@@ -2,12 +2,12 @@
   import { debounce } from "es-toolkit";
   import { onMount } from "svelte";
 
-  import type { Cdn, FontRecord, FontVariant } from "../lib/catalog";
+  import type { CatalogFontRecord, CatalogFontVariant, Cdn } from "../lib/catalog";
   import { formatCodePoint } from "../lib/coverage";
   import type { CoverageResponse } from "../workers/coverage.worker";
 
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
-  export let fonts: FontRecord[];
+  export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
 
   const defaultText = "臺北下雨了，𠮷野家門口有人等公車。\nCheck names, addresses, and long-form copy here.";
@@ -86,11 +86,11 @@
   const commitPreviewText = debounce((text: string) => {
     committedPreviewText = text;
     requestCoverage(text);
-  }, 180);
+  }, 400);
 
   const commitQuery = debounce((value: string) => {
     committedQuery = value;
-  }, 120);
+  }, 250);
 
   function handlePreviewInput(event: Event) {
     commitPreviewText((event.currentTarget as HTMLTextAreaElement).value);
@@ -110,9 +110,10 @@
   function observeSpecimen(node: HTMLElement, fontId: string) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting === visibleSpecimenIds.has(fontId)) return;
+        const isMostlyVisible = entry.intersectionRatio >= 0.5;
+        if (isMostlyVisible === visibleSpecimenIds.has(fontId)) return;
         const next = new Set(visibleSpecimenIds);
-        if (entry.isIntersecting) next.add(fontId);
+        if (isMostlyVisible) next.add(fontId);
         else next.delete(fontId);
         visibleSpecimenIds = next;
       },
@@ -122,7 +123,7 @@
     return { destroy: () => observer.disconnect() };
   }
 
-  function variantFor(font: FontRecord): FontVariant {
+  function variantFor(font: CatalogFontRecord): CatalogFontVariant {
     return (
       font.variants.find((variant) => variant.id === selectedVariants[font.id]) ??
       font.variants[0]
@@ -138,16 +139,16 @@
     document.head.append(link);
   }
 
-  function familyStack(variant: FontVariant): string {
+  function familyStack(variant: CatalogFontVariant): string {
     return `${variant.families.map((family) => `"${family}"`).join(", ")}, sans-serif`;
   }
 
-  function embedCode(font: FontRecord, cdnId: string): string {
+  function embedCode(font: CatalogFontRecord, cdnId: string): string {
     const variant = variantFor(font);
     return `<link rel="stylesheet" href="${variant.urls[cdnId]}">`;
   }
 
-  async function copyEmbed(font: FontRecord) {
+  async function copyEmbed(font: CatalogFontRecord) {
     const code = embedCode(font, selectedCdn);
     try {
       await navigator.clipboard.writeText(code);
@@ -346,8 +347,15 @@
         </article>
       {:else}
         <div class="empty-state">
-          <h3>沒有字型涵蓋全部文字</h3>
-          <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>
+          {#if committedQuery.trim()}
+            <h3>找不到符合搜尋條件的字型</h3>
+            <p>請改用字型名稱、套件名稱或其他特徵搜尋。</p>
+          {:else if onlyComplete}
+            <h3>沒有字型涵蓋全部文字</h3>
+            <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>
+          {:else}
+            <h3>目前沒有可用字型</h3>
+          {/if}
         </div>
       {/each}
     </div>

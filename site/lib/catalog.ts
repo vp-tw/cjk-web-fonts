@@ -34,5 +34,14 @@ export interface FontRecord {
   variants: FontVariant[];
 }
 
+export type CatalogFontVariant = Omit<FontVariant, "coverage">;
+export type CatalogFontRecord = Omit<FontRecord, "variants"> & {
+  variants: CatalogFontVariant[];
+};
+
 export const cdns = catalog.cdns as Cdn[];
 export const fonts = catalog.fonts as unknown as FontRecord[];
+export const catalogFonts: CatalogFontRecord[] = fonts.map((font) => ({
+  ...font,
+  variants: font.variants.map(({ coverage: _coverage, ...variant }) => variant),
+}));
