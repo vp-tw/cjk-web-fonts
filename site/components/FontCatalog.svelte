@@ -126,7 +126,15 @@
       { rootMargin: "-25% 0px -25% 0px" },
     );
     observer.observe(node);
-    return { destroy: () => observer.disconnect() };
+    return {
+      destroy: () => {
+        observer.disconnect();
+        if (!visibleSpecimenIds.has(fontId)) return;
+        const visible = new Set(visibleSpecimenIds);
+        visible.delete(fontId);
+        visibleSpecimenIds = visible;
+      },
+    };
   }
 
   function variantFor(font: CatalogFontRecord): CatalogFontVariant {
