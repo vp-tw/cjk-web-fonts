@@ -30,6 +30,7 @@
   let coveragePending = true;
   let copied = "";
   let visibleSpecimenIds = new Set<string>();
+  let loadedSpecimenIds = new Set<string>();
   let worker: Worker | undefined;
   let latestCoverageRequestId = 0;
   let mounted = false;
@@ -77,7 +78,7 @@
       !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0),
   );
   $: if (mounted) {
-    for (const fontId of visibleSpecimenIds) {
+    for (const fontId of loadedSpecimenIds) {
       const font = fonts.find((candidate) => candidate.id === fontId);
       if (font && visibleFonts.includes(font)) {
         ensureStylesheet(variantFor(font).urls[selectedCdn]);
@@ -112,9 +113,15 @@
   function observeSpecimen(node: HTMLElement, fontId: string) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting || visibleSpecimenIds.has(fontId)) return;
-        visibleSpecimenIds = new Set(visibleSpecimenIds).add(fontId);
-        observer.disconnect();
+        if (entry.isIntersecting !== visibleSpecimenIds.has(fontId)) {
+          const visible = new Set(visibleSpecimenIds);
+          if (entry.isIntersecting) visible.add(fontId);
+          else visible.delete(fontId);
+          visibleSpecimenIds = visible;
+        }
+        if (entry.isIntersecting && !loadedSpecimenIds.has(fontId)) {
+          loadedSpecimenIds = new Set(loadedSpecimenIds).add(fontId);
+        }
       },
       { rootMargin: "-25% 0px -25% 0px" },
     );
@@ -306,6 +313,9 @@
 
           <div
             class="live-specimen"
+            role="region"
+            aria-label={`${font.label} 字型預覽`}
+            tabindex="0"
             style:font-family={familyStack(variant)}
             style:--preview-size={`${fontSize}px`}
             style:font-weight={variant.weight}
