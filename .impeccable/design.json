@@ -227,9 +227,9 @@
     {
       "name": "Font Specimen",
       "kind": "card",
-      "description": "A full-width ruled specimen with attached package metadata. Stylesheets load once after central-band activation, proof DOM updates stay limited to the current central band, and the named keyboard-focusable proof scrolls internally.",
-      "html": "<article class=\"ds-specimen\"><header><h3>Taipei Sans TC</h3><code>@vp-tw/cjk-web-fonts-taipei-sans-tc@0.0.1</code></header><div class=\"ds-proof\" role=\"region\" aria-label=\"Taipei Sans TC 字型預覽\" tabindex=\"0\">臺北下雨了</div></article>",
-      "css": ".ds-specimen { border-top: 1px solid var(--ink, #171816); border-bottom: 1px solid var(--ink, #171816); background: var(--paper, #e7e3d8); color: var(--ink, #171816); content-visibility: auto; contain-intrinsic-size: auto 520px; } .ds-specimen header { padding: 1rem 3vw; } .ds-specimen h3 { margin: 0; font: 500 1.35rem/1.3 sans-serif; } .ds-specimen code { color: var(--muted, #60655f); font: 400 .72rem/1.4 ui-monospace, monospace; } .ds-proof { min-height: 140px; max-height: min(60vh, 720px); padding: clamp(1rem, 3vw, 3rem); overflow: auto; font-size: clamp(2rem, 6vw, 5rem); line-height: 1.35; overflow-wrap: anywhere; }"
+      "description": "A full-width ruled specimen with attached package metadata and an editable textarea. Visible fields synchronize immediately; offscreen fields receive the latest proof before display or focus. Stylesheets preload within one viewport of the visible area, while content-visibility contains offscreen rendering.",
+      "html": "<article class=\"ds-specimen\"><header><h3>Taipei Sans TC</h3><code>@vp-tw/cjk-web-fonts-taipei-sans-tc@0.0.1</code></header><textarea class=\"ds-proof\" aria-label=\"Taipei Sans TC 預覽文字；輸入會同步至其他字型\">臺北下雨了</textarea></article>",
+      "css": ".ds-specimen { border-top: 1px solid var(--ink, #171816); border-bottom: 1px solid var(--ink, #171816); background: var(--paper, #e7e3d8); color: var(--ink, #171816); content-visibility: auto; contain-intrinsic-size: auto 520px; } .ds-specimen header { padding: 1rem 3vw; } .ds-specimen h3 { margin: 0; font: 500 1.35rem/1.3 sans-serif; } .ds-specimen code { color: var(--muted, #60655f); font: 400 .72rem/1.4 ui-monospace, monospace; } .ds-proof { display: block; width: 100%; min-height: 140px; max-height: min(60vh, 720px); padding: clamp(1rem, 3vw, 3rem); resize: vertical; border: 0; border-radius: 0; overflow: auto; font-size: clamp(2rem, 6vw, 5rem); line-height: 1.35; }"
     },
     {
       "name": "PWA Update Notice",
@@ -271,8 +271,8 @@
         "section": "typography"
       },
       {
-        "name": "The Task Before the Catalog Rule",
-        "body": "On every viewport, visitors encounter editable proof text and essential controls before the result list.",
+        "name": "The Specimen Is the Input Rule",
+        "body": "Preview text is edited in context. Do not add a separate master-proof field above the catalog.",
         "section": "layout"
       },
       {

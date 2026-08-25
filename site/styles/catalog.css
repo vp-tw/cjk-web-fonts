@@ -2,12 +2,13 @@
   display: grid;
   grid-template-columns: minmax(250px, 20vw) minmax(0, 1fr);
   grid-template-areas:
-    "controls proof"
+    "controls intro"
     "controls catalog";
 }
 
 .control-rail {
   grid-area: controls;
+  min-width: 0;
   position: sticky;
   top: 0;
   align-self: start;
@@ -108,6 +109,7 @@
 }
 
 .color-controls label {
+  min-width: 0;
   margin-bottom: 0;
 }
 
@@ -165,40 +167,37 @@
   line-height: 1.4;
 }
 
-.proof-area {
-  grid-area: proof;
-  min-width: 0;
-  border-bottom: 1px solid var(--ink);
-}
-
-.proof-heading {
+.catalog-intro {
+  grid-area: intro;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  padding: clamp(2rem, 4vw, 4rem) 3vw 1.5rem;
+  padding: clamp(2.25rem, 5vw, 5.5rem) 3vw clamp(2rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--ink);
 }
 
-.proof-heading h1 {
+.catalog-index {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.catalog-intro h1 {
   margin: 0 0 0.5rem;
-  max-width: 15ch;
+  max-width: 12ch;
   font-size: clamp(2.4rem, 5vw, 5.4rem);
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 0.98;
 }
 
-.proof-heading p {
+.catalog-intro p {
   max-width: 55ch;
   margin: 0;
   color: var(--muted);
   line-height: 1.5;
-}
-
-.proof-label {
-  display: block;
-  margin: 0 3vw 0.45rem;
-  color: var(--muted);
-  font-size: 0.72rem;
 }
 
 .result-count {
@@ -216,28 +215,13 @@
   font-variant-numeric: tabular-nums;
 }
 
-.master-proof {
-  display: block;
-  width: calc(100% - 6vw);
-  min-height: 270px;
-  margin: 0 3vw 1rem;
-  padding: clamp(1.2rem, 2.5vw, 2.5rem);
-  resize: vertical;
-  border: 1px solid var(--ink);
-  border-radius: 0;
-  font-size: clamp(2rem, 5vw, 5.5rem);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  caret-color: var(--accent);
-}
-
 .catalog-area {
   grid-area: catalog;
   min-width: 0;
 }
 
 .coverage-notice {
-  margin: 0 3vw 2rem;
+  margin: 1rem 3vw;
   padding: 0.85rem 1rem;
   border: 1px solid var(--accent);
   color: var(--ink);
@@ -249,7 +233,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 3vw;
-  border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
 }
 
@@ -328,14 +311,19 @@
 }
 
 .live-specimen {
+  display: block;
+  width: 100%;
   min-height: 220px;
   max-height: min(60vh, 720px);
   padding: clamp(1rem, 3vw, 3rem);
+  resize: vertical;
+  border: 0;
+  border-radius: 0;
   font-size: var(--preview-size);
   overflow: auto;
   line-height: 1.35;
-  overflow-wrap: anywhere;
   white-space: pre-wrap;
+  caret-color: var(--accent);
   transition:
     color 180ms ease-out,
     background-color 180ms ease-out;
@@ -434,7 +422,7 @@
   .workbench {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "proof"
+      "intro"
       "controls"
       "catalog";
   }
@@ -465,7 +453,11 @@
     grid-template-columns: 1fr;
   }
 
-  .proof-heading,
+  .catalog-intro {
+    gap: 1rem;
+    padding: 2rem 1.4rem 1.5rem;
+  }
+
   .font-specimen > header {
     align-items: flex-start;
     flex-direction: column;
@@ -473,10 +465,6 @@
 
   .result-count {
     align-self: flex-end;
-  }
-
-  .master-proof {
-    min-height: 240px;
   }
 
   .live-specimen {

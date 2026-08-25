@@ -136,13 +136,13 @@ Dark mode reverses the material relationship with charcoal paper, warm white ink
 
 ## Layout
 
-The base composition is a two-column workbench. A narrow specification rail holds search and proof controls; the fluid field holds the editable master proof and catalog. One-pixel rules join regions into a continuous sheet instead of separating them into floating cards.
+The base composition is a two-column workbench. A narrow specification rail holds search and proof controls; the fluid field begins with a compact task statement and then moves directly into editable font specimens. One-pixel rules join regions into a continuous sheet instead of separating them into floating cards.
 
 Page edges and specimen interiors use a fluid section inset (`3vw`). Major proof regions scale with `clamp()` while control dimensions remain stable. Dense metadata wraps instead of truncating.
 
-At 900px and below, reading order becomes proof, controls, then catalog. The control rail stops being sticky and becomes a two-column calibration panel. At 600px and below, controls become a single column, headers stack, embed actions occupy their own full-width row, and specimen type is capped at 12vw to prevent horizontal overflow.
+At 900px and below, the control rail stops being sticky and becomes a two-column calibration panel before the catalog. At 600px and below, controls become a single column, headers stack, embed actions occupy their own full-width row, and specimen type is capped at 12vw to prevent horizontal overflow.
 
-**The Task Before the Catalog Rule.** On every viewport, visitors encounter editable proof text and essential controls before the result list.
+**The Specimen Is the Input Rule.** Preview text is edited in context. Do not add a separate master-proof field above the catalog.
 
 ## Elevation & Depth
 
@@ -172,7 +172,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 
 - **Style:** Paper background, one-pixel Hairline Rule border, square corners, and a stable minimum height of 42px.
 - **Focus:** A two-pixel Focus Blue outline with clear offset. Segmented radio options place the outline inside the group so it is never clipped.
-- **Text Area:** The master proof is larger, resizable, and uses Registration Ink for its border. Preview foreground and background colors may override its content field only.
+- **Text Area:** Every specimen owns a large, resizable textarea. Editing any specimen synchronizes the shared proof text; preview foreground, background, and selected typeface apply directly to that field.
 
 ### Segmented Controls
 
@@ -187,7 +187,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Font Specimens
 
 - **Style:** Each font is a full-width ruled section, not a card. Its header keeps name, exact package version, coverage state, and variant selection together.
-- **Behavior:** The input remains responsive while preview and coverage updates settle after a short pause. A specimen loads its stylesheet once after intersecting the viewport's central band, while proof DOM updates remain limited to specimens currently in that band. Offscreen specimens retain their measured space. The live specimen preserves line breaks, wraps long strings anywhere, and scrolls internally when long content reaches 60vh (up to 720px). The named region is keyboard-focusable so its overflow remains accessible. It responds to the shared size and color controls. License and source links remain attached below it.
+- **Behavior:** Each live specimen is an editable textarea. Input synchronizes immediately across visible specimens; an offscreen field receives the latest complete proof before it enters the viewport or accepts focus. `content-visibility` contains offscreen rendering work. Coverage becomes pending on the same input event, then settles after a short pause in the Worker; stale responses cannot replace a newer proof. A specimen preloads its stylesheet once it is within one viewport of the visible area, before it becomes a likely interaction target. The field preserves line breaks and scrolls internally when long content reaches 60vh (up to 720px). License and source links remain attached below it.
 
 ### Embed Rows
 

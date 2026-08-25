@@ -116,17 +116,19 @@ development, use `?pwa-prompt=update`, `?pwa-prompt=offline`, or
 verify it against two consecutive production builds and test a controlled
 offline reload.
 
-Catalog text fields keep their native value outside Svelte's reactive graph.
-Debounce search and proof commits, load the coverage index inside the Web Worker
-instead of cloning it on the main thread, and identify every request so stale
-Worker responses cannot replace newer results. Render proof text and load font
-stylesheets only for specimens that intersect the viewport's central band, and retain
-`content-visibility` containment. Do not bind each keystroke directly to all
-specimen nodes or send the coverage index through `postMessage`.
+Catalog specimen textareas are the shared proof input. Keep the active field's
+native value immediate, synchronize the complete proof across visible specimens,
+and hydrate an offscreen specimen before it becomes visible or editable. Use
+`content-visibility` to contain offscreen rendering. Mark coverage stale
+on the same input event and debounce only the Worker request. Load the coverage index inside the
+Web Worker instead of cloning it on the main thread, and identify every request so stale
+Worker responses cannot replace newer results. Preload a specimen's font
+stylesheet when it is within one viewport of the visible area. Do not send the
+coverage index through `postMessage`.
 
 Measure input regressions against a production build, not the development
-server. In Chrome DevTools, test `#master-proof` and the font search field with
-two five-event sequences: a 16 ms burst and a settled sequence whose interval
+server. In Chrome DevTools, test the active `.live-specimen` textarea and the
+font search field with two five-event sequences: a 16 ms burst and a settled sequence whose interval
 is longer than the field's debounce. Wait for the final rendered value, coverage
 state, or result count. Report event-dispatch duration, inter-event gaps,
 settle latency, and long tasks for both sequences. Clear the local service
