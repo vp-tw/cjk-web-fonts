@@ -1,6 +1,6 @@
 {
   "name": "@vp-tw/cjk-web-fonts-last-resort",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Unicode Last Resort 17.000 split into WOFF2 webfont subsets.",
   "keywords": [
     "fallback",

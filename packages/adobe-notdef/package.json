@@ -1,6 +1,6 @@
 {
   "name": "@vp-tw/cjk-web-fonts-adobe-notdef",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Adobe NotDef split into WOFF2 webfont subsets.",
   "keywords": [
     "adobe",

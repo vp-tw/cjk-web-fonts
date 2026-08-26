@@ -1,6 +1,6 @@
 {
   "name": "@vp-tw/cjk-web-fonts-tofu",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Google Fonts Tofu split into browser-compatible WOFF2 webfont subsets.",
   "keywords": [
     "fallback",
