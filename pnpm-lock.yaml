@@ -59,6 +59,8 @@ importers:
 
   packages/hanamin: {}
 
+  packages/iansui: {}
+
   packages/jigmo: {}
 
   packages/lxgw-wenkai-tc: {}

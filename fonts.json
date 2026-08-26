@@ -648,6 +648,27 @@
       }
     },
     {
+      "id": "iansui",
+      "label": "Iansui",
+      "buildScript": "scripts/build-iansui.sh",
+      "auditScript": "scripts/audit_iansui.py",
+      "site": {
+        "description": "A handwriting-style typeface adapted for Taiwan Traditional Chinese educational forms.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/ButTaiwan/iansui",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Regular/Iansui.css",
+            "coverageCss": ["dist/Regular/Iansui.css"],
+            "families": ["Iansui"],
+            "weight": 400
+          }
+        ]
+      }
+    },
+    {
       "id": "lxgw-wenkai-tc",
       "label": "LXGW WenKai TC",
       "buildScript": "scripts/build-lxgw-wenkai-tc.sh",
