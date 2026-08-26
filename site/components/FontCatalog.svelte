@@ -4,7 +4,16 @@
 
   import { type CatalogFontRecord, type CatalogFontVariant, type Cdn } from "../lib/catalog";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
-  import { formatCodePoint } from "../lib/coverage";
+  import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
+  import {
+    composeProofText,
+    proofPresets,
+    selectedPresetCount,
+    textForSelection,
+    toggleProofPreset,
+    type ProofPresetId,
+    type ProofPresetSelection,
+  } from "../lib/proof-presets";
   import { observeSpecimenLoading, type ObserverFactory } from "../lib/specimen-loading";
   import type { CoverageResponse } from "../workers/coverage.worker";
 
@@ -12,16 +21,10 @@
   export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
 
-  const defaultText = `ABC xyz 0123456789 !? … — () [] ＡＢＣ１２３ ☀︎ ★ ↔︎
-日本語：東京で珈琲を飲み、ひらがな・カタカナ・漢字を比べる。
-한국어: 서울의 봄날, 한글과 漢字를 함께 살펴봅니다.
-粵語：佢喺邊度？唔該畀杯凍檸茶我，𠺢𠹌啲字都要試。
-ㄅㄆㄇㄈ：今天天氣真好，ㄓㄨˋ ㄧㄣ ㄈㄨˊ ㄏㄠˋ。
-正體：臺灣製造、雙層公寓、躍過鬱鬱蔥蔥的山巒。
-简体：汉字转换、后发优势、云端数据库与软件测试。
-特殊與罕見：𠮷 𡘙 𪚥 𫝀 𫠜 𬺰 𰻞 龘 䨻 葛󠄀`;
+  const defaultText = composeProofText(proofPresets.map((preset) => preset.id));
   const fontFamilies = groupCatalogFonts(fonts);
   let previewText = defaultText;
+  let proofSelection: ProofPresetSelection = { mode: "all" };
   let committedQuery = "";
   let fontSize = 72;
   let foreground = "#171816";
@@ -117,15 +120,41 @@
   function handlePreviewInput(event: Event) {
     const source = event.currentTarget as HTMLTextAreaElement;
     previewText = source.value;
+    proofSelection = { mode: "custom" };
+    synchronizePreviewText(source);
+    scheduleCoverage();
+  }
+
+  function synchronizePreviewText(source?: HTMLTextAreaElement) {
     for (const fontId of visibleSpecimenIds) {
       const specimen = specimenNodes.get(fontId);
       if (specimen && specimen !== source && specimen.value !== previewText) {
         specimen.value = previewText;
       }
     }
+  }
+
+  function scheduleCoverage() {
     coveragePending = true;
     latestCoverageRequestId += 1;
     commitCoverage(previewText);
+  }
+
+  function selectAllProofPresets() {
+    applyProofSelection({ mode: "all" });
+  }
+
+  function togglePreset(id: ProofPresetId) {
+    applyProofSelection(toggleProofPreset(proofSelection, id));
+  }
+
+  function applyProofSelection(selection: ProofPresetSelection) {
+    const text = textForSelection(selection);
+    if (text === null) return;
+    proofSelection = selection;
+    previewText = text;
+    synchronizePreviewText();
+    scheduleCoverage();
   }
 
   function handlePreviewFocus(event: FocusEvent) {
@@ -333,6 +362,35 @@
       </div>
     </fieldset>
 
+    <fieldset class="proof-presets">
+      <legend>測試範本</legend>
+      <div class="preset-options">
+        <button
+          type="button"
+          class:active={proofSelection.mode === "all"}
+          aria-pressed={proofSelection.mode === "all"}
+          on:click={selectAllProofPresets}>全部</button
+        >
+        {#each proofPresets as preset}
+          <button
+            type="button"
+            class:active={proofSelection.mode === "selected" &&
+              proofSelection.ids.includes(preset.id)}
+            aria-pressed={proofSelection.mode === "selected" &&
+              proofSelection.ids.includes(preset.id)}
+            on:click={() => togglePreset(preset.id)}>{preset.label}</button
+          >
+        {/each}
+      </div>
+      <p class="preset-summary" aria-live="polite">
+        {#if proofSelection.mode === "custom"}
+          自訂內容
+        {:else}
+          {selectedPresetCount(proofSelection)} 組範本 · {uniqueRequiredCodePoints(previewText).length} 個必要字元
+        {/if}
+      </p>
+    </fieldset>
+
     <label class="range-control">
       <span>字級 <output>{fontSize}px</output></span>
       <input bind:value={fontSize} type="range" min="20" max="128" step="1" />
@@ -516,7 +574,7 @@
             <p>完成後會顯示沒有缺字的字型。</p>
           {:else if onlyComplete}
             <h3>沒有字型涵蓋全部文字</h3>
-            <p>關閉「只看沒有缺字的字型」，查看各字型缺少哪些字。</p>
+            <p>縮小測試範本，或關閉「只看沒有缺字的字型」查看缺少哪些字。</p>
           {:else}
             <h3>目前沒有可用字型</h3>
           {/if}
