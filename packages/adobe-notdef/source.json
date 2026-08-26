@@ -1,0 +1,19 @@
+{
+  "name": "Adobe NotDef",
+  "version": "1f1f863b",
+  "license": "OFL-1.1",
+  "downloads": [
+    {
+      "name": "AND-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/adobe-notdef/1f1f863b2295543598b69bebe42db3e73fe58353/AND-Regular.otf",
+      "bytes": 20896,
+      "sha256": "494bfaeeea8993a8f6fc8d21d2a9f4c6036dc51fb6e4938ff6f34ce5ad9dd7f2"
+    },
+    {
+      "name": "LICENSE.md",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/adobe-notdef/1f1f863b2295543598b69bebe42db3e73fe58353/LICENSE.md",
+      "bytes": 4353,
+      "sha256": "220e12af6c449359581057d304c4e0c3389a8192411778a1d084d6081d0402df"
+    }
+  ]
+}
