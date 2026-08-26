@@ -22,6 +22,22 @@ export interface Messages {
     families: string;
     search: string;
     searchPlaceholder: string;
+    filters: string;
+    category: string;
+    allCategories: string;
+    serif: string;
+    sansSerif: string;
+    handwriting: string;
+    symbols: string;
+    diagnostic: string;
+    languageFilter: string;
+    allLanguages: string;
+    writingSystem: string;
+    allWritingSystems: string;
+    hiragana: string;
+    katakana: string;
+    han: string;
+    hangul: string;
     appearance: string;
     light: string;
     dark: string;
@@ -109,6 +125,22 @@ const en: Messages = {
     families: "families",
     search: "Search fonts",
     searchPlaceholder: "Name, package, or feature",
+    filters: "Font filters",
+    category: "Category",
+    allCategories: "All categories",
+    serif: "Serif",
+    sansSerif: "Sans Serif",
+    handwriting: "Handwriting",
+    symbols: "Symbols",
+    diagnostic: "Diagnostic fallback",
+    languageFilter: "Language suitability",
+    allLanguages: "All languages",
+    writingSystem: "Character support",
+    allWritingSystems: "All writing systems",
+    hiragana: "Hiragana",
+    katakana: "Katakana",
+    han: "Han",
+    hangul: "Hangul",
     appearance: "Appearance",
     light: "Light",
     dark: "Dark",
@@ -205,6 +237,22 @@ const zhHant: Messages = {
     families: "字族",
     search: "搜尋字型",
     searchPlaceholder: "名稱、套件或特徵",
+    filters: "字型篩選",
+    category: "分類",
+    allCategories: "所有分類",
+    serif: "有襯線",
+    sansSerif: "無襯線",
+    handwriting: "手寫",
+    symbols: "符號",
+    diagnostic: "診斷後援",
+    languageFilter: "語言適用性",
+    allLanguages: "所有語言",
+    writingSystem: "字元支援",
+    allWritingSystems: "所有書寫系統",
+    hiragana: "平假名",
+    katakana: "片假名",
+    han: "漢字",
+    hangul: "韓文字母",
     appearance: "介面模式",
     light: "亮色",
     dark: "暗色",
@@ -301,6 +349,22 @@ const zhHans: Messages = {
     families: "字体系列",
     search: "搜索字体",
     searchPlaceholder: "名称、软件包或特征",
+    filters: "字体筛选",
+    category: "分类",
+    allCategories: "所有分类",
+    serif: "衬线",
+    sansSerif: "无衬线",
+    handwriting: "手写",
+    symbols: "符号",
+    diagnostic: "诊断后备",
+    languageFilter: "语言适用性",
+    allLanguages: "所有语言",
+    writingSystem: "字符支持",
+    allWritingSystems: "所有书写系统",
+    hiragana: "平假名",
+    katakana: "片假名",
+    han: "汉字",
+    hangul: "韩文字母",
     appearance: "界面模式",
     light: "亮色",
     dark: "暗色",
@@ -400,6 +464,22 @@ const ja: Messages = {
     families: "ファミリー",
     search: "フォントを検索",
     searchPlaceholder: "名前、パッケージ、特徴",
+    filters: "フォント絞り込み",
+    category: "分類",
+    allCategories: "すべての分類",
+    serif: "セリフ",
+    sansSerif: "サンセリフ",
+    handwriting: "手書き",
+    symbols: "記号",
+    diagnostic: "診断用フォールバック",
+    languageFilter: "言語適性",
+    allLanguages: "すべての言語",
+    writingSystem: "文字サポート",
+    allWritingSystems: "すべての文字体系",
+    hiragana: "ひらがな",
+    katakana: "カタカナ",
+    han: "漢字",
+    hangul: "ハングル",
     appearance: "表示モード",
     light: "ライト",
     dark: "ダーク",
@@ -501,6 +581,22 @@ const ko: Messages = {
     families: "패밀리",
     search: "폰트 검색",
     searchPlaceholder: "이름, 패키지 또는 특징",
+    filters: "글꼴 필터",
+    category: "분류",
+    allCategories: "모든 분류",
+    serif: "세리프",
+    sansSerif: "산세리프",
+    handwriting: "손글씨",
+    symbols: "기호",
+    diagnostic: "진단용 대체 글꼴",
+    languageFilter: "언어 적합성",
+    allLanguages: "모든 언어",
+    writingSystem: "문자 지원",
+    allWritingSystems: "모든 문자 체계",
+    hiragana: "히라가나",
+    katakana: "가타카나",
+    han: "한자",
+    hangul: "한글",
     appearance: "화면 모드",
     light: "라이트",
     dark: "다크",

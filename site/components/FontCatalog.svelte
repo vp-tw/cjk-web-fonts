@@ -2,10 +2,16 @@
   import { debounce } from "es-toolkit";
   import { onMount } from "svelte";
 
-  import { type CatalogFontRecord, type CatalogFontVariant, type Cdn } from "../lib/catalog";
+  import {
+    type CatalogFontRecord,
+    type CatalogFontVariant,
+    type Cdn,
+    type WritingSystemId,
+  } from "../lib/catalog";
+  import { fontMatchesFilters } from "../lib/catalog-filters";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
-  import { formatMessage, type Locale, type Messages } from "../lib/i18n";
+  import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
   import {
     composeProofText,
     proofPresets,
@@ -24,6 +30,7 @@
   export let locale: Locale;
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let messages: Messages["catalog"];
+  // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let presetLabels: Messages["presets"];
 
   const defaultText = composeProofText(proofPresets.map((preset) => preset.id));
@@ -31,6 +38,9 @@
   let previewText = defaultText;
   let proofSelection: ProofPresetSelection = { mode: "all" };
   let committedQuery = "";
+  let selectedCategory = "all";
+  let selectedLanguage = "all";
+  let selectedWritingSystem: WritingSystemId | "all" = "all";
   let fontSize = 72;
   let foreground = "#171816";
   let background = "#e7e3d8";
@@ -95,13 +105,25 @@
 
   $: queryMatchingFamilies = fontFamilies.filter((family) => {
     const needle = committedQuery.trim().toLocaleLowerCase();
-    return (
+    const matchesQuery =
       !needle ||
       `${family.label} ${family.fonts
-        .map((font) => `${font.label} ${font.description} ${font.packageName}`)
+        .map(
+          (font) =>
+            `${font.label} ${font.description} ${font.packageName} ${font.classifications.join(" ")} ${font.languages.join(" ")}`,
+        )
         .join(" ")}`
         .toLocaleLowerCase()
-        .includes(needle)
+        .includes(needle);
+    return (
+      matchesQuery &&
+      family.fonts.some((font) =>
+        fontMatchesFilters(font, {
+          category: selectedCategory,
+          language: selectedLanguage,
+          writingSystem: selectedWritingSystem,
+        }),
+      )
     );
   });
   $: visibleFamilies = queryMatchingFamilies.filter(
@@ -126,6 +148,42 @@
   const commitQuery = debounce((value: string) => {
     committedQuery = value;
   }, 250);
+
+  function categoryOptions(): [string, string][] {
+    return [
+      ["all", messages.allCategories],
+      ["serif", messages.serif],
+      ["sans-serif", messages.sansSerif],
+      ["handwriting", messages.handwriting],
+      ["monospace", messages.monospaced],
+      ["symbols", messages.symbols],
+      ["diagnostic", messages.diagnostic],
+    ];
+  }
+
+  function languageOptions(): [string, string][] {
+    return [
+      ["all", messages.allLanguages],
+      ["zh_Hant", localeNames["zh-Hant"]],
+      ["zh_Hans", localeNames["zh-Hans"]],
+      ["ja_Jpan", localeNames.ja],
+      ["ko_Kore", localeNames.ko],
+      ["en_Latn", localeNames.en],
+    ];
+  }
+
+  function writingSystemOptions(): [WritingSystemId | "all", string][] {
+    return [
+      ["all", messages.allWritingSystems],
+      ["latin", presetLabels.latin],
+      ["bopomofo", presetLabels.bopomofo],
+      ["hiragana", messages.hiragana],
+      ["katakana", messages.katakana],
+      ["han", messages.han],
+      ["hangul", messages.hangul],
+      ["symbols", messages.symbols],
+    ];
+  }
 
   function handlePreviewInput(event: Event) {
     const source = event.currentTarget as HTMLTextAreaElement;
@@ -369,6 +427,36 @@
       <input on:input={handleQueryInput} type="search" placeholder={messages.searchPlaceholder} />
     </label>
 
+    <details class="filter-control">
+      <summary>{messages.filters}</summary>
+      <div>
+        <label>
+          <span>{messages.category}</span>
+          <select bind:value={selectedCategory}>
+            {#each categoryOptions() as [value, label]}
+              <option {value}>{label}</option>
+            {/each}
+          </select>
+        </label>
+        <label>
+          <span>{messages.languageFilter}</span>
+          <select bind:value={selectedLanguage}>
+            {#each languageOptions() as [value, label]}
+              <option {value}>{label}</option>
+            {/each}
+          </select>
+        </label>
+        <label>
+          <span>{messages.writingSystem}</span>
+          <select bind:value={selectedWritingSystem}>
+            {#each writingSystemOptions() as [value, label]}
+              <option {value}>{label}</option>
+            {/each}
+          </select>
+        </label>
+      </div>
+    </details>
+
     <fieldset class="theme-control">
       <legend>{messages.appearance}</legend>
       <div class="segments">
@@ -598,7 +686,7 @@
         </article>
       {:else}
         <div class="empty-state">
-          {#if committedQuery.trim() && queryMatchingFamilies.length === 0}
+          {#if (committedQuery.trim() || selectedCategory !== "all" || selectedLanguage !== "all" || selectedWritingSystem !== "all") && queryMatchingFamilies.length === 0}
             <h3>{messages.noSearchTitle}</h3>
             <p>{messages.noSearchBody}</p>
           {:else if coveragePending}

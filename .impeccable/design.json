@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-26T19:00:00+08:00",
+  "generatedAt": "2026-08-26T22:00:00+08:00",
   "title": "Design System: CJK Web Fonts",
   "extensions": {
     "colorMeta": {
@@ -209,6 +209,14 @@
       "description": "A calibration-rail select for System Default, Tofu, Adobe NotDef, or Last Resort. It changes live specimens only; coverage evidence and copied embed code stay unchanged.",
       "html": "<label class=\"ds-fallback\"><span>缺字後援</span><select><option>系統預設</option><option>Tofu</option><option>Adobe NotDef</option><option>Last Resort</option></select><small>只影響預覽；涵蓋檢查與複製的 embed 不會改變。</small></label>",
       "css": ".ds-fallback select { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; } .ds-fallback small { display: block; margin-top: .5rem; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-fallback select:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+    },
+    {
+      "name": "Font Filters",
+      "kind": "custom",
+      "refersTo": "input",
+      "description": "A collapsed calibration-rail disclosure for Fontsource-compatible category, reviewed language suitability, and complete sample coverage for a writing system. These signals remain distinct.",
+      "html": "<details class=\"ds-filters\"><summary>字型篩選</summary><label>分類<select><option>所有分類</option><option>有襯線</option><option>診斷後援</option></select></label><label>語言適用性<select><option>所有語言</option><option>正體中文</option></select></label><label>字元支援<select><option>所有書寫系統</option><option>注音</option></select></label></details>",
+      "css": ".ds-filters { border-block: 1px solid var(--rule, #9a9c94); padding: .75rem 0; } .ds-filters summary { cursor: pointer; font: 400 .78rem/1.4 sans-serif; } .ds-filters label { display: block; margin-top: .85rem; } .ds-filters select { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); }"
     },
     {
       "name": "Theme Segments",

@@ -41,6 +41,9 @@ copy CSS for a web project.
 ## Capabilities and Constraints
 
 - Search and preview the complete catalog.
+- Filter by reviewed language suitability, Fontsource-compatible classification,
+  and complete sample coverage for a writing system. These are separate signals:
+  glyph coverage never implies language suitability.
 - Edit shared preview text directly in any specimen, then change its font size,
   foreground color, and background color.
 - Choose System Default, Tofu, Adobe NotDef, or Last Resort as the missing-glyph

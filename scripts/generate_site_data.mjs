@@ -69,6 +69,20 @@ function coverageFromCss(paths) {
   return mergeRanges(ranges);
 }
 
+function rangeContains(ranges, point) {
+  return ranges.some(([start, end]) => point >= start && point <= end);
+}
+
+function writingSystemCoverage(coverage) {
+  return Object.fromEntries(
+    registry.writingSystems.map(({ id, sample }) => {
+      const points = [...new Set(Array.from(sample, (character) => character.codePointAt(0)))];
+      const covered = points.filter((point) => rangeContains(coverage, point)).length;
+      return [id, covered === 0 ? "none" : covered === points.length ? "complete" : "partial"];
+    }),
+  );
+}
+
 function variantCoveragePaths(packageDir, variant) {
   if (variant.coverageCss) {
     return variant.coverageCss.map((path) => join(packageDir, path));
@@ -93,6 +107,10 @@ const fonts = registry.fonts.map((font) => {
     license: font.site.license,
     sourceUrl: font.site.sourceUrl,
     repositoryUrl: packageJson.homepage,
+    classifications: font.site.classifications,
+    roles: font.site.roles,
+    languages: font.site.languages,
+    diagnosticType: font.site.diagnosticType ?? null,
     family: font.site.family ?? null,
     variants: font.site.variants.map((variant) => {
       const coverage = coverageFromCss(variantCoveragePaths(packageDir, variant));
@@ -114,12 +132,14 @@ const fonts = registry.fonts.map((font) => {
         urls,
         coverage,
         characterCount,
+        writingSystems: writingSystemCoverage(coverage),
       };
     }),
   };
 });
 
-const output = `${JSON.stringify({ cdns, fonts })}\n`;
+const writingSystems = registry.writingSystems.map(({ id }) => id);
+const output = `${JSON.stringify({ cdns, writingSystems, fonts })}\n`;
 if (process.argv.includes("--check")) {
   const current = readFileSync(outputPath, "utf8");
   if (current !== output) {
