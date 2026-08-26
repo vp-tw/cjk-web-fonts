@@ -1,0 +1,25 @@
+{
+  "name": "Google Fonts Tofu",
+  "version": "1.0.0-ee763685",
+  "license": "Apache-2.0",
+  "downloads": [
+    {
+      "name": "tofu.ttf",
+      "url": "https://raw.githubusercontent.com/googlefonts/tofu/ee763685d7b0c4a84bd0ff113b2000b1b50865a9/tofu.ttf",
+      "bytes": 1252,
+      "sha256": "b5d2d65a620ab6b2af64603fdd566e973a8473f1656ec4c975817bc74ac70721"
+    },
+    {
+      "name": "LICENSE",
+      "url": "https://raw.githubusercontent.com/googlefonts/tofu/ee763685d7b0c4a84bd0ff113b2000b1b50865a9/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "name": "README.md",
+      "url": "https://raw.githubusercontent.com/googlefonts/tofu/ee763685d7b0c4a84bd0ff113b2000b1b50865a9/README.md",
+      "bytes": 832,
+      "sha256": "5db104eedea76cda0d5d2d40e5fb23f1393c0ba69272953d7c7cc7ba49b8b0d2"
+    }
+  ]
+}

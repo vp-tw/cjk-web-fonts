@@ -130,3 +130,8 @@ pnpm site:build
 
 Catalog metadata lives in `fonts.json`. `site/generated/fonts.json` is generated
 from package metadata and published CSS coverage; do not edit it directly.
+
+## Diagnostic fonts
+
+- [`@vp-tw/cjk-web-fonts-tofu`](packages/tofu/README.md) — Google Fonts Tofu
+  packaged as browser-compatible WOFF2 subsets.

@@ -73,6 +73,8 @@ importers:
 
   packages/taipei-sans-tc: {}
 
+  packages/tofu: {}
+
 packages:
 
   '@apideck/better-ajv-errors@0.3.7':
