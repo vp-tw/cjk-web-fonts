@@ -1,6 +1,6 @@
 {
   "name": "@vp-tw/cjk-web-fonts-lxgw-wenkai-tc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "LXGW WenKai TC proportional and monospaced webfont subsets in three weights.",
   "keywords": [
     "cjk",
