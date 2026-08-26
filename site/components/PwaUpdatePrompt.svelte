@@ -1,5 +1,8 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
+  import type { Messages } from "../lib/i18n";
+
+  export let messages: Messages["pwa"];
 
   const base = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -129,24 +132,24 @@
     </div>
 
     <div class="pwa-notice__message">
-      <strong>{updateFailed ? "更新未完成" : needRefresh ? "有新版可用" : "已可離線使用"}</strong>
+      <strong>{updateFailed ? messages.updateFailed : needRefresh ? messages.updateReady : messages.offlineReady}</strong>
       <span>
         {updateFailed
-          ? "請再試一次；若仍無法更新，請重新整理頁面。"
+          ? messages.updateFailedBody
           : needRefresh
-            ? "更新已下載完成。重新載入即可使用最新版本。"
-            : "網站介面已可在離線時開啟；字型會在使用後逐步保留。"}
+            ? messages.updateReadyBody
+            : messages.offlineReadyBody}
       </span>
     </div>
 
     <div class="pwa-notice__actions">
       {#if needRefresh}
         <button class="pwa-notice__primary" type="button" disabled={updating} on:click={applyUpdate}>
-          {updating ? "正在更新…" : updateFailed ? "再試一次" : "立即更新"}
+          {updating ? messages.updating : updateFailed ? messages.retry : messages.updateNow}
         </button>
-        <button type="button" disabled={updating} on:click={close}>稍後</button>
+        <button type="button" disabled={updating} on:click={close}>{messages.later}</button>
       {:else}
-        <button class="pwa-notice__primary" type="button" on:click={close}>知道了</button>
+        <button class="pwa-notice__primary" type="button" on:click={close}>{messages.acknowledge}</button>
       {/if}
     </div>
   </aside>

@@ -168,6 +168,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 
 - **Style:** A ruled header with the approved CJK brand mark, compact wordmark, official tagline, and literal text links. Render the raster mark at 40px inside a 44px Specification Paper field so its registration-ink details remain visible in every color mode. Resize or convert the approved asset only; do not redraw, recolor, or add effects.
 - **State:** Links use the global underline and keyboard-focus treatment. On narrow screens, the task link remains visible while the external repository link may be hidden.
+- **Language:** A literal native-language label opens ruled links to every static locale. English is the root and fallback. Browser-language detection may offer a dismissible switch below the header on the English root, but never redirects automatically or changes proof content.
 
 ### Social Preview
 
@@ -196,7 +197,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Status Labels
 
 - **Style:** Plain text inside a one-pixel border in the matching semantic color.
-- **State:** Checking, complete, and missing states use literal Traditional Chinese labels. Missing-glyph details remain adjacent to the affected specimen.
+- **State:** Checking, complete, and missing states use literal labels in the active interface language. Missing-glyph details remain adjacent to the affected specimen.
 
 ### Font Specimens
 
@@ -215,6 +216,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 - **Behavior:** A downloaded update stays waiting until the visitor chooses `立即更新`. `稍後` dismisses the notice without blocking the page. Activation reloads once. An update-activation failure replaces the action with `再試一次` and an assertive status message.
 - **Responsive:** The notice sits at the lower right on wide screens. At 600px and below it becomes a full-width bottom sheet with 44px minimum actions and no side or bottom border.
 - **Accessibility:** The notice is a polite live status by default and an assertive alert on failure. Every action has a visible keyboard focus state, and entry motion is disabled when reduced motion is requested.
+- **Language:** Status, recovery, and action copy follows the active static locale. Every locale page remains available through the shared offline app shell.
 
 ## Do's and Don'ts
 

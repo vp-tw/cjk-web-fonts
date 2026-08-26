@@ -1,0 +1,116 @@
+---
+import FontCatalog from "../components/FontCatalog.svelte";
+import LocaleSuggestion from "../components/LocaleSuggestion.svelte";
+import PwaUpdatePrompt from "../components/PwaUpdatePrompt.svelte";
+import { catalogFonts as fonts, cdns } from "../lib/catalog";
+import { localeNames, localePath, locales, messages, type Locale } from "../lib/i18n";
+import "../styles/catalog.css";
+import "../styles/global.css";
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const copy = messages[locale];
+const base = import.meta.env.BASE_URL;
+const assetBase = base.endsWith("/") ? base : `${base}/`;
+const brandAsset = (filename: string) => `${assetBase}brand/${filename}`;
+const pageUrl = new URL(localePath(locale, base), Astro.site);
+const ogImageUrl = new URL(brandAsset("og-image.png"), Astro.site);
+---
+
+<!doctype html>
+<html lang={locale} data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={copy.meta.description} />
+    <meta name="theme-color" content="#e7e3d8" />
+    <meta name="application-name" content="CJK Web Fonts" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={copy.meta.title} />
+    <meta property="og:description" content={copy.meta.description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={copy.meta.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={copy.meta.title} />
+    <meta name="twitter:description" content={copy.meta.description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={copy.meta.ogImageAlt} />
+    <link rel="canonical" href={pageUrl} />
+    {locales.map((alternate) => (
+      <link rel="alternate" hreflang={alternate} href={new URL(localePath(alternate, base), Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(localePath("en", base), Astro.site)} />
+    <link rel="icon" href={`${assetBase}favicon.ico`} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={brandAsset("favicon-32.png")} />
+    <link rel="icon" type="image/png" sizes="16x16" href={brandAsset("favicon-16.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={brandAsset("apple-touch-icon.png")} />
+    <link rel="manifest" href={`${assetBase}manifest.webmanifest`} />
+    <link rel="sitemap" href={`${assetBase}sitemap.xml`} />
+    <title>{copy.meta.title}</title>
+    <script is:inline>
+      const savedTheme = localStorage.getItem("cjk-theme");
+      if (["light", "dark", "system"].includes(savedTheme)) {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href={localePath(locale, base)}>
+        <span class="brand-mark-frame" aria-hidden="true">
+          <img class="brand-mark" src={brandAsset("logo-64.png")} alt="" width="40" height="40" />
+        </span>
+        <span class="wordmark-copy">
+          CJK Web Fonts
+          <small>CJK web fonts, ready to use.</small>
+        </span>
+      </a>
+      <nav aria-label={copy.header.navLabel}>
+        <a href="#proof-title">{copy.header.start}</a>
+        <details class="language-picker">
+          <summary>{localeNames[locale]}</summary>
+          <div aria-label={copy.header.language}>
+            {locales.map((option) => (
+              <a
+                href={localePath(option, base)}
+                lang={option}
+                hreflang={option}
+                aria-current={option === locale ? "page" : undefined}
+                data-locale={option}
+              >
+                {localeNames[option]}
+              </a>
+            ))}
+          </div>
+        </details>
+        <a class="github-link" href="https://github.com/vp-tw/cjk-web-fonts">GitHub</a>
+      </nav>
+    </header>
+
+    {locale === "en" && <LocaleSuggestion base={base} copy={copy.localeSuggestion} client:load />}
+
+    <main>
+      <FontCatalog {fonts} {cdns} locale={locale} messages={copy.catalog} presetLabels={copy.presets} client:load />
+    </main>
+
+    <footer class="site-footer">
+      <span>{copy.footer.maintained}</span>
+      <a href="https://github.com/vp-tw/cjk-web-fonts">{copy.footer.source}</a>
+    </footer>
+
+    <PwaUpdatePrompt messages={copy.pwa} client:only="svelte" />
+    <script is:inline>
+      document.querySelectorAll("[data-locale]").forEach((link) => {
+        link.addEventListener("click", () => {
+          localStorage.setItem("cjk-locale", link.getAttribute("data-locale"));
+          localStorage.removeItem("cjk-locale-dismissed");
+        });
+      });
+    </script>
+  </body>
+</html>

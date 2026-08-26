@@ -48,6 +48,10 @@ copy CSS for a web project.
   package's CSS and font assets without rewriting the package.
 - Preserve static, indexable font content while hydrating only interactive
   controls.
+- Publish English at the root URL and static Traditional Chinese, Simplified
+  Chinese, Japanese, and Korean variants at language-specific URLs. Suggest the
+  visitor's browser language without forcing a redirect, and preserve explicit
+  language choices.
 - Keep the interface available after a successful visit. Cache font CSS and
   WOFF2 assets after use instead of downloading the complete catalog.
 - Tell visitors when an update is ready, let them defer it, and reload only

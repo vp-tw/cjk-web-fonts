@@ -5,6 +5,7 @@
   import { type CatalogFontRecord, type CatalogFontVariant, type Cdn } from "../lib/catalog";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
+  import { formatMessage, type Locale, type Messages } from "../lib/i18n";
   import {
     composeProofText,
     proofPresets,
@@ -20,6 +21,10 @@
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
+  export let locale: Locale;
+  // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
+  export let messages: Messages["catalog"];
+  export let presetLabels: Messages["presets"];
 
   const defaultText = composeProofText(proofPresets.map((preset) => preset.id));
   const fontFamilies = groupCatalogFonts(fonts);
@@ -266,10 +271,14 @@
   }
 
   function shapeLabel(variant: CatalogFontVariant): string {
-    if (variant.style === "italic") return "Italic";
-    if (variant.id.startsWith("mono-")) return "Monospaced";
-    if (/^(light|regular|medium)$/u.test(variant.id)) return "Proportional";
+    if (variant.style === "italic") return messages.italic;
+    if (variant.id.startsWith("mono-")) return messages.monospaced;
+    if (/^(light|regular|medium)$/u.test(variant.id)) return messages.proportional;
     return variant.label;
+  }
+
+  function axisLabel(label: string): string {
+    return label === "字寬" ? messages.width : label;
   }
 
   function shapeVariantId(font: CatalogFontRecord, shape: CatalogFontVariant): string {
@@ -334,42 +343,42 @@
   <div class="catalog-intro">
     <div>
       <span class="catalog-index" aria-hidden="true">PROOF / LIVE</span>
-      <h1 id="proof-title">直接在字型上輸入</h1>
-      <p>編輯任一預覽，文字會同步到其他字型。缺字檢查只在瀏覽器中執行。</p>
+      <h1 id="proof-title">{messages.title}</h1>
+      <p>{messages.intro}</p>
     </div>
     <div class="result-count" aria-live="polite">
       <strong>{visibleFamilies.length}</strong>
-      <span>/ {fontFamilies.length} 字族</span>
+      <span>/ {fontFamilies.length} {messages.families}</span>
     </div>
   </div>
 
   <div class="control-rail">
     <div class="rail-index" aria-hidden="true">CTRL / 001</div>
     <label class="search-control">
-      <span>搜尋字型</span>
-      <input on:input={handleQueryInput} type="search" placeholder="名稱、套件或特徵" />
+      <span>{messages.search}</span>
+      <input on:input={handleQueryInput} type="search" placeholder={messages.searchPlaceholder} />
     </label>
 
     <fieldset class="theme-control">
-      <legend>介面模式</legend>
+      <legend>{messages.appearance}</legend>
       <div class="segments">
         {#each ["light", "dark", "system"] as option}
           <label class:active={theme === option}>
             <input bind:group={theme} type="radio" value={option} />
-            {option === "light" ? "亮色" : option === "dark" ? "暗色" : "系統"}
+            {option === "light" ? messages.light : option === "dark" ? messages.dark : messages.system}
           </label>
         {/each}
       </div>
     </fieldset>
 
     <fieldset class="proof-presets">
-      <legend>測試範本</legend>
+      <legend>{messages.proofPresets}</legend>
       <div class="preset-options">
         <button
           type="button"
           class:active={proofSelection.mode === "all"}
           aria-pressed={proofSelection.mode === "all"}
-          on:click={selectAllProofPresets}>全部</button
+          on:click={selectAllProofPresets}>{messages.all}</button
         >
         {#each proofPresets as preset}
           <button
@@ -378,34 +387,34 @@
               proofSelection.ids.includes(preset.id)}
             aria-pressed={proofSelection.mode === "selected" &&
               proofSelection.ids.includes(preset.id)}
-            on:click={() => togglePreset(preset.id)}>{preset.label}</button
+            on:click={() => togglePreset(preset.id)}>{presetLabels[preset.id]}</button
           >
         {/each}
       </div>
       <p class="preset-summary" aria-live="polite">
         {#if proofSelection.mode === "custom"}
-          自訂內容
+          {messages.customContent}
         {:else}
-          {selectedPresetCount(proofSelection)} 組範本 · {uniqueRequiredCodePoints(previewText).length} 個必要字元
+          {formatMessage(messages.presetSummary, { presets: selectedPresetCount(proofSelection), characters: uniqueRequiredCodePoints(previewText).length })}
         {/if}
       </p>
     </fieldset>
 
     <label class="range-control">
-      <span>字級 <output>{fontSize}px</output></span>
+      <span>{messages.fontSize} <output>{fontSize}px</output></span>
       <input bind:value={fontSize} type="range" min="20" max="128" step="1" />
     </label>
 
     <div class="color-controls">
       <label>
-        <span>文字</span>
-        <input bind:value={foreground} type="color" aria-label="預覽文字顏色" />
+        <span>{messages.textColor}</span>
+        <input bind:value={foreground} type="color" aria-label={messages.previewTextColor} />
         <code>{foreground}</code>
       </label>
       <button
         class="swap-colors"
         type="button"
-        aria-label="交換文字與背景顏色"
+        aria-label={messages.swapColors}
         on:click={() => ([foreground, background] = [background, foreground])}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -413,26 +422,26 @@
         </svg>
       </button>
       <label>
-        <span>紙色</span>
-        <input bind:value={background} type="color" aria-label="預覽背景顏色" />
+        <span>{messages.paperColor}</span>
+        <input bind:value={background} type="color" aria-label={messages.previewBackgroundColor} />
         <code>{background}</code>
       </label>
     </div>
 
     <label class="coverage-toggle">
       <input bind:checked={onlyComplete} type="checkbox" />
-      <span>只看沒有缺字的字型</span>
+      <span>{messages.completeOnly}</span>
     </label>
   </div>
 
   <div class="catalog-area" id="catalog">
     {#if variationSelectorPattern.test(previewText)}
       <p class="coverage-notice">
-        內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。
+        {messages.variationNotice}
       </p>
     {/if}
     <div class="catalog-head">
-      <p>字型預覽</p>
+      <p>{messages.preview}</p>
       <label>
         CDN
         <select bind:value={selectedCdn}>
@@ -459,16 +468,16 @@
             </div>
             <div class="specimen-status">
               {#if coveragePending}
-                <span class="checking">檢查中</span>
+                <span class="checking">{messages.checking}</span>
               {:else if missingPoints.length === 0}
-                <span class="complete">沒有缺字</span>
+                <span class="complete">{messages.complete}</span>
               {:else}
-                <span class="missing">缺少 {missingPoints.length} 個字</span>
+                <span class="missing">{formatMessage(messages.missingCount, { count: missingPoints.length })}</span>
               {/if}
               {#if family.fonts.length > 1}
                 <label class="variant-control">
-                  <span>{family.axisLabel}</span>
-                  <select bind:value={selectedFontIds[family.id]} aria-label={`${family.label} ${family.axisLabel}`}>
+                  <span>{axisLabel(family.axisLabel)}</span>
+                  <select bind:value={selectedFontIds[family.id]} aria-label={`${family.label} ${axisLabel(family.axisLabel)}`}>
                     {#each family.fonts as option}
                       <option value={option.id}>{option.family?.valueLabel}</option>
                     {/each}
@@ -477,10 +486,10 @@
               {/if}
               {#if shapes.length > 1}
                 <label class="variant-control">
-                  <span>樣式</span>
+                  <span>{messages.style}</span>
                   <select
                     bind:value={selectedVariants[font.id]}
-                    aria-label={`${family.label} 樣式`}
+                    aria-label={`${family.label} ${messages.style}`}
                   >
                     {#each shapes as option}
                       <option value={shapeVariantId(font, option)}>{shapeLabel(option)}</option>
@@ -490,22 +499,22 @@
               {/if}
               {#if weightRange}
                 <label class="weight-range-control">
-                  <span>字重 <output>{selectedWeights[family.id]}</output></span>
+                  <span>{messages.weight} <output>{selectedWeights[family.id]}</output></span>
                   <input
                     bind:value={selectedWeights[family.id]}
                     type="range"
                     min={weightRange[0]}
                     max={weightRange[1]}
                     step="1"
-                    aria-label={`${family.label} 字重`}
+                    aria-label={`${family.label} ${messages.weight}`}
                   />
                 </label>
               {:else if weights.length > 1}
                 <label class="variant-control">
-                  <span>字重</span>
+                  <span>{messages.weight}</span>
                   <select
                     bind:value={selectedVariants[font.id]}
-                    aria-label={`${family.label} 字重`}
+                    aria-label={`${family.label} ${messages.weight}`}
                   >
                     {#each weights as option}
                       <option value={weightVariantId(font, option.weight)}>{option.label}</option>
@@ -521,8 +530,8 @@
 
           <textarea
             class="live-specimen"
-            aria-label={`${family.label} 預覽文字；輸入會同步至其他字型`}
-            placeholder="在這裡輸入預覽文字"
+            aria-label={formatMessage(messages.specimenLabel, { family: family.label })}
+            placeholder={messages.specimenPlaceholder}
             spellcheck="false"
             value={defaultText}
             use:observeSpecimen={family.id}
@@ -538,7 +547,7 @@
           ></textarea>
 
           {#if !coveragePending && missingPoints.length > 0}
-            <div class="missing-list" aria-label="缺少的字元">
+            <div class="missing-list" aria-label={messages.missingCharacters}>
               {#each missingPoints.slice(0, 16) as point}
                 <span title={formatCodePoint(point)}>{glyph(point)}</span>
               {/each}
@@ -549,34 +558,34 @@
           <footer>
             <div class="font-facts">
               <span>{variant.label}</span>
-              <span>{variant.characterCount.toLocaleString()} code points</span>
+              <span>{variant.characterCount.toLocaleString(locale)} {messages.codePoints}</span>
               <span>{font.license}</span>
             </div>
             <div class="embed-line">
               <code>{embedCode(font, selectedCdn)}</code>
               <button type="button" on:click={() => copyEmbed(font)}>
-                {copied === font.id ? "已複製" : "複製 embed"}
+                {copied === font.id ? messages.copied : messages.copyEmbed}
               </button>
             </div>
-            <nav aria-label={`${family.label} 相關連結`}>
-              <a href={font.sourceUrl} target="_blank" rel="noreferrer">上游來源</a>
-              <a href={font.repositoryUrl} target="_blank" rel="noreferrer">套件文件</a>
+            <nav aria-label={formatMessage(messages.relatedLinks, { family: family.label })}>
+              <a href={font.sourceUrl} target="_blank" rel="noreferrer">{messages.upstreamSource}</a>
+              <a href={font.repositoryUrl} target="_blank" rel="noreferrer">{messages.packageDocs}</a>
             </nav>
           </footer>
         </article>
       {:else}
         <div class="empty-state">
           {#if committedQuery.trim() && queryMatchingFamilies.length === 0}
-            <h3>找不到符合搜尋條件的字型</h3>
-            <p>請改用字型名稱、套件名稱或其他特徵搜尋。</p>
+            <h3>{messages.noSearchTitle}</h3>
+            <p>{messages.noSearchBody}</p>
           {:else if coveragePending}
-            <h3>正在檢查字型涵蓋範圍</h3>
-            <p>完成後會顯示沒有缺字的字型。</p>
+            <h3>{messages.checkingTitle}</h3>
+            <p>{messages.checkingBody}</p>
           {:else if onlyComplete}
-            <h3>沒有字型涵蓋全部文字</h3>
-            <p>縮小測試範本，或關閉「只看沒有缺字的字型」查看缺少哪些字。</p>
+            <h3>{messages.noCompleteTitle}</h3>
+            <p>{messages.noCompleteBody}</p>
           {:else}
-            <h3>目前沒有可用字型</h3>
+            <h3>{messages.noFontsTitle}</h3>
           {/if}
         </div>
       {/each}
