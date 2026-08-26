@@ -857,6 +857,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "tofu",
+      "label": "Tofu",
+      "buildScript": "scripts/build-tofu.sh",
+      "auditScript": "scripts/audit_tofu.py",
+      "buildInputs": ["scripts/prepare_tofu.py"],
+      "site": {
+        "description": "Google Fonts' visible missing-glyph marker, packaged as browser-compatible Unicode webfont subsets.",
+        "license": "Apache License 2.0",
+        "sourceUrl": "https://github.com/googlefonts/tofu",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/index.css",
+            "coverageCss": ["dist/Tofu.css"],
+            "families": ["Tofu"],
+            "weight": 400
+          }
+        ]
+      }
     }
   ]
 }

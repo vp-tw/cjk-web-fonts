@@ -1,0 +1,552 @@
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-001.woff2) format("woff2");
+  unicode-range: U+1-4000;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-002.woff2) format("woff2");
+  unicode-range: U+4001-8000;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-003.woff2) format("woff2");
+  unicode-range: U+8001-C000;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-004.woff2) format("woff2");
+  unicode-range: U+C001-FE0E;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-005.woff2) format("woff2");
+  unicode-range: U+FE10-13E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-006.woff2) format("woff2");
+  unicode-range: U+13E10-17E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-007.woff2) format("woff2");
+  unicode-range: U+17E10-1BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-008.woff2) format("woff2");
+  unicode-range: U+1BE10-1FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-009.woff2) format("woff2");
+  unicode-range: U+1FE10-23E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-010.woff2) format("woff2");
+  unicode-range: U+23E10-27E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-011.woff2) format("woff2");
+  unicode-range: U+27E10-2BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-012.woff2) format("woff2");
+  unicode-range: U+2BE10-2FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-013.woff2) format("woff2");
+  unicode-range: U+2FE10-33E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-014.woff2) format("woff2");
+  unicode-range: U+33E10-37E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-015.woff2) format("woff2");
+  unicode-range: U+37E10-3BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-016.woff2) format("woff2");
+  unicode-range: U+3BE10-3FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-017.woff2) format("woff2");
+  unicode-range: U+3FE10-43E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-018.woff2) format("woff2");
+  unicode-range: U+43E10-47E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-019.woff2) format("woff2");
+  unicode-range: U+47E10-4BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-020.woff2) format("woff2");
+  unicode-range: U+4BE10-4FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-021.woff2) format("woff2");
+  unicode-range: U+4FE10-53E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-022.woff2) format("woff2");
+  unicode-range: U+53E10-57E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-023.woff2) format("woff2");
+  unicode-range: U+57E10-5BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-024.woff2) format("woff2");
+  unicode-range: U+5BE10-5FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-025.woff2) format("woff2");
+  unicode-range: U+5FE10-63E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-026.woff2) format("woff2");
+  unicode-range: U+63E10-67E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-027.woff2) format("woff2");
+  unicode-range: U+67E10-6BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-028.woff2) format("woff2");
+  unicode-range: U+6BE10-6FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-029.woff2) format("woff2");
+  unicode-range: U+6FE10-73E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-030.woff2) format("woff2");
+  unicode-range: U+73E10-77E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-031.woff2) format("woff2");
+  unicode-range: U+77E10-7BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-032.woff2) format("woff2");
+  unicode-range: U+7BE10-7FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-033.woff2) format("woff2");
+  unicode-range: U+7FE10-83E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-034.woff2) format("woff2");
+  unicode-range: U+83E10-87E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-035.woff2) format("woff2");
+  unicode-range: U+87E10-8BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-036.woff2) format("woff2");
+  unicode-range: U+8BE10-8FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-037.woff2) format("woff2");
+  unicode-range: U+8FE10-93E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-038.woff2) format("woff2");
+  unicode-range: U+93E10-97E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-039.woff2) format("woff2");
+  unicode-range: U+97E10-9BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-040.woff2) format("woff2");
+  unicode-range: U+9BE10-9FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-041.woff2) format("woff2");
+  unicode-range: U+9FE10-A3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-042.woff2) format("woff2");
+  unicode-range: U+A3E10-A7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-043.woff2) format("woff2");
+  unicode-range: U+A7E10-ABE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-044.woff2) format("woff2");
+  unicode-range: U+ABE10-AFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-045.woff2) format("woff2");
+  unicode-range: U+AFE10-B3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-046.woff2) format("woff2");
+  unicode-range: U+B3E10-B7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-047.woff2) format("woff2");
+  unicode-range: U+B7E10-BBE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-048.woff2) format("woff2");
+  unicode-range: U+BBE10-BFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-049.woff2) format("woff2");
+  unicode-range: U+BFE10-C3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-050.woff2) format("woff2");
+  unicode-range: U+C3E10-C7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-051.woff2) format("woff2");
+  unicode-range: U+C7E10-CBE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-052.woff2) format("woff2");
+  unicode-range: U+CBE10-CFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-053.woff2) format("woff2");
+  unicode-range: U+CFE10-D3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-054.woff2) format("woff2");
+  unicode-range: U+D3E10-D7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-055.woff2) format("woff2");
+  unicode-range: U+D7E10-DBE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-056.woff2) format("woff2");
+  unicode-range: U+DBE10-DFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-057.woff2) format("woff2");
+  unicode-range: U+DFE10-E3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-058.woff2) format("woff2");
+  unicode-range: U+E3E10-E7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-059.woff2) format("woff2");
+  unicode-range: U+E7E10-EBE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-060.woff2) format("woff2");
+  unicode-range: U+EBE10-EFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-061.woff2) format("woff2");
+  unicode-range: U+EFE10-F3E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-062.woff2) format("woff2");
+  unicode-range: U+F3E10-F7E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-063.woff2) format("woff2");
+  unicode-range: U+F7E10-FBE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-064.woff2) format("woff2");
+  unicode-range: U+FBE10-FFE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-065.woff2) format("woff2");
+  unicode-range: U+FFE10-103E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-066.woff2) format("woff2");
+  unicode-range: U+103E10-107E0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-067.woff2) format("woff2");
+  unicode-range: U+107E10-10BE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-068.woff2) format("woff2");
+  unicode-range: U+10BE10-10FE0F;
+}
+@font-face {
+  font-family: "Tofu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Tofu Regular"), local("Tofu-Regular"), url(Tofu.font-css-069.woff2) format("woff2");
+  unicode-range: U+10FE10-10FFFF;
+}
