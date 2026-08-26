@@ -23,6 +23,7 @@ jsDelivr's GitHub endpoint.
 | [LXGW WenKai TC](packages/lxgw-wenkai-tc/README.md)                         | 1.522      | OFL-1.1 | `@vp-tw/cjk-web-fonts-lxgw-wenkai-tc`          |
 | [Chiron Sung HK](packages/chiron-sung-hk/README.md)                         | 1.024      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-sung-hk`          |
 | [Chiron Hei HK](packages/chiron-hei-hk/README.md)                           | 2.609      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-hei-hk`           |
+| [Chiron GoRound TC](packages/chiron-go-round-tc/README.md)                  | 1.011      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-go-round-tc`      |
 
 ## Usage
 
