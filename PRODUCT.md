@@ -52,7 +52,9 @@ copy CSS for a web project.
   WOFF2 assets after use instead of downloading the complete catalog.
 - Tell visitors when an update is ready, let them defer it, and reload only
   after they choose to update.
-- Model weights and variants as data even when a current font has only one.
+- Model packages that belong to one upstream family as a single specimen with
+  ordered family axes, independent weight and style controls, and an explicit
+  upstream default.
 - Deploy as a static GitHub Pages site under the repository base path.
 - Treat package files and upstream license information as authoritative. Do not
   invent availability, performance, or legal claims.

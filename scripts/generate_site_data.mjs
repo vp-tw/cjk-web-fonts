@@ -93,6 +93,7 @@ const fonts = registry.fonts.map((font) => {
     license: font.site.license,
     sourceUrl: font.site.sourceUrl,
     repositoryUrl: packageJson.homepage,
+    family: font.site.family ?? null,
     variants: font.site.variants.map((variant) => {
       const coverage = coverageFromCss(variantCoveragePaths(packageDir, variant));
       const characterCount = coverage.reduce((total, [start, end]) => total + end - start + 1, 0);

@@ -22,6 +22,16 @@ export interface FontVariant {
   characterCount: number;
 }
 
+export interface FontFamilyMembership {
+  id: string;
+  label: string;
+  axisLabel: string;
+  value: string;
+  valueLabel: string;
+  order: number;
+  default: boolean;
+}
+
 export interface FontRecord {
   id: string;
   label: string;
@@ -31,6 +41,7 @@ export interface FontRecord {
   license: string;
   sourceUrl: string;
   repositoryUrl: string;
+  family: FontFamilyMembership | null;
   variants: FontVariant[];
 }
 

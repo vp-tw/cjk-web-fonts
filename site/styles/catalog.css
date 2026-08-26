@@ -186,7 +186,7 @@
 
 .catalog-intro h1 {
   margin: 0 0 0.5rem;
-  max-width: 12ch;
+  max-width: 12em;
   font-size: clamp(2.4rem, 5vw, 5.4rem);
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -283,6 +283,8 @@
 .specimen-status {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 0.75rem;
   font-size: 0.75rem;
 }
@@ -308,6 +310,34 @@
 .specimen-status select {
   width: auto;
   min-width: 125px;
+}
+
+.variant-control,
+.weight-range-control {
+  display: grid;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.variant-control span,
+.weight-range-control span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weight-range-control {
+  min-width: 170px;
+}
+
+.weight-range-control input {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.weight-range-control output {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 .live-specimen {
@@ -473,7 +503,19 @@
 
   .specimen-status {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+
+  .variant-control,
+  .weight-range-control {
+    flex: 1 1 140px;
+  }
+
+  .specimen-status > .checking,
+  .specimen-status > .complete,
+  .specimen-status > .missing {
+    flex-basis: 100%;
+    width: max-content;
   }
 
   .embed-line {
