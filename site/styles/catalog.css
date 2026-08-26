@@ -45,6 +45,7 @@
 }
 
 .search-control input,
+.fallback-control select,
 .specimen-status select,
 .catalog-head select {
   width: 100%;
@@ -54,6 +55,14 @@
   background: var(--paper);
   color: var(--ink);
   padding: 0 0.7rem;
+}
+
+.fallback-control small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
 }
 
 .segments {

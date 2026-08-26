@@ -31,6 +31,9 @@ export interface Messages {
     customContent: string;
     presetSummary: string;
     fontSize: string;
+    missingGlyphFallback: string;
+    systemDefault: string;
+    fallbackPreviewOnly: string;
     textColor: string;
     previewTextColor: string;
     swapColors: string;
@@ -115,6 +118,9 @@ const en: Messages = {
     customContent: "Custom content",
     presetSummary: "{presets} presets · {characters} required characters",
     fontSize: "Font size",
+    missingGlyphFallback: "Missing glyph fallback",
+    systemDefault: "System default",
+    fallbackPreviewOnly: "Preview only. Coverage results and copied embed code stay unchanged.",
     textColor: "Text",
     previewTextColor: "Preview text color",
     swapColors: "Swap text and background colors",
@@ -208,6 +214,9 @@ const zhHant: Messages = {
     customContent: "自訂內容",
     presetSummary: "{presets} 組範本 · {characters} 個必要字元",
     fontSize: "字級",
+    missingGlyphFallback: "缺字後援",
+    systemDefault: "系統預設",
+    fallbackPreviewOnly: "只影響預覽；涵蓋檢查與複製的 embed 不會改變。",
     textColor: "文字",
     previewTextColor: "預覽文字顏色",
     swapColors: "交換文字與背景顏色",
@@ -301,6 +310,9 @@ const zhHans: Messages = {
     customContent: "自定义内容",
     presetSummary: "{presets} 组范本 · {characters} 个必要字符",
     fontSize: "字号",
+    missingGlyphFallback: "缺字后备字体",
+    systemDefault: "系统默认",
+    fallbackPreviewOnly: "仅影响预览；覆盖检查和复制的 embed 不会改变。",
     textColor: "文字",
     previewTextColor: "预览文字颜色",
     swapColors: "交换文字与背景颜色",
@@ -397,6 +409,10 @@ const ja: Messages = {
     customContent: "カスタム内容",
     presetSummary: "見本 {presets} 組 · 必須文字 {characters} 字",
     fontSize: "文字サイズ",
+    missingGlyphFallback: "代替フォント",
+    systemDefault: "システム既定",
+    fallbackPreviewOnly:
+      "見本だけに適用されます。文字収録の確認とコピーする埋め込みは変わりません。",
     textColor: "文字",
     previewTextColor: "見本文字の色",
     swapColors: "文字色と背景色を入れ替える",
@@ -494,6 +510,10 @@ const ko: Messages = {
     customContent: "사용자 지정 내용",
     presetSummary: "시험 텍스트 {presets}개 · 필수 문자 {characters}개",
     fontSize: "글자 크기",
+    missingGlyphFallback: "대체 글꼴",
+    systemDefault: "시스템 기본값",
+    fallbackPreviewOnly:
+      "미리보기에만 적용됩니다. 글자 포함 검사와 복사하는 삽입 코드는 바뀌지 않습니다.",
     textColor: "글자",
     previewTextColor: "미리보기 글자색",
     swapColors: "글자색과 배경색 바꾸기",

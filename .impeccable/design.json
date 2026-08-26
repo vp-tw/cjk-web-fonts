@@ -203,6 +203,14 @@
       "css": ".ds-input { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; font: 400 1rem/1.5 sans-serif; } .ds-input:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
     },
     {
+      "name": "Missing-glyph Fallback",
+      "kind": "select",
+      "refersTo": "input",
+      "description": "A calibration-rail select for System Default, Tofu, Adobe NotDef, or Last Resort. It changes live specimens only; coverage evidence and copied embed code stay unchanged.",
+      "html": "<label class=\"ds-fallback\"><span>缺字後援</span><select><option>系統預設</option><option>Tofu</option><option>Adobe NotDef</option><option>Last Resort</option></select><small>只影響預覽；涵蓋檢查與複製的 embed 不會改變。</small></label>",
+      "css": ".ds-fallback select { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; } .ds-fallback small { display: block; margin-top: .5rem; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-fallback select:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+    },
+    {
       "name": "Theme Segments",
       "kind": "custom",
       "refersTo": "segment-selected",
