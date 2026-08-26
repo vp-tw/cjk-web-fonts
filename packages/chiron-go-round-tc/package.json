@@ -1,0 +1,47 @@
+{
+  "name": "@vp-tw/cjk-web-fonts-chiron-go-round-tc",
+  "version": "0.0.0",
+  "description": "Chiron GoRound TC variable Traditional Chinese rounded webfont.",
+  "keywords": [
+    "cjk",
+    "font",
+    "rounded",
+    "traditional-chinese",
+    "variable-font",
+    "webfont",
+    "woff2"
+  ],
+  "homepage": "https://github.com/vp-tw/cjk-web-fonts/tree/main/packages/chiron-go-round-tc",
+  "bugs": {
+    "url": "https://github.com/vp-tw/cjk-web-fonts/issues"
+  },
+  "license": "MIT AND OFL-1.1",
+  "author": {
+    "name": "Tamcy",
+    "url": "https://github.com/chiron-fonts"
+  },
+  "contributors": [
+    {
+      "name": "ViPro",
+      "email": "VdustR@gmail.com",
+      "url": "https://vdustr.dev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vp-tw/cjk-web-fonts.git",
+    "directory": "packages/chiron-go-round-tc"
+  },
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSE.font.txt",
+    "NOTICE.md",
+    "source.json"
+  ],
+  "main": "dist/index.css",
+  "publishConfig": {
+    "access": "public"
+  }
+}

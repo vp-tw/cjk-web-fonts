@@ -790,6 +790,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "chiron-go-round-tc",
+      "label": "Chiron GoRound TC",
+      "buildScript": "scripts/build-chiron-go-round-tc.sh",
+      "auditScript": "scripts/audit_chiron_webfont.py",
+      "buildInputs": ["scripts/fetch_npm_webfont.py"],
+      "site": {
+        "description": "A rounded Traditional Chinese sans serif derived from Chiron Hei HK with variable weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/chiron-fonts/chiron-go-round-tc",
+        "variants": [
+          {
+            "id": "variable",
+            "label": "Variable 200–900",
+            "css": "dist/css/vf.css",
+            "coverageCss": ["dist/css/vf.css"],
+            "families": ["Chiron GoRound TC WS"],
+            "weight": 400
+          }
+        ]
+      }
     }
   ]
 }
