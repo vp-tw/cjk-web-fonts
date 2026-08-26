@@ -3,7 +3,7 @@
   "private": true,
   "description": "CJK web fonts, ready to use.",
   "scripts": {
-    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font && pnpm build:glow-sans-tc-compressed && pnpm build:glow-sans-tc-condensed && pnpm build:glow-sans-tc-normal && pnpm build:glow-sans-tc-extended && pnpm build:glow-sans-tc-wide",
+    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font && pnpm build:glow-sans-tc-compressed && pnpm build:glow-sans-tc-condensed && pnpm build:glow-sans-tc-normal && pnpm build:glow-sans-tc-extended && pnpm build:glow-sans-tc-wide && pnpm build:lxgw-wenkai-tc",
     "build:fusion-pixel-font": "./scripts/build-fusion-pixel-font.sh",
     "build:glow-sans-tc-compressed": "./scripts/build-glow-sans-tc-compressed.sh",
     "build:glow-sans-tc-condensed": "./scripts/build-glow-sans-tc-condensed.sh",
@@ -12,6 +12,7 @@
     "build:glow-sans-tc-wide": "./scripts/build-glow-sans-tc-wide.sh",
     "build:hanamin": "./scripts/build-hanamin.sh",
     "build:jigmo": "./scripts/build-jigmo.sh",
+    "build:lxgw-wenkai-tc": "./scripts/build-lxgw-wenkai-tc.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
     "audit:packages": "python3 scripts/audit_package_sizes.py",
     "check": "pnpm validate:workspace && pnpm site:data:check && pnpm test && pnpm lint && pnpm format && pnpm site:check",

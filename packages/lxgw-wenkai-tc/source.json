@@ -1,0 +1,14 @@
+{
+  "name": "LXGW WenKai TC",
+  "version": "1.522",
+  "commit": "v1.522",
+  "license": "OFL-1.1",
+  "downloads": [
+    {"name":"LXGWWenKaiTC-Light.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiTC-Light.ttf","bytes":15613068,"sha256":"dca5b82a847c7a419bfd0a9ddb97a90fa198848ef6c3f15ab72b6909738cb820"},
+    {"name":"LXGWWenKaiTC-Regular.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiTC-Regular.ttf","bytes":15267616,"sha256":"b1a0795862c1415bf3f393ea50b2a4ea6275012cf5bad3f94feeb1222f555731"},
+    {"name":"LXGWWenKaiTC-Medium.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiTC-Medium.ttf","bytes":15025056,"sha256":"94ca2870022fb8e4f90e2887524603690598142d17b620dfae318f1818ba8e17"},
+    {"name":"LXGWWenKaiMonoTC-Light.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiMonoTC-Light.ttf","bytes":15608468,"sha256":"3d2e2dba34cfdd0d10ba3cc9a50c67c5e2384b94748461518d0799560708a865"},
+    {"name":"LXGWWenKaiMonoTC-Regular.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiMonoTC-Regular.ttf","bytes":15277228,"sha256":"04f1e24faab8108075a74fb27ad81de4a3f80b1510fe993993c19b00eb1b3945"},
+    {"name":"LXGWWenKaiMonoTC-Medium.ttf","url":"https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/LXGWWenKaiMonoTC-Medium.ttf","bytes":15026988,"sha256":"31ed72b9d4f3d78e602ad47e3ea334cb9ec110db9bf4c3ad844618e91f62659b"}
+  ]
+}
