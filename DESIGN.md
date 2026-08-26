@@ -181,6 +181,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 - **Focus:** A two-pixel Focus Blue outline with clear offset. Segmented radio options place the outline inside the group so it is never clipped.
 - **Text Area:** Every specimen owns a large, resizable textarea. Editing any specimen synchronizes the shared proof text; preview foreground, background, and selected typeface apply directly to that field.
 - **Missing-glyph fallback:** A compact select in the calibration rail offers System Default, Tofu, Adobe NotDef, and Last Resort. It applies only to live specimens. Coverage evidence, package selection, and copied embed code remain unchanged.
+- **Font filters:** A collapsed disclosure beside search contains Category, Language suitability, and Character support selects. Category uses Fontsource classification values plus the repository-specific Diagnostic fallback role. Language suitability is reviewed metadata; character support is derived from committed writing-system samples and published CSS coverage. Every selected facet must match the same package, and complete sample coverage is required for a character-support match.
 
 ### Segmented Controls
 

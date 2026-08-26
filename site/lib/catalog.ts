@@ -20,7 +20,18 @@ export interface FontVariant {
   urls: Record<string, string>;
   coverage: Range[];
   characterCount: number;
+  writingSystems: Record<WritingSystemId, CoverageLevel>;
 }
+
+export type CoverageLevel = "complete" | "partial" | "none";
+export type WritingSystemId =
+  | "latin"
+  | "bopomofo"
+  | "hiragana"
+  | "katakana"
+  | "han"
+  | "hangul"
+  | "symbols";
 
 export interface FontFamilyMembership {
   id: string;
@@ -41,6 +52,10 @@ export interface FontRecord {
   license: string;
   sourceUrl: string;
   repositoryUrl: string;
+  classifications: string[];
+  roles: string[];
+  languages: string[];
+  diagnosticType: string | null;
   family: FontFamilyMembership | null;
   variants: FontVariant[];
 }
@@ -51,6 +66,7 @@ export type CatalogFontRecord = Omit<FontRecord, "variants"> & {
 };
 
 export const cdns = catalog.cdns as Cdn[];
+export const writingSystems = catalog.writingSystems as WritingSystemId[];
 export const fonts = catalog.fonts as unknown as FontRecord[];
 export const catalogFonts: CatalogFontRecord[] = fonts.map((font) => ({
   ...font,

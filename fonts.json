@@ -1,5 +1,14 @@
 {
   "commonBuildInputs": [".github/workflows/ci.yml", "LICENSE", "scripts/fetch_source.py"],
+  "writingSystems": [
+    { "id": "latin", "sample": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÅİŒÆ" },
+    { "id": "bopomofo", "sample": "ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩ" },
+    { "id": "hiragana", "sample": "あいうえおかきくけこさしすせそたちつてとなにぬねの" },
+    { "id": "katakana", "sample": "アイウエオカキクケコサシスセソタチツテトナニヌネノ" },
+    { "id": "han", "sample": "天地人山川日月水火木金土" },
+    { "id": "hangul", "sample": "가나다라마바사아자차카타파하한국어서울한글" },
+    { "id": "symbols", "sample": "…—〈〉《》「」『』＋−×÷☀★↔→←↑↓©®™€¥₩✓✕" }
+  ],
   "fonts": [
     {
       "id": "jigmo",
@@ -10,6 +19,9 @@
         "description": "Unicode 17.0 and Ideographic Variation Database coverage for rare and historic CJK forms.",
         "license": "CC0 1.0",
         "sourceUrl": "https://kamichikoichi.github.io/jigmo/",
+        "classifications": ["serif"],
+        "roles": ["text"],
+        "languages": [],
         "variants": [
           {
             "id": "regular",
@@ -35,6 +47,9 @@
         "description": "The Hanazono Mincho family for broad CJK unified ideograph and variation-sequence coverage.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://glyphwiki.org/hanazono/",
+        "classifications": ["serif"],
+        "roles": ["text"],
+        "languages": ["ja_Jpan"],
         "variants": [
           {
             "id": "regular",
@@ -56,6 +71,9 @@
         "description": "A contemporary Traditional Chinese sans serif in light, regular, and bold weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://sites.google.com/view/jtfoundry/zh-tw/downloads",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "light",
@@ -93,6 +111,9 @@
         "description": "Pan-CJK pixel fonts in three pixel sizes, proportional and monospaced spacing, and five language forms.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/TakWolf/fusion-pixel-font",
+        "classifications": ["display", "monospace"],
+        "roles": ["text"],
+        "languages": ["en_Latn", "ja_Jpan", "ko_Kore", "zh_Hans", "zh_Hant"],
         "variants": [
           {
             "id": "8px-monospaced",
@@ -200,6 +221,9 @@
         "description": "Wêlai Glow Sans Traditional Chinese in the compressed width and 8 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "thin",
@@ -295,6 +319,9 @@
         "description": "Wêlai Glow Sans Traditional Chinese in the condensed width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "thin",
@@ -399,6 +426,9 @@
         "description": "Wêlai Glow Sans Traditional Chinese in the normal width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "thin",
@@ -503,6 +533,9 @@
         "description": "Wêlai Glow Sans Traditional Chinese in the extended width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "thin",
@@ -607,6 +640,9 @@
         "description": "Wêlai Glow Sans Traditional Chinese in the wide width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "thin",
@@ -701,6 +737,9 @@
         "description": "A handwriting-style typeface adapted for Taiwan Traditional Chinese educational forms.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/ButTaiwan/iansui",
+        "classifications": ["handwriting"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "regular",
@@ -722,6 +761,9 @@
         "description": "A Traditional Chinese handwriting-style typeface with proportional and monospaced families in three weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/lxgw/LxgwWenkaiTC",
+        "classifications": ["handwriting", "monospace"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "light",
@@ -784,6 +826,9 @@
         "description": "A modern Traditional Chinese serif with variable weights, optical text forms, and true Latin italics.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-sung-hk",
+        "classifications": ["serif"],
+        "roles": ["text"],
+        "languages": ["yue_Hant", "zh_Hant"],
         "variants": [
           {
             "id": "variable",
@@ -815,6 +860,9 @@
         "description": "A modern region-neutral Traditional Chinese sans serif with variable weights, text forms, and italics.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-hei-hk",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["yue_Hant", "zh_Hant"],
         "variants": [
           {
             "id": "variable",
@@ -846,6 +894,9 @@
         "description": "A rounded Traditional Chinese sans serif derived from Chiron Hei HK with variable weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-go-round-tc",
+        "classifications": ["sans-serif"],
+        "roles": ["text"],
+        "languages": ["zh_Hant"],
         "variants": [
           {
             "id": "variable",
@@ -868,6 +919,10 @@
         "description": "Google Fonts' visible missing-glyph marker, packaged as browser-compatible Unicode webfont subsets.",
         "license": "Apache License 2.0",
         "sourceUrl": "https://github.com/googlefonts/tofu",
+        "classifications": ["symbols"],
+        "roles": ["diagnostic"],
+        "languages": [],
+        "diagnosticType": "tofu",
         "variants": [
           {
             "id": "regular",
@@ -890,6 +945,10 @@
         "description": "Adobe's visible .notdef glyph for diagnosing missing characters across Unicode scalar values.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/adobe-fonts/adobe-notdef",
+        "classifications": ["symbols"],
+        "roles": ["diagnostic"],
+        "languages": [],
+        "diagnosticType": "notdef",
         "variants": [
           {
             "id": "regular",
@@ -912,6 +971,10 @@
         "description": "Unicode's diagnostic fallback glyphs identify the block or category of a missing character.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/unicode-org/last-resort-font",
+        "classifications": ["symbols"],
+        "roles": ["diagnostic"],
+        "languages": [],
+        "diagnosticType": "last-resort",
         "variants": [
           {
             "id": "regular",

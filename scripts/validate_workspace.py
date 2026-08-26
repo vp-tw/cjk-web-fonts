@@ -10,6 +10,34 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "fonts.json"
 SIZE_POLICY_PATH = ROOT / "package-size-policy.json"
 PACKAGE_PREFIX = "@vp-tw/cjk-web-fonts-"
+FONTSOURCE_CLASSIFICATIONS = {
+    "display",
+    "handwriting",
+    "monospace",
+    "sans-serif",
+    "serif",
+    "slab-serif",
+    "symbols",
+}
+CATALOG_ROLES = {"diagnostic", "text"}
+CATALOG_LANGUAGE_IDS = {
+    "en_Latn",
+    "ja_Jpan",
+    "ko_Kore",
+    "yue_Hant",
+    "zh_Hans",
+    "zh_Hant",
+}
+CATALOG_WRITING_SYSTEM_IDS = {
+    "bopomofo",
+    "han",
+    "hangul",
+    "hiragana",
+    "katakana",
+    "latin",
+    "symbols",
+}
+DIAGNOSTIC_TYPES = {"last-resort", "notdef", "tofu"}
 
 
 def fail(message: str) -> None:
@@ -24,6 +52,21 @@ def main() -> None:
     fonts = registry.get("fonts")
     if not isinstance(fonts, list) or not fonts:
         fail("fonts.json must contain a non-empty fonts array")
+    writing_systems = registry.get("writingSystems")
+    if not isinstance(writing_systems, list) or not writing_systems:
+        fail("fonts.json must contain writing-system samples")
+    writing_system_ids: set[str] = set()
+    for writing_system in writing_systems:
+        writing_system_id = writing_system.get("id")
+        if not isinstance(writing_system_id, str) or not writing_system_id:
+            fail("every writing system needs a non-empty id")
+        if writing_system_id in writing_system_ids:
+            fail(f"duplicate writing system id: {writing_system_id}")
+        writing_system_ids.add(writing_system_id)
+        if not isinstance(writing_system.get("sample"), str) or not writing_system["sample"]:
+            fail(f"writing system {writing_system_id} needs a non-empty sample")
+    if writing_system_ids != CATALOG_WRITING_SYSTEM_IDS:
+        fail("fonts.json writing-system ids must match the catalog contract")
 
     root_package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     root_scripts = root_package.get("scripts", {})
@@ -96,6 +139,32 @@ def main() -> None:
         for field in ("description", "license", "sourceUrl"):
             if not isinstance(site.get(field), str) or not site[field]:
                 fail(f"{font_id}.site.{field} must be a non-empty string")
+        classifications = site.get("classifications")
+        if (
+            not isinstance(classifications, list)
+            or not classifications
+            or any(value not in FONTSOURCE_CLASSIFICATIONS for value in classifications)
+            or len(classifications) != len(set(classifications))
+        ):
+            fail(f"{font_id}.site.classifications must use unique Fontsource values")
+        roles = site.get("roles")
+        if (
+            not isinstance(roles, list)
+            or not roles
+            or any(value not in CATALOG_ROLES for value in roles)
+            or len(roles) != len(set(roles))
+        ):
+            fail(f"{font_id}.site.roles contains unsupported or duplicate values")
+        languages = site.get("languages")
+        if (
+            not isinstance(languages, list)
+            or any(value not in CATALOG_LANGUAGE_IDS for value in languages)
+            or len(languages) != len(set(languages))
+        ):
+            fail(f"{font_id}.site.languages must use unique supported Fontsource ids")
+        diagnostic_type = site.get("diagnosticType")
+        if ("diagnostic" in roles) != (diagnostic_type in DIAGNOSTIC_TYPES):
+            fail(f"{font_id}.site.diagnosticType must be set only for diagnostic fonts")
         family = site.get("family")
         if family is not None:
             for field in ("id", "label", "axisLabel", "value", "valueLabel"):
