@@ -63,6 +63,8 @@ importers:
 
   packages/jigmo: {}
 
+  packages/lxgw-wenkai-tc: {}
+
   packages/taipei-sans-tc: {}
 
 packages:

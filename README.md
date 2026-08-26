@@ -20,6 +20,7 @@ jsDelivr's GitHub endpoint.
 | [Wêlai Glow Sans TC Extended](packages/glow-sans-tc-extended/README.md)     | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-extended`   |
 | [Wêlai Glow Sans TC Wide](packages/glow-sans-tc-wide/README.md)             | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-wide`       |
 | [Iansui](packages/iansui/README.md)                                         | 1.020      | OFL-1.1 | `@vp-tw/cjk-web-fonts-iansui`                  |
+| [LXGW WenKai TC](packages/lxgw-wenkai-tc/README.md)                         | 1.522      | OFL-1.1 | `@vp-tw/cjk-web-fonts-lxgw-wenkai-tc`          |
 
 ## Usage
 
