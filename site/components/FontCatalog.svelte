@@ -2,15 +2,25 @@
   import { debounce } from "es-toolkit";
   import { onMount } from "svelte";
 
-  import type { CatalogFontRecord, CatalogFontVariant, Cdn } from "../lib/catalog";
+  import { type CatalogFontRecord, type CatalogFontVariant, type Cdn } from "../lib/catalog";
+  import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint } from "../lib/coverage";
+  import { observeSpecimenLoading, type ObserverFactory } from "../lib/specimen-loading";
   import type { CoverageResponse } from "../workers/coverage.worker";
 
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
 
-  const defaultText = "臺北下雨了，𠮷野家門口有人等公車。\nCheck names, addresses, and long-form copy here.";
+  const defaultText = `ABC xyz 0123456789 !? … — () [] ＡＢＣ１２３ ☀︎ ★ ↔︎
+日本語：東京で珈琲を飲み、ひらがな・カタカナ・漢字を比べる。
+한국어: 서울의 봄날, 한글과 漢字를 함께 살펴봅니다.
+粵語：佢喺邊度？唔該畀杯凍檸茶我，𠺢𠹌啲字都要試。
+ㄅㄆㄇㄈ：今天天氣真好，ㄓㄨˋ ㄧㄣ ㄈㄨˊ ㄏㄠˋ。
+正體：臺灣製造、雙層公寓、躍過鬱鬱蔥蔥的山巒。
+简体：汉字转换、后发优势、云端数据库与软件测试。
+特殊與罕見：𠮷 𡘙 𪚥 𫝀 𫠜 𬺰 𰻞 龘 䨻 葛󠄀`;
+  const fontFamilies = groupCatalogFonts(fonts);
   let previewText = defaultText;
   let committedQuery = "";
   let fontSize = 72;
@@ -19,18 +29,23 @@
   let theme: "light" | "dark" | "system" = "system";
   let selectedCdn = "jsdelivr";
   let onlyComplete = false;
+  let selectedFontIds = Object.fromEntries(
+    fontFamilies.map((family) => [family.id, family.defaultFontId]),
+  );
   let selectedVariants = Object.fromEntries(
     fonts.map((font) => [
       font.id,
       font.variants.find((variant) => variant.id === "regular")?.id ??
+        font.variants.find((variant) => variant.id === "variable")?.id ??
         font.variants[0].id,
     ]),
   );
+  let selectedWeights = Object.fromEntries(fontFamilies.map((family) => [family.id, 400]));
   let missing: Record<string, number[]> = {};
   let coveragePending = true;
   let copied = "";
   let visibleSpecimenIds = new Set<string>();
-  let loadedSpecimenIds = new Set<string>();
+  let nearbySpecimenIds = new Set<string>();
   const specimenNodes = new Map<string, HTMLTextAreaElement>();
   let worker: Worker | undefined;
   let latestCoverageRequestId = 0;
@@ -65,23 +80,27 @@
     localStorage.setItem("cjk-theme", theme);
   }
 
-  $: queryMatchingFonts = fonts.filter((font) => {
+  $: queryMatchingFamilies = fontFamilies.filter((family) => {
     const needle = committedQuery.trim().toLocaleLowerCase();
     return (
       !needle ||
-      `${font.label} ${font.description} ${font.packageName}`
+      `${family.label} ${family.fonts
+        .map((font) => `${font.label} ${font.description} ${font.packageName}`)
+        .join(" ")}`
         .toLocaleLowerCase()
         .includes(needle)
     );
   });
-  $: visibleFonts = queryMatchingFonts.filter(
-    (font) =>
-      !onlyComplete || (!coveragePending && (missing[font.id]?.length ?? 0) === 0),
+  $: visibleFamilies = queryMatchingFamilies.filter(
+    (family) =>
+      !onlyComplete ||
+      (!coveragePending && (missing[fontFor(family).id]?.length ?? 0) === 0),
   );
   $: if (mounted) {
-    for (const fontId of loadedSpecimenIds) {
-      const font = fonts.find((candidate) => candidate.id === fontId);
-      if (font && visibleFonts.includes(font)) {
+    for (const familyId of nearbySpecimenIds) {
+      const family = fontFamilies.find((candidate) => candidate.id === familyId);
+      if (family && visibleFamilies.includes(family)) {
+        const font = fontFor(family);
         ensureStylesheet(variantFor(font).urls[selectedCdn]);
       }
     }
@@ -125,55 +144,60 @@
     worker.postMessage({ type: "match", requestId: latestCoverageRequestId, text });
   }
 
-  function observeSpecimen(node: HTMLTextAreaElement, fontId: string) {
-    specimenNodes.set(fontId, node);
+  function observeSpecimen(node: HTMLTextAreaElement, familyId: string) {
+    specimenNodes.set(familyId, node);
     node.value = previewText;
-
-    const syncObserver = new IntersectionObserver(
-      ([entry]) => {
-        const visible = new Set(visibleSpecimenIds);
-        if (entry.isIntersecting) {
-          visible.add(fontId);
-          if (node.value !== previewText) node.value = previewText;
-        } else {
-          visible.delete(fontId);
-        }
-        visibleSpecimenIds = visible;
-      },
-      { rootMargin: "200px 0px" },
-    );
-    let loadObserver: IntersectionObserver;
-    const observeForPreload = () => {
-      if (loadedSpecimenIds.has(fontId)) return;
-      loadObserver?.disconnect();
-      const preloadDistance = document.documentElement.clientHeight;
-      loadObserver = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !loadedSpecimenIds.has(fontId)) {
-            loadedSpecimenIds = new Set(loadedSpecimenIds).add(fontId);
-            loadObserver.disconnect();
-            window.removeEventListener("resize", observeForPreload);
-          }
-        },
-        { rootMargin: `${preloadDistance}px 0px` },
-      );
-      loadObserver.observe(node);
+    let currentViewportHeight = document.documentElement.clientHeight;
+    let destroyObservers = () => {};
+    const createObserver: ObserverFactory = (callback, options) => {
+      const observer = new IntersectionObserver(callback, options);
+      return observer;
     };
-    syncObserver.observe(node);
-    observeForPreload();
-    window.addEventListener("resize", observeForPreload);
+    const startObservers = () => {
+      destroyObservers();
+      currentViewportHeight = document.documentElement.clientHeight;
+      destroyObservers = observeSpecimenLoading({
+        node,
+        viewportHeight: currentViewportHeight,
+        createObserver,
+        onNearby: () => {
+          nearbySpecimenIds = new Set(nearbySpecimenIds).add(familyId);
+        },
+        onVisible: (isVisible) => {
+          const visible = new Set(visibleSpecimenIds);
+          if (isVisible) {
+            visible.add(familyId);
+            if (node.value !== previewText) node.value = previewText;
+          } else {
+            visible.delete(familyId);
+          }
+          visibleSpecimenIds = visible;
+        },
+      });
+    };
+    const handleResize = () => {
+      if (document.documentElement.clientHeight === currentViewportHeight) return;
+      startObservers();
+    };
+    startObservers();
+    window.addEventListener("resize", handleResize);
     return {
       destroy: () => {
-        syncObserver.disconnect();
-        loadObserver.disconnect();
-        window.removeEventListener("resize", observeForPreload);
-        specimenNodes.delete(fontId);
-        if (!visibleSpecimenIds.has(fontId)) return;
+        destroyObservers();
+        window.removeEventListener("resize", handleResize);
+        specimenNodes.delete(familyId);
+        if (!visibleSpecimenIds.has(familyId)) return;
         const visible = new Set(visibleSpecimenIds);
-        visible.delete(fontId);
+        visible.delete(familyId);
         visibleSpecimenIds = visible;
       },
     };
+  }
+
+  function fontFor(family: CatalogFontFamily): CatalogFontRecord {
+    return (
+      family.fonts.find((font) => font.id === selectedFontIds[family.id]) ?? family.fonts[0]
+    );
   }
 
   function variantFor(font: CatalogFontRecord): CatalogFontVariant {
@@ -181,6 +205,57 @@
       font.variants.find((variant) => variant.id === selectedVariants[font.id]) ??
       font.variants[0]
     );
+  }
+
+  function uniqueWeightOptions(font: CatalogFontRecord): CatalogFontVariant[] {
+    return font.variants.filter(
+      (variant, index, variants) =>
+        variants.findIndex((candidate) => candidate.weight === variant.weight) === index,
+    );
+  }
+
+  function weightVariantId(font: CatalogFontRecord, weight: number): string {
+    const current = variantFor(font);
+    const shapeKey = variantShapeKey(current);
+    const replacement =
+      font.variants.find(
+        (variant) => variant.weight === weight && variantShapeKey(variant) === shapeKey,
+      ) ?? font.variants.find((variant) => variant.weight === weight);
+    return replacement?.id ?? current.id;
+  }
+
+  function variantShapeKey(variant: CatalogFontVariant): string {
+    return `${variant.families.join("|")}::${variant.style}::${variant.stretch}`;
+  }
+
+  function shapeOptions(font: CatalogFontRecord): CatalogFontVariant[] {
+    return font.variants.filter(
+      (variant, index, variants) =>
+        variants.findIndex((candidate) => variantShapeKey(candidate) === variantShapeKey(variant)) ===
+        index,
+    );
+  }
+
+  function shapeLabel(variant: CatalogFontVariant): string {
+    if (variant.style === "italic") return "Italic";
+    if (variant.id.startsWith("mono-")) return "Monospaced";
+    if (/^(light|regular|medium)$/u.test(variant.id)) return "Proportional";
+    return variant.label;
+  }
+
+  function shapeVariantId(font: CatalogFontRecord, shape: CatalogFontVariant): string {
+    const currentWeight = variantFor(font).weight;
+    const shapeKey = variantShapeKey(shape);
+    const replacement =
+      font.variants.find(
+        (variant) => variantShapeKey(variant) === shapeKey && variant.weight === currentWeight,
+      ) ?? font.variants.find((variant) => variantShapeKey(variant) === shapeKey);
+    return replacement?.id ?? variantFor(font).id;
+  }
+
+  function variableWeightRange(variant: CatalogFontVariant): [number, number] | null {
+    const match = variant.label.match(/(\d+)[–-](\d+)/u);
+    return match ? [Number(match[1]), Number(match[2])] : null;
   }
 
   function ensureStylesheet(url: string) {
@@ -234,8 +309,8 @@
       <p>編輯任一預覽，文字會同步到其他字型。缺字檢查只在瀏覽器中執行。</p>
     </div>
     <div class="result-count" aria-live="polite">
-      <strong>{visibleFonts.length}</strong>
-      <span>/ {fonts.length} 字型</span>
+      <strong>{visibleFamilies.length}</strong>
+      <span>/ {fontFamilies.length} 字族</span>
     </div>
   </div>
 
@@ -311,13 +386,17 @@
     </div>
 
     <div class="font-list" aria-busy={coveragePending}>
-      {#each visibleFonts as font (font.id)}
+      {#each visibleFamilies as family (family.id)}
+        {@const font = fontFor(family)}
         {@const variant = variantFor(font)}
         {@const missingPoints = missing[font.id] ?? []}
+        {@const weights = uniqueWeightOptions(font)}
+        {@const shapes = shapeOptions(font)}
+        {@const weightRange = variableWeightRange(variant)}
         <article class="font-specimen">
           <header>
             <div>
-              <h3>{font.label}</h3>
+              <h3>{family.label}</h3>
               <p>{font.packageName}@{font.version}</p>
             </div>
             <div class="specimen-status">
@@ -328,16 +407,55 @@
               {:else}
                 <span class="missing">缺少 {missingPoints.length} 個字</span>
               {/if}
-              {#if font.variants.length > 1}
-                <label>
-                  <span class="sr-only">{font.label} 變體</span>
-                  <select bind:value={selectedVariants[font.id]}>
-                    {#each font.variants as option}
-                      <option value={option.id}>{option.label}</option>
+              {#if family.fonts.length > 1}
+                <label class="variant-control">
+                  <span>{family.axisLabel}</span>
+                  <select bind:value={selectedFontIds[family.id]} aria-label={`${family.label} ${family.axisLabel}`}>
+                    {#each family.fonts as option}
+                      <option value={option.id}>{option.family?.valueLabel}</option>
                     {/each}
                   </select>
                 </label>
-              {:else}
+              {/if}
+              {#if shapes.length > 1}
+                <label class="variant-control">
+                  <span>樣式</span>
+                  <select
+                    bind:value={selectedVariants[font.id]}
+                    aria-label={`${family.label} 樣式`}
+                  >
+                    {#each shapes as option}
+                      <option value={shapeVariantId(font, option)}>{shapeLabel(option)}</option>
+                    {/each}
+                  </select>
+                </label>
+              {/if}
+              {#if weightRange}
+                <label class="weight-range-control">
+                  <span>字重 <output>{selectedWeights[family.id]}</output></span>
+                  <input
+                    bind:value={selectedWeights[family.id]}
+                    type="range"
+                    min={weightRange[0]}
+                    max={weightRange[1]}
+                    step="1"
+                    aria-label={`${family.label} 字重`}
+                  />
+                </label>
+              {:else if weights.length > 1}
+                <label class="variant-control">
+                  <span>字重</span>
+                  <select
+                    bind:value={selectedVariants[font.id]}
+                    aria-label={`${family.label} 字重`}
+                  >
+                    {#each weights as option}
+                      <option value={weightVariantId(font, option.weight)}>{option.label}</option>
+                    {/each}
+                  </select>
+                </label>
+              {/if}
+              {#if family.fonts.length === 1 && shapes.length === 1 && weights.length === 1 && !weightRange}
                 <span class="variant-label">{variant.label}</span>
               {/if}
             </div>
@@ -345,16 +463,16 @@
 
           <textarea
             class="live-specimen"
-            aria-label={`${font.label} 預覽文字；輸入會同步至其他字型`}
+            aria-label={`${family.label} 預覽文字；輸入會同步至其他字型`}
             placeholder="在這裡輸入預覽文字"
             spellcheck="false"
             value={defaultText}
-            use:observeSpecimen={font.id}
+            use:observeSpecimen={family.id}
             on:input={handlePreviewInput}
             on:focus={handlePreviewFocus}
-            style:font-family={familyStack(variant)}
+            style:font-family={visibleSpecimenIds.has(family.id) ? familyStack(variant) : "inherit"}
             style:--preview-size={`${fontSize}px`}
-            style:font-weight={variant.weight}
+            style:font-weight={weightRange ? selectedWeights[family.id] : variant.weight}
             style:font-style={variant.style}
             style:font-stretch={variant.stretch}
             style:color={foreground}
@@ -382,7 +500,7 @@
                 {copied === font.id ? "已複製" : "複製 embed"}
               </button>
             </div>
-            <nav aria-label={`${font.label} 相關連結`}>
+            <nav aria-label={`${family.label} 相關連結`}>
               <a href={font.sourceUrl} target="_blank" rel="noreferrer">上游來源</a>
               <a href={font.repositoryUrl} target="_blank" rel="noreferrer">套件文件</a>
             </nav>
@@ -390,7 +508,7 @@
         </article>
       {:else}
         <div class="empty-state">
-          {#if committedQuery.trim() && queryMatchingFonts.length === 0}
+          {#if committedQuery.trim() && queryMatchingFamilies.length === 0}
             <h3>找不到符合搜尋條件的字型</h3>
             <p>請改用字型名稱、套件名稱或其他特徵搜尋。</p>
           {:else if coveragePending}

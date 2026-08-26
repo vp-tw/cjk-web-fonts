@@ -188,6 +188,15 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "family": {
+          "id": "glow-sans-tc",
+          "label": "Wêlai Glow Sans TC",
+          "axisLabel": "字寬",
+          "value": "compressed",
+          "valueLabel": "Compressed",
+          "order": 0,
+          "default": false
+        },
         "description": "Wêlai Glow Sans Traditional Chinese in the compressed width and 8 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
@@ -274,6 +283,15 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "family": {
+          "id": "glow-sans-tc",
+          "label": "Wêlai Glow Sans TC",
+          "axisLabel": "字寬",
+          "value": "condensed",
+          "valueLabel": "Condensed",
+          "order": 1,
+          "default": false
+        },
         "description": "Wêlai Glow Sans Traditional Chinese in the condensed width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
@@ -369,6 +387,15 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "family": {
+          "id": "glow-sans-tc",
+          "label": "Wêlai Glow Sans TC",
+          "axisLabel": "字寬",
+          "value": "normal",
+          "valueLabel": "Normal",
+          "order": 2,
+          "default": true
+        },
         "description": "Wêlai Glow Sans Traditional Chinese in the normal width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
@@ -464,6 +491,15 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "family": {
+          "id": "glow-sans-tc",
+          "label": "Wêlai Glow Sans TC",
+          "axisLabel": "字寬",
+          "value": "extended",
+          "valueLabel": "Extended",
+          "order": 3,
+          "default": false
+        },
         "description": "Wêlai Glow Sans Traditional Chinese in the extended width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",
@@ -559,6 +595,15 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "family": {
+          "id": "glow-sans-tc",
+          "label": "Wêlai Glow Sans TC",
+          "axisLabel": "字寬",
+          "value": "wide",
+          "valueLabel": "Wide",
+          "order": 4,
+          "default": false
+        },
         "description": "Wêlai Glow Sans Traditional Chinese in the wide width and 9 weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/welai/glow-sans",

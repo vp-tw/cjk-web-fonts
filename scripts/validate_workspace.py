@@ -30,6 +30,7 @@ def main() -> None:
     seen_ids: set[str] = set()
     expected_package_dirs: set[str] = set()
     expected_build_commands: list[str] = []
+    catalog_families: dict[str, list[tuple[str, dict]]] = {}
 
     for index, font in enumerate(fonts):
         if not isinstance(font, dict):
@@ -95,6 +96,16 @@ def main() -> None:
         for field in ("description", "license", "sourceUrl"):
             if not isinstance(site.get(field), str) or not site[field]:
                 fail(f"{font_id}.site.{field} must be a non-empty string")
+        family = site.get("family")
+        if family is not None:
+            for field in ("id", "label", "axisLabel", "value", "valueLabel"):
+                if not isinstance(family.get(field), str) or not family[field]:
+                    fail(f"{font_id}.site.family.{field} must be a non-empty string")
+            if not isinstance(family.get("order"), int) or family["order"] < 0:
+                fail(f"{font_id}.site.family.order must be a non-negative integer")
+            if not isinstance(family.get("default"), bool):
+                fail(f"{font_id}.site.family.default must be a boolean")
+            catalog_families.setdefault(family["id"], []).append((font_id, family))
         variants = site.get("variants")
         if not isinstance(variants, list) or not variants:
             fail(f"{font_id}.site.variants must be a non-empty array")
@@ -124,6 +135,19 @@ def main() -> None:
             stretch = variant.get("stretch", "normal")
             if not isinstance(stretch, str) or not stretch:
                 fail(f"{font_id}.{variant_id} stretch must be a non-empty string")
+
+    for family_id, members in catalog_families.items():
+        if len(members) < 2:
+            fail(f"catalog family {family_id} must contain at least two packages")
+        defaults = [font_id for font_id, family in members if family["default"]]
+        if len(defaults) != 1:
+            fail(f"catalog family {family_id} needs exactly one default package")
+        values = [family["value"] for _, family in members]
+        orders = [family["order"] for _, family in members]
+        if len(values) != len(set(values)):
+            fail(f"catalog family {family_id} has duplicate values")
+        if len(orders) != len(set(orders)):
+            fail(f"catalog family {family_id} has duplicate order values")
 
     actual_package_dirs = {
         path.parent.name for path in (ROOT / "packages").glob("*/package.json")
