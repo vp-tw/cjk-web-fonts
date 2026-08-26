@@ -728,6 +728,37 @@
           }
         ]
       }
+    },
+    {
+      "id": "chiron-sung-hk",
+      "label": "Chiron Sung HK",
+      "buildScript": "scripts/build-chiron-sung-hk.sh",
+      "auditScript": "scripts/audit_chiron_webfont.py",
+      "buildInputs": ["scripts/fetch_npm_webfont.py"],
+      "site": {
+        "description": "A modern Traditional Chinese serif with variable weights, optical text forms, and true Latin italics.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/chiron-fonts/chiron-sung-hk",
+        "variants": [
+          {
+            "id": "variable",
+            "label": "Variable 200–900",
+            "css": "dist/css/vf.css",
+            "coverageCss": ["dist/css/vf.css"],
+            "families": ["Chiron Sung HK WS"],
+            "weight": 400
+          },
+          {
+            "id": "variable-italic",
+            "label": "Variable Italic 200–900",
+            "css": "dist/css/vf-italic.css",
+            "coverageCss": ["dist/css/vf-italic.css"],
+            "families": ["Chiron Sung HK WS"],
+            "weight": 400,
+            "style": "italic"
+          }
+        ]
+      }
     }
   ]
 }

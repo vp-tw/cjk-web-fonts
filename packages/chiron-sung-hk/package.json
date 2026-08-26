@@ -1,0 +1,47 @@
+{
+  "name": "@vp-tw/cjk-web-fonts-chiron-sung-hk",
+  "version": "0.0.0",
+  "description": "Chiron Sung HK variable Traditional Chinese serif webfont.",
+  "keywords": [
+    "cjk",
+    "font",
+    "serif",
+    "traditional-chinese",
+    "variable-font",
+    "webfont",
+    "woff2"
+  ],
+  "homepage": "https://github.com/vp-tw/cjk-web-fonts/tree/main/packages/chiron-sung-hk",
+  "bugs": {
+    "url": "https://github.com/vp-tw/cjk-web-fonts/issues"
+  },
+  "license": "MIT AND OFL-1.1",
+  "author": {
+    "name": "Tamcy",
+    "url": "https://github.com/chiron-fonts"
+  },
+  "contributors": [
+    {
+      "name": "ViPro",
+      "email": "VdustR@gmail.com",
+      "url": "https://vdustr.dev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vp-tw/cjk-web-fonts.git",
+    "directory": "packages/chiron-sung-hk"
+  },
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSE.font.txt",
+    "NOTICE.md",
+    "source.json"
+  ],
+  "main": "dist/index.css",
+  "publishConfig": {
+    "access": "public"
+  }
+}
