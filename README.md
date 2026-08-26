@@ -137,3 +137,5 @@ from package metadata and published CSS coverage; do not edit it directly.
   packaged as browser-compatible WOFF2 subsets.
 - [`@vp-tw/cjk-web-fonts-adobe-notdef`](packages/adobe-notdef/README.md) — Adobe
   NotDef packaged as exact-coverage WOFF2 subsets.
+- [`@vp-tw/cjk-web-fonts-last-resort`](packages/last-resort/README.md) — Unicode
+  Last Resort 17.000 diagnostic glyphs packaged as exact-coverage WOFF2 subsets.

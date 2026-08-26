@@ -1,0 +1,544 @@
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-001.woff2) format("woff2");
+  unicode-range: U+0-3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-002.woff2) format("woff2");
+  unicode-range: U+4000-7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-003.woff2) format("woff2");
+  unicode-range: U+8000-BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-004.woff2) format("woff2");
+  unicode-range: U+C000-FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-005.woff2) format("woff2");
+  unicode-range: U+10000-13FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-006.woff2) format("woff2");
+  unicode-range: U+14000-17FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-007.woff2) format("woff2");
+  unicode-range: U+18000-1BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-008.woff2) format("woff2");
+  unicode-range: U+1C000-1FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-009.woff2) format("woff2");
+  unicode-range: U+20000-23FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-010.woff2) format("woff2");
+  unicode-range: U+24000-27FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-011.woff2) format("woff2");
+  unicode-range: U+28000-2BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-012.woff2) format("woff2");
+  unicode-range: U+2C000-2FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-013.woff2) format("woff2");
+  unicode-range: U+30000-33FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-014.woff2) format("woff2");
+  unicode-range: U+34000-37FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-015.woff2) format("woff2");
+  unicode-range: U+38000-3BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-016.woff2) format("woff2");
+  unicode-range: U+3C000-3FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-017.woff2) format("woff2");
+  unicode-range: U+40000-43FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-018.woff2) format("woff2");
+  unicode-range: U+44000-47FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-019.woff2) format("woff2");
+  unicode-range: U+48000-4BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-020.woff2) format("woff2");
+  unicode-range: U+4C000-4FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-021.woff2) format("woff2");
+  unicode-range: U+50000-53FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-022.woff2) format("woff2");
+  unicode-range: U+54000-57FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-023.woff2) format("woff2");
+  unicode-range: U+58000-5BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-024.woff2) format("woff2");
+  unicode-range: U+5C000-5FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-025.woff2) format("woff2");
+  unicode-range: U+60000-63FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-026.woff2) format("woff2");
+  unicode-range: U+64000-67FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-027.woff2) format("woff2");
+  unicode-range: U+68000-6BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-028.woff2) format("woff2");
+  unicode-range: U+6C000-6FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-029.woff2) format("woff2");
+  unicode-range: U+70000-73FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-030.woff2) format("woff2");
+  unicode-range: U+74000-77FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-031.woff2) format("woff2");
+  unicode-range: U+78000-7BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-032.woff2) format("woff2");
+  unicode-range: U+7C000-7FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-033.woff2) format("woff2");
+  unicode-range: U+80000-83FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-034.woff2) format("woff2");
+  unicode-range: U+84000-87FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-035.woff2) format("woff2");
+  unicode-range: U+88000-8BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-036.woff2) format("woff2");
+  unicode-range: U+8C000-8FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-037.woff2) format("woff2");
+  unicode-range: U+90000-93FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-038.woff2) format("woff2");
+  unicode-range: U+94000-97FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-039.woff2) format("woff2");
+  unicode-range: U+98000-9BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-040.woff2) format("woff2");
+  unicode-range: U+9C000-9FFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-041.woff2) format("woff2");
+  unicode-range: U+A0000-A3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-042.woff2) format("woff2");
+  unicode-range: U+A4000-A7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-043.woff2) format("woff2");
+  unicode-range: U+A8000-ABFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-044.woff2) format("woff2");
+  unicode-range: U+AC000-AFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-045.woff2) format("woff2");
+  unicode-range: U+B0000-B3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-046.woff2) format("woff2");
+  unicode-range: U+B4000-B7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-047.woff2) format("woff2");
+  unicode-range: U+B8000-BBFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-048.woff2) format("woff2");
+  unicode-range: U+BC000-BFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-049.woff2) format("woff2");
+  unicode-range: U+C0000-C3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-050.woff2) format("woff2");
+  unicode-range: U+C4000-C7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-051.woff2) format("woff2");
+  unicode-range: U+C8000-CBFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-052.woff2) format("woff2");
+  unicode-range: U+CC000-CFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-053.woff2) format("woff2");
+  unicode-range: U+D0000-D3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-054.woff2) format("woff2");
+  unicode-range: U+D4000-D7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-055.woff2) format("woff2");
+  unicode-range: U+D8000-DBFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-056.woff2) format("woff2");
+  unicode-range: U+DC000-DFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-057.woff2) format("woff2");
+  unicode-range: U+E0000-E3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-058.woff2) format("woff2");
+  unicode-range: U+E4000-E7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-059.woff2) format("woff2");
+  unicode-range: U+E8000-EBFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-060.woff2) format("woff2");
+  unicode-range: U+EC000-EFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-061.woff2) format("woff2");
+  unicode-range: U+F0000-F3FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-062.woff2) format("woff2");
+  unicode-range: U+F4000-F7FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-063.woff2) format("woff2");
+  unicode-range: U+F8000-FBFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-064.woff2) format("woff2");
+  unicode-range: U+FC000-FFFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-065.woff2) format("woff2");
+  unicode-range: U+100000-103FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-066.woff2) format("woff2");
+  unicode-range: U+104000-107FFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-067.woff2) format("woff2");
+  unicode-range: U+108000-10BFFF;
+}
+@font-face {
+  font-family: "Last Resort";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Last Resort"), local("Last Resort Regular"), local("LastResort-Regular"), url(Last-Resort.font-css-068.woff2) format("woff2");
+  unicode-range: U+10C000-10FFFF;
+}

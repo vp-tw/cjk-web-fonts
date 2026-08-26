@@ -901,6 +901,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "last-resort",
+      "label": "Last Resort",
+      "buildScript": "scripts/build-last-resort.sh",
+      "auditScript": "scripts/audit_last_resort.py",
+      "buildInputs": ["scripts/prepare_last_resort.py"],
+      "site": {
+        "description": "Unicode's diagnostic fallback glyphs identify the block or category of a missing character.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/unicode-org/last-resort-font",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/index.css",
+            "coverageCss": ["dist/Last-Resort.css"],
+            "families": ["Last Resort"],
+            "weight": 400
+          }
+        ]
+      }
     }
   ]
 }
