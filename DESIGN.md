@@ -55,6 +55,12 @@ components:
     typography: "{typography.label}"
     rounded: "{rounded.square}"
     height: "38px"
+  proof-preset-selected:
+    backgroundColor: "{colors.registration-ink}"
+    textColor: "{colors.specification-paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.square}"
+    height: "38px"
   embed-action:
     backgroundColor: "{colors.registration-ink}"
     textColor: "{colors.specification-paper}"
@@ -178,6 +184,14 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 
 - **Style:** Three equal cells share one outer rule. Dividers are continuous and labels remain compact.
 - **State:** The selected cell reverses to Registration Ink over Specification Paper. State cannot rely on accent color alone.
+
+### Proof Presets
+
+- **Style:** A continuous ruled field contains compact square buttons. One-pixel gaps preserve the Standards Manual grid, and selected buttons reverse to Registration Ink over Specification Paper.
+- **Content:** Keep the curated presets in this order: Latin, symbols, Bopomofo, Japanese, Korean, Cantonese, Traditional Chinese, Simplified Chinese, and rare characters. `All` is an independent state rather than a tenth selected preset.
+- **Behavior:** Presets are multi-select. Choosing one or more presets regenerates the shared proof in the curated order. Deselecting the final preset returns to `All`. Direct editing in any specimen changes the control to a custom state without replacing the edited proof.
+- **Summary:** For `All` or preset selections, report the selected preset count and unique required code-point count in a polite live region. For direct edits, report the literal custom-content state.
+- **Responsive:** Buttons have a 38px minimum height on wider layouts and a 44px minimum height at 600px and below. Keyboard focus uses the inset Focus Blue outline.
 
 ### Status Labels
 
