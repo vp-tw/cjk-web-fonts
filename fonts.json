@@ -646,6 +646,67 @@
           }
         ]
       }
+    },
+    {
+      "id": "lxgw-wenkai-tc",
+      "label": "LXGW WenKai TC",
+      "buildScript": "scripts/build-lxgw-wenkai-tc.sh",
+      "auditScript": "scripts/audit_lxgw_wenkai_tc.py",
+      "site": {
+        "description": "A Traditional Chinese handwriting-style typeface with proportional and monospaced families in three weights.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/lxgw/LxgwWenkaiTC",
+        "variants": [
+          {
+            "id": "light",
+            "label": "Light",
+            "css": "dist/Proportional/Light/LXGW-WenKai-TC.css",
+            "coverageCss": ["dist/Proportional/Light/LXGW-WenKai-TC.css"],
+            "families": ["LXGW WenKai TC"],
+            "weight": 300
+          },
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/Proportional/Regular/LXGW-WenKai-TC.css",
+            "coverageCss": ["dist/Proportional/Regular/LXGW-WenKai-TC.css"],
+            "families": ["LXGW WenKai TC"],
+            "weight": 400
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "css": "dist/Proportional/Medium/LXGW-WenKai-TC.css",
+            "coverageCss": ["dist/Proportional/Medium/LXGW-WenKai-TC.css"],
+            "families": ["LXGW WenKai TC"],
+            "weight": 500
+          },
+          {
+            "id": "mono-light",
+            "label": "Mono Light",
+            "css": "dist/Monospaced/Light/LXGW-WenKai-Mono-TC.css",
+            "coverageCss": ["dist/Monospaced/Light/LXGW-WenKai-Mono-TC.css"],
+            "families": ["LXGW WenKai Mono TC"],
+            "weight": 300
+          },
+          {
+            "id": "mono-regular",
+            "label": "Mono Regular",
+            "css": "dist/Monospaced/Regular/LXGW-WenKai-Mono-TC.css",
+            "coverageCss": ["dist/Monospaced/Regular/LXGW-WenKai-Mono-TC.css"],
+            "families": ["LXGW WenKai Mono TC"],
+            "weight": 400
+          },
+          {
+            "id": "mono-medium",
+            "label": "Mono Medium",
+            "css": "dist/Monospaced/Medium/LXGW-WenKai-Mono-TC.css",
+            "coverageCss": ["dist/Monospaced/Medium/LXGW-WenKai-Mono-TC.css"],
+            "families": ["LXGW WenKai Mono TC"],
+            "weight": 500
+          }
+        ]
+      }
     }
   ]
 }
