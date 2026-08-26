@@ -71,6 +71,8 @@ importers:
 
   packages/jigmo: {}
 
+  packages/last-resort: {}
+
   packages/lxgw-wenkai-tc: {}
 
   packages/taipei-sans-tc: {}
