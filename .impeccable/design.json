@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-26T18:39:00+08:00",
+  "generatedAt": "2026-08-26T19:00:00+08:00",
   "title": "Design System: CJK Web Fonts",
   "extensions": {
     "colorMeta": {
@@ -214,7 +214,7 @@
       "name": "Language Navigation",
       "kind": "custom",
       "description": "A native-language label opens ruled links to every static locale. English is the root and fallback. The English root may show a dismissible browser-language suggestion without redirecting or changing proof content.",
-      "html": "<details class=\"ds-language\"><summary>English</summary><nav aria-label=\"Language\"><a lang=\"en\" hreflang=\"en\" aria-current=\"page\">English</a><a lang=\"zh-Hant\" hreflang=\"zh-Hant\">繁體中文</a><a lang=\"ja\" hreflang=\"ja\">日本語</a></nav></details>",
+      "html": "<details class=\"ds-language\"><summary>English</summary><nav aria-label=\"Language\"><a lang=\"en\" hreflang=\"en\" aria-current=\"page\">English</a><a lang=\"zh-Hant\" hreflang=\"zh-Hant\">正體中文</a><a lang=\"ja\" hreflang=\"ja\">日本語</a></nav></details>",
       "css": ".ds-language { position: relative; } .ds-language nav { position: absolute; right: 0; display: grid; min-width: 11rem; border: 1px solid var(--ink, #171816); background: var(--paper, #e7e3d8); } .ds-language a { min-height: 42px; padding: .7rem .85rem; } .ds-language a + a { border-top: 1px solid var(--rule, #9a9c94); } .ds-language a:hover, .ds-language a[aria-current=page] { background: var(--ink, #171816); color: var(--paper, #e7e3d8); }"
     },
     {

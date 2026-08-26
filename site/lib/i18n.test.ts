@@ -1,11 +1,15 @@
 import { describe, expect, it } from "vitest";
 
-import { detectLocale, localePath, locales, messages } from "./i18n";
+import { detectLocale, localeNames, localePath, locales, messages } from "./i18n";
 
 describe("locale routing", () => {
   it("keeps English at the root and uses static subdirectories for other locales", () => {
     expect(localePath("en", "/cjk-web-fonts/")).toBe("/cjk-web-fonts/");
     expect(localePath("zh-Hant", "/cjk-web-fonts/")).toBe("/cjk-web-fonts/zh-hant/");
+  });
+
+  it("uses the established 正體中文 label for zh-Hant", () => {
+    expect(localeNames["zh-Hant"]).toBe("正體中文");
   });
 
   it.each([
