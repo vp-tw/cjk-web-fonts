@@ -106,12 +106,14 @@
 
 .preset-options button {
   flex: 1 1 auto;
+  min-width: 0;
   min-height: 38px;
   border: 0;
   background: var(--paper);
   color: var(--muted);
   padding: 0.45rem 0.65rem;
   font-size: 0.72rem;
+  overflow-wrap: anywhere;
 }
 
 .preset-options button:hover {
@@ -539,6 +541,8 @@
   }
 
   .catalog-intro {
+    align-items: flex-start;
+    flex-direction: column;
     gap: 1rem;
     padding: 2rem 1.4rem 1.5rem;
   }
@@ -549,7 +553,7 @@
   }
 
   .result-count {
-    align-self: flex-end;
+    align-self: flex-start;
   }
 
   .live-specimen {

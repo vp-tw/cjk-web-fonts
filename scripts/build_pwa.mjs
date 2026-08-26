@@ -9,6 +9,7 @@ const { count, size, warnings } = await generateSW({
   globDirectory: outputDirectory,
   globPatterns: [
     "index.html",
+    "{zh-hant,zh-hans,ja,ko}/index.html",
     "manifest.webmanifest",
     "favicon.ico",
     "brand/apple-touch-icon.png",
@@ -60,6 +61,11 @@ await access(serviceWorkerPath);
 const serviceWorker = await readFile(serviceWorkerPath, "utf8");
 if (!serviceWorker.includes(JSON.stringify(`${base}index.html`))) {
   throw new Error("PWA service worker must precache the offline navigation fallback");
+}
+for (const locale of ["zh-hant", "zh-hans", "ja", "ko"]) {
+  if (!serviceWorker.includes(JSON.stringify(`${base}${locale}/index.html`))) {
+    throw new Error(`PWA service worker must precache the ${locale} page`);
+  }
 }
 
 const manifest = JSON.parse(await readFile(`${outputDirectory}/manifest.webmanifest`, "utf8"));

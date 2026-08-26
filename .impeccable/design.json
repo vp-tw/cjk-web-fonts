@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-26T00:00:00+08:00",
+  "generatedAt": "2026-08-26T18:39:00+08:00",
   "title": "Design System: CJK Web Fonts",
   "extensions": {
     "colorMeta": {
@@ -189,6 +189,7 @@
     ],
     "breakpoints": [
       { "name": "workbench-stack", "value": "900px" },
+      { "name": "header-compact", "value": "760px" },
       { "name": "single-column", "value": "600px" }
     ]
   },
@@ -210,18 +211,25 @@
       "css": ".ds-segments { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--rule, #9a9c94); } .ds-segments button { min-height: 38px; border: 0; border-right: 1px solid var(--rule, #9a9c94); border-radius: 0; background: transparent; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-segments button:last-child { border-right: 0; } .ds-segments .is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-segments button:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: -3px; }"
     },
     {
+      "name": "Language Navigation",
+      "kind": "custom",
+      "description": "A native-language label opens ruled links to every static locale. English is the root and fallback. The English root may show a dismissible browser-language suggestion without redirecting or changing proof content.",
+      "html": "<details class=\"ds-language\"><summary>English</summary><nav aria-label=\"Language\"><a lang=\"en\" hreflang=\"en\" aria-current=\"page\">English</a><a lang=\"zh-Hant\" hreflang=\"zh-Hant\">繁體中文</a><a lang=\"ja\" hreflang=\"ja\">日本語</a></nav></details>",
+      "css": ".ds-language { position: relative; } .ds-language nav { position: absolute; right: 0; display: grid; min-width: 11rem; border: 1px solid var(--ink, #171816); background: var(--paper, #e7e3d8); } .ds-language a { min-height: 42px; padding: .7rem .85rem; } .ds-language a + a { border-top: 1px solid var(--rule, #9a9c94); } .ds-language a:hover, .ds-language a[aria-current=page] { background: var(--ink, #171816); color: var(--paper, #e7e3d8); }"
+    },
+    {
       "name": "Proof Presets",
       "kind": "custom",
       "refersTo": "proof-preset-selected",
       "description": "A continuous ruled multi-select for nine ordered multilingual proofs. All is independent; direct specimen editing changes the state to custom. The summary reports selected presets and unique required code points.",
       "html": "<fieldset class=\"ds-proof-presets\"><legend>測試範本</legend><div><button class=\"is-active\" aria-pressed=\"true\">全部</button><button aria-pressed=\"false\">拉丁文</button><button aria-pressed=\"false\">符號</button></div><p aria-live=\"polite\">9 組範本 · 267 個必要字元</p></fieldset>",
-      "css": ".ds-proof-presets { border: 0; border-top: 1px solid var(--rule, #9a9c94); border-radius: 0; } .ds-proof-presets > div { display: flex; flex-wrap: wrap; gap: 1px; border: 1px solid var(--rule, #9a9c94); background: var(--rule, #9a9c94); } .ds-proof-presets button { flex: 1 1 auto; min-height: 38px; border: 0; border-radius: 0; background: var(--paper, #e7e3d8); color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-proof-presets button.is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-proof-presets button:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: -3px; } @media (max-width: 600px) { .ds-proof-presets button { min-height: 44px; } }"
+      "css": ".ds-proof-presets { border: 0; border-top: 1px solid var(--rule, #9a9c94); border-radius: 0; } .ds-proof-presets > div { display: flex; flex-wrap: wrap; gap: 1px; border: 1px solid var(--rule, #9a9c94); background: var(--rule, #9a9c94); } .ds-proof-presets button { flex: 1 1 auto; min-width: 0; min-height: 38px; overflow-wrap: anywhere; border: 0; border-radius: 0; background: var(--paper, #e7e3d8); color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-proof-presets button.is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-proof-presets button:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: -3px; } @media (max-width: 600px) { .ds-proof-presets button { min-height: 44px; } }"
     },
     {
       "name": "Coverage Status",
       "kind": "chip",
-      "description": "Literal coverage evidence inside a one-pixel semantic rule.",
-      "html": "<span class=\"ds-status\">沒有缺字</span>",
+      "description": "Literal coverage evidence in the active interface language inside a one-pixel semantic rule.",
+      "html": "<span class=\"ds-status\">Complete coverage</span>",
       "css": ".ds-status { display: inline-block; padding: .35rem .5rem; border: 1px solid currentColor; border-radius: 0; color: var(--success, #1e6650); font: 400 .75rem/1.4 sans-serif; }"
     },
     {
@@ -242,7 +250,7 @@
     {
       "name": "PWA Update Notice",
       "kind": "alert",
-      "description": "A ruled, responsive status slip for offline readiness, waiting updates, and update-activation failures. Entry motion is disabled when reduced motion is requested.",
+      "description": "A ruled, responsive status slip in the active interface language for offline readiness, waiting updates, and update-activation failures. Every static locale is available through the shared offline app shell. Entry motion is disabled when reduced motion is requested.",
       "html": "<aside class=\"ds-pwa-notice\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\"><span>REV / 002</span><p><strong>有新版可用</strong><br>更新已下載完成。重新載入即可使用最新版本。</p><button type=\"button\">立即更新</button><button type=\"button\">稍後</button></aside>",
       "css": ".ds-pwa-notice { position: fixed; right: 3vw; bottom: 3vw; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); width: min(42rem, 94vw); border: 1px solid var(--ink, #171816); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); } .ds-pwa-notice button { min-height: 44px; border: 0; border-top: 1px solid var(--ink, #171816); border-radius: 0; } .ds-pwa-notice button:first-of-type { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-pwa-notice button:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: -3px; } @media (max-width: 600px) { .ds-pwa-notice { right: 0; bottom: 0; grid-template-columns: 2.25rem minmax(0, 1fr); width: 100%; border-right: 0; border-bottom: 0; border-left: 0; } } @media (prefers-reduced-motion: no-preference) { .ds-pwa-notice { animation: pwa-notice-in 220ms cubic-bezier(.16, 1, .3, 1) both; } }"
     }
@@ -306,6 +314,11 @@
       {
         "name": "The Social Preview Rule",
         "body": "Use the approved Open Graph raster with the official tagline verbatim. Keep its generated source alongside the 1200 by 630 delivery image, and resize only without redrawing, recoloring, sharpening, or adding effects.",
+        "section": "components"
+      },
+      {
+        "name": "The Explicit Language Rule",
+        "body": "Publish every interface language at a crawlable static URL. Keep English as the root fallback, preserve explicit choices, and offer browser-language suggestions without forced redirects or proof-content changes.",
         "section": "components"
       }
     ],
