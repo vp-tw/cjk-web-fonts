@@ -22,6 +22,7 @@ jsDelivr's GitHub endpoint.
 | [Iansui](packages/iansui/README.md)                                         | 1.020      | OFL-1.1 | `@vp-tw/cjk-web-fonts-iansui`                  |
 | [LXGW WenKai TC](packages/lxgw-wenkai-tc/README.md)                         | 1.522      | OFL-1.1 | `@vp-tw/cjk-web-fonts-lxgw-wenkai-tc`          |
 | [Chiron Sung HK](packages/chiron-sung-hk/README.md)                         | 1.024      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-sung-hk`          |
+| [Chiron Hei HK](packages/chiron-hei-hk/README.md)                           | 2.609      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-hei-hk`           |
 
 ## Usage
 
