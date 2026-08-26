@@ -135,3 +135,5 @@ from package metadata and published CSS coverage; do not edit it directly.
 
 - [`@vp-tw/cjk-web-fonts-tofu`](packages/tofu/README.md) — Google Fonts Tofu
   packaged as browser-compatible WOFF2 subsets.
+- [`@vp-tw/cjk-web-fonts-adobe-notdef`](packages/adobe-notdef/README.md) — Adobe
+  NotDef packaged as exact-coverage WOFF2 subsets.

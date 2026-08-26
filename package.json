@@ -3,7 +3,7 @@
   "private": true,
   "description": "CJK web fonts, ready to use.",
   "scripts": {
-    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font && pnpm build:glow-sans-tc-compressed && pnpm build:glow-sans-tc-condensed && pnpm build:glow-sans-tc-normal && pnpm build:glow-sans-tc-extended && pnpm build:glow-sans-tc-wide && pnpm build:iansui && pnpm build:lxgw-wenkai-tc && pnpm build:chiron-sung-hk && pnpm build:chiron-hei-hk && pnpm build:chiron-go-round-tc && pnpm build:tofu",
+    "build": "pnpm build:jigmo && pnpm build:hanamin && pnpm build:taipei-sans-tc && pnpm build:fusion-pixel-font && pnpm build:glow-sans-tc-compressed && pnpm build:glow-sans-tc-condensed && pnpm build:glow-sans-tc-normal && pnpm build:glow-sans-tc-extended && pnpm build:glow-sans-tc-wide && pnpm build:iansui && pnpm build:lxgw-wenkai-tc && pnpm build:chiron-sung-hk && pnpm build:chiron-hei-hk && pnpm build:chiron-go-round-tc && pnpm build:tofu && pnpm build:adobe-notdef",
     "build:fusion-pixel-font": "./scripts/build-fusion-pixel-font.sh",
     "build:glow-sans-tc-compressed": "./scripts/build-glow-sans-tc-compressed.sh",
     "build:glow-sans-tc-condensed": "./scripts/build-glow-sans-tc-condensed.sh",
@@ -16,6 +16,7 @@
     "build:lxgw-wenkai-tc": "./scripts/build-lxgw-wenkai-tc.sh",
     "build:taipei-sans-tc": "./scripts/build-taipei-sans-tc.sh",
     "build:tofu": "./scripts/build-tofu.sh",
+    "build:adobe-notdef": "./scripts/build-adobe-notdef.sh",
     "build:chiron-sung-hk": "./scripts/build-chiron-sung-hk.sh",
     "build:chiron-hei-hk": "./scripts/build-chiron-hei-hk.sh",
     "build:chiron-go-round-tc": "./scripts/build-chiron-go-round-tc.sh",

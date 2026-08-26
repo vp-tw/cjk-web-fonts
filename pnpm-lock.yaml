@@ -45,6 +45,8 @@ importers:
         specifier: ^7.4.1
         version: 7.4.1(supports-color@7.2.0)
 
+  packages/adobe-notdef: {}
+
   packages/chiron-go-round-tc: {}
 
   packages/chiron-hei-hk: {}

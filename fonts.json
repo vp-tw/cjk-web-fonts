@@ -879,6 +879,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "adobe-notdef",
+      "label": "Adobe NotDef",
+      "buildScript": "scripts/build-adobe-notdef.sh",
+      "auditScript": "scripts/audit_adobe_notdef.py",
+      "buildInputs": ["scripts/prepare_adobe_notdef.py"],
+      "site": {
+        "description": "Adobe's visible .notdef glyph for diagnosing missing characters across Unicode scalar values.",
+        "license": "SIL Open Font License 1.1",
+        "sourceUrl": "https://github.com/adobe-fonts/adobe-notdef",
+        "variants": [
+          {
+            "id": "regular",
+            "label": "Regular",
+            "css": "dist/index.css",
+            "coverageCss": ["dist/Adobe-NotDef.css"],
+            "families": ["Adobe NotDef"],
+            "weight": 400
+          }
+        ]
+      }
     }
   ]
 }
