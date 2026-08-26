@@ -43,6 +43,8 @@ copy CSS for a web project.
 - Search and preview the complete catalog.
 - Edit shared preview text directly in any specimen, then change its font size,
   foreground color, and background color.
+- Choose System Default, Tofu, Adobe NotDef, or Last Resort as the missing-glyph
+  fallback for live specimens without changing coverage results or embed code.
 - Select light, dark, or system appearance independently from preview colors.
 - Show version-pinned embed code for every verified CDN that can serve the npm
   package's CSS and font assets without rewriting the package.

@@ -36,6 +36,7 @@
   let background = "#e7e3d8";
   let theme: "light" | "dark" | "system" = "system";
   let selectedCdn = "jsdelivr";
+  let selectedFallback = "system";
   let onlyComplete = false;
   let selectedFontIds = Object.fromEntries(
     fontFamilies.map((family) => [family.id, family.defaultFontId]),
@@ -86,6 +87,10 @@
   $: if (mounted) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("cjk-theme", theme);
+  }
+  $: if (mounted && selectedFallback !== "system") {
+    const fallback = fonts.find((font) => font.id === selectedFallback);
+    if (fallback) ensureStylesheet(fallback.variants[0].urls[selectedCdn]);
   }
 
   $: queryMatchingFamilies = fontFamilies.filter((family) => {
@@ -305,8 +310,13 @@
     document.head.append(link);
   }
 
-  function familyStack(variant: CatalogFontVariant): string {
-    return `${variant.families.map((family) => `"${family}"`).join(", ")}, sans-serif`;
+  function familyStack(variant: CatalogFontVariant, fallbackId: string): string {
+    const fallback = fonts.find((font) => font.id === fallbackId);
+    const families = [
+      ...variant.families,
+      ...(fallback ? fallback.variants[0].families : []),
+    ];
+    return `${[...new Set(families)].map((family) => `"${family}"`).join(", ")}, sans-serif`;
   }
 
   function embedCode(font: CatalogFontRecord, cdnId: string): string {
@@ -403,6 +413,17 @@
     <label class="range-control">
       <span>{messages.fontSize} <output>{fontSize}px</output></span>
       <input bind:value={fontSize} type="range" min="20" max="128" step="1" />
+    </label>
+
+    <label class="fallback-control">
+      <span>{messages.missingGlyphFallback}</span>
+      <select bind:value={selectedFallback}>
+        <option value="system">{messages.systemDefault}</option>
+        <option value="tofu">Tofu</option>
+        <option value="adobe-notdef">Adobe NotDef</option>
+        <option value="last-resort">Last Resort</option>
+      </select>
+      <small>{messages.fallbackPreviewOnly}</small>
     </label>
 
     <div class="color-controls">
@@ -537,7 +558,9 @@
             use:observeSpecimen={family.id}
             on:input={handlePreviewInput}
             on:focus={handlePreviewFocus}
-            style:font-family={visibleSpecimenIds.has(family.id) ? familyStack(variant) : "inherit"}
+            style:font-family={visibleSpecimenIds.has(family.id)
+              ? familyStack(variant, selectedFallback)
+              : "inherit"}
             style:--preview-size={`${fontSize}px`}
             style:font-weight={weightRange ? selectedWeights[family.id] : variant.weight}
             style:font-style={variant.style}

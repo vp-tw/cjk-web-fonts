@@ -180,6 +180,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 - **Style:** Paper background, one-pixel Hairline Rule border, square corners, and a stable minimum height of 42px.
 - **Focus:** A two-pixel Focus Blue outline with clear offset. Segmented radio options place the outline inside the group so it is never clipped.
 - **Text Area:** Every specimen owns a large, resizable textarea. Editing any specimen synchronizes the shared proof text; preview foreground, background, and selected typeface apply directly to that field.
+- **Missing-glyph fallback:** A compact select in the calibration rail offers System Default, Tofu, Adobe NotDef, and Last Resort. It applies only to live specimens. Coverage evidence, package selection, and copied embed code remain unchanged.
 
 ### Segmented Controls
 
