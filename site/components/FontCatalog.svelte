@@ -12,6 +12,7 @@
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
   import { contrastCompliance, contrastRatio } from "../lib/color-contrast";
+  import { copyText } from "../lib/copy-text";
   import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
   import {
     composeProofText,
@@ -39,6 +40,7 @@
   let previewText = defaultText;
   let proofSelection: ProofPresetSelection = { mode: "all" };
   let committedQuery = "";
+  let searchQuery = "";
   let selectedTypes: CatalogTypeFilter[] = [];
   let selectedLanguages: string[] = [];
   let selectedWritingSystems: WritingSystemId[] = [];
@@ -65,6 +67,7 @@
   let missing: Record<string, number[]> = {};
   let coveragePending = true;
   let copied = "";
+  let copyError = "";
   let visibleSpecimenIds = new Set<string>();
   let nearbySpecimenIds = new Set<string>();
   const specimenNodes = new Map<string, HTMLTextAreaElement>();
@@ -197,6 +200,13 @@
     selectedTypes = [];
     selectedLanguages = [];
     selectedWritingSystems = [];
+  }
+
+  function clearSearchAndFilters() {
+    commitQuery.cancel();
+    searchQuery = "";
+    committedQuery = "";
+    clearFilters();
   }
 
   function viewResults() {
@@ -457,17 +467,27 @@
 
   async function copyEmbed(font: CatalogFontRecord) {
     const code = embedCode(font, selectedCdn);
-    try {
-      await navigator.clipboard.writeText(code);
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = code;
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.append(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
+    copied = "";
+    copyError = "";
+    const copiedSuccessfully = await copyText(code, {
+      clipboard: (text) => navigator.clipboard.writeText(text),
+      fallback: (text) => {
+        const field = document.createElement("textarea");
+        field.value = text;
+        field.style.position = "fixed";
+        field.style.opacity = "0";
+        document.body.append(field);
+        field.select();
+        try {
+          return document.execCommand("copy");
+        } finally {
+          field.remove();
+        }
+      },
+    });
+    if (!copiedSuccessfully) {
+      copyError = font.id;
+      return;
     }
     copied = font.id;
     setTimeout(() => {
@@ -497,7 +517,7 @@
     <div class="rail-index" aria-hidden="true">CTRL / 001</div>
     <label class="search-control">
       <span>{messages.search}</span>
-      <input on:input={handleQueryInput} type="search" placeholder={messages.searchPlaceholder} />
+      <input bind:value={searchQuery} on:input={handleQueryInput} type="search" placeholder={messages.searchPlaceholder} />
     </label>
 
     <details bind:this={filterDetails} class="filter-control">
@@ -774,6 +794,7 @@
                 {copied === font.id ? messages.copied : messages.copyEmbed}
               </button>
             </div>
+            {#if copyError === font.id}<p class="copy-error" role="alert">{messages.copyFailed}</p>{/if}
             <nav aria-label={formatMessage(messages.relatedLinks, { family: family.label })}>
               <a href={font.sourceUrl} target="_blank" rel="noreferrer">{messages.upstreamSource}</a>
               <a href={font.repositoryUrl} target="_blank" rel="noreferrer">{messages.packageDocs}</a>
@@ -785,6 +806,7 @@
           {#if (committedQuery.trim() || hasActiveFilters) && queryMatchingFamilies.length === 0}
             <h3>{messages.noSearchTitle}</h3>
             <p>{messages.noSearchBody}</p>
+            <button class="empty-action" type="button" on:click={clearSearchAndFilters}>{messages.clearSearchAndFilters}</button>
           {:else if coveragePending}
             <h3>{messages.checkingTitle}</h3>
             <p>{messages.checkingBody}</p>

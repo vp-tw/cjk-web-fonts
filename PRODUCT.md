@@ -44,6 +44,8 @@ copy CSS for a web project.
 ## Capabilities and Constraints
 
 - Search and preview the complete catalog.
+- Recover from an empty search result with one action that clears only the search
+  query and font filters.
 - Filter by reviewed language suitability, Fontsource-compatible classification,
   and complete sample coverage for a writing system. These are separate signals:
   glyph coverage never implies language suitability.
@@ -56,6 +58,8 @@ copy CSS for a web project.
 - Select light, dark, or system appearance independently from preview colors.
 - Show version-pinned embed code for every verified CDN that can serve the npm
   package's CSS and font assets without rewriting the package.
+- Report a localized copy error beside the affected embed row when both browser
+  copy strategies fail, while keeping the action available for retry.
 - Preserve static, indexable font content while hydrating only interactive
   controls.
 - Publish English at the root URL and static Traditional Chinese, Simplified

@@ -213,7 +213,11 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Embed Rows
 
 - **Style:** Copyable code occupies the fluid cell; a high-contrast action occupies a fixed-width cell.
-- **State:** Hover changes the action to Proof Red. Keyboard focus uses Focus Blue. On small screens, the action moves below the code and reaches a 44px minimum height.
+- **State:** Hover changes the action to Proof Red. Keyboard focus uses Focus Blue. On small screens, the action moves below the code and reaches a 44px minimum height. Copying uses the Clipboard API followed by a legacy browser fallback. If both fail, a localized alert appears directly below the affected row; retrying clears the prior result before reporting the new state.
+
+### Empty Results
+
+- **State:** When search or font filters produce no families, show one high-contrast recovery action that clears only the search query and those font filters. Preserve proof text, proof presets, appearance, preview colors, CDN, fallback, and complete-coverage state.
 
 ### PWA Update Notice
 

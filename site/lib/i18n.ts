@@ -84,11 +84,13 @@ export interface Messages {
     codePoints: string;
     copied: string;
     copyEmbed: string;
+    copyFailed: string;
     relatedLinks: string;
     upstreamSource: string;
     packageDocs: string;
     noSearchTitle: string;
     noSearchBody: string;
+    clearSearchAndFilters: string;
     checkingTitle: string;
     checkingBody: string;
     noCompleteTitle: string;
@@ -203,11 +205,13 @@ const en: Messages = {
     codePoints: "code points",
     copied: "Copied",
     copyEmbed: "Copy embed",
+    copyFailed: "Copy failed. Try again.",
     relatedLinks: "Related links for {family}",
     upstreamSource: "Upstream source",
     packageDocs: "Package documentation",
     noSearchTitle: "No fonts match these conditions",
     noSearchBody: "Clear a filter or try another search.",
+    clearSearchAndFilters: "Clear search and filters",
     checkingTitle: "Checking font coverage",
     checkingBody: "Fonts with complete coverage will appear when the check finishes.",
     noCompleteTitle: "No font covers all the text",
@@ -329,11 +333,13 @@ const zhHant: Messages = {
     codePoints: "個碼位",
     copied: "已複製",
     copyEmbed: "複製 embed",
+    copyFailed: "複製失敗，請再試一次。",
     relatedLinks: "{family} 相關連結",
     upstreamSource: "上游來源",
     packageDocs: "套件文件",
     noSearchTitle: "沒有字型符合這些條件",
     noSearchBody: "清除部分篩選條件，或改用其他搜尋詞。",
+    clearSearchAndFilters: "清除搜尋與篩選",
     checkingTitle: "正在檢查字型涵蓋範圍",
     checkingBody: "完成後會顯示沒有缺字的字型。",
     noCompleteTitle: "沒有字型涵蓋全部文字",
@@ -456,11 +462,13 @@ const zhHans: Messages = {
     codePoints: "个码位",
     copied: "已复制",
     copyEmbed: "复制 embed",
+    copyFailed: "复制失败，请重试。",
     relatedLinks: "{family} 相关链接",
     upstreamSource: "上游来源",
     packageDocs: "软件包文档",
     noSearchTitle: "没有字体符合这些条件",
     noSearchBody: "清除部分筛选条件，或改用其他搜索词。",
+    clearSearchAndFilters: "清除搜索与筛选",
     checkingTitle: "正在检查字体覆盖范围",
     checkingBody: "完成后会显示没有缺字的字体。",
     noCompleteTitle: "没有字体覆盖全部文字",
@@ -588,11 +596,13 @@ const ja: Messages = {
     codePoints: "コードポイント",
     copied: "コピー済み",
     copyEmbed: "埋め込みをコピー",
+    copyFailed: "コピーできませんでした。もう一度お試しください。",
     relatedLinks: "{family}の関連リンク",
     upstreamSource: "上流ソース",
     packageDocs: "パッケージ資料",
     noSearchTitle: "条件に一致するフォントがありません",
     noSearchBody: "フィルターを解除するか、別の検索語を試してください。",
+    clearSearchAndFilters: "検索とフィルターを解除",
     checkingTitle: "文字収録を確認中",
     checkingBody: "確認が完了すると、全文字を収録するフォントが表示されます。",
     noCompleteTitle: "全文字を収録するフォントがありません",
@@ -720,11 +730,13 @@ const ko: Messages = {
     codePoints: "코드 포인트",
     copied: "복사됨",
     copyEmbed: "삽입 코드 복사",
+    copyFailed: "복사하지 못했습니다. 다시 시도하세요.",
     relatedLinks: "{family} 관련 링크",
     upstreamSource: "원본 소스",
     packageDocs: "패키지 문서",
     noSearchTitle: "조건과 일치하는 글꼴이 없습니다",
     noSearchBody: "필터를 지우거나 다른 검색어를 사용해 보세요.",
+    clearSearchAndFilters: "검색 및 필터 지우기",
     checkingTitle: "문자 포함 여부 검사 중",
     checkingBody: "검사가 끝나면 모든 문자를 포함한 폰트가 표시됩니다.",
     noCompleteTitle: "모든 문자를 포함한 폰트가 없습니다",
