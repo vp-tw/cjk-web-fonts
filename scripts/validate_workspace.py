@@ -179,6 +179,7 @@ def main() -> None:
         if not isinstance(variants, list) or not variants:
             fail(f"{font_id}.site.variants must be a non-empty array")
         variant_ids: set[str] = set()
+        resolved_variant_classifications: set[str] = set()
         for variant in variants:
             variant_id = variant.get("id")
             if not isinstance(variant_id, str) or not variant_id:
@@ -186,6 +187,21 @@ def main() -> None:
             if variant_id in variant_ids:
                 fail(f"{font_id} has duplicate variant id {variant_id}")
             variant_ids.add(variant_id)
+            variant_classifications = variant.get("classifications", classifications)
+            if (
+                not isinstance(variant_classifications, list)
+                or not variant_classifications
+                or any(
+                    value not in FONTSOURCE_CLASSIFICATIONS
+                    for value in variant_classifications
+                )
+                or len(variant_classifications) != len(set(variant_classifications))
+            ):
+                fail(
+                    f"{font_id}.{variant_id}.classifications must use unique "
+                    "Fontsource values"
+                )
+            resolved_variant_classifications.update(variant_classifications)
             css_path = variant.get("css")
             if not isinstance(css_path, str) or not (package_dir / css_path).is_file():
                 fail(f"{font_id}.{variant_id} CSS does not exist: {css_path!r}")
@@ -204,6 +220,10 @@ def main() -> None:
             stretch = variant.get("stretch", "normal")
             if not isinstance(stretch, str) or not stretch:
                 fail(f"{font_id}.{variant_id} stretch must be a non-empty string")
+        if resolved_variant_classifications != set(classifications):
+            fail(
+                f"{font_id}.site.classifications must equal the resolved variant union"
+            )
 
     for family_id, members in catalog_families.items():
         if len(members) < 2:

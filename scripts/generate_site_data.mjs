@@ -124,6 +124,7 @@ const fonts = registry.fonts.map((font) => {
       return {
         id: variant.id,
         label: variant.label,
+        classifications: variant.classifications ?? font.site.classifications,
         families: variant.families,
         weight: variant.weight,
         style: variant.style ?? "normal",

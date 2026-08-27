@@ -63,7 +63,9 @@ copy CSS for a web project.
   after they choose to update.
 - Model packages that belong to one upstream family as a single specimen with
   ordered family axes, independent weight and style controls, and an explicit
-  upstream default.
+  upstream default. Keep Fontsource-compatible classifications at the family
+  level while resolving reviewed variant overrides for mixed proportional and
+  monospaced packages.
 - Deploy as a static GitHub Pages site under the repository base path.
 - Treat package files and upstream license information as authoritative. Do not
   invent availability, performance, or legal claims.
