@@ -7,6 +7,7 @@ colors:
   registration-ink: "#171816"
   secondary-ink: "#60655f"
   hairline-rule: "#9a9c94"
+  control-rule: "#747870"
   proof-red: "#c84125"
   reversed-paper: "#fff8ef"
   verified-green: "#1e6650"
@@ -181,7 +182,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 - **Focus:** A two-pixel Focus Blue outline with clear offset. Segmented radio options place the outline inside the group so it is never clipped.
 - **Text Area:** Every specimen owns a large, resizable textarea. Editing any specimen synchronizes the shared proof text; preview foreground, background, and selected typeface apply directly to that field.
 - **Missing-glyph fallback:** A compact select in the calibration rail offers System Default, Tofu, Adobe NotDef, and Last Resort. It applies only to live specimens. Coverage evidence, package selection, and copied embed code remain unchanged.
-- **Font filters:** A collapsed disclosure beside search contains native checkbox groups for Font type, Language suitability, and Character support. Its summary reports the active condition count and an in-panel action clears every filter. Font types use Fontsource classification values plus the repository-specific Diagnostic fallback role and combine with OR. Selected languages and writing systems each combine with AND; facets also combine with AND. Type and complete writing-system conditions must match the same variant, while reviewed language suitability remains package-level metadata.
+- **Font filters:** A collapsed disclosure beside search contains native checkbox groups for Font type, Language suitability, and Character support. Each legend states its matching rule: any selected type may match, while every selected language and character set must match. Its summary reports the active condition count and an in-panel action clears every filter. Font types use Fontsource classification values plus the repository-specific Diagnostic fallback role. Facets combine with AND. Type and complete writing-system conditions must match the same variant, while reviewed language suitability remains package-level metadata. Filter rows align a 16px native checkbox column with the text column; selected rows reverse to Registration Ink without adding Proof Red as a second selection signal. Essential control boundaries use Control Rule, while Hairline Rule remains structural.
 - **Variant match notice:** Filtering never changes the active package or variant. When another variant is responsible for a family match, append “matches filters” to relevant native select options and show one compact ruled notice with an explicit Preview matching style button. The action may update both package and variant, after which preview and embed output follow the new active selection.
 
 ### Segmented Controls

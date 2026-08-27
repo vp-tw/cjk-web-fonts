@@ -483,7 +483,7 @@
       </summary>
       <div>
         <fieldset class="filter-group">
-          <legend>{messages.category}</legend>
+          <legend>{messages.category}<small>{messages.typeFilterRule}</small></legend>
           <div class="filter-options">
             {#each categoryOptions() as [value, label]}
               <label class:active={selectedTypes.includes(value)}><input bind:group={selectedTypes} type="checkbox" {value} /><span>{label}</span></label>
@@ -491,7 +491,7 @@
           </div>
         </fieldset>
         <fieldset class="filter-group">
-          <legend>{messages.languageFilter}</legend>
+          <legend>{messages.languageFilter}<small>{messages.languageFilterRule}</small></legend>
           <div class="filter-options">
             {#each languageOptions() as [value, label]}
               <label class:active={selectedLanguages.includes(value)}><input bind:group={selectedLanguages} type="checkbox" {value} /><span>{label}</span></label>
@@ -499,7 +499,7 @@
           </div>
         </fieldset>
         <fieldset class="filter-group">
-          <legend>{messages.writingSystem}</legend>
+          <legend>{messages.writingSystem}<small>{messages.writingSystemFilterRule}</small></legend>
           <div class="filter-options">
             {#each writingSystemOptions() as [value, label]}
               <label class:active={selectedWritingSystems.includes(value)}><input bind:group={selectedWritingSystems} type="checkbox" {value} /><span>{label}</span></label>

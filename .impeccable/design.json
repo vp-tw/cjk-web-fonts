@@ -79,6 +79,21 @@
           "#f3f4ef"
         ]
       },
+      "control-rule": {
+        "role": "neutral",
+        "displayName": "Control Rule",
+        "canonical": "#747870",
+        "tonalRamp": [
+          "#20221f",
+          "#3d403b",
+          "#5a5e57",
+          "#747870",
+          "#92968e",
+          "#b2b5ae",
+          "#d2d4ce",
+          "#f0f1ed"
+        ]
+      },
       "proof-red": {
         "role": "primary",
         "displayName": "Proof Red",
@@ -200,7 +215,7 @@
       "refersTo": "input",
       "description": "Square, paper-toned search and selection field.",
       "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"名稱、套件或特徵\" aria-label=\"搜尋字型\">",
-      "css": ".ds-input { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; font: 400 1rem/1.5 sans-serif; } .ds-input:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+      "css": ".ds-input { width: 100%; min-height: 42px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; font: 400 1rem/1.5 sans-serif; } .ds-input:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
     },
     {
       "name": "Missing-glyph Fallback",
@@ -208,15 +223,15 @@
       "refersTo": "input",
       "description": "A calibration-rail select for System Default, Tofu, Adobe NotDef, or Last Resort. It changes live specimens only; coverage evidence and copied embed code stay unchanged.",
       "html": "<label class=\"ds-fallback\"><span>缺字後援</span><select><option>系統預設</option><option>Tofu</option><option>Adobe NotDef</option><option>Last Resort</option></select><small>只影響預覽；涵蓋檢查與複製的 embed 不會改變。</small></label>",
-      "css": ".ds-fallback select { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; } .ds-fallback small { display: block; margin-top: .5rem; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-fallback select:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+      "css": ".ds-fallback select { width: 100%; min-height: 42px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: var(--paper, #e7e3d8); color: var(--ink, #171816); padding: 0 .7rem; } .ds-fallback small { display: block; margin-top: .5rem; color: var(--muted, #60655f); font: 400 .72rem/1.4 sans-serif; } .ds-fallback select:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
     },
     {
       "name": "Font Filters",
       "kind": "custom",
       "refersTo": "input",
-      "description": "A collapsed calibration-rail disclosure with native checkbox groups for Font type, reviewed language suitability, and complete writing-system coverage. The summary counts active conditions and Clear all resets only these filters. Types combine with OR; selected languages and writing systems combine with AND; facets combine with AND; type and writing-system conditions match the same variant.",
-      "html": "<details class=\"ds-filters\"><summary>字型篩選 <span>2 個條件</span></summary><fieldset><legend>字型類型</legend><label><input type=\"checkbox\" checked>手寫</label><label><input type=\"checkbox\">等寬</label></fieldset><fieldset><legend>字元支援</legend><label><input type=\"checkbox\" checked>注音</label></fieldset><button type=\"button\">清除全部</button></details>",
-      "css": ".ds-filters { border-block: 1px solid var(--rule, #9a9c94); padding: .75rem 0; } .ds-filters summary { min-height: 42px; cursor: pointer; font: 400 .78rem/1.4 sans-serif; } .ds-filters fieldset { margin: .85rem 0 0; padding: 0; border: 0; } .ds-filters label { display: flex; min-height: 38px; align-items: center; gap: .45rem; border: 1px solid var(--rule, #9a9c94); padding: .45rem .55rem; } .ds-filters button { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: transparent; }"
+      "description": "A collapsed calibration-rail disclosure with native checkbox groups for Font type, reviewed language suitability, and complete writing-system coverage. Each legend states whether selections match any or every condition. The summary counts active conditions and Clear all resets only these filters. Facets combine with AND; type and writing-system conditions match the same variant.",
+      "html": "<details class=\"ds-filters\"><summary>字型篩選 <span>2 個條件</span></summary><fieldset><legend>字型類型 <small>符合任一類型</small></legend><label class=\"is-active\"><input type=\"checkbox\" checked><span>手寫</span></label><label><input type=\"checkbox\"><span>等寬</span></label></fieldset><fieldset><legend>字元支援 <small>完整支援所有字元集</small></legend><label><input type=\"checkbox\" checked><span>注音</span></label></fieldset><button type=\"button\">清除全部</button></details>",
+      "css": ".ds-filters { border-block: 1px solid var(--rule, #9a9c94); padding: .75rem 0; } .ds-filters summary { min-height: 42px; cursor: pointer; font: 400 .78rem/1.4 sans-serif; } .ds-filters fieldset { margin: .85rem 0 0; padding: 0; border: 0; } .ds-filters legend { display: flex; width: 100%; justify-content: space-between; gap: .75rem; } .ds-filters label { display: grid; grid-template-columns: 16px minmax(0, 1fr); min-height: 38px; align-items: center; gap: .45rem; border: 1px solid var(--control-rule, #747870); padding: .45rem .55rem; } .ds-filters label.is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-filters input { accent-color: var(--ink, #171816); } .ds-filters label.is-active input { accent-color: var(--paper, #e7e3d8); } .ds-filters button { width: 100%; min-height: 42px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: transparent; }"
     },
     {
       "name": "Variant Match Notice",
