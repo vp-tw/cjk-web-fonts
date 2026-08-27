@@ -50,7 +50,7 @@
 .catalog-head select {
   width: 100%;
   min-height: 42px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--control-rule);
   border-radius: 0;
   background: var(--paper);
   color: var(--ink);
@@ -92,15 +92,28 @@
   padding: 0;
   border: 0;
 }
+
+.filter-group legend {
+  width: 100%;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.filter-group legend small {
+  color: var(--muted);
+  font-size: 0.65rem;
+  text-align: end;
+}
 .filter-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
-  border: 1px solid var(--rule);
-  background: var(--rule);
+  border: 1px solid var(--control-rule);
+  background: var(--control-rule);
 }
 .filter-options label {
-  display: flex;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
   min-height: 38px;
   align-items: center;
   gap: 0.45rem;
@@ -110,6 +123,12 @@
   color: var(--muted);
   font-size: 0.72rem;
   cursor: pointer;
+}
+
+.filter-options label > span {
+  margin: 0;
+  color: inherit;
+  line-height: 1.4;
 }
 .filter-options label.active {
   background: var(--ink);
@@ -123,12 +142,17 @@
   width: 16px;
   height: 16px;
   margin: 0;
-  accent-color: var(--accent);
+  align-self: center;
+  accent-color: var(--ink);
+}
+
+.filter-options label.active input {
+  accent-color: var(--paper);
 }
 .clear-filters {
   width: 100%;
   min-height: 42px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--control-rule);
   border-radius: 0;
   background: transparent;
   color: var(--ink);

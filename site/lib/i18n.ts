@@ -26,6 +26,7 @@ export interface Messages {
     activeFilterCount: string;
     clearFilters: string;
     category: string;
+    typeFilterRule: string;
     allCategories: string;
     serif: string;
     sansSerif: string;
@@ -33,8 +34,10 @@ export interface Messages {
     symbols: string;
     diagnostic: string;
     languageFilter: string;
+    languageFilterRule: string;
     allLanguages: string;
     writingSystem: string;
+    writingSystemFilterRule: string;
     allWritingSystems: string;
     hiragana: string;
     katakana: string;
@@ -132,6 +135,7 @@ const en: Messages = {
     searchPlaceholder: "Name, package, or feature",
     filters: "Font filters",
     category: "Font type",
+    typeFilterRule: "Match any type",
     activeFilterCount: "{count} active",
     clearFilters: "Clear all",
     allCategories: "All categories",
@@ -141,8 +145,10 @@ const en: Messages = {
     symbols: "Symbols",
     diagnostic: "Diagnostic fallback",
     languageFilter: "Language suitability",
+    languageFilterRule: "Match every language",
     allLanguages: "All languages",
     writingSystem: "Character support",
+    writingSystemFilterRule: "Fully support every set",
     allWritingSystems: "All writing systems",
     hiragana: "Hiragana",
     katakana: "Katakana",
@@ -249,6 +255,7 @@ const zhHant: Messages = {
     searchPlaceholder: "名稱、套件或特徵",
     filters: "字型篩選",
     category: "字型類型",
+    typeFilterRule: "符合任一類型",
     activeFilterCount: "{count} 個條件",
     clearFilters: "清除全部",
     allCategories: "所有分類",
@@ -258,8 +265,10 @@ const zhHant: Messages = {
     symbols: "符號",
     diagnostic: "診斷後援",
     languageFilter: "語言適用性",
+    languageFilterRule: "符合所有語言",
     allLanguages: "所有語言",
     writingSystem: "字元支援",
+    writingSystemFilterRule: "完整支援所有字元集",
     allWritingSystems: "所有書寫系統",
     hiragana: "平假名",
     katakana: "片假名",
@@ -366,6 +375,7 @@ const zhHans: Messages = {
     searchPlaceholder: "名称、软件包或特征",
     filters: "字体筛选",
     category: "字体类型",
+    typeFilterRule: "符合任一类型",
     activeFilterCount: "{count} 个条件",
     clearFilters: "清除全部",
     allCategories: "所有分类",
@@ -375,8 +385,10 @@ const zhHans: Messages = {
     symbols: "符号",
     diagnostic: "诊断后备",
     languageFilter: "语言适用性",
+    languageFilterRule: "符合所有语言",
     allLanguages: "所有语言",
     writingSystem: "字符支持",
+    writingSystemFilterRule: "完整支持所有字符集",
     allWritingSystems: "所有书写系统",
     hiragana: "平假名",
     katakana: "片假名",
@@ -486,6 +498,7 @@ const ja: Messages = {
     searchPlaceholder: "名前、パッケージ、特徴",
     filters: "フォント絞り込み",
     category: "フォント種別",
+    typeFilterRule: "いずれかに一致",
     activeFilterCount: "{count} 件適用中",
     clearFilters: "すべて解除",
     allCategories: "すべての分類",
@@ -495,8 +508,10 @@ const ja: Messages = {
     symbols: "記号",
     diagnostic: "診断用フォールバック",
     languageFilter: "言語適性",
+    languageFilterRule: "すべての言語に一致",
     allLanguages: "すべての言語",
     writingSystem: "文字サポート",
+    writingSystemFilterRule: "すべてを完全サポート",
     allWritingSystems: "すべての文字体系",
     hiragana: "ひらがな",
     katakana: "カタカナ",
@@ -608,6 +623,7 @@ const ko: Messages = {
     searchPlaceholder: "이름, 패키지 또는 특징",
     filters: "글꼴 필터",
     category: "글꼴 유형",
+    typeFilterRule: "하나 이상 일치",
     activeFilterCount: "{count}개 적용 중",
     clearFilters: "모두 지우기",
     allCategories: "모든 분류",
@@ -617,8 +633,10 @@ const ko: Messages = {
     symbols: "기호",
     diagnostic: "진단용 대체 글꼴",
     languageFilter: "언어 적합성",
+    languageFilterRule: "모든 언어와 일치",
     allLanguages: "모든 언어",
     writingSystem: "문자 지원",
+    writingSystemFilterRule: "모든 문자 집합 완전 지원",
     allWritingSystems: "모든 문자 체계",
     hiragana: "히라가나",
     katakana: "가타카나",

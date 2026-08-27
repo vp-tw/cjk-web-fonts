@@ -5,6 +5,7 @@
   --ink: #171816;
   --muted: #60655f;
   --rule: #9a9c94;
+  --control-rule: #747870;
   --accent: #c84125;
   --accent-ink: #fff8ef;
   --success: #1e6650;
@@ -20,6 +21,7 @@
   --ink: #eeece4;
   --muted: #b2b6ae;
   --rule: #5e625c;
+  --control-rule: #777b74;
   --accent: #f06b45;
   --accent-ink: #171816;
   --success: #7fc9ad;
@@ -35,6 +37,7 @@
     --ink: #eeece4;
     --muted: #b2b6ae;
     --rule: #5e625c;
+    --control-rule: #777b74;
     --accent: #f06b45;
     --accent-ink: #171816;
     --success: #7fc9ad;
