@@ -64,6 +64,9 @@ export interface Messages {
     complete: string;
     missingCount: string;
     style: string;
+    matchesFilters: string;
+    matchesAnotherVariant: string;
+    previewMatchingVariant: string;
     weight: string;
     specimenLabel: string;
     specimenPlaceholder: string;
@@ -170,6 +173,9 @@ const en: Messages = {
     complete: "Complete coverage",
     missingCount: "Missing {count} characters",
     style: "Style",
+    matchesFilters: "matches filters",
+    matchesAnotherVariant: "This family matches through another style.",
+    previewMatchingVariant: "Preview matching style",
     weight: "Weight",
     specimenLabel: "{family} preview text; input syncs to other fonts",
     specimenPlaceholder: "Type preview text here",
@@ -283,6 +289,9 @@ const zhHant: Messages = {
     complete: "沒有缺字",
     missingCount: "缺少 {count} 個字",
     style: "樣式",
+    matchesFilters: "符合篩選",
+    matchesAnotherVariant: "此字族由其他樣式符合篩選條件。",
+    previewMatchingVariant: "預覽符合的樣式",
     weight: "字重",
     specimenLabel: "{family} 預覽文字；輸入會同步至其他字型",
     specimenPlaceholder: "在這裡輸入預覽文字",
@@ -397,6 +406,9 @@ const zhHans: Messages = {
     complete: "没有缺字",
     missingCount: "缺少 {count} 个字",
     style: "样式",
+    matchesFilters: "符合筛选",
+    matchesAnotherVariant: "此字体家族由其他样式符合筛选条件。",
+    previewMatchingVariant: "预览符合的样式",
     weight: "字重",
     specimenLabel: "{family} 预览文字；输入会同步至其他字体",
     specimenPlaceholder: "在这里输入预览文字",
@@ -516,6 +528,9 @@ const ja: Messages = {
     complete: "全文字を収録",
     missingCount: "{count}文字不足",
     style: "スタイル",
+    matchesFilters: "条件に一致",
+    matchesAnotherVariant: "このファミリーは別のスタイルが条件に一致します。",
+    previewMatchingVariant: "一致するスタイルを表示",
     weight: "ウェイト",
     specimenLabel: "{family}の見本文字。入力は他のフォントにも同期されます",
     specimenPlaceholder: "見本文字を入力",
@@ -635,6 +650,9 @@ const ko: Messages = {
     complete: "모든 문자 포함",
     missingCount: "문자 {count}개 없음",
     style: "스타일",
+    matchesFilters: "필터와 일치",
+    matchesAnotherVariant: "이 글꼴 모음은 다른 스타일이 필터와 일치합니다.",
+    previewMatchingVariant: "일치하는 스타일 미리보기",
     weight: "굵기",
     specimenLabel: "{family} 미리보기 텍스트. 입력 내용은 다른 폰트에도 동기화됩니다",
     specimenPlaceholder: "미리보기 텍스트 입력",

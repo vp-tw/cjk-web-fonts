@@ -36,3 +36,15 @@ export function matchingVariantIds(font: CatalogFontRecord, filters: CatalogFilt
 export function fontMatchesFilters(font: CatalogFontRecord, filters: CatalogFilters): boolean {
   return matchingVariantIds(font, filters).length > 0;
 }
+
+export function preferredMatchingVariantId(
+  font: CatalogFontRecord,
+  matchingIds: readonly string[],
+  preferredWeight: number,
+): string | undefined {
+  return (
+    font.variants.find(
+      (variant) => matchingIds.includes(variant.id) && variant.weight === preferredWeight,
+    )?.id ?? matchingIds[0]
+  );
+}

@@ -8,7 +8,7 @@
     type Cdn,
     type WritingSystemId,
   } from "../lib/catalog";
-  import { fontMatchesFilters, type CatalogTypeFilter } from "../lib/catalog-filters";
+  import { fontMatchesFilters, matchingVariantIds, type CatalogTypeFilter } from "../lib/catalog-filters";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
   import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
@@ -60,6 +60,7 @@
     ]),
   );
   let selectedWeights = Object.fromEntries(fontFamilies.map((family) => [family.id, 400]));
+  let selectionRevisions: Record<string, number> = {};
   let missing: Record<string, number[]> = {};
   let coveragePending = true;
   let copied = "";
@@ -188,6 +189,49 @@
     selectedTypes = [];
     selectedLanguages = [];
     selectedWritingSystems = [];
+  }
+
+  function filterMatchIds(font: CatalogFontRecord): string[] {
+    return matchingVariantIds(font, {
+      types: selectedTypes,
+      languages: selectedLanguages,
+      writingSystems: selectedWritingSystems,
+    });
+  }
+
+  function familyMatchTargets(family: CatalogFontFamily): { fontId: string; variantId: string }[] {
+    return family.fonts.flatMap((font) =>
+      filterMatchIds(font).map((variantId) => ({ fontId: font.id, variantId })),
+    );
+  }
+
+  function previewFirstMatch(family: CatalogFontFamily) {
+    const currentWeight = variantFor(fontFor(family)).weight;
+    const targets = familyMatchTargets(family);
+    let target = targets[0];
+    for (const candidate of targets) {
+      const candidateFont = family.fonts.find((item) => item.id === candidate.fontId);
+      const candidateVariant = candidateFont?.variants.find(
+        (item) => item.id === candidate.variantId,
+      );
+      if (candidateVariant?.weight === currentWeight) {
+        target = candidate;
+        break;
+      }
+    }
+    if (!target) return;
+    const targetFont = family.fonts.find((item) => item.id === target.fontId);
+    const targetVariant = targetFont?.variants.find((item) => item.id === target.variantId);
+    selectedFontIds = { ...selectedFontIds, [family.id]: target.fontId };
+    selectedVariants = { ...selectedVariants, [target.fontId]: target.variantId };
+    selectedWeights = {
+      ...selectedWeights,
+      [family.id]: targetVariant?.weight ?? currentWeight,
+    };
+    selectionRevisions = {
+      ...selectionRevisions,
+      [family.id]: (selectionRevisions[family.id] ?? 0) + 1,
+    };
   }
 
   function handlePreviewInput(event: Event) {
@@ -571,13 +615,15 @@
     </div>
 
     <div class="font-list" aria-busy={coveragePending}>
-      {#each visibleFamilies as family (family.id)}
+      {#each visibleFamilies as family (`${family.id}:${selectionRevisions[family.id] ?? 0}`)}
         {@const font = fontFor(family)}
         {@const variant = variantFor(font)}
         {@const missingPoints = missing[font.id] ?? []}
         {@const weights = uniqueWeightOptions(font)}
         {@const shapes = shapeOptions(font)}
         {@const weightRange = variableWeightRange(variant)}
+        {@const matchTargets = familyMatchTargets(family)}
+        {@const activeMatchesFilters = matchTargets.some((target) => target.fontId === font.id && target.variantId === variant.id)}
         <article class="font-specimen">
           <header>
             <div>
@@ -597,7 +643,7 @@
                   <span>{axisLabel(family.axisLabel)}</span>
                   <select bind:value={selectedFontIds[family.id]} aria-label={`${family.label} ${axisLabel(family.axisLabel)}`}>
                     {#each family.fonts as option}
-                      <option value={option.id}>{option.family?.valueLabel}</option>
+                      <option value={option.id}>{option.family?.valueLabel}{filterMatchIds(option).length > 0 ? ` — ${messages.matchesFilters}` : ""}</option>
                     {/each}
                   </select>
                 </label>
@@ -610,7 +656,8 @@
                     aria-label={`${family.label} ${messages.style}`}
                   >
                     {#each shapes as option}
-                      <option value={shapeVariantId(font, option)}>{shapeLabel(option)}</option>
+                      {@const optionId = shapeVariantId(font, option)}
+                      <option value={optionId}>{shapeLabel(option)}{filterMatchIds(font).includes(optionId) ? ` — ${messages.matchesFilters}` : ""}</option>
                     {/each}
                   </select>
                 </label>
@@ -642,6 +689,12 @@
               {/if}
               {#if family.fonts.length === 1 && shapes.length === 1 && weights.length === 1 && !weightRange}
                 <span class="variant-label">{variant.label}</span>
+              {/if}
+              {#if hasActiveFilters && matchTargets.length > 0 && !activeMatchesFilters}
+                <div class="variant-match-notice">
+                  <span>{messages.matchesAnotherVariant}</span>
+                  <button type="button" on:click={() => previewFirstMatch(family)}>{messages.previewMatchingVariant}</button>
+                </div>
               {/if}
             </div>
           </header>

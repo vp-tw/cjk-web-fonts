@@ -31,6 +31,8 @@ The site is generated from the same versioned font registry and package
 artifacts that it documents. Preview, package metadata, CDN embeds, and
 variant-aware filters share one source of truth. Visitors can combine font types
 with OR and require every selected language and writing-system condition.
+When only another variant matches, the catalog identifies that variant and lets
+the visitor explicitly switch without changing the current preview automatically.
 
 ## Operating Context
 
