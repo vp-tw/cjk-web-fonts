@@ -12,6 +12,7 @@ export interface Cdn {
 export interface FontVariant {
   id: string;
   label: string;
+  classifications: string[];
   families: string[];
   weight: number;
   style: string;

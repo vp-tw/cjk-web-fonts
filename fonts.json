@@ -132,6 +132,7 @@
           {
             "id": "8px-proportional",
             "label": "8px Proportional",
+            "classifications": ["display"],
             "css": "dist/8px/proportional/index.css",
             "coverageGlob": "dist/8px/proportional/*/*.css",
             "families": [
@@ -160,6 +161,7 @@
           {
             "id": "10px-proportional",
             "label": "10px Proportional",
+            "classifications": ["display"],
             "css": "dist/10px/proportional/index.css",
             "coverageGlob": "dist/10px/proportional/*/*.css",
             "families": [
@@ -188,6 +190,7 @@
           {
             "id": "12px-proportional",
             "label": "12px Proportional",
+            "classifications": ["display"],
             "css": "dist/12px/proportional/index.css",
             "coverageGlob": "dist/12px/proportional/*/*.css",
             "families": [
@@ -768,6 +771,7 @@
           {
             "id": "light",
             "label": "Light",
+            "classifications": ["handwriting"],
             "css": "dist/Proportional/Light/LXGW-WenKai-TC.css",
             "coverageCss": ["dist/Proportional/Light/LXGW-WenKai-TC.css"],
             "families": ["LXGW WenKai TC"],
@@ -776,6 +780,7 @@
           {
             "id": "regular",
             "label": "Regular",
+            "classifications": ["handwriting"],
             "css": "dist/Proportional/Regular/LXGW-WenKai-TC.css",
             "coverageCss": ["dist/Proportional/Regular/LXGW-WenKai-TC.css"],
             "families": ["LXGW WenKai TC"],
@@ -784,6 +789,7 @@
           {
             "id": "medium",
             "label": "Medium",
+            "classifications": ["handwriting"],
             "css": "dist/Proportional/Medium/LXGW-WenKai-TC.css",
             "coverageCss": ["dist/Proportional/Medium/LXGW-WenKai-TC.css"],
             "families": ["LXGW WenKai TC"],
