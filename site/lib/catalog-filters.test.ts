@@ -1,40 +1,95 @@
 import { describe, expect, test } from "vitest";
+import type { CatalogFontRecord, CatalogFontVariant, WritingSystemId } from "./catalog";
+import { fontMatchesFilters, matchingVariantIds } from "./catalog-filters";
 
-import type { CatalogFontRecord } from "./catalog";
-import { fontMatchesFilters } from "./catalog-filters";
-
-const font = {
-  classifications: ["sans-serif"],
+const systems = (complete: WritingSystemId[]): CatalogFontVariant["writingSystems"] =>
+  Object.fromEntries(
+    ["latin", "bopomofo", "hiragana", "katakana", "han", "hangul", "symbols"].map((id) => [
+      id,
+      complete.includes(id as WritingSystemId) ? "complete" : "none",
+    ]),
+  ) as CatalogFontVariant["writingSystems"];
+const variant = (
+  id: string,
+  classifications: string[],
+  writingSystems: CatalogFontVariant["writingSystems"],
+): CatalogFontVariant => ({
+  id,
+  label: id,
+  classifications,
+  families: ["Test"],
+  weight: 400,
+  style: "normal",
+  stretch: "normal",
+  cssPath: `dist/${id}.css`,
+  urls: { jsdelivr: `https://example.com/${id}.css` },
+  characterCount: 1,
+  writingSystems,
+});
+const font: CatalogFontRecord = {
+  id: "test",
+  label: "Test",
+  packageName: "@example/test",
+  version: "0.0.1",
+  description: "Test font",
+  license: "OFL-1.1",
+  sourceUrl: "https://example.com/source",
+  repositoryUrl: "https://example.com/repository",
+  classifications: ["handwriting", "monospace"],
   roles: ["text"],
-  languages: ["zh_Hant"],
-  variants: [{ writingSystems: { bopomofo: "complete", hangul: "partial" } }],
-} as unknown as CatalogFontRecord;
+  languages: ["en_Latn", "zh_Hant"],
+  diagnosticType: null,
+  family: null,
+  variants: [
+    variant("regular", ["handwriting"], systems(["latin", "bopomofo"])),
+    variant("mono", ["handwriting", "monospace"], systems(["latin", "bopomofo", "symbols"])),
+  ],
+};
 
-describe("fontMatchesFilters", () => {
-  test("combines category, reviewed language, and complete writing-system coverage", () => {
-    expect(
-      fontMatchesFilters(font, {
-        category: "sans-serif",
-        language: "zh_Hant",
-        writingSystem: "bopomofo",
-      }),
-    ).toBe(true);
-    expect(
-      fontMatchesFilters(font, {
-        category: "sans-serif",
-        language: "zh_Hant",
-        writingSystem: "hangul",
-      }),
-    ).toBe(false);
+describe("matchingVariantIds", () => {
+  test("treats empty facets as unconstrained", () => {
+    expect(matchingVariantIds(font, { types: [], languages: [], writingSystems: [] })).toEqual([
+      "regular",
+      "mono",
+    ]);
   });
-
-  test("keeps the diagnostic role separate from Fontsource classifications", () => {
+  test("uses OR for font types", () => {
     expect(
-      fontMatchesFilters(font, {
-        category: "diagnostic",
-        language: "all",
-        writingSystem: "all",
+      matchingVariantIds(font, {
+        types: ["serif", "monospace"],
+        languages: [],
+        writingSystems: [],
       }),
+    ).toEqual(["mono"]);
+  });
+  test("uses AND for language and writing-system support", () => {
+    expect(
+      matchingVariantIds(font, {
+        types: [],
+        languages: ["en_Latn", "zh_Hant"],
+        writingSystems: ["bopomofo", "symbols"],
+      }),
+    ).toEqual(["mono"]);
+    expect(
+      matchingVariantIds(font, {
+        types: [],
+        languages: ["en_Latn", "ja_Jpan"],
+        writingSystems: [],
+      }),
+    ).toEqual([]);
+  });
+  test("requires type and writing-system conditions on the same variant", () => {
+    expect(
+      matchingVariantIds(font, {
+        types: ["monospace"],
+        languages: ["zh_Hant"],
+        writingSystems: ["symbols"],
+      }),
+    ).toEqual(["mono"]);
+  });
+  test("keeps the diagnostic role separate from classifications", () => {
+    expect(
+      fontMatchesFilters(font, { types: ["diagnostic"], languages: [], writingSystems: [] }),
     ).toBe(false);
   });
 });

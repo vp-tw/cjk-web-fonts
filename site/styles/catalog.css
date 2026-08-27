@@ -45,7 +45,6 @@
 }
 
 .search-control input,
-.filter-control select,
 .fallback-control select,
 .specimen-status select,
 .catalog-head select {
@@ -66,10 +65,16 @@
 }
 
 .filter-control summary {
+  min-height: 42px;
   cursor: pointer;
   color: var(--ink);
   font-size: 0.78rem;
   list-style-position: inside;
+}
+
+.filter-count {
+  float: inline-end;
+  color: var(--muted);
 }
 
 .filter-control > div {
@@ -80,6 +85,54 @@
 
 .filter-control label {
   margin: 0;
+}
+
+.filter-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.filter-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+}
+.filter-options label {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.filter-options label.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.filter-options label:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+.filter-options input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+.clear-filters {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
 }
 
 .fallback-control small {
@@ -566,6 +619,10 @@
 }
 
 @media (max-width: 600px) {
+  .filter-options label,
+  .clear-filters {
+    min-height: 44px;
+  }
   .control-rail {
     grid-template-columns: 1fr;
   }
