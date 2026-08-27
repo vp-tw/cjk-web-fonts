@@ -101,6 +101,7 @@ const fonts = registry.fonts.map((font) => {
   return {
     id: font.id,
     label: font.label,
+    officialNames: font.site.officialNames,
     packageName: packageJson.name,
     version: packageJson.version,
     description: font.site.description,

@@ -43,7 +43,9 @@ copy CSS for a web project.
 
 ## Capabilities and Constraints
 
-- Search and preview the complete catalog.
+- Search and preview the complete catalog by catalog label, localized upstream
+  official name, package identifier, classification, language, or description.
+  Typographical errors produce relevance-ranked fuzzy matches.
 - Recover from an empty search result with one action that clears only the search
   query and font filters.
 - Filter by reviewed language suitability, Fontsource-compatible classification,
@@ -58,6 +60,8 @@ copy CSS for a web project.
 - Select light, dark, or system appearance independently from preview colors.
 - Show version-pinned embed code for every verified CDN that can serve the npm
   package's CSS and font assets without rewriting the package.
+- Show a copyable CSS `font-family` declaration for the active variant. Preserve
+  its published family order and end with the matching CSS generic family.
 - Report a localized copy error beside the affected embed row when both browser
   copy strategies fail, while keeping the action available for retry.
 - Preserve static, indexable font content while hydrating only interactive

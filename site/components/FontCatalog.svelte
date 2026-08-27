@@ -9,10 +9,16 @@
     type WritingSystemId,
   } from "../lib/catalog";
   import { fontMatchesFilters, matchingVariantIds, type CatalogTypeFilter } from "../lib/catalog-filters";
-  import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
+  import {
+    groupCatalogFonts,
+    officialNameForLocale,
+    type CatalogFontFamily,
+  } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
   import { contrastCompliance, contrastRatio } from "../lib/color-contrast";
   import { copyText } from "../lib/copy-text";
+  import { searchFontFamilies } from "../lib/font-search";
+  import { fontFamilyCss, fontFamilyValue } from "../lib/font-usage";
   import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
   import {
     composeProofText,
@@ -29,6 +35,7 @@
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let fonts: CatalogFontRecord[];
   export let cdns: Cdn[];
+  // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let locale: Locale;
   // oxlint-disable-next-line no-unassigned-vars -- assigned by the Astro parent component
   export let messages: Messages["catalog"];
@@ -117,29 +124,15 @@
     if (fallback) ensureStylesheet(fallback.variants[0].urls[selectedCdn]);
   }
 
-  $: queryMatchingFamilies = fontFamilies.filter((family) => {
-    const needle = committedQuery.trim().toLocaleLowerCase();
-    const matchesQuery =
-      !needle ||
-      `${family.label} ${family.fonts
-        .map(
-          (font) =>
-            `${font.label} ${font.description} ${font.packageName} ${font.classifications.join(" ")} ${font.languages.join(" ")}`,
-        )
-        .join(" ")}`
-        .toLocaleLowerCase()
-        .includes(needle);
-    return (
-      matchesQuery &&
-      family.fonts.some((font) =>
+  $: queryMatchingFamilies = searchFontFamilies(fontFamilies, committedQuery).filter((family) =>
+    family.fonts.some((font) =>
         fontMatchesFilters(font, {
           types: selectedTypes,
           languages: selectedLanguages,
           writingSystems: selectedWritingSystems,
         }),
-      )
-    );
-  });
+      ),
+  );
   $: visibleFamilies = queryMatchingFamilies.filter(
     (family) =>
       !onlyComplete ||
@@ -453,11 +446,7 @@
 
   function familyStack(variant: CatalogFontVariant, fallbackId: string): string {
     const fallback = fonts.find((font) => font.id === fallbackId);
-    const families = [
-      ...variant.families,
-      ...(fallback ? fallback.variants[0].families : []),
-    ];
-    return `${[...new Set(families)].map((family) => `"${family}"`).join(", ")}, sans-serif`;
+    return fontFamilyValue(variant, fallback?.variants[0].families);
   }
 
   function embedCode(font: CatalogFontRecord, cdnId: string): string {
@@ -465,8 +454,7 @@
     return `<link rel="stylesheet" href="${variant.urls[cdnId]}">`;
   }
 
-  async function copyEmbed(font: CatalogFontRecord) {
-    const code = embedCode(font, selectedCdn);
+  async function copyCodeValue(key: string, code: string) {
     copied = "";
     copyError = "";
     const copiedSuccessfully = await copyText(code, {
@@ -486,12 +474,12 @@
       },
     });
     if (!copiedSuccessfully) {
-      copyError = font.id;
+      copyError = key;
       return;
     }
-    copied = font.id;
+    copied = key;
     setTimeout(() => {
-      if (copied === font.id) copied = "";
+      if (copied === key) copied = "";
     }, 1800);
   }
 
@@ -677,12 +665,14 @@
         {@const shapes = shapeOptions(font)}
         {@const weightRange = variableWeightRange(variant)}
         {@const matchTargets = familyMatchTargets(family)}
+        {@const officialName = officialNameForLocale(family, locale)}
         {@const activeMatchesFilters = matchTargets.some((target) => target.fontId === font.id && target.variantId === variant.id)}
         <article class="font-specimen">
           <header>
             <div>
               <h3>{family.label}</h3>
-              <p>{font.packageName}@{font.version}</p>
+              {#if officialName}<p class="official-name" lang={officialName.locale}>{officialName.name}</p>{/if}
+              <p class="package-name">{font.packageName}@{font.version}</p>
             </div>
             <div class="specimen-status">
               {#if coveragePending}
@@ -788,13 +778,24 @@
               <span>{variant.characterCount.toLocaleString(locale)} {messages.codePoints}</span>
               <span>{font.license}</span>
             </div>
-            <div class="embed-line">
-              <code>{embedCode(font, selectedCdn)}</code>
-              <button type="button" on:click={() => copyEmbed(font)}>
-                {copied === font.id ? messages.copied : messages.copyEmbed}
-              </button>
+            <div class="usage-code">
+              <p>{messages.htmlEmbed}</p>
+              <div class="embed-line">
+                <code>{embedCode(font, selectedCdn)}</code>
+                <button type="button" on:click={() => copyCodeValue(`${font.id}:html`, embedCode(font, selectedCdn))}>
+                  {copied === `${font.id}:html` ? messages.copied : messages.copyCode}
+                </button>
+              </div>
+              {#if copyError === `${font.id}:html`}<p class="copy-error" role="alert">{messages.copyFailed}</p>{/if}
+              <p>{messages.cssFontFamily}</p>
+              <div class="embed-line">
+                <code>{fontFamilyCss(variant)}</code>
+                <button type="button" on:click={() => copyCodeValue(`${font.id}:css`, fontFamilyCss(variant))}>
+                  {copied === `${font.id}:css` ? messages.copied : messages.copyCode}
+                </button>
+              </div>
+              {#if copyError === `${font.id}:css`}<p class="copy-error" role="alert">{messages.copyFailed}</p>{/if}
             </div>
-            {#if copyError === font.id}<p class="copy-error" role="alert">{messages.copyFailed}</p>{/if}
             <nav aria-label={formatMessage(messages.relatedLinks, { family: family.label })}>
               <a href={font.sourceUrl} target="_blank" rel="noreferrer">{messages.upstreamSource}</a>
               <a href={font.repositoryUrl} target="_blank" rel="noreferrer">{messages.packageDocs}</a>

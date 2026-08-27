@@ -38,6 +38,7 @@ const variant = (
 const font: CatalogFontRecord = {
   id: "test",
   label: "Test",
+  officialNames: { en: "Test" },
   packageName: "@example/test",
   version: "0.0.1",
   description: "Test font",

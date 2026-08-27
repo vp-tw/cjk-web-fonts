@@ -39,6 +39,9 @@
     "test:workspace-tools": "python3 scripts/test_ci_selection.py && python3 scripts/test_package_sizes.py",
     "validate:workspace": "python3 scripts/validate_workspace.py"
   },
+  "dependencies": {
+    "fuse.js": "^7.5.0"
+  },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/svelte": "9.0.1",

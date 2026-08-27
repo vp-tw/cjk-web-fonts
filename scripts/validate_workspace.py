@@ -139,6 +139,19 @@ def main() -> None:
         for field in ("description", "license", "sourceUrl"):
             if not isinstance(site.get(field), str) or not site[field]:
                 fail(f"{font_id}.site.{field} must be a non-empty string")
+        official_names = site.get("officialNames")
+        if (
+            not isinstance(official_names, dict)
+            or not official_names
+            or any(
+                not isinstance(locale, str)
+                or not locale
+                or not isinstance(name, str)
+                or not name
+                for locale, name in official_names.items()
+            )
+        ):
+            fail(f"{font_id}.site.officialNames must map locales to non-empty names")
         classifications = site.get("classifications")
         if (
             not isinstance(classifications, list)
@@ -174,6 +187,24 @@ def main() -> None:
                 fail(f"{font_id}.site.family.order must be a non-negative integer")
             if not isinstance(family.get("default"), bool):
                 fail(f"{font_id}.site.family.default must be a boolean")
+            family_official_names = family.get("officialNames")
+            if (
+                family_official_names is not None
+                and (
+                    not isinstance(family_official_names, dict)
+                    or not family_official_names
+                    or any(
+                        not isinstance(locale, str)
+                        or not locale
+                        or not isinstance(name, str)
+                        or not name
+                        for locale, name in family_official_names.items()
+                    )
+                )
+            ):
+                fail(
+                    f"{font_id}.site.family.officialNames must map locales to non-empty names"
+                )
             catalog_families.setdefault(family["id"], []).append((font_id, family))
         variants = site.get("variants")
         if not isinstance(variants, list) or not variants:

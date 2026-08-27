@@ -476,11 +476,18 @@
   font-weight: 500;
 }
 
-.font-specimen header p {
+.font-specimen .package-name {
   margin: 0.25rem 0 0;
   color: var(--muted);
   font-family: ui-monospace, monospace;
   font-size: 0.72rem;
+}
+
+.font-specimen .official-name {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
 }
 
 .specimen-status {
@@ -626,6 +633,21 @@
   font-variant-numeric: tabular-nums;
 }
 
+.usage-code {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.usage-code > p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.usage-code > p:first-child {
+  margin-top: 0;
+}
+
 .embed-line {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -639,7 +661,7 @@
   color: var(--ink);
   font-family: ui-monospace, monospace;
   font-size: 0.72rem;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 .embed-line button {
