@@ -61,6 +61,12 @@ export interface Messages {
     swapColors: string;
     paperColor: string;
     previewBackgroundColor: string;
+    contrastRatio: string;
+    normalText: string;
+    largeText: string;
+    pass: string;
+    fail: string;
+    restoreDefaultColors: string;
     completeOnly: string;
     variationNotice: string;
     preview: string;
@@ -173,6 +179,12 @@ const en: Messages = {
     swapColors: "Swap text and background colors",
     paperColor: "Paper",
     previewBackgroundColor: "Preview background color",
+    contrastRatio: "Contrast {ratio}:1",
+    normalText: "Normal text",
+    largeText: "Large text",
+    pass: "Pass",
+    fail: "Fail",
+    restoreDefaultColors: "Restore defaults",
     completeOnly: "Show fonts with complete coverage only",
     variationNotice:
       "This content includes variation selectors. This page checks base characters; use the package audit as the authority for glyph sequences.",
@@ -294,6 +306,12 @@ const zhHant: Messages = {
     swapColors: "交換文字與背景顏色",
     paperColor: "紙色",
     previewBackgroundColor: "預覽背景顏色",
+    contrastRatio: "對比 {ratio}:1",
+    normalText: "一般文字",
+    largeText: "大型文字",
+    pass: "通過",
+    fail: "未通過",
+    restoreDefaultColors: "恢復預設配色",
     completeOnly: "只看沒有缺字的字型",
     variationNotice: "內容含異體字選擇符。本頁檢查基底字元；字形序列請以套件 audit 結果為準。",
     preview: "字型預覽",
@@ -415,6 +433,12 @@ const zhHans: Messages = {
     swapColors: "交换文字与背景颜色",
     paperColor: "纸色",
     previewBackgroundColor: "预览背景颜色",
+    contrastRatio: "对比度 {ratio}:1",
+    normalText: "普通文本",
+    largeText: "大号文本",
+    pass: "通过",
+    fail: "未通过",
+    restoreDefaultColors: "恢复默认配色",
     completeOnly: "只看没有缺字的字体",
     variationNotice: "内容含异体字选择符。本页检查基础字符；字形序列请以软件包审计结果为准。",
     preview: "字体预览",
@@ -540,6 +564,12 @@ const ja: Messages = {
     swapColors: "文字色と背景色を入れ替える",
     paperColor: "紙色",
     previewBackgroundColor: "見本の背景色",
+    contrastRatio: "コントラスト {ratio}:1",
+    normalText: "通常テキスト",
+    largeText: "大きなテキスト",
+    pass: "合格",
+    fail: "不合格",
+    restoreDefaultColors: "既定の配色に戻す",
     completeOnly: "全文字を収録するフォントのみ表示",
     variationNotice:
       "異体字セレクターが含まれています。このページでは基底文字を確認します。字形シーケンスはパッケージ監査を正としてください。",
@@ -666,6 +696,12 @@ const ko: Messages = {
     swapColors: "글자색과 배경색 바꾸기",
     paperColor: "종이",
     previewBackgroundColor: "미리보기 배경색",
+    contrastRatio: "명암비 {ratio}:1",
+    normalText: "일반 텍스트",
+    largeText: "큰 텍스트",
+    pass: "통과",
+    fail: "미통과",
+    restoreDefaultColors: "기본 색상 복원",
     completeOnly: "모든 문자를 포함한 폰트만 표시",
     variationNotice:
       "이체자 선택자가 포함되어 있습니다. 이 페이지는 기본 문자를 검사합니다. 글리프 시퀀스는 패키지 감사를 기준으로 확인하세요.",

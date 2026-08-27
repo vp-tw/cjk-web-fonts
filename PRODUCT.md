@@ -49,6 +49,8 @@ copy CSS for a web project.
   glyph coverage never implies language suitability.
 - Edit shared preview text directly in any specimen, then change its font size,
   foreground color, and background color.
+- Report the current preview-color contrast ratio and WCAG AA status without
+  restricting proof colors, and let visitors restore the documented defaults.
 - Choose System Default, Tofu, Adobe NotDef, or Last Resort as the missing-glyph
   fallback for live specimens without changing coverage results or embed code.
 - Select light, dark, or system appearance independently from preview colors.
