@@ -210,6 +210,13 @@
   },
   "components": [
     {
+      "name": "Calibration Rail",
+      "kind": "custom",
+      "description": "A desktop sticky control surface that fills the dynamic viewport and scrolls independently from the catalog. Its native scrollbar remains visible, reserves a stable gutter, and chains scrolling to the document at its boundaries. At 900px and below it returns to the normal document flow without internal scrolling.",
+      "html": "<aside class=\"ds-calibration-rail\" aria-label=\"Proof controls\">...</aside>",
+      "css": ".ds-calibration-rail { position: sticky; top: 0; align-self: start; min-height: 0; max-height: 100dvh; overflow-y: auto; scrollbar-color: var(--control-rule, #747870) var(--paper-raised, #f1eee6); scrollbar-gutter: stable; } @media (max-width: 900px) { .ds-calibration-rail { position: relative; max-height: none; overflow-y: visible; scrollbar-gutter: auto; } }"
+    },
+    {
       "name": "Search Field",
       "kind": "input",
       "refersTo": "input",
