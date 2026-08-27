@@ -448,6 +448,27 @@
   min-width: 125px;
 }
 
+.variant-match-notice {
+  display: flex;
+  flex: 1 0 100%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+.variant-match-notice button {
+  min-height: 38px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0 0.7rem;
+  cursor: pointer;
+}
+
 .variant-control,
 .weight-range-control {
   display: grid;
@@ -654,6 +675,15 @@
   .specimen-status {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .variant-match-notice {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .variant-match-notice button {
+    width: 100%;
+    min-height: 44px;
   }
 
   .variant-control,

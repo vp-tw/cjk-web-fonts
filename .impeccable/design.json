@@ -219,6 +219,14 @@
       "css": ".ds-filters { border-block: 1px solid var(--rule, #9a9c94); padding: .75rem 0; } .ds-filters summary { min-height: 42px; cursor: pointer; font: 400 .78rem/1.4 sans-serif; } .ds-filters fieldset { margin: .85rem 0 0; padding: 0; border: 0; } .ds-filters label { display: flex; min-height: 38px; align-items: center; gap: .45rem; border: 1px solid var(--rule, #9a9c94); padding: .45rem .55rem; } .ds-filters button { width: 100%; min-height: 42px; border: 1px solid var(--rule, #9a9c94); border-radius: 0; background: transparent; }"
     },
     {
+      "name": "Variant Match Notice",
+      "kind": "custom",
+      "refersTo": "input",
+      "description": "A compact ruled specimen-header notice shown only when a non-active package or variant is responsible for an active filter match. Native select labels append a textual match suffix. The explicit action changes the active package and variant; filtering itself never changes them.",
+      "html": "<div class=\"ds-variant-match\"><span>此字族由其他樣式符合篩選條件。</span><button type=\"button\">預覽符合的樣式</button></div>",
+      "css": ".ds-variant-match { display: flex; align-items: center; justify-content: flex-end; gap: .65rem; padding-top: .65rem; border-top: 1px solid var(--rule, #9a9c94); color: var(--muted, #60655f); } .ds-variant-match button { min-height: 38px; border: 1px solid var(--ink, #171816); border-radius: 0; background: var(--ink, #171816); color: var(--paper, #e7e3d8); padding: 0 .7rem; }"
+    },
+    {
       "name": "Theme Segments",
       "kind": "custom",
       "refersTo": "segment-selected",

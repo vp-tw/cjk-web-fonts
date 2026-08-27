@@ -1,6 +1,15 @@
 import { describe, expect, test } from "vitest";
-import type { CatalogFontRecord, CatalogFontVariant, WritingSystemId } from "./catalog";
-import { fontMatchesFilters, matchingVariantIds } from "./catalog-filters";
+import {
+  catalogFonts,
+  type CatalogFontRecord,
+  type CatalogFontVariant,
+  type WritingSystemId,
+} from "./catalog";
+import {
+  fontMatchesFilters,
+  matchingVariantIds,
+  preferredMatchingVariantId,
+} from "./catalog-filters";
 
 const systems = (complete: WritingSystemId[]): CatalogFontVariant["writingSystems"] =>
   Object.fromEntries(
@@ -92,4 +101,31 @@ describe("matchingVariantIds", () => {
       fontMatchesFilters(font, { types: ["diagnostic"], languages: [], writingSystems: [] }),
     ).toBe(false);
   });
+
+  test.each(["lxgw-wenkai-tc", "fusion-pixel-font"])(
+    "%s exposes only its monospaced variants for a monospace filter",
+    (fontId) => {
+      const catalogFont = catalogFonts.find((candidate) => candidate.id === fontId);
+      expect(catalogFont).toBeDefined();
+      const ids = matchingVariantIds(catalogFont!, {
+        types: ["monospace"],
+        languages: [],
+        writingSystems: [],
+      });
+      expect(ids.length).toBeGreaterThan(0);
+      expect(
+        ids.every((id) =>
+          catalogFont!.variants
+            .find((variant) => variant.id === id)
+            ?.classifications.includes("monospace"),
+        ),
+      ).toBe(true);
+      expect(ids).not.toContain(
+        catalogFont!.variants.find((variant) => !variant.classifications.includes("monospace"))?.id,
+      );
+      if (fontId === "lxgw-wenkai-tc") {
+        expect(preferredMatchingVariantId(catalogFont!, ids, 400)).toBe("mono-regular");
+      }
+    },
+  );
 });
