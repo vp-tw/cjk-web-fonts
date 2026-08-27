@@ -202,7 +202,7 @@ Rectangles are square and rules are thin. Text fields, selects, proof areas, sta
 ### Status Labels
 
 - **Style:** Plain text inside a one-pixel border in the matching semantic color.
-- **State:** Checking, complete, and missing states use literal labels in the active interface language. Missing-glyph details remain adjacent to the affected specimen.
+- **State:** Checking, complete, and missing states use literal labels in the active interface language. Missing-glyph details remain adjacent to the affected specimen. Each displayed missing glyph uses a square semantic rule; an overflow count such as `＋30` is an unboxed summary because it is not itself a glyph.
 
 ### Font Specimens
 

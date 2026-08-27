@@ -275,9 +275,9 @@
     {
       "name": "Coverage Status",
       "kind": "chip",
-      "description": "Literal coverage evidence in the active interface language inside a one-pixel semantic rule.",
-      "html": "<span class=\"ds-status\">Complete coverage</span>",
-      "css": ".ds-status { display: inline-block; padding: .35rem .5rem; border: 1px solid currentColor; border-radius: 0; color: var(--success, #1e6650); font: 400 .75rem/1.4 sans-serif; }"
+      "description": "Literal coverage evidence in the active interface language inside a one-pixel semantic rule. Displayed missing glyphs use individual square rules, while the overflow count remains unboxed because it summarizes additional glyphs.",
+      "html": "<span class=\"ds-status\">Complete coverage</span><div class=\"ds-missing-list\"><span class=\"ds-missing-glyph\">邊</span><span class=\"ds-missing-overflow\">＋30</span></div>",
+      "css": ".ds-status { display: inline-block; padding: .35rem .5rem; border: 1px solid currentColor; border-radius: 0; color: var(--success, #1e6650); font: 400 .75rem/1.4 sans-serif; } .ds-missing-list { display: flex; align-items: stretch; gap: .35rem; color: var(--danger, #a63224); } .ds-missing-glyph { display: grid; min-width: 30px; min-height: 30px; place-items: center; border: 1px solid currentColor; } .ds-missing-overflow { display: flex; align-items: center; margin-inline-start: .25rem; font-variant-numeric: tabular-nums; }"
     },
     {
       "name": "Embed Action",
