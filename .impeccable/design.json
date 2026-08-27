@@ -283,9 +283,17 @@
       "name": "Embed Action",
       "kind": "button",
       "refersTo": "embed-action",
-      "description": "High-contrast copy action attached directly to embed markup.",
-      "html": "<button class=\"ds-embed-action\" type=\"button\">複製 embed</button>",
-      "css": ".ds-embed-action { min-width: 110px; min-height: 42px; border: 0; border-left: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--ink, #171816); color: var(--paper, #e7e3d8); font: 400 .8rem/1.4 sans-serif; } .ds-embed-action:hover { background: var(--accent, #c84125); color: var(--accent-ink, #fff8ef); } .ds-embed-action:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; }"
+      "description": "High-contrast copy action attached directly to embed markup. If the Clipboard API and legacy fallback both fail, a localized alert appears below the affected row and the action remains available for retry.",
+      "html": "<div><button class=\"ds-embed-action\" type=\"button\">複製 embed</button><p class=\"ds-copy-error\" role=\"alert\">複製失敗，請再試一次。</p></div>",
+      "css": ".ds-embed-action { min-width: 110px; min-height: 42px; border: 0; border-left: 1px solid var(--rule, #9a9c94); border-radius: 0; background: var(--ink, #171816); color: var(--paper, #e7e3d8); font: 400 .8rem/1.4 sans-serif; } .ds-embed-action:hover { background: var(--accent, #c84125); color: var(--accent-ink, #fff8ef); } .ds-embed-action:focus-visible { outline: 2px solid var(--focus, #0b69a3); outline-offset: 3px; } .ds-copy-error { margin: .55rem 0 0; color: var(--danger, #a63224); font: 400 .72rem/1.4 sans-serif; }"
+    },
+    {
+      "name": "Empty Results Recovery",
+      "kind": "button",
+      "refersTo": "input",
+      "description": "A single contextual action shown when search or font filters produce no families. It clears only the query and font filters, preserving every proof and presentation setting.",
+      "html": "<div class=\"ds-empty\"><h3>沒有字型符合這些條件</h3><p>清除部分篩選條件，或改用其他搜尋詞。</p><button type=\"button\">清除搜尋與篩選</button></div>",
+      "css": ".ds-empty button { min-height: 42px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: var(--ink, #171816); color: var(--paper, #e7e3d8); padding: 0 1rem; } .ds-empty button:hover { background: var(--accent, #c84125); color: var(--accent-ink, #fff8ef); } @media (max-width: 600px) { .ds-empty button { min-height: 44px; } }"
     },
     {
       "name": "Font Specimen",
