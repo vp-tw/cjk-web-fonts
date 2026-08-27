@@ -11,6 +11,7 @@
   import { fontMatchesFilters, matchingVariantIds, type CatalogTypeFilter } from "../lib/catalog-filters";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
+  import { contrastCompliance, contrastRatio } from "../lib/color-contrast";
   import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
   import {
     composeProofText,
@@ -76,6 +77,11 @@
   $: hasActiveFilters = activeFilterCount > 0;
 
   const variationSelectorPattern = /[\uFE00-\uFE0F\u{E0100}-\u{E01EF}]/u;
+  const defaultForeground = "#171816";
+  const defaultBackground = "#e7e3d8";
+  $: previewContrastRatio = contrastRatio(foreground, background);
+  $: previewContrastCompliance = contrastCompliance(previewContrastRatio);
+  $: previewColorsAreDefault = foreground === defaultForeground && background === defaultBackground;
 
   onMount(() => {
     mounted = true;
@@ -202,6 +208,11 @@
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       block: "start",
     });
+  }
+
+  function restorePreviewColors() {
+    foreground = defaultForeground;
+    background = defaultBackground;
   }
 
   function filterMatchIds(font: CatalogFontRecord): string[] {
@@ -602,6 +613,15 @@
         <input bind:value={background} type="color" aria-label={messages.previewBackgroundColor} />
         <code>{background}</code>
       </label>
+    </div>
+
+    <div class="contrast-readout" aria-live="polite">
+      <div>
+        <strong>{formatMessage(messages.contrastRatio, { ratio: previewContrastRatio.toFixed(2) })}</strong>
+        <span class:pass={previewContrastCompliance.normalText}>{messages.normalText}: {previewContrastCompliance.normalText ? messages.pass : messages.fail}</span>
+        <span class:pass={previewContrastCompliance.largeText}>{messages.largeText}: {previewContrastCompliance.largeText ? messages.pass : messages.fail}</span>
+      </div>
+      {#if !previewColorsAreDefault}<button type="button" on:click={restorePreviewColors}>{messages.restoreDefaultColors}</button>{/if}
     </div>
 
     <label class="coverage-toggle">

@@ -234,6 +234,14 @@
       "css": ".ds-filters { border-block: 1px solid var(--rule, #9a9c94); padding: .75rem 0; } .ds-filters summary { min-height: 42px; cursor: pointer; font: 400 .78rem/1.4 sans-serif; } .ds-filters fieldset { margin: .85rem 0 0; padding: 0; border: 0; } .ds-filters legend { display: flex; width: 100%; justify-content: space-between; gap: .75rem; } .ds-filters label { display: grid; grid-template-columns: 16px minmax(0, 1fr); min-height: 38px; align-items: center; gap: .45rem; border: 1px solid var(--control-rule, #747870); padding: .45rem .55rem; } .ds-filters label.is-active { background: var(--ink, #171816); color: var(--paper, #e7e3d8); } .ds-filters input { accent-color: var(--ink, #171816); } .ds-filters label.is-active input { accent-color: var(--paper, #e7e3d8); } .ds-filters button { width: 100%; min-height: 42px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: transparent; } .ds-view-results { display: none; } @media (max-width: 600px) { .ds-view-results { display: block; min-height: 44px; border-color: var(--ink, #171816); background: var(--ink, #171816); color: var(--paper, #e7e3d8); } }"
     },
     {
+      "name": "Preview Contrast Readout",
+      "kind": "custom",
+      "refersTo": "input",
+      "description": "A compact calibration readout below the two preview-color inputs. It reports the exact ratio and literal WCAG AA results for normal and large text in a polite live region. Low-contrast proof colors remain valid. Restore defaults resets only the preview colors and appears only after a change.",
+      "html": "<div class=\"ds-contrast\" aria-live=\"polite\"><div><strong>對比 13.89:1</strong><span class=\"is-pass\">一般文字：通過</span><span class=\"is-pass\">大型文字：通過</span></div><button type=\"button\">恢復預設配色</button></div>",
+      "css": ".ds-contrast { display: grid; gap: .65rem; padding: .75rem; border: 1px solid var(--control-rule, #747870); color: var(--ink, #171816); font: 400 .68rem/1.4 sans-serif; } .ds-contrast > div { display: grid; grid-template-columns: 1fr auto auto; gap: .65rem; } .ds-contrast span { color: var(--danger, #a63224); } .ds-contrast span.is-pass { color: var(--success, #1e6650); } .ds-contrast button { min-height: 38px; border: 1px solid var(--control-rule, #747870); border-radius: 0; background: transparent; color: var(--ink, #171816); } @media (max-width: 600px) { .ds-contrast > div { grid-template-columns: 1fr; gap: .3rem; } .ds-contrast button { min-height: 44px; } }"
+    },
+    {
       "name": "Variant Match Notice",
       "kind": "custom",
       "refersTo": "input",
