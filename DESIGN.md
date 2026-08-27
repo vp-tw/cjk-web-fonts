@@ -145,6 +145,8 @@ Dark mode reverses the material relationship with charcoal paper, warm white ink
 
 The base composition is a two-column workbench. A narrow specification rail holds search and proof controls; the fluid field begins with a compact task statement and then moves directly into editable font specimens. One-pixel rules join regions into a continuous sheet instead of separating them into floating cards.
 
+On desktop, the specification rail remains sticky and uses the full dynamic viewport height as its own native vertical scroll container. Scrolling the rail must not move the catalog until the rail reaches a boundary, and the rail must fill the left edge after the site header leaves the viewport. Preserve a visible native scrollbar and stable scrollbar gutter. Do not contain scroll chaining at the rail boundary.
+
 Page edges and specimen interiors use a fluid section inset (`3vw`). Major proof regions scale with `clamp()` while control dimensions remain stable. Dense metadata wraps instead of truncating.
 
 At 900px and below, the control rail stops being sticky and becomes a two-column calibration panel before the catalog. At 600px and below, controls become a single column, headers stack, embed actions occupy their own full-width row, and specimen type is capped at 12vw to prevent horizontal overflow.
