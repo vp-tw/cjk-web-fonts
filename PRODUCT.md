@@ -28,8 +28,9 @@ embed with minimal effort.
 ## Positioning
 
 The site is generated from the same versioned font registry and package
-artifacts that it documents. Preview, package metadata, CDN embeds, and future
-weight or variant filters share one source of truth.
+artifacts that it documents. Preview, package metadata, CDN embeds, and
+variant-aware filters share one source of truth. Visitors can combine font types
+with OR and require every selected language and writing-system condition.
 
 ## Operating Context
 

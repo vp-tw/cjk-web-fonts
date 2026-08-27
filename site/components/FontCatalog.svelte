@@ -8,7 +8,7 @@
     type Cdn,
     type WritingSystemId,
   } from "../lib/catalog";
-  import { fontMatchesFilters } from "../lib/catalog-filters";
+  import { fontMatchesFilters, type CatalogTypeFilter } from "../lib/catalog-filters";
   import { groupCatalogFonts, type CatalogFontFamily } from "../lib/catalog-families";
   import { formatCodePoint, uniqueRequiredCodePoints } from "../lib/coverage";
   import { formatMessage, localeNames, type Locale, type Messages } from "../lib/i18n";
@@ -38,9 +38,9 @@
   let previewText = defaultText;
   let proofSelection: ProofPresetSelection = { mode: "all" };
   let committedQuery = "";
-  let selectedCategory = "all";
-  let selectedLanguage = "all";
-  let selectedWritingSystem: WritingSystemId | "all" = "all";
+  let selectedTypes: CatalogTypeFilter[] = [];
+  let selectedLanguages: string[] = [];
+  let selectedWritingSystems: WritingSystemId[] = [];
   let fontSize = 72;
   let foreground = "#171816";
   let background = "#e7e3d8";
@@ -69,6 +69,8 @@
   let worker: Worker | undefined;
   let latestCoverageRequestId = 0;
   let mounted = false;
+  $: activeFilterCount = selectedTypes.length + selectedLanguages.length + selectedWritingSystems.length;
+  $: hasActiveFilters = activeFilterCount > 0;
 
   const variationSelectorPattern = /[\uFE00-\uFE0F\u{E0100}-\u{E01EF}]/u;
 
@@ -119,9 +121,9 @@
       matchesQuery &&
       family.fonts.some((font) =>
         fontMatchesFilters(font, {
-          category: selectedCategory,
-          language: selectedLanguage,
-          writingSystem: selectedWritingSystem,
+          types: selectedTypes,
+          languages: selectedLanguages,
+          writingSystems: selectedWritingSystems,
         }),
       )
     );
@@ -149,9 +151,8 @@
     committedQuery = value;
   }, 250);
 
-  function categoryOptions(): [string, string][] {
+  function categoryOptions(): [CatalogTypeFilter, string][] {
     return [
-      ["all", messages.allCategories],
       ["serif", messages.serif],
       ["sans-serif", messages.sansSerif],
       ["handwriting", messages.handwriting],
@@ -163,7 +164,6 @@
 
   function languageOptions(): [string, string][] {
     return [
-      ["all", messages.allLanguages],
       ["zh_Hant", localeNames["zh-Hant"]],
       ["zh_Hans", localeNames["zh-Hans"]],
       ["ja_Jpan", localeNames.ja],
@@ -172,9 +172,8 @@
     ];
   }
 
-  function writingSystemOptions(): [WritingSystemId | "all", string][] {
+  function writingSystemOptions(): [WritingSystemId, string][] {
     return [
-      ["all", messages.allWritingSystems],
       ["latin", presetLabels.latin],
       ["bopomofo", presetLabels.bopomofo],
       ["hiragana", messages.hiragana],
@@ -183,6 +182,12 @@
       ["hangul", messages.hangul],
       ["symbols", messages.symbols],
     ];
+  }
+
+  function clearFilters() {
+    selectedTypes = [];
+    selectedLanguages = [];
+    selectedWritingSystems = [];
   }
 
   function handlePreviewInput(event: Event) {
@@ -428,32 +433,36 @@
     </label>
 
     <details class="filter-control">
-      <summary>{messages.filters}</summary>
+      <summary>
+        {messages.filters}
+        {#if activeFilterCount > 0}<span class="filter-count">{formatMessage(messages.activeFilterCount, { count: activeFilterCount })}</span>{/if}
+      </summary>
       <div>
-        <label>
-          <span>{messages.category}</span>
-          <select bind:value={selectedCategory}>
+        <fieldset class="filter-group">
+          <legend>{messages.category}</legend>
+          <div class="filter-options">
             {#each categoryOptions() as [value, label]}
-              <option {value}>{label}</option>
+              <label class:active={selectedTypes.includes(value)}><input bind:group={selectedTypes} type="checkbox" {value} /><span>{label}</span></label>
             {/each}
-          </select>
-        </label>
-        <label>
-          <span>{messages.languageFilter}</span>
-          <select bind:value={selectedLanguage}>
+          </div>
+        </fieldset>
+        <fieldset class="filter-group">
+          <legend>{messages.languageFilter}</legend>
+          <div class="filter-options">
             {#each languageOptions() as [value, label]}
-              <option {value}>{label}</option>
+              <label class:active={selectedLanguages.includes(value)}><input bind:group={selectedLanguages} type="checkbox" {value} /><span>{label}</span></label>
             {/each}
-          </select>
-        </label>
-        <label>
-          <span>{messages.writingSystem}</span>
-          <select bind:value={selectedWritingSystem}>
+          </div>
+        </fieldset>
+        <fieldset class="filter-group">
+          <legend>{messages.writingSystem}</legend>
+          <div class="filter-options">
             {#each writingSystemOptions() as [value, label]}
-              <option {value}>{label}</option>
+              <label class:active={selectedWritingSystems.includes(value)}><input bind:group={selectedWritingSystems} type="checkbox" {value} /><span>{label}</span></label>
             {/each}
-          </select>
-        </label>
+          </div>
+        </fieldset>
+        {#if hasActiveFilters}<button class="clear-filters" type="button" on:click={clearFilters}>{messages.clearFilters}</button>{/if}
       </div>
     </details>
 
@@ -686,7 +695,7 @@
         </article>
       {:else}
         <div class="empty-state">
-          {#if (committedQuery.trim() || selectedCategory !== "all" || selectedLanguage !== "all" || selectedWritingSystem !== "all") && queryMatchingFamilies.length === 0}
+          {#if (committedQuery.trim() || hasActiveFilters) && queryMatchingFamilies.length === 0}
             <h3>{messages.noSearchTitle}</h3>
             <p>{messages.noSearchBody}</p>
           {:else if coveragePending}
