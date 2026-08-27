@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { catalogFonts, type CatalogFontRecord } from "./catalog";
-import { groupCatalogFonts } from "./catalog-families";
+import {
+  groupCatalogFonts,
+  officialNameForLocale,
+  type CatalogFontFamily,
+} from "./catalog-families";
 
 function font(id: string, family: CatalogFontRecord["family"] = null): CatalogFontRecord {
   return { id, label: id, family, variants: [] } as unknown as CatalogFontRecord;
@@ -44,5 +48,24 @@ describe("catalog families", () => {
 
     expect(groups[0].fonts.map((entry) => entry.id)).toEqual(["compressed", "normal", "wide"]);
     expect(groups[0].defaultFontId).toBe("normal");
+  });
+});
+
+describe("officialNameForLocale", () => {
+  const family = {
+    id: "jigmo",
+    label: "Jigmo",
+    officialNames: { en: "Jigmo", ja: "字雲" },
+    axisLabel: null,
+    fonts: [],
+    defaultFontId: "jigmo",
+  } satisfies CatalogFontFamily;
+
+  it("uses a distinct name in the requested locale", () => {
+    expect(officialNameForLocale(family, "ja")).toEqual({ locale: "ja", name: "字雲" });
+  });
+
+  it("falls back to a distinct upstream name instead of duplicating the label", () => {
+    expect(officialNameForLocale(family, "zh-Hant")).toEqual({ locale: "ja", name: "字雲" });
   });
 });

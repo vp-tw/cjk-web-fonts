@@ -37,6 +37,7 @@ export type WritingSystemId =
 export interface FontFamilyMembership {
   id: string;
   label: string;
+  officialNames?: Record<string, string>;
   axisLabel: string;
   value: string;
   valueLabel: string;
@@ -47,6 +48,7 @@ export interface FontFamilyMembership {
 export interface FontRecord {
   id: string;
   label: string;
+  officialNames: Record<string, string>;
   packageName: string;
   version: string;
   description: string;

@@ -16,6 +16,7 @@
       "buildScript": "scripts/build-jigmo.sh",
       "auditScript": "scripts/audit_jigmo.py",
       "site": {
+        "officialNames": { "en": "Jigmo", "ja": "字雲" },
         "description": "Unicode 17.0 and Ideographic Variation Database coverage for rare and historic CJK forms.",
         "license": "CC0 1.0",
         "sourceUrl": "https://kamichikoichi.github.io/jigmo/",
@@ -44,6 +45,7 @@
       "buildScript": "scripts/build-hanamin.sh",
       "auditScript": "scripts/audit_hanamin.py",
       "site": {
+        "officialNames": { "en": "Hanamin", "ja": "花園明朝" },
         "description": "The Hanazono Mincho family for broad CJK unified ideograph and variation-sequence coverage.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://glyphwiki.org/hanazono/",
@@ -68,6 +70,7 @@
       "buildScript": "scripts/build-taipei-sans-tc.sh",
       "auditScript": "scripts/audit_taipei_sans_tc.py",
       "site": {
+        "officialNames": { "en": "Taipei Sans TC", "zh-Hant": "台北黑體" },
         "description": "A contemporary Traditional Chinese sans serif in light, regular, and bold weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://sites.google.com/view/jtfoundry/zh-tw/downloads",
@@ -108,6 +111,7 @@
       "buildScript": "scripts/build-fusion-pixel-font.sh",
       "auditScript": "scripts/audit_fusion_pixel_font.py",
       "site": {
+        "officialNames": { "en": "Fusion Pixel Font", "zh-Hans": "缝合像素字体" },
         "description": "Pan-CJK pixel fonts in three pixel sizes, proportional and monospaced spacing, and five language forms.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/TakWolf/fusion-pixel-font",
@@ -212,9 +216,21 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "officialNames": {
+          "en": "Wêlai Glow Sans TC",
+          "ja": "ヒカリ角ゴ",
+          "zh-Hans": "未来荧黑",
+          "zh-Hant": "未來熒黑"
+        },
         "family": {
           "id": "glow-sans-tc",
           "label": "Wêlai Glow Sans TC",
+          "officialNames": {
+            "en": "Wêlai Glow Sans TC",
+            "ja": "ヒカリ角ゴ",
+            "zh-Hans": "未来荧黑",
+            "zh-Hant": "未來熒黑"
+          },
           "axisLabel": "字寬",
           "value": "compressed",
           "valueLabel": "Compressed",
@@ -310,9 +326,21 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "officialNames": {
+          "en": "Wêlai Glow Sans TC",
+          "ja": "ヒカリ角ゴ",
+          "zh-Hans": "未来荧黑",
+          "zh-Hant": "未來熒黑"
+        },
         "family": {
           "id": "glow-sans-tc",
           "label": "Wêlai Glow Sans TC",
+          "officialNames": {
+            "en": "Wêlai Glow Sans TC",
+            "ja": "ヒカリ角ゴ",
+            "zh-Hans": "未来荧黑",
+            "zh-Hant": "未來熒黑"
+          },
           "axisLabel": "字寬",
           "value": "condensed",
           "valueLabel": "Condensed",
@@ -417,9 +445,21 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "officialNames": {
+          "en": "Wêlai Glow Sans TC",
+          "ja": "ヒカリ角ゴ",
+          "zh-Hans": "未来荧黑",
+          "zh-Hant": "未來熒黑"
+        },
         "family": {
           "id": "glow-sans-tc",
           "label": "Wêlai Glow Sans TC",
+          "officialNames": {
+            "en": "Wêlai Glow Sans TC",
+            "ja": "ヒカリ角ゴ",
+            "zh-Hans": "未来荧黑",
+            "zh-Hant": "未來熒黑"
+          },
           "axisLabel": "字寬",
           "value": "normal",
           "valueLabel": "Normal",
@@ -524,9 +564,21 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "officialNames": {
+          "en": "Wêlai Glow Sans TC",
+          "ja": "ヒカリ角ゴ",
+          "zh-Hans": "未来荧黑",
+          "zh-Hant": "未來熒黑"
+        },
         "family": {
           "id": "glow-sans-tc",
           "label": "Wêlai Glow Sans TC",
+          "officialNames": {
+            "en": "Wêlai Glow Sans TC",
+            "ja": "ヒカリ角ゴ",
+            "zh-Hans": "未来荧黑",
+            "zh-Hant": "未來熒黑"
+          },
           "axisLabel": "字寬",
           "value": "extended",
           "valueLabel": "Extended",
@@ -631,9 +683,21 @@
       "auditScript": "scripts/audit_glow_sans_tc.py",
       "buildInputs": ["licenses/glow-sans-OFL.txt", "scripts/build-glow-sans-tc-width.sh"],
       "site": {
+        "officialNames": {
+          "en": "Wêlai Glow Sans TC",
+          "ja": "ヒカリ角ゴ",
+          "zh-Hans": "未来荧黑",
+          "zh-Hant": "未來熒黑"
+        },
         "family": {
           "id": "glow-sans-tc",
           "label": "Wêlai Glow Sans TC",
+          "officialNames": {
+            "en": "Wêlai Glow Sans TC",
+            "ja": "ヒカリ角ゴ",
+            "zh-Hans": "未来荧黑",
+            "zh-Hant": "未來熒黑"
+          },
           "axisLabel": "字寬",
           "value": "wide",
           "valueLabel": "Wide",
@@ -737,6 +801,7 @@
       "buildScript": "scripts/build-iansui.sh",
       "auditScript": "scripts/audit_iansui.py",
       "site": {
+        "officialNames": { "en": "Iansui", "zh-Hant": "芫荽" },
         "description": "A handwriting-style typeface adapted for Taiwan Traditional Chinese educational forms.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/ButTaiwan/iansui",
@@ -761,6 +826,7 @@
       "buildScript": "scripts/build-lxgw-wenkai-tc.sh",
       "auditScript": "scripts/audit_lxgw_wenkai_tc.py",
       "site": {
+        "officialNames": { "en": "LXGW WenKai TC", "zh-Hant": "霞鶩文楷 TC" },
         "description": "A Traditional Chinese handwriting-style typeface with proportional and monospaced families in three weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/lxgw/LxgwWenkaiTC",
@@ -829,6 +895,7 @@
       "auditScript": "scripts/audit_chiron_webfont.py",
       "buildInputs": ["scripts/fetch_npm_webfont.py"],
       "site": {
+        "officialNames": { "en": "Chiron Sung HK", "zh-Hant": "昭源宋體" },
         "description": "A modern Traditional Chinese serif with variable weights, optical text forms, and true Latin italics.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-sung-hk",
@@ -863,6 +930,7 @@
       "auditScript": "scripts/audit_chiron_webfont.py",
       "buildInputs": ["scripts/fetch_npm_webfont.py"],
       "site": {
+        "officialNames": { "en": "Chiron Hei HK", "zh-Hant": "昭源黑體" },
         "description": "A modern region-neutral Traditional Chinese sans serif with variable weights, text forms, and italics.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-hei-hk",
@@ -897,6 +965,7 @@
       "auditScript": "scripts/audit_chiron_webfont.py",
       "buildInputs": ["scripts/fetch_npm_webfont.py"],
       "site": {
+        "officialNames": { "en": "Chiron GoRound TC", "zh-Hant": "昭源環方" },
         "description": "A rounded Traditional Chinese sans serif derived from Chiron Hei HK with variable weights.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/chiron-fonts/chiron-go-round-tc",
@@ -922,6 +991,7 @@
       "auditScript": "scripts/audit_tofu.py",
       "buildInputs": ["scripts/prepare_tofu.py"],
       "site": {
+        "officialNames": { "en": "Tofu" },
         "description": "Google Fonts' visible missing-glyph marker, packaged as browser-compatible Unicode webfont subsets.",
         "license": "Apache License 2.0",
         "sourceUrl": "https://github.com/googlefonts/tofu",
@@ -948,6 +1018,7 @@
       "auditScript": "scripts/audit_adobe_notdef.py",
       "buildInputs": ["scripts/prepare_adobe_notdef.py"],
       "site": {
+        "officialNames": { "en": "Adobe NotDef" },
         "description": "Adobe's visible .notdef glyph for diagnosing missing characters across Unicode scalar values.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/adobe-fonts/adobe-notdef",
@@ -974,6 +1045,7 @@
       "auditScript": "scripts/audit_last_resort.py",
       "buildInputs": ["scripts/prepare_last_resort.py"],
       "site": {
+        "officialNames": { "en": "Last Resort" },
         "description": "Unicode's diagnostic fallback glyphs identify the block or category of a missing character.",
         "license": "SIL Open Font License 1.1",
         "sourceUrl": "https://github.com/unicode-org/last-resort-font",
