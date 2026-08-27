@@ -597,12 +597,19 @@
   color: var(--danger);
 }
 
-.missing-list span {
+.missing-glyph {
   display: grid;
   min-width: 30px;
   min-height: 30px;
   place-items: center;
   border: 1px solid currentColor;
+}
+
+.missing-overflow {
+  display: flex;
+  align-items: center;
+  margin-inline-start: 0.25rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .font-specimen > footer {

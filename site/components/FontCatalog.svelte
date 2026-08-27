@@ -776,9 +776,9 @@
           {#if !coveragePending && missingPoints.length > 0}
             <div class="missing-list" aria-label={messages.missingCharacters}>
               {#each missingPoints.slice(0, 16) as point}
-                <span title={formatCodePoint(point)}>{glyph(point)}</span>
+                <span class="missing-glyph" title={formatCodePoint(point)}>{glyph(point)}</span>
               {/each}
-              {#if missingPoints.length > 16}<span>＋{missingPoints.length - 16}</span>{/if}
+              {#if missingPoints.length > 16}<span class="missing-overflow">＋{missingPoints.length - 16}</span>{/if}
             </div>
           {/if}
 
