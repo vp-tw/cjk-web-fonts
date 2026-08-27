@@ -70,6 +70,8 @@
   let worker: Worker | undefined;
   let latestCoverageRequestId = 0;
   let mounted = false;
+  // oxlint-disable-next-line no-unassigned-vars -- assigned by bind:this
+  let filterDetails: HTMLDetailsElement;
   $: activeFilterCount = selectedTypes.length + selectedLanguages.length + selectedWritingSystems.length;
   $: hasActiveFilters = activeFilterCount > 0;
 
@@ -189,6 +191,17 @@
     selectedTypes = [];
     selectedLanguages = [];
     selectedWritingSystems = [];
+  }
+
+  function viewResults() {
+    filterDetails.open = false;
+    const catalog = document.querySelector<HTMLElement>("#catalog");
+    if (!catalog) return;
+    catalog.focus({ preventScroll: true });
+    catalog.scrollIntoView({
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
   }
 
   function filterMatchIds(font: CatalogFontRecord): string[] {
@@ -476,7 +489,7 @@
       <input on:input={handleQueryInput} type="search" placeholder={messages.searchPlaceholder} />
     </label>
 
-    <details class="filter-control">
+    <details bind:this={filterDetails} class="filter-control">
       <summary>
         {messages.filters}
         {#if activeFilterCount > 0}<span class="filter-count">{formatMessage(messages.activeFilterCount, { count: activeFilterCount })}</span>{/if}
@@ -507,6 +520,7 @@
           </div>
         </fieldset>
         {#if hasActiveFilters}<button class="clear-filters" type="button" on:click={clearFilters}>{messages.clearFilters}</button>{/if}
+        <button class="view-results" type="button" on:click={viewResults}>{formatMessage(messages.viewResults, { count: visibleFamilies.length })}</button>
       </div>
     </details>
 
@@ -596,7 +610,7 @@
     </label>
   </div>
 
-  <div class="catalog-area" id="catalog">
+  <div class="catalog-area" id="catalog" tabindex="-1">
     {#if variationSelectorPattern.test(previewText)}
       <p class="coverage-notice">
         {messages.variationNotice}

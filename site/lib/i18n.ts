@@ -25,6 +25,7 @@ export interface Messages {
     filters: string;
     activeFilterCount: string;
     clearFilters: string;
+    viewResults: string;
     category: string;
     typeFilterRule: string;
     allCategories: string;
@@ -138,6 +139,7 @@ const en: Messages = {
     typeFilterRule: "Match any type",
     activeFilterCount: "{count} active",
     clearFilters: "Clear all",
+    viewResults: "View {count} results",
     allCategories: "All categories",
     serif: "Serif",
     sansSerif: "Sans Serif",
@@ -258,6 +260,7 @@ const zhHant: Messages = {
     typeFilterRule: "符合任一類型",
     activeFilterCount: "{count} 個條件",
     clearFilters: "清除全部",
+    viewResults: "查看 {count} 個結果",
     allCategories: "所有分類",
     serif: "有襯線",
     sansSerif: "無襯線",
@@ -378,6 +381,7 @@ const zhHans: Messages = {
     typeFilterRule: "符合任一类型",
     activeFilterCount: "{count} 个条件",
     clearFilters: "清除全部",
+    viewResults: "查看 {count} 个结果",
     allCategories: "所有分类",
     serif: "衬线",
     sansSerif: "无衬线",
@@ -501,6 +505,7 @@ const ja: Messages = {
     typeFilterRule: "いずれかに一致",
     activeFilterCount: "{count} 件適用中",
     clearFilters: "すべて解除",
+    viewResults: "{count} 件の結果を見る",
     allCategories: "すべての分類",
     serif: "セリフ",
     sansSerif: "サンセリフ",
@@ -626,6 +631,7 @@ const ko: Messages = {
     typeFilterRule: "하나 이상 일치",
     activeFilterCount: "{count}개 적용 중",
     clearFilters: "모두 지우기",
+    viewResults: "결과 {count}개 보기",
     allCategories: "모든 분류",
     serif: "세리프",
     sansSerif: "산세리프",

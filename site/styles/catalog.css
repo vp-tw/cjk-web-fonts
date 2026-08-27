@@ -159,6 +159,10 @@
   cursor: pointer;
 }
 
+.view-results {
+  display: none;
+}
+
 .fallback-control small {
   display: block;
   margin-top: 0.5rem;
@@ -667,6 +671,17 @@
   .filter-options label,
   .clear-filters {
     min-height: 44px;
+  }
+
+  .view-results {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
   }
   .control-rail {
     grid-template-columns: 1fr;
