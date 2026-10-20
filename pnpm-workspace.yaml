@@ -2,3 +2,6 @@ packages:
   - packages/*
 allowBuilds:
   esbuild: true
+overrides:
+  # oxfmt 0.64.0 pins the vulnerable tinypool 2.1.0 exactly.
+  oxfmt>tinypool: 2.1.2
