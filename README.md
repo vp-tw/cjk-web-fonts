@@ -120,6 +120,21 @@ Generated `dist` files are committed and verified in pull requests. Releases
 publish those reviewed files directly; the release workflow must not rebuild
 fonts.
 
+### New package publishing
+
+The first publication of a package needs an authenticated maintainer. After
+that publication, configure its npm trusted publisher for this repository and
+`release.yml`, then use the existing Changesets workflow for subsequent releases.
+Verify a successful CI publication before considering the setup complete:
+[unvalidated npm trusted publishers expire after 48 hours](https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire/).
+A real successful publication validates the relationship; reading its settings
+alone does not establish that the workflow can publish.
+
+New versions undergo [npm publish-time scanning](https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata/)
+before downloads become available. Poll the exact version and CDN assets after
+publish success. A temporary `npm view` 404 is not proof that a version has never
+been published; do not publish a replacement just to work around scan latency.
+
 ## Catalog website
 
 The Astro and Svelte GitHub Pages site provides searchable live specimens,
