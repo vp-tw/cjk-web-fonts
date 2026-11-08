@@ -7,12 +7,12 @@ Latin forms are paired with Chinese forms derived from ChillDuanSans
 
 ## CDN
 
-The first release is 0.0.1. After publication:
+Pin the published package version:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@vp-tw/cjk-web-fonts-chill-din-gothic@0.0.1/dist/index.css"
+  href="https://cdn.jsdelivr.net/npm/@vp-tw/cjk-web-fonts-chill-din-gothic@0.0.2/dist/index.css"
 />
 ```
 
@@ -50,3 +50,12 @@ The separate ChillDIN 1.100 Latin family is not included. Its static widths
 and variable font are not variants of the Chinese ChillDINGothic Std font.
 
 The npm package contains CSS and WOFF2 assets only. It has no JavaScript runtime.
+
+## Publishing
+
+Subsequent releases use the repository's `release.yml` GitHub Actions workflow
+with npm trusted publishing (OIDC). `publishConfig.provenance` requires a
+provenance statement that links the published package to its source and workflow.
+The initial 0.0.1 release bootstrapped the package through interactive npm 2FA.
+Font files are reviewed and committed before release; publishing never rebuilds
+them.
