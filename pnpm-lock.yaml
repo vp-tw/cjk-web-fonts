@@ -55,6 +55,8 @@ importers:
 
   packages/adobe-notdef: {}
 
+  packages/chill-din-gothic: {}
+
   packages/chiron-go-round-tc: {}
 
   packages/chiron-hei-hk: {}

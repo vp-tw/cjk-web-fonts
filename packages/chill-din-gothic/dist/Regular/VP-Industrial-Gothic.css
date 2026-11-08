@@ -1,0 +1,696 @@
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Basic-Latin.woff2) format("woff2");
+  unicode-range: U+D, U+20-7E;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Latin-1-Supplement.woff2) format("woff2");
+  unicode-range: U+A0-AC, U+AE-FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Latin-Extended-A.woff2) format("woff2");
+  unicode-range: U+100-137, U+139-13E, U+141-148, U+14A-17E;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Latin-Extended-B.woff2) format("woff2");
+  unicode-range: U+180, U+18F, U+192, U+19A, U+19F-1A1, U+1AF-1B0, U+1CD-1DC, U+1DE-1DF, U+1E2-1E3, U+1E6-1ED, U+1F0, U+1F4-1F5, U+1F8-1F9, U+1FE-1FF, U+218-21B, U+228-22B, U+232-233, U+237, U+23D, U+243;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.IPA-Extensions.woff2) format("woff2");
+  unicode-range: U+251, U+259, U+261, U+265, U+268, U+275;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Spacing-Modifier-Letters.woff2) format("woff2");
+  unicode-range: U+2B0, U+2B2, U+2B7, U+2B9, U+2BB-2BC, U+2C6-2C7, U+2C9-2CB, U+2D8-2DD, U+2E1, U+2EA-2EB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Combining-Diacritical-Marks.woff2) format("woff2");
+  unicode-range: U+300-304, U+306-30C, U+312, U+31B, U+323-328, U+32C-32E, U+331;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Greek-and-Coptic.woff2) format("woff2");
+  unicode-range: U+391-3A1, U+3A3-3A9, U+3B1-3C9;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Cyrillic.woff2) format("woff2");
+  unicode-range: U+400-45F, U+490-491, U+4AE-4AF, U+4E8-4E9;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Latin-Extended-Additional.woff2) format("woff2");
+  unicode-range: U+1E04-1E05, U+1E0C-1E0F, U+1E12-1E13, U+1E20-1E21, U+1E24-1E25, U+1E2A-1E2B, U+1E2E-1E31, U+1E34-1E4D, U+1E50-1E55, U+1E5A-1E5F, U+1E62-1E63, U+1E6C-1E71, U+1E80-1E85, U+1E8E-1E8F, U+1E92-1E97, U+1E9E, U+1EA0-1EF9;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.General-Punctuation.woff2) format("woff2");
+  unicode-range: U+2002-2003, U+2010, U+2013-2016, U+2018-201A, U+201C-201E, U+2020-2022, U+2025-2026, U+2030, U+2032-2033, U+2035, U+2039-203C, U+2042, U+2044, U+2047-2049, U+2051;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Superscripts-and-Subscripts.woff2) format("woff2");
+  unicode-range: U+2070, U+2074-2079, U+207F, U+208D-208E;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Currency-Symbols.woff2) format("woff2");
+  unicode-range: U+20A9, U+20AB-20AC;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Combining-Diacritical-Marks-for-Symbols.woff2) format("woff2");
+  unicode-range: U+20DD-20DE;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Letterlike-Symbols.woff2) format("woff2");
+  unicode-range: U+2100, U+2103, U+2105, U+2109-210A, U+210F, U+2113, U+2116, U+2121-2122, U+2126-2127, U+212B, U+212E, U+2135;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Number-Forms.woff2) format("woff2");
+  unicode-range: U+215B-215E, U+2160-216B, U+2170-217B;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Arrows.woff2) format("woff2");
+  unicode-range: U+2190-2199, U+21B8-21B9, U+21C4-21C6, U+21CB-21CC, U+21D0, U+21D2, U+21D4, U+21E6-21E9, U+21F5;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Mathematical-Operators.woff2) format("woff2");
+  unicode-range: U+2200, U+2202-2203, U+2205-220B, U+220F, U+2211-2213, U+2215, U+221A, U+221D-2220, U+2223, U+2225-222E, U+2234-2237, U+223D, U+2243, U+2245, U+2248, U+224C, U+2252, U+2260-2262, U+2264-2267, U+226A-226B, U+226E-226F, U+2272-2273, U+2276-2277, U+2282-2287, U+228A-228B, U+2295-2299, U+22A0, U+22A5, U+22BF, U+22DA-22DB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Miscellaneous-Technical.woff2) format("woff2");
+  unicode-range: U+2305-2307, U+2312, U+2318, U+2329-232A, U+23B0-23B1, U+23BE-23CC, U+23CE, U+23DA-23DB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Control-Pictures.woff2) format("woff2");
+  unicode-range: U+2423;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Box-Drawing.woff2) format("woff2");
+  unicode-range: U+2500-257F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Block-Elements.woff2) format("woff2");
+  unicode-range: U+2580-259F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Geometric-Shapes.woff2) format("woff2");
+  unicode-range: U+25A0-25AB, U+25B1-25B3, U+25B6-25B7, U+25BC-25BD, U+25C0-25C1, U+25C6-25CC, U+25CE-25D3, U+25E2-25E6, U+25EF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Miscellaneous-Symbols.woff2) format("woff2");
+  unicode-range: U+2600-2603, U+2605-2606, U+2609, U+260E-260F, U+2616-2617, U+261C-261F, U+262F, U+2640-2642, U+2660-266F, U+2672-267D, U+26A0, U+26BD-26BE;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Dingbats.woff2) format("woff2");
+  unicode-range: U+2702, U+2713, U+271A, U+273D, U+273F-2740, U+2756, U+27A1;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Supplemental-Arrows-B.woff2) format("woff2");
+  unicode-range: U+2934-2935;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Miscellaneous-Mathematical-Symbols-B.woff2) format("woff2");
+  unicode-range: U+29BF, U+29FA-29FB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Miscellaneous-Symbols-and-Arrows.woff2) format("woff2");
+  unicode-range: U+2B05-2B07, U+2B1A, U+2B95;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Supplemental-Punctuation.woff2) format("woff2");
+  unicode-range: U+2E17, U+2E3A-2E3B;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Radicals-Supplement.woff2) format("woff2");
+  unicode-range: U+2E80-2E99, U+2E9B-2EF3;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Kangxi-Radicals.woff2) format("woff2");
+  unicode-range: U+2F00-2FD5;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Ideographic-Description-Characters.woff2) format("woff2");
+  unicode-range: U+2FF0-2FFB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Symbols-and-Punctuation.woff2) format("woff2");
+  unicode-range: U+3000-303F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Hiragana.woff2) format("woff2");
+  unicode-range: U+3041-3096, U+3099-309F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Katakana.woff2) format("woff2");
+  unicode-range: U+30A0-30FA, U+30FC-30FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Bopomofo.woff2) format("woff2");
+  unicode-range: U+3105-312F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Hangul-Compatibility-Jamo.woff2) format("woff2");
+  unicode-range: U+3131-3163, U+3165-318E;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Kanbun.woff2) format("woff2");
+  unicode-range: U+3190-319F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Bopomofo-Extended.woff2) format("woff2");
+  unicode-range: U+31A0-31BB;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Strokes.woff2) format("woff2");
+  unicode-range: U+31C0-31E3;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Katakana-Phonetic-Extensions.woff2) format("woff2");
+  unicode-range: U+31F0-31FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Enclosed-CJK-Letters-and-Months.woff2) format("woff2");
+  unicode-range: U+3200-321E, U+3220-3247, U+3250, U+3260-32B0, U+32D0-32FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Compatibility.woff2) format("woff2");
+  unicode-range: U+3300-332B, U+332D-3357, U+337B-337F, U+33FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-001.woff2) format("woff2");
+  unicode-range: U+3400-37FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-002.woff2) format("woff2");
+  unicode-range: U+3800-3BFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-003.woff2) format("woff2");
+  unicode-range: U+3C00-3FFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-004.woff2) format("woff2");
+  unicode-range: U+4000-43FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-005.woff2) format("woff2");
+  unicode-range: U+4400-47FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-006.woff2) format("woff2");
+  unicode-range: U+4800-4BFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-A-007.woff2) format("woff2");
+  unicode-range: U+4C00-4DB5;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-001.woff2) format("woff2");
+  unicode-range: U+4E00-51FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-002.woff2) format("woff2");
+  unicode-range: U+5200-55FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-003.woff2) format("woff2");
+  unicode-range: U+5600-59FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-004.woff2) format("woff2");
+  unicode-range: U+5A00-5DFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-005.woff2) format("woff2");
+  unicode-range: U+5E00-61FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-006.woff2) format("woff2");
+  unicode-range: U+6200-65FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-007.woff2) format("woff2");
+  unicode-range: U+6600-69FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-008.woff2) format("woff2");
+  unicode-range: U+6A00-6DFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-009.woff2) format("woff2");
+  unicode-range: U+6E00-71FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-010.woff2) format("woff2");
+  unicode-range: U+7200-75FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-011.woff2) format("woff2");
+  unicode-range: U+7600-79FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-012.woff2) format("woff2");
+  unicode-range: U+7A00-7DFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-013.woff2) format("woff2");
+  unicode-range: U+7E00-81FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-014.woff2) format("woff2");
+  unicode-range: U+8200-85FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-015.woff2) format("woff2");
+  unicode-range: U+8600-89FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-016.woff2) format("woff2");
+  unicode-range: U+8A00-8DFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-017.woff2) format("woff2");
+  unicode-range: U+8E00-91FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-018.woff2) format("woff2");
+  unicode-range: U+9200-95FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-019.woff2) format("woff2");
+  unicode-range: U+9600-99FF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-020.woff2) format("woff2");
+  unicode-range: U+9A00-9DFF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-021.woff2) format("woff2");
+  unicode-range: U+9E00-9FEF;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Latin-Extended-D.woff2) format("woff2");
+  unicode-range: U+A78B-A78D;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Compatibility-Ideographs.woff2) format("woff2");
+  unicode-range: U+F900-F903, U+F905-F906, U+F90B-F90C, U+F915, U+F917-F91A, U+F921, U+F92C-F92D, U+F92F, U+F931-F935, U+F937-F93A, U+F943, U+F947-F94A, U+F94E, U+F952-F953, U+F95E, U+F962-F967, U+F96E, U+F972, U+F974, U+F976, U+F979-F97B, U+F97E-F980, U+F984-F985, U+F98A-F98C, U+F98E, U+F993, U+F995, U+F998, U+F9AE, U+F9B3, U+F9B7, U+F9BB, U+F9BD-F9BE, U+F9C0, U+F9C5-F9C6, U+F9D0, U+F9D8-F9D9, U+F9DC-F9E0, U+F9E2-F9E4, U+F9E7, U+F9E9, U+F9F1, U+F9F4-F9F5, U+F9FA, U+F9FD, U+F9FF, U+FA02, U+FA05-FA08, U+FA0A, U+FA0C-FA0F, U+FA11, U+FA13-FA14, U+FA18, U+FA1F-FA21, U+FA23-FA24, U+FA27-FA29, U+FA2F, U+FA33-FA35, U+FA37-FA38, U+FA3A, U+FA47, U+FA49, U+FA4B, U+FA5D-FA5E;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Alphabetic-Presentation-Forms.woff2) format("woff2");
+  unicode-range: U+FB00-FB04;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Vertical-Forms.woff2) format("woff2");
+  unicode-range: U+FE10-FE19;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Compatibility-Forms.woff2) format("woff2");
+  unicode-range: U+FE30-FE4F;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Small-Form-Variants.woff2) format("woff2");
+  unicode-range: U+FE50-FE52, U+FE54-FE66, U+FE68-FE6B;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Halfwidth-and-Fullwidth-Forms.woff2) format("woff2");
+  unicode-range: U+FF01-FF0F, U+FF1A-FF20, U+FF3B-FF40, U+FF5B-FF9F, U+FFA1-FFBE, U+FFC2-FFC7, U+FFCA-FFCF, U+FFD2-FFD7, U+FFDA-FFDC, U+FFE0-FFE6, U+FFE8-FFEE;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Enclosed-Alphanumeric-Supplement.woff2) format("woff2");
+  unicode-range: U+1F16C;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.Enclosed-Ideographic-Supplement.woff2) format("woff2");
+  unicode-range: U+1F200-1F202, U+1F210-1F23B, U+1F240-1F248, U+1F250-1F251;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-B.woff2) format("woff2");
+  unicode-range: U+20087, U+20089, U+200CC, U+20164, U+20628, U+20676, U+20CD0, U+2139A, U+21413, U+215D7, U+2298F, U+235CB, U+23C97-23C98, U+23E23, U+241FE, U+2420E, U+248E9, U+249DB, U+24A01, U+24A7D, U+24AC9, U+25532, U+25562, U+255A8, U+25AD7, U+25ED7, U+26221, U+2648D, U+26676, U+2677C, U+26951, U+26B5C, U+26C21, U+278B2, U+27EAF, U+27FB7, U+27FF9, U+28408, U+28678, U+28695, U+287E0, U+28B49, U+28C47, U+28C4F, U+28C51, U+28C54, U+28E0F, U+28E99, U+2967F, U+29810, U+29F7E, U+29F83, U+29F8C;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-C.woff2) format("woff2");
+  unicode-range: U+2A7DD, U+2A8FB, U+2A917, U+2AA30, U+2AA36, U+2AA58, U+2AFA2, U+2B127-2B128, U+2B137-2B138, U+2B1ED, U+2B300, U+2B363, U+2B36F, U+2B372, U+2B37D, U+2B404, U+2B410, U+2B413, U+2B461, U+2B4E7, U+2B4EF, U+2B4F6, U+2B4F9, U+2B50D-2B50E, U+2B536, U+2B5AE-2B5AF, U+2B5B3, U+2B5E7, U+2B5F4, U+2B61C-2B61D, U+2B626-2B628, U+2B62A, U+2B62C, U+2B695-2B696, U+2B6AD, U+2B6ED;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-D.woff2) format("woff2");
+  unicode-range: U+2B7A9, U+2B7C5, U+2B7E6, U+2B7F9, U+2B7FC, U+2B806, U+2B80A, U+2B81C;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-E.woff2) format("woff2");
+  unicode-range: U+2B8B8, U+2BAC7, U+2BB5F, U+2BB62, U+2BB7C, U+2BB83, U+2BC1B, U+2BD77, U+2BD87, U+2BDF7, U+2BE29, U+2C029-2C02A, U+2C0A9, U+2C0CA, U+2C1D5, U+2C1D9, U+2C1F9, U+2C27C, U+2C288, U+2C2A4, U+2C317, U+2C35B, U+2C361, U+2C364, U+2C488, U+2C494, U+2C497, U+2C542, U+2C613, U+2C618, U+2C621, U+2C629, U+2C62B-2C62D, U+2C62F, U+2C642, U+2C64A-2C64B, U+2C72C, U+2C72F, U+2C79F, U+2C7C1, U+2C7FD, U+2C8D9, U+2C8DE, U+2C8E1, U+2C8F3, U+2C907, U+2C90A, U+2C91D, U+2CA02, U+2CA0E, U+2CA7D, U+2CAA9, U+2CB29, U+2CB2D-2CB2E, U+2CB31, U+2CB38-2CB39, U+2CB3B, U+2CB3F, U+2CB41, U+2CB4A, U+2CB4E, U+2CB5A-2CB5B, U+2CB64, U+2CB69, U+2CB6C, U+2CB6F, U+2CB73, U+2CB76, U+2CB78, U+2CB7C, U+2CBB1, U+2CBBF-2CBC0, U+2CBCE, U+2CC56, U+2CC5F, U+2CCF5-2CCF6, U+2CCFD, U+2CCFF, U+2CD02-2CD03, U+2CD0A, U+2CD8B, U+2CD8D, U+2CD8F-2CD90, U+2CD9F-2CDA0, U+2CDA8, U+2CDAD-2CDAE, U+2CDD5, U+2CE18, U+2CE1A, U+2CE23, U+2CE26, U+2CE2A, U+2CE7C, U+2CE88, U+2CE93;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-F.woff2) format("woff2");
+  unicode-range: U+2D544;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Compatibility-Ideographs-Supplement.woff2) format("woff2");
+  unicode-range: U+2F884, U+2F8B6;
+}
+@font-face {
+  font-family: "VP Industrial Gothic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("VP Industrial Gothic Regular"), local("VPIndustrialGothic-Regular"), url(VP-Industrial-Gothic.CJK-Unified-Ideographs-Extension-G.woff2) format("woff2");
+  unicode-range: U+30EDD-30EDE, U+3106C;
+}

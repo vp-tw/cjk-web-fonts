@@ -8,22 +8,27 @@ jsDelivr's GitHub endpoint.
 
 ## Fonts
 
+The registry and website use a curated order: sans serif, serif, handwriting,
+pixel, then diagnostic fallbacks. Related family packages stay adjacent; width
+variants retain upstream order. Search queries may rank results by relevance.
+
 | Font                                                                        | Version    | License | Package                                        |
 | --------------------------------------------------------------------------- | ---------- | ------- | ---------------------------------------------- |
-| [Jigmo](packages/jigmo/README.md)                                           | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`                   |
-| [Hanamin](packages/hanamin/README.md)                                       | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`                 |
 | [Taipei Sans TC](packages/taipei-sans-tc/README.md)                         | 1.000      | OFL-1.1 | `@vp-tw/cjk-web-fonts-taipei-sans-tc`          |
-| [Fusion Pixel Font](packages/fusion-pixel-font/README.md)                   | 2026.08.11 | OFL-1.1 | `@vp-tw/cjk-web-fonts-fusion-pixel-font`       |
 | [Wêlai Glow Sans TC Compressed](packages/glow-sans-tc-compressed/README.md) | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-compressed` |
 | [Wêlai Glow Sans TC Condensed](packages/glow-sans-tc-condensed/README.md)   | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-condensed`  |
 | [Wêlai Glow Sans TC Normal](packages/glow-sans-tc-normal/README.md)         | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-normal`     |
 | [Wêlai Glow Sans TC Extended](packages/glow-sans-tc-extended/README.md)     | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-extended`   |
 | [Wêlai Glow Sans TC Wide](packages/glow-sans-tc-wide/README.md)             | 0.93       | OFL-1.1 | `@vp-tw/cjk-web-fonts-glow-sans-tc-wide`       |
-| [Iansui](packages/iansui/README.md)                                         | 1.020      | OFL-1.1 | `@vp-tw/cjk-web-fonts-iansui`                  |
-| [LXGW WenKai TC](packages/lxgw-wenkai-tc/README.md)                         | 1.522      | OFL-1.1 | `@vp-tw/cjk-web-fonts-lxgw-wenkai-tc`          |
-| [Chiron Sung HK](packages/chiron-sung-hk/README.md)                         | 1.024      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-sung-hk`          |
 | [Chiron Hei HK](packages/chiron-hei-hk/README.md)                           | 2.609      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-hei-hk`           |
 | [Chiron GoRound TC](packages/chiron-go-round-tc/README.md)                  | 1.011      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-go-round-tc`      |
+| [ChillDINGothic](packages/chill-din-gothic/README.md)                       | 1.300      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chill-din-gothic`        |
+| [Chiron Sung HK](packages/chiron-sung-hk/README.md)                         | 1.024      | OFL-1.1 | `@vp-tw/cjk-web-fonts-chiron-sung-hk`          |
+| [Jigmo](packages/jigmo/README.md)                                           | 2025-09-12 | CC0-1.0 | `@vp-tw/cjk-web-fonts-jigmo`                   |
+| [Hanamin](packages/hanamin/README.md)                                       | 2017-09-04 | OFL-1.1 | `@vp-tw/cjk-web-fonts-hanamin`                 |
+| [Iansui](packages/iansui/README.md)                                         | 1.020      | OFL-1.1 | `@vp-tw/cjk-web-fonts-iansui`                  |
+| [LXGW WenKai TC](packages/lxgw-wenkai-tc/README.md)                         | 1.522      | OFL-1.1 | `@vp-tw/cjk-web-fonts-lxgw-wenkai-tc`          |
+| [Fusion Pixel Font](packages/fusion-pixel-font/README.md)                   | 2026.08.11 | OFL-1.1 | `@vp-tw/cjk-web-fonts-fusion-pixel-font`       |
 
 ## Usage
 
