@@ -7,7 +7,7 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
-from audit_iansui import css_codepoints, inspect_font
+from audit_hanamin import css_codepoints, inspect_font
 
 ROOT = Path(__file__).resolve().parents[1]
 FAMILY = "VP Industrial Gothic"
@@ -19,7 +19,7 @@ def main() -> None:
     output_dir = ROOT / "packages/chill-din-gothic/dist/Regular"
     css_path = output_dir / "VP-Industrial-Gothic.css"
     css = css_path.read_text(encoding="utf-8")
-    source_points = inspect_font(source_path)
+    source_points, source_sequences = inspect_font(source_path)
     with TTFont(source_path) as source:
         preserved = {
             (record.nameID, record.toUnicode())
@@ -31,6 +31,7 @@ def main() -> None:
     assert faces, "missing font faces"
     referenced = set()
     output_points = set()
+    output_sequences = set()
     for face in faces:
         match = re.search(r'url\([\'"]?([^\)\'\"]+)', face)
         assert match, "missing font URL"
@@ -39,7 +40,8 @@ def main() -> None:
         path = output_dir / filename
         assert path.suffix == ".woff2", "unexpected font format"
         referenced.add(path)
-        points = inspect_font(path)
+        points, sequences = inspect_font(path)
+        output_sequences.update(sequences)
         # Check each descriptor independently: a union alone hides swapped subsets.
         descriptor = re.search(r"unicode-range:\s*([^;]+)", face)
         assert descriptor, "missing unicode-range"
@@ -47,6 +49,7 @@ def main() -> None:
         for item in descriptor[1].split(","):
             bounds = item.strip().upper().removeprefix("U+").split("-")
             declared.update(range(int(bounds[0], 16), int(bounds[-1], 16) + 1))
+        assert all(base in declared for base, _, _ in sequences), "variation sequence in wrong subset"
         assert points == declared, f"CSS coverage differs: {filename}"
         assert f'font-family: "{FAMILY}";' in face, "wrong CSS family"
         assert "font-weight: 500;" in face, "wrong CSS weight"
@@ -66,10 +69,12 @@ def main() -> None:
         output_points.update(points)
     assert referenced == set(output_dir.glob("*.woff2")), "unreferenced or missing subsets"
     assert source_points == output_points == css_codepoints(css_path), "coverage differs"
+    assert source_sequences == output_sequences, "variation sequence coverage differs"
+    assert len(source_sequences) == 2, "unexpected source variation sequences"
     assert len(source_points) == 30545, "unexpected source coverage"
     assert (output_dir.parent / "index.css").read_text() == '@import url("./Regular/VP-Industrial-Gothic.css");\n', "wrong entry point"
     assert (output_dir.parents[1] / "LICENSE.font.txt").read_bytes() == (source_path.parent / "license").read_bytes(), "license differs"
-    print(f"ChillDINGothic: {len(source_points)} codepoints, {len(referenced)} WOFF2 subsets; coverage, weight, names, and license verified")
+    print(f"ChillDINGothic: {len(source_points)} codepoints, {len(referenced)} WOFF2 subsets; 2 variation sequences; coverage, weight, names, and license verified")
 
 
 if __name__ == "__main__":

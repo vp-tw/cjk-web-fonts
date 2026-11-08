@@ -41,7 +41,8 @@ The catalog retains the upstream names for discovery and attribution.
 - Generated format: WOFF2
 - Splitter: `font-splitter v0.2.2`
 
-All 30,545 encoded code points are retained across the subsets. Character
+All 30,545 encoded code points and both upstream variation sequences are
+retained across the subsets. Character
 coverage does not establish regional language suitability; the catalog makes
 no reviewed regional-language claim for this package.
 

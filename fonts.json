@@ -703,7 +703,7 @@
       "label": "ChillDINGothic",
       "buildScript": "scripts/build-chill-din-gothic.sh",
       "auditScript": "scripts/audit_chill_din_gothic.py",
-      "buildInputs": ["scripts/prepare_chill_din_gothic.py", "scripts/audit_iansui.py"],
+      "buildInputs": ["scripts/prepare_chill_din_gothic.py", "scripts/audit_hanamin.py"],
       "site": {
         "officialNames": {
           "en": "ChillDINGothic",
