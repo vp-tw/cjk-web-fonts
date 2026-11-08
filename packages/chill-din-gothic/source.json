@@ -1,0 +1,20 @@
+{
+  "name": "ChillDINGothic Std",
+  "version": "1.300",
+  "commit": "d5251e66ded29639397025784c72dc2ac12bc817",
+  "license": "OFL-1.1",
+  "downloads": [
+    {
+      "name": "ChillDINGothic_Std.otf",
+      "url": "https://raw.githubusercontent.com/Warren2060/ChillDIN-ChillDINGothic/d5251e66ded29639397025784c72dc2ac12bc817/ChillDINGothic%20v1.300_Std/ChillDINGothic_Std.otf",
+      "bytes": 7227992,
+      "sha256": "b65c47c4807e30c0821f8bee0fee5f7ff7d17322bf556c8487cbfaf8ea773682"
+    },
+    {
+      "name": "license",
+      "url": "https://raw.githubusercontent.com/Warren2060/ChillDIN-ChillDINGothic/d5251e66ded29639397025784c72dc2ac12bc817/license",
+      "bytes": 4451,
+      "sha256": "1c36529c0d0cede09180cd1af3e0a00bc913b2dc1729f72684b8c5aba76a3f07"
+    }
+  ]
+}

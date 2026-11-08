@@ -382,6 +382,11 @@
         "name": "The Explicit Language Rule",
         "body": "Publish every interface language at a crawlable static URL. Keep English as the root fallback, preserve explicit choices, and offer browser-language suggestions without forced redirects or proof-content changes.",
         "section": "components"
+      },
+      {
+        "name": "The Catalog Order Is Curated Rule",
+        "body": "Use fonts.json order for an empty search: sans serif, serif, handwriting, pixel, then diagnostic fallbacks. Keep related packages adjacent and preserve upstream family-axis order. Nonempty searches rank by relevance.",
+        "section": "components"
       }
     ],
     "dos": [

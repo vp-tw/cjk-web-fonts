@@ -43,6 +43,9 @@ copy CSS for a web project.
 
 ## Capabilities and Constraints
 
+- Present the default catalog in registry-curated groups: sans serif, serif,
+  handwriting, pixel, then diagnostic fallbacks. Keep related packages adjacent
+  and preserve upstream axis order; nonempty searches rank by relevance.
 - Search and preview the complete catalog by catalog label, localized upstream
   official name, package identifier, classification, language, or description.
   Typographical errors produce relevance-ranked fuzzy matches.
