@@ -7,3 +7,5 @@ overrides:
   oxfmt>tinypool: 2.1.2
   # Keep the existing Vite minor on the official Windows editor-launch fix.
   vite@8.2.2: 8.2.4
+  # Workbox 7.4.1 needs glob 14 to consume the patched minimatch 11 API.
+  workbox-build@7.4.1>glob: 14.0.4
